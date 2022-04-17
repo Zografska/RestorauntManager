@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:RestaurantManager.Model;assembly=RestaurantManager"
+             x:Class="RestaurantManager.Pages.ToDoPage">
+    <ContentPage.Content>
+        <ListView Margin="0,20,0,0" HorizontalOptions="FillAndExpand" ItemsSource="{Binding Items}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.50*"/>
+                                <ColumnDefinition Width="0.50*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Text="{Binding Title}" FontAttributes="Bold" Padding="20,0,0,0" />
+                            <Label Grid.Column="1" Text="{Binding DateCreated}" HorizontalTextAlignment="End" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>
