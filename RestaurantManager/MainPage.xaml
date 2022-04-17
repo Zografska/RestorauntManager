@@ -1,54 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:RestaurantManager.Controls;assembly=RestaurantManager"
              x:Class="RestaurantManager.MainPage">
 
-    <StackLayout>
+    <StackLayout Spacing="0">
         <Frame BackgroundColor="#2196F3" Padding="20" CornerRadius="0">
-            <Label Text="Welcome to Restaurant Manager " HorizontalTextAlignment="Center" TextColor="White" FontSize="30"/>
+            <Label Text="Welcome to Restaurant Manager" HorizontalTextAlignment="Center" TextColor="White" FontSize="25"/>
         </Frame>
-        <Grid>
+        <Grid Background="Black" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid.RowDefinitions>
-                <RowDefinition Height="2*" />
-                <RowDefinition />
-                <RowDefinition Height="100" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <BoxView Color="Green" />
-            <Label Text="Row 0, Column 0"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center" />
-            <BoxView Grid.Column="1"
-                     Color="Blue" />
-            <Label Grid.Column="1"
-                   Text="Row 0, Column 1"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center" />
-            <BoxView Grid.Row="1"
-                     Color="Teal" />
-            <Label Grid.Row="1"
-                   Text="Row 1, Column 0"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center" />
-            <BoxView Grid.Row="1"
-                     Grid.Column="1"
-                     Color="Purple" />
-            <Label Grid.Row="1"
-                   Grid.Column="1"
-                   Text="Row1, Column 1"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center" />
-            <BoxView Grid.Row="2"
-                     Grid.ColumnSpan="2"
-                     Color="Red" />
-            <Label Grid.Row="2"
-                   Grid.ColumnSpan="2"
-                   Text="Row 2, Columns 0 and 1"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center" />
+            <controls:GridButton Grid.Row="0" Grid.Column="0" Text="Todo's"/>
+            <controls:GridButton Grid.Row="0" Grid.Column="1" Text="Reservations"/>
+            <controls:GridButton Grid.Row="1" Grid.Column="0" Text="Shifts"/>
+            <controls:GridButton Grid.Row="1" Grid.Column="1" Text="Settings"/>
         </Grid>
     </StackLayout>
 
