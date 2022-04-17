@@ -2,12 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:RestaurantManager.Controls;assembly=RestaurantManager"
-             x:Class="RestaurantManager.MainPage">
+             x:Class="RestaurantManager.WelcomePage"
+             Title="{Binding Title}">
 
     <StackLayout Spacing="0">
-        <Frame BackgroundColor="#2196F3" Padding="20" CornerRadius="0">
-            <Label Text="Welcome to Restaurant Manager" HorizontalTextAlignment="Center" TextColor="White" FontSize="25"/>
-        </Frame>
         <Grid Background="Black" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />

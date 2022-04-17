@@ -8,9 +8,9 @@ using Xamarin.Forms;
 
 namespace RestaurantManager
 {
-    public partial class MainPage : ContentPage
+    public partial class WelcomePage : ContentPage
     {
-        public MainPage()
+        public WelcomePage()
         {
             InitializeComponent();
         }

@@ -1,28 +1,28 @@
 ﻿using System;
+using Prism;
+using Prism.Ioc;
+using Prism.Navigation;
+using RestaurantManager.Extensions;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace RestaurantManager
 {
-    public partial class App : Application
+    public partial class App
     {
-        public App()
+        public App() : this(null) {}
+        public App(IPlatformInitializer initializer) : base(initializer) {}
+
+        protected override void RegisterTypes(IContainerRegistry containerRegistry)
+        {
+            containerRegistry.RegisterForNavigation<NavigationPage>();
+            containerRegistry.RegisterForNavigation<WelcomePage, WelcomePageViewModel>();
+        }
+
+        protected override async void OnInitialized()
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
-        }
-
-        protected override void OnStart()
-        {
-        }
-
-        protected override void OnSleep()
-        {
-        }
-
-        protected override void OnResume()
-        {
+            await NavigationService.NavigateTo<WelcomePage>(true);
         }
     }
 }
