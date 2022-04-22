@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<base:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:RestaurantManager.Model;assembly=RestaurantManager"
-             x:Class="RestaurantManager.Pages.ToDoPage">
+             xmlns:base="clr-namespace:RestaurantManager.Pages.Base;assembly=RestaurantManager"
+             x:Class="RestaurantManager.Pages.NotesPage">
     <ContentPage.Content>
         <ListView Margin="0,20,0,0" HorizontalOptions="FillAndExpand" ItemsSource="{Binding Items}">
             <ListView.ItemTemplate>
@@ -22,4 +23,4 @@
             </ListView.ItemTemplate>
         </ListView>
     </ContentPage.Content>
-</ContentPage>
+</base:BasePage>

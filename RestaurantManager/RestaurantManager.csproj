@@ -17,7 +17,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Pages\WelcomePage.xaml.cs">
+    <Compile Update="Pages\Notes\NotesPage.xaml.cs">
+      <DependentUpon>NotesPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\Welcome\WelcomePage.xaml.cs">
       <DependentUpon>WelcomePage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>

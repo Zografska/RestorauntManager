@@ -5,7 +5,7 @@ using RestaurantManager.Model;
 
 namespace RestaurantManager.Pages
 {
-    public class ToDoViewModel : ViewModelBase
+    public class NotesViewModel : ViewModelBase
     {
         private ObservableCollection<ToDo> _items = new ObservableCollection<ToDo>();
 
@@ -15,9 +15,9 @@ namespace RestaurantManager.Pages
             set => SetProperty(ref _items, value);
         }
         
-        public ToDoViewModel(INavigationService navigationService) : base(navigationService)
+        public NotesViewModel(INavigationService navigationService) : base(navigationService)
         {
-            Title = "ToDo";
+            Title = "Notes";
             Items = new ObservableCollection<ToDo>
             {
                 new ToDo { Title="Steve", Description="USA", DueDate = RandomDay()},

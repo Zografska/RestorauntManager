@@ -1,7 +1,5 @@
-﻿using System;
-using Prism;
+﻿using Prism;
 using Prism.Ioc;
-using Prism.Navigation;
 using RestaurantManager.Extensions;
 using RestaurantManager.Pages;
 using Xamarin.Forms;
@@ -17,7 +15,7 @@ namespace RestaurantManager
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<WelcomePage, WelcomePageViewModel>();
-            containerRegistry.RegisterForNavigation<ToDoPage, ToDoViewModel>();
+            containerRegistry.RegisterForNavigation<NotesPage, NotesViewModel>();
         }
 
         protected override async void OnInitialized()

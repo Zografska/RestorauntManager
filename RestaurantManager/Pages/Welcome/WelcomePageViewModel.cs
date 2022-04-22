@@ -9,19 +9,17 @@ namespace RestaurantManager
 {
     public class WelcomePageViewModel : ViewModelBase
     {
-        //TODO: Bind Command
-        public ICommand OpenItemCommand { get; }
+        public ICommand NavigateToNotesCommand { get; }
         public WelcomePageViewModel(INavigationService navigationService) : base(navigationService)
         {
             Title = "WelcomePage";
             
-            // Add Throttle
-            OpenItemCommand = new Command(NavigateToTodoPage);
+            NavigateToNotesCommand = new Command(NavigateToNotesPage);
         }
 
-        private async void NavigateToTodoPage()
+        private async void NavigateToNotesPage()
         {
-            await NavigationService.NavigateTo<ToDoPage>();
+            await NavigationService.NavigateTo<NotesPage>();
         }
     }
 }
