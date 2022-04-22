@@ -170,6 +170,8 @@ node_modules/
 .DS_Store
 *.bak
 
+.idea
+
 # RIA/Silverlight projects
 Generated_Code/
 
