@@ -23,12 +23,12 @@ namespace RestaurantManager.Pages
             Title = "Notes";
             Items = new ObservableCollection<Note>
             {
-                new Note { Title="Steve", Description="USA", DueDate = RandomDay()},
-                new Note { Title="John", Description="USA", DueDate = RandomDay()},
-                new Note { Title="Tom", Description="UK", DueDate = RandomDay()},
-                new Note { Title="Lucas", Description="Germany", DueDate = RandomDay()},
-                new Note { Title="Tariq", Description="UK", DueDate = RandomDay()},
-                new Note { Title="Jane", Description="USA", DueDate = RandomDay()},
+                new Note { Title="Steve", Description="USA", LastModified = RandomDay()},
+                new Note { Title="John", Description="USA", LastModified = RandomDay()},
+                new Note { Title="Tom", Description="UK", LastModified = RandomDay()},
+                new Note { Title="Lucas", Description="Germany", LastModified = RandomDay()},
+                new Note { Title="Tariq", Description="UK", LastModified = RandomDay()},
+                new Note { Title="Jane", Description="USA", LastModified = RandomDay()},
             };
             ItemTappedCommand = new Command<object>(ShowNotePopup);
         }

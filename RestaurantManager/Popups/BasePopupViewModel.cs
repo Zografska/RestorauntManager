@@ -17,7 +17,7 @@ namespace RestaurantManager.PopUps
             DismissCommand = new DelegateCommand(DimsissCommandExecuted);
         }
 
-        public void OnPopupOpened(IPopupParameters parameters)
+        public virtual void OnPopupOpened(IPopupParameters parameters)
         { }
 
         public void OnPopupDismissed()

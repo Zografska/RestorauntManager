@@ -6,12 +6,12 @@ namespace RestaurantManager.Model
     {
         public string Title { get; set; }
         public string Description { get; set; }
-        public DateTime DateCreated { get; set; }
-        public DateTime? DueDate { get; set; }
+        public DateTime LastModified { get; set; }
+        public string Creator { get; set; }
 
         public Note()
         {
-            DateCreated = DateTime.Now;
+            LastModified = DateTime.Now;
         }
     }
 }
