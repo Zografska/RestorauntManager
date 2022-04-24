@@ -3,6 +3,7 @@ using Prism.Ioc;
 using RestaurantManager.Extensions;
 using RestaurantManager.Pages;
 using RestaurantManager.Popups;
+using RestaurantManager.Services;
 using Xamarin.Forms;
 using XCT.Popups.Prism;
 
@@ -16,6 +17,7 @@ namespace RestaurantManager
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterSingleton<IPopupService, PopupService>();
+            containerRegistry.RegisterSingleton<INoteService, NoteService>();
             
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<WelcomePage, WelcomePageViewModel>();

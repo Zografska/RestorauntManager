@@ -4,6 +4,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:popups="clr-namespace:RestaurantManager.PopUps;assembly=RestaurantManager"
              xmlns:converters="clr-namespace:RestaurantManager.Converters;assembly=RestaurantManager"
+             xmlns:behaviors="http://prismlibrary.com"
              x:Class="RestaurantManager.Popups.NotePopup"
              BackgroundColor="Aquamarine">
     <StackLayout
@@ -37,7 +38,6 @@
                 HorizontalOptions="Start"/>
             
             <Editor
-                x:Name="DescriptionEditor"
                 Grid.Row="1"
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
@@ -86,7 +86,12 @@
         </Grid>
       
         <Button
-            Text="Unfocus"
-            Command="{Binding SaveCommand}"/>
+            Text="Save">
+        <Button.Behaviors>
+                <behaviors:EventToCommandBehavior 
+                    EventName="Clicked"
+                    Command="{Binding SaveCommand}"/>
+            </Button.Behaviors>
+        </Button>
     </StackLayout>
 </popups:BasePopup>

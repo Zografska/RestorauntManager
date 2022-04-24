@@ -10,5 +10,11 @@ namespace RestaurantManager.Popups
         {
             InitializeComponent();
         }
+
+        protected override void OnBindingContextChanged()
+        {
+            base.OnBindingContextChanged();
+            
+        }
     }
 }

@@ -8,13 +8,15 @@ namespace RestaurantManager.PopUps
     public class BasePopupViewModel : ViewModelBase, IPopupAware, IPopupLightDismissAware
     {
         public DelegateCommand DismissCommand { get; }
+        public DelegateCommand<IPopupParameters> UpdateCommand { get; }
 
         public event Action<IPopupParameters> RequestDismiss;
 
-        public BasePopupViewModel(INavigationService navigationService)
-            : base(navigationService)
+        public BasePopupViewModel(INavigationService navigationService, IPopupService popupService)
+            : base(navigationService, popupService)
         {
             DismissCommand = new DelegateCommand(DimsissCommandExecuted);
+            UpdateCommand = new DelegateCommand<IPopupParameters>(UpdateCommandExecuted);
         }
 
         public virtual void OnPopupOpened(IPopupParameters parameters)
@@ -22,6 +24,11 @@ namespace RestaurantManager.PopUps
 
         public void OnPopupDismissed()
         { }
+        
+        private void UpdateCommandExecuted(IPopupParameters parameters)
+        {
+            RequestDismiss?.Invoke(parameters);
+        }
 
         private void DimsissCommandExecuted()
         {

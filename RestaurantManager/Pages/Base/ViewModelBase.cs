@@ -7,7 +7,8 @@ namespace RestaurantManager
     public class ViewModelBase : BindableBase, INavigationAware, IDestructible
 
     {
-        protected INavigationService NavigationService { get; private set; }
+        protected INavigationService NavigationService { get; }
+        protected IPopupService PopupService { get; }
 
         private string _title;
 
@@ -17,9 +18,10 @@ namespace RestaurantManager
             set { SetProperty(ref _title, value); }
         }
 
-        public ViewModelBase(INavigationService navigationService)
+        public ViewModelBase(INavigationService navigationService, IPopupService popupService)
         {
             NavigationService = navigationService;
+            PopupService = popupService;
         }
 
         public void OnNavigatedFrom(INavigationParameters parameters)
