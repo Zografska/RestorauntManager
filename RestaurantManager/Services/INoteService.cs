@@ -10,6 +10,7 @@ namespace RestaurantManager.Services
         ObservableCollection<Note> GetAllNotes();
         bool RemoveNoteById(int id);
         bool RemoveNote(Note note);
-        void AddNote(Note note);
+        Note AddNote(Note note);
+        Note SaveNote(Note note);
     }
 }

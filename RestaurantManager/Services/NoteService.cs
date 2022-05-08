@@ -26,7 +26,7 @@ namespace RestaurantManager.Services
         }
         public Note GetById(int id)
         {
-            var result = Notes.FirstOrDefault(x => x.Id.Equals(id)).ThrowIfNull();
+            var result = Notes.FirstOrDefault(x => x.Id.Equals(id));
             return result;
         }
 
@@ -63,9 +63,23 @@ namespace RestaurantManager.Services
             return Notes.Remove(note);
         }
 
-        public void AddNote(Note note)
+        public Note AddNote(Note note)
         {
+            // If note is saved for the first time add creator
+            note.LastModified = DateTime.Now;
             Notes.Add(note);
+            return note;
+        }
+
+        public Note SaveNote(Note note)
+        {
+            var updateComplete = UpdateNote(note);
+            if (!updateComplete)
+            {
+                AddNote(note);
+            }
+
+            return note;
         }
 
         //For mocking data only

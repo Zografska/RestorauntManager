@@ -33,6 +33,7 @@
                 Grid.ColumnSpan="2"
                 Text="{Binding Note.Title}"
                 FontSize="Title"
+                WidthRequest="200"
                 BackgroundColor="Aqua"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="Start"/>
@@ -86,12 +87,12 @@
         </Grid>
       
         <Button
-            Text="Save">
-        <Button.Behaviors>
-                <behaviors:EventToCommandBehavior 
-                    EventName="Clicked"
-                    Command="{Binding SaveCommand}"/>
-            </Button.Behaviors>
-        </Button>
+            Text="Save" 
+            Command="{Binding SaveCommand}"/>
+        
+        <Button
+            Text="Delete"
+            IsVisible="{Binding IsDeletePossible}"
+            Command="{Binding DeleteCommand}"/>
     </StackLayout>
 </popups:BasePopup>

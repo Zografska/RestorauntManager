@@ -3,6 +3,7 @@ using Prism.Navigation;
 using RestaurantManager.Model;
 using RestaurantManager.Pages.Base;
 using RestaurantManager.Services;
+using RestaurantManager.Utility;
 using Xamarin.Forms;
 using XCT.Popups.Prism;
 
@@ -18,7 +19,8 @@ namespace RestaurantManager.Pages
             set => SetProperty(ref _notes, value);
         }
         
-        public Command<object> ItemTappedCommand { get; set; }
+        public Command<object> ItemTappedCommand { get; }
+        public Command AddNoteCommand { get; }
         
         public NotesViewModel(INavigationService navigationService, IPopupService popupService, INoteService noteService) : base(navigationService, popupService)
         {
@@ -26,24 +28,44 @@ namespace RestaurantManager.Pages
             NoteService = noteService;
             Notes = NoteService.GetAllNotes();
             ItemTappedCommand = new Command<object>(ShowNotePopup);
+            AddNoteCommand = new Command(ShowCniPopup);
         }
-        
+
+        private async void ShowCniPopup()
+        {
+            IPopupResult result = await PopupService.ShowPopupAsync("NotePopup", new PopupParameters {{"Item", new Note()}});
+            
+            Note note;
+            HandlePopupResult(result.Parameters);
+        }
+
         private async void ShowNotePopup(object tappedNote)
         {
             var note = tappedNote as Note;
             
             IPopupResult result = await PopupService.ShowPopupAsync("NotePopup", new PopupParameters {{"Item", note}});
-            UpdateNote(note, result.Parameters);
+            HandlePopupResult(result.Parameters, note);
         }
 
-        private void UpdateNote(Note oldNote, IPopupParameters resultParameters)
+        private void HandlePopupResult(IPopupParameters resultParameters, Note oldNote = null)
         {
-            Note updatedNote;
-            if (resultParameters.TryGetValue("Item", out updatedNote))
+            Note note;
+            if (resultParameters.TryGetValue(Constants.NavigationConstants.ItemUpdated, out note))
             {
-                int index = Notes.IndexOf(oldNote);
+                if (oldNote != null)
+                {
+                    int index = Notes.IndexOf(oldNote);
+                    Notes.Remove(oldNote);
+                    Notes.Insert(index, note);
+                }
+                else
+                {
+                    Notes.Add(note);
+                }
+            }
+            else if (resultParameters.ContainsKey(Constants.NavigationConstants.ItemDeleted))
+            {
                 Notes.Remove(oldNote);
-                Notes.Insert(index, updatedNote);
             }
         }
     }
