@@ -1,10 +1,10 @@
 using System.Collections.ObjectModel;
+using System.Windows.Input;
 using Prism.Navigation;
 using RestaurantManager.Model;
 using RestaurantManager.Pages.Base;
 using RestaurantManager.Services;
 using RestaurantManager.Utility;
-using Xamarin.Forms;
 using XCT.Popups.Prism;
 
 namespace RestaurantManager.Pages
@@ -19,23 +19,22 @@ namespace RestaurantManager.Pages
             set => SetProperty(ref _notes, value);
         }
         
-        public Command<object> ItemTappedCommand { get; }
-        public Command AddNoteCommand { get; }
+        public ICommand ItemTappedCommand { get; }
+        public ICommand AddNoteCommand { get; }
         
         public NotesViewModel(INavigationService navigationService, IPopupService popupService, INoteService noteService) : base(navigationService, popupService)
         {
             Title = "Notes";
             NoteService = noteService;
             Notes = NoteService.GetAllNotes();
-            ItemTappedCommand = new Command<object>(ShowNotePopup);
-            AddNoteCommand = new Command(ShowCniPopup);
+            ItemTappedCommand = new SingleClickCommand<object>(ShowNotePopup);
+            AddNoteCommand = new SingleClickCommand(ShowCniPopup);
         }
 
         private async void ShowCniPopup()
         {
-            IPopupResult result = await PopupService.ShowPopupAsync("NotePopup", new PopupParameters {{"Item", new Note()}});
+            IPopupResult result = await PopupService.ShowPopupAsync("NotePopup", new PopupParameters {{"Item", null}});
             
-            Note note;
             HandlePopupResult(result.Parameters);
         }
 
