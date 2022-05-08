@@ -1,26 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <base:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:RestaurantManager.Model;assembly=RestaurantManager"
-             xmlns:base="clr-namespace:RestaurantManager.Pages.Base;assembly=RestaurantManager"
-             x:Class="RestaurantManager.Pages.NotesPage">
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:base="clr-namespace:RestaurantManager.Pages.Base;assembly=RestaurantManager"
+               xmlns:behaviors="http://prismlibrary.com"
+               xmlns:converters="http://xamarin.com/schemas/2020/toolkit"
+               x:Class="RestaurantManager.Pages.NotesPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ItemTappedEventArgsConverter x:Key="ItemTappedEventArgsConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <ListView Margin="0,20,0,0" HorizontalOptions="FillAndExpand" ItemsSource="{Binding Items}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="0.50*"/>
-                                <ColumnDefinition Width="0.50*"/>
-                            </Grid.ColumnDefinitions>
-                            <Label Grid.Column="0" Text="{Binding Title}" FontAttributes="Bold" Padding="20,0,0,0" />
-                            <Label Grid.Column="1" Text="{Binding DateCreated}" HorizontalTextAlignment="End" />
-                        </Grid>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+        <StackLayout>
+            <ListView Margin="0,20,0,0" HorizontalOptions="FillAndExpand" ItemsSource="{Binding Notes}">
+                <ListView.Behaviors>
+                    <behaviors:EventToCommandBehavior
+                        EventName="ItemTapped"
+                        Command="{Binding ItemTappedCommand}"
+                        EventArgsConverter="{StaticResource ItemTappedEventArgsConverter}"/>
+                </ListView.Behaviors>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="20,0,10,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.3*" />
+                                    <ColumnDefinition Width="0.6*" />
+                                    <ColumnDefinition Width="0.1*" />
+                                </Grid.ColumnDefinitions>
+                            
+                                <Label 
+                                    Grid.Column="0"
+                                    Text="{Binding Title}"
+                                    LineBreakMode="TailTruncation"
+                                    FontAttributes="Bold"/>
+                            
+                                <Label 
+                                    Grid.Column="1"
+                                    Grid.RowSpan="2"
+                                    Text="{Binding Description}" 
+                                    LineBreakMode="TailTruncation" 
+                                    HorizontalTextAlignment="Start"/>
+                            
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button
+                Text="Add Note"
+                Command="{Binding AddNoteCommand}"
+            />
+        </StackLayout>
     </ContentPage.Content>
 </base:BasePage>
