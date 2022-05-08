@@ -1,11 +1,18 @@
-	.file	"compressed_assemblies.x86.x86.s"
-	.section	.data.compressed_assemblies,"aw",@progbits
+	.file	"obj/Debug/android/compressed_assemblies.x86.s"
+
+	.section	.data, "aw", @progbits
+
+	#
+	# Generated from instance of: Xamarin.Android.Tasks.CompressedAssembliesNativeAssemblyGenerator+CompressedAssemblies, Xamarin.Android.Build.Tasks, Version=12.2.99.104, Culture=neutral, PublicKeyToken=84e04ff9cfb79065
+	#
 	.type	compressed_assemblies, @object
-	.p2align	2
 	.global	compressed_assemblies
+
+	.section	.data, "aw", @progbits
+	.p2align	2
 compressed_assemblies:
-	/* count */
-	.long	0
-	/* descriptors */
-	.long	0
+	.long	0x0	# count
+	.long	0	# descriptors
 	.size	compressed_assemblies, 8
+
+	.ident	"Xamarin.Android remotes/origin/main @ b3cb3a9e49bbffed4fd00f716ce04ab502396fae"

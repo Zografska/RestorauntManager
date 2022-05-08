@@ -1,21 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "/Users/vladodimovski/RestaurantManager/RestaurantManager.Android/RestaurantManager.Android.csproj": {}
+    "/Users/aleksandrazografska/projects/RestaurantManager/RestaurantManager.Android/RestaurantManager.Android.csproj": {}
   },
   "projects": {
-    "/Users/vladodimovski/RestaurantManager/RestaurantManager.Android/RestaurantManager.Android.csproj": {
+    "/Users/aleksandrazografska/projects/RestaurantManager/RestaurantManager.Android/RestaurantManager.Android.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/vladodimovski/RestaurantManager/RestaurantManager.Android/RestaurantManager.Android.csproj",
+        "projectUniqueName": "/Users/aleksandrazografska/projects/RestaurantManager/RestaurantManager.Android/RestaurantManager.Android.csproj",
         "projectName": "RestaurantManager.Android",
-        "projectPath": "/Users/vladodimovski/RestaurantManager/RestaurantManager.Android/RestaurantManager.Android.csproj",
-        "packagesPath": "/Users/vladodimovski/.nuget/packages/",
-        "outputPath": "/Users/vladodimovski/RestaurantManager/RestaurantManager.Android/obj/",
+        "projectPath": "/Users/aleksandrazografska/projects/RestaurantManager/RestaurantManager.Android/RestaurantManager.Android.csproj",
+        "packagesPath": "/Users/aleksandrazografska/.nuget/packages/",
+        "outputPath": "/Users/aleksandrazografska/projects/RestaurantManager/RestaurantManager.Android/obj/",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "configFilePaths": [
-          "/Users/vladodimovski/.nuget/NuGet/NuGet.Config"
+          "/Users/aleksandrazografska/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "monoandroid11.0"
@@ -26,8 +26,8 @@
         "frameworks": {
           "monoandroid11.0": {
             "projectReferences": {
-              "/Users/vladodimovski/RestaurantManager/RestaurantManager/RestaurantManager.csproj": {
-                "projectPath": "/Users/vladodimovski/RestaurantManager/RestaurantManager/RestaurantManager.csproj"
+              "/Users/aleksandrazografska/projects/RestaurantManager/RestaurantManager/RestaurantManager.csproj": {
+                "projectPath": "/Users/aleksandrazografska/projects/RestaurantManager/RestaurantManager/RestaurantManager.csproj"
               }
             }
           }
@@ -36,10 +36,6 @@
       "frameworks": {
         "monoandroid11.0": {
           "dependencies": {
-            "XCT.Popups.Prism": {
-              "target": "Package",
-              "version": "[0.1.2, )"
-            },
             "Xamarin.Essentials": {
               "target": "Package",
               "version": "[1.6.1, )"
@@ -52,17 +48,17 @@
         }
       }
     },
-    "/Users/vladodimovski/RestaurantManager/RestaurantManager/RestaurantManager.csproj": {
+    "/Users/aleksandrazografska/projects/RestaurantManager/RestaurantManager/RestaurantManager.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/vladodimovski/RestaurantManager/RestaurantManager/RestaurantManager.csproj",
+        "projectUniqueName": "/Users/aleksandrazografska/projects/RestaurantManager/RestaurantManager/RestaurantManager.csproj",
         "projectName": "RestaurantManager",
-        "projectPath": "/Users/vladodimovski/RestaurantManager/RestaurantManager/RestaurantManager.csproj",
-        "packagesPath": "/Users/vladodimovski/.nuget/packages/",
-        "outputPath": "/Users/vladodimovski/RestaurantManager/RestaurantManager/obj/",
+        "projectPath": "/Users/aleksandrazografska/projects/RestaurantManager/RestaurantManager/RestaurantManager.csproj",
+        "packagesPath": "/Users/aleksandrazografska/.nuget/packages/",
+        "outputPath": "/Users/aleksandrazografska/projects/RestaurantManager/RestaurantManager/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/vladodimovski/.nuget/NuGet/NuGet.Config"
+          "/Users/aleksandrazografska/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"
@@ -92,29 +88,13 @@
               "version": "[2.0.3, )",
               "autoReferenced": true
             },
-            "Prism.DryIoc.Forms": {
-              "target": "Package",
-              "version": "[8.1.97, )"
-            },
-            "Prism.Plugin.Popups": {
-              "target": "Package",
-              "version": "[8.0.76, )"
-            },
-            "XCT.Popups.Prism": {
-              "target": "Package",
-              "version": "[0.1.2, )"
-            },
-            "Xamarin.CommunityToolkit": {
-              "target": "Package",
-              "version": "[2.0.1, )"
-            },
             "Xamarin.Essentials": {
               "target": "Package",
               "version": "[1.6.1, )"
             },
             "Xamarin.Forms": {
               "target": "Package",
-              "version": "[5.0.0.2291, )"
+              "version": "[5.0.0.2012, )"
             }
           },
           "imports": [
@@ -127,7 +107,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "/Library/Frameworks/Mono.framework/Versions/6.12.0/lib/mono/msbuild/Current/bin/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/x64/sdk/6.0.201/RuntimeIdentifierGraph.json"
         }
       }
     }
