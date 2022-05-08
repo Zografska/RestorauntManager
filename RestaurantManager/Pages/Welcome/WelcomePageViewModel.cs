@@ -11,17 +11,24 @@ namespace RestaurantManager
     public class WelcomePageViewModel : PageViewModelBase
     {
         public ICommand NavigateToNotesCommand { get; }
+        public ICommand NavigateToShiftsCommand { get; set; }
         
         protected IPopupService PopupService { get; private set; }
         public WelcomePageViewModel(INavigationService navigationService, IPopupService popupService) : base(navigationService, popupService)
         {
             Title = "WelcomePage";
             NavigateToNotesCommand = new Command(NavigateToNotesPage);
+            NavigateToShiftsCommand = new Command(NavigateToShiftsPage);
         }
 
         private async void NavigateToNotesPage()
         {
             await NavigationService.NavigateTo<NotesPage>();
+        }
+
+        private async void NavigateToShiftsPage()
+        {
+            await NavigationService.NavigateTo<ShiftsPage>();
         }
     }
 }
