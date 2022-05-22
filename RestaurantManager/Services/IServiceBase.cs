@@ -9,8 +9,8 @@ namespace RestaurantManager.Services
         bool Update(T note);
         ObservableCollection<T> GetAll();
         bool RemoveById(int id);
-        bool Remove(T note);
-        T Add(T note);
-        T Save(T note);
+        bool Remove(T entity);
+        T Add(T entity);
+        T Save(T entity);
     }
 }

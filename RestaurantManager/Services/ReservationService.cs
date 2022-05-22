@@ -1,43 +1,20 @@
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using RestaurantManager.Model;
 
 namespace RestaurantManager.Services
 {
-    public class ReservationService : IReservationService
+    public class ReservationService : BaseCrudService<Reservation>, IReservationService
     {
-        public Reservation GetById(int id)
+        public ReservationService()
         {
-            throw new System.NotImplementedException();
-        }
-
-        public bool Update(Reservation note)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public ObservableCollection<Reservation> GetAll()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public bool RemoveById(int id)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public bool Remove(Reservation note)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Reservation Add(Reservation note)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Reservation Save(Reservation note)
-        {
-            throw new System.NotImplementedException();
+            Entities = new List<Reservation>()
+            {
+                new Reservation { Name = "Alex", NumberInParty = 3, ReservationDate = RandomDay() },
+                new Reservation { Name = "Zogsi", NumberInParty = 2, ReservationDate = RandomDay() },
+                new Reservation { Name = "Vlado", NumberInParty = 4, ReservationDate = RandomDay() },
+                new Reservation { Name = "Baze", NumberInParty = 5, ReservationDate = RandomDay() },
+            };
         }
     }
 }
