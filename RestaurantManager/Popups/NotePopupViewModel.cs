@@ -46,7 +46,7 @@ namespace RestaurantManager.Popups
         private void InitPopup(IPopupParameters parameters)
         {
             Note note;
-            parameters.TryGetValue("Item", out note);
+            parameters.TryGetValue(Constants.NavigationConstants.Item, out note);
 
             if (note != null)
             {
@@ -69,7 +69,7 @@ namespace RestaurantManager.Popups
            if (answer)
            {
                NoteService.Remove(Note);
-               var parameters = new PopupParameters() { {  Constants.NavigationConstants.ItemDeleted, true } };
+               var parameters = new PopupParameters { {  Constants.NavigationConstants.ItemDeleted, true } };
                UpdateCommand.Execute(parameters);
            }
         }
