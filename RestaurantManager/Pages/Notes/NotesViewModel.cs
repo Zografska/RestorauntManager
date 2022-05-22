@@ -26,7 +26,7 @@ namespace RestaurantManager.Pages
         {
             Title = "Notes";
             NoteService = noteService;
-            Notes = NoteService.GetAllNotes();
+            Notes = NoteService.GetAll();
             ItemTappedCommand = new SingleClickCommand<object>(ShowNotePopup);
             AddNoteCommand = new SingleClickCommand(ShowCniPopup);
         }

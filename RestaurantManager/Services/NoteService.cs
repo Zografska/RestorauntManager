@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using DryIoc;
 using RestaurantManager.Model;
 
 
@@ -30,7 +29,7 @@ namespace RestaurantManager.Services
             return result;
         }
 
-        public bool UpdateNote(Note updatedNote)
+        public bool Update(Note updatedNote)
         {
             var oldNote = GetById(updatedNote.Id);
             if (updatedNote.Equals(oldNote))
@@ -40,30 +39,30 @@ namespace RestaurantManager.Services
 
             if (Notes.Remove(oldNote))
             {
-                AddNote(updatedNote);
+                Add(updatedNote);
                 return true;
             }
 
             return false;
         }
 
-        public ObservableCollection<Note> GetAllNotes()
+        public ObservableCollection<Note> GetAll()
         {
             return new ObservableCollection<Note>(Notes);
         }
 
-        public bool RemoveNoteById(int id)
+        public bool RemoveById(int id)
         {
             var note = GetById(id);
-            return RemoveNote(note);
+            return Remove(note);
         }
 
-        public bool RemoveNote(Note note)
+        public bool Remove(Note note)
         {
             return Notes.Remove(note);
         }
 
-        public Note AddNote(Note note)
+        public Note Add(Note note)
         {
             // If note is saved for the first time add creator
             note.LastModified = DateTime.Now;
@@ -71,12 +70,12 @@ namespace RestaurantManager.Services
             return note;
         }
 
-        public Note SaveNote(Note note)
+        public Note Save(Note note)
         {
-            var updateComplete = UpdateNote(note);
+            var updateComplete = Update(note);
             if (!updateComplete)
             {
-                AddNote(note);
+                Add(note);
             }
 
             return note;
