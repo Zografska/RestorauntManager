@@ -33,7 +33,7 @@ namespace RestaurantManager
         {
             InitializeComponent();
 
-            await NavigationService.NavigateTo<ReservationsPage>(true);
+            await NavigationService.NavigateTo<WelcomePage>(true);
         }
     }
 }
