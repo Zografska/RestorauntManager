@@ -2,6 +2,7 @@
 using Prism.Ioc;
 using RestaurantManager.Extensions;
 using RestaurantManager.Pages;
+using RestaurantManager.Pages.Reservations;
 using RestaurantManager.Popups;
 using RestaurantManager.Services;
 using Xamarin.Forms;
@@ -22,15 +23,17 @@ namespace RestaurantManager
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<WelcomePage, WelcomePageViewModel>();
             containerRegistry.RegisterForNavigation<NotesPage, NotesViewModel>();
+            containerRegistry.RegisterForNavigation<ReservationsPage, ReservationsPageViewModel>();
             
             containerRegistry.RegisterPopup<NotePopup, NotePopupViewModel>();
+            containerRegistry.RegisterPopup<ReservationPopup, ReservationPopupViewModel>();
         }
 
         protected override async void OnInitialized()
         {
             InitializeComponent();
 
-            await NavigationService.NavigateTo<WelcomePage>(true);
+            await NavigationService.NavigateTo<ReservationsPage>(true);
         }
     }
 }
