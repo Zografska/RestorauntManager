@@ -2,7 +2,6 @@
 using Prism.Ioc;
 using RestaurantManager.Extensions;
 using RestaurantManager.Pages;
-using RestaurantManager.Pages.Shifts;
 using RestaurantManager.Pages.Reservations;
 using RestaurantManager.Popups;
 using RestaurantManager.Services;
@@ -26,11 +25,11 @@ namespace RestaurantManager
             containerRegistry.RegisterForNavigation<WelcomePage, WelcomePageViewModel>();
             containerRegistry.RegisterForNavigation<NotesPage, NotesViewModel>();
             containerRegistry.RegisterForNavigation<ShiftsPage, ShiftsViewModel>();
+            containerRegistry.RegisterForNavigation<ReservationsPage, ReservationsPageViewModel>();
+
             
             containerRegistry.RegisterPopup<NotePopup, NotePopupViewModel>();
             containerRegistry.RegisterPopup<ShiftPopup, ShiftPopupViewModel>();
-            containerRegistry.RegisterForNavigation<ReservationsPage, ReservationsPageViewModel>();
-            
             containerRegistry.RegisterPopup<ReservationPopup, ReservationPopupViewModel>();
         }
 

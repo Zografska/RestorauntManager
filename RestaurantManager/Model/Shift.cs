@@ -3,7 +3,7 @@ using RestaurantManager.Enums;
 
 namespace RestaurantManager.Model
 {
-    public class Shift
+    public class Shift : ModelBase
     {
         public int Id { get; set; }
         public string User { get; set; }

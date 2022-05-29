@@ -12,8 +12,7 @@ namespace RestaurantManager
     public class WelcomePageViewModel : PageViewModelBase
     {
         public ICommand NavigateToNotesCommand { get; }
-        public ICommand NavigateToShiftsCommand { get; set; }
-        
+        public ICommand NavigateToShiftsCommand { get; }
         public ICommand NavigateToReservationsCommand { get; }
 
         protected IPopupService PopupService { get; private set; }

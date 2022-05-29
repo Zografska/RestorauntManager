@@ -3,7 +3,6 @@ using Prism.Navigation;
 using RestaurantManager.Model;
 using RestaurantManager.Popups;
 using RestaurantManager.Services;
-using Rg.Plugins.Popup.Pages;
 using XCT.Popups.Prism;
 
 namespace RestaurantManager.Pages

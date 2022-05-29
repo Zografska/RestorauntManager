@@ -14,6 +14,7 @@ namespace RestaurantManager.Pages
         protected string PopupName { get; set; }
         public ICommand ItemTappedCommand { get; }
         public ICommand AddNoteCommand { get; }
+        public ICommand AddShiftCommand { get; set; }
         
         private ObservableCollection<T> _items = new ObservableCollection<T>();
         public ObservableCollection<T> Items
@@ -27,6 +28,7 @@ namespace RestaurantManager.Pages
         {
             ItemTappedCommand = new SingleClickCommand<object>(ShowPopup);
             AddNoteCommand = new SingleClickCommand(ShowCniPopup);
+            AddShiftCommand = new SingleClickCommand(ShowCniPopup);
         }
 
         protected void HandlePopupResult(IPopupParameters resultParameters, T oldItem = null)

@@ -35,53 +35,47 @@
                 BackgroundColor="Aqua"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="Start"/>
-            
-            <Editor
+            <Label
                 Grid.Row="1"
                 Grid.Column="0"
-                Grid.ColumnSpan="2"
-                Grid.RowSpan="2"
-                AutoSize="Disabled"
-                HeightRequest="500"
-                WidthRequest="500"
+                Text="Shift Type:"
+                BackgroundColor="Aquamarine"
+                FontSize="Medium"
+                HorizontalOptions="Start"
+                VerticalOptions="CenterAndExpand"/>
+            <Label
+                Grid.Row="1"
+                Grid.Column="1"
                 Text="{Binding Shift.Type}"
                 FontSize="Caption"
                 BackgroundColor="Aqua"
-                VerticalOptions="StartAndExpand"
-                HorizontalOptions="StartAndExpand"/>
-            
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="Start"/>
             <Label
-                Grid.Row="3"
+                Grid.Row="2"
                 Grid.Column="0"
-                Text="Creator:"
+                Text="Shift Hours:"
                 BackgroundColor="Aquamarine"
                 FontSize="Medium"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="Start"/>
             
             <Label
-                Grid.Row="3"
+                Grid.Row="2"
                 Grid.Column="1"
                 Text="{Binding Shift.Hours}"
                 BackgroundColor="Aquamarine"
                 FontSize="Medium"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="Start"/>
-            
-            <Label
-                Grid.Row="4"
+            <DatePicker
+                Grid.Row="3"
                 Grid.Column="0"
-                Text="LastModified:"
-                FontSize="Micro"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="End"/>
-            <Label
-                Grid.Row="4"
-                Grid.Column="1"
-                Text="{Binding Shift.Date, Converter={StaticResource DateToStringConverter}}"
-                FontSize="Micro"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="Start"/>
+                Grid.ColumnSpan="2"
+                Date="{Binding Shift.Date}"
+                Format="D"
+                Margin="30, 0, 0, 30"
+                HorizontalOptions="Fill"/>
         </Grid>
       
         <Button
