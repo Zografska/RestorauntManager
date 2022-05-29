@@ -3,6 +3,7 @@ using Prism.Ioc;
 using RestaurantManager.Extensions;
 using RestaurantManager.Pages;
 using RestaurantManager.Pages.Shifts;
+using RestaurantManager.Pages.Reservations;
 using RestaurantManager.Popups;
 using RestaurantManager.Services;
 using Xamarin.Forms;
@@ -28,6 +29,9 @@ namespace RestaurantManager
             
             containerRegistry.RegisterPopup<NotePopup, NotePopupViewModel>();
             containerRegistry.RegisterPopup<ShiftPopup, ShiftPopupViewModel>();
+            containerRegistry.RegisterForNavigation<ReservationsPage, ReservationsPageViewModel>();
+            
+            containerRegistry.RegisterPopup<ReservationPopup, ReservationPopupViewModel>();
         }
 
         protected override async void OnInitialized()

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<base:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+          xmlns:base="clr-namespace:RestaurantManager.Pages.Base;assembly=RestaurantManager"
+          xmlns:xCalendar="clr-namespace:XCalendar;assembly=XCalendar"
+          xmlns:behaviors="http://prismlibrary.com"
+          xmlns:converters="clr-namespace:RestaurantManager.Converters;assembly=RestaurantManager"
+          x:Class="RestaurantManager.Pages.Reservations.ReservationsPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:DateSelectionChangedEventArgsConverter x:Key="DateSelectionChangedEventArgsConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <xCalendar:CalendarView
+                SelectionType="Single">
+                <xCalendar:CalendarView.Behaviors>
+                    <behaviors:EventToCommandBehavior
+                        EventName="DateSelectionChanged"
+                        Command="{Binding DateTappedCommand}"
+                        EventArgsConverter="{StaticResource DateSelectionChangedEventArgsConverter}"/>
+                </xCalendar:CalendarView.Behaviors>
+            </xCalendar:CalendarView>
+        </StackLayout>
+    </ContentPage.Content>
+</base:BasePage>
