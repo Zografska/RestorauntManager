@@ -1,8 +1,9 @@
 using System;
+using System.Text.Json;
 
 namespace RestaurantManager.Model
 {
-    public class ModelBase
+    public abstract class ModelBase
     {
         public int Id { get; set; }
 
@@ -10,6 +11,11 @@ namespace RestaurantManager.Model
         {
             //TODO: remove when implementing Firebase
             Id = new Random().Next();
+        }
+
+        protected string Serialize<T>(T model)
+        {
+            return JsonSerializer.Serialize(model);
         }
     }
 }
