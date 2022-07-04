@@ -1,5 +1,6 @@
 using System;
 using System.Reflection;
+using System.Text.Json;
 
 namespace RestaurantManager.Extensions
 {
@@ -39,6 +40,16 @@ namespace RestaurantManager.Extensions
                 }
             }
             return objTarget;
+        }
+
+        public static string ObjectName(this object obj)
+        {
+            return obj.GetType().FullName;
+        }
+            
+        public static string ToJson(this object obj)
+        {
+            return JsonSerializer.Serialize(obj);
         }
     }
 }

@@ -9,13 +9,10 @@ namespace RestaurantManager.Pages
 {
     public class ShiftsViewModel : ListViewModel<Shift>
     {
-        private IShiftsService ShiftsService { get; set; }
-
-        public ShiftsViewModel(INavigationService navigationService, IPopupService popupService, IShiftsService shiftsService) : base(navigationService, popupService)
+        public ShiftsViewModel(INavigationService navigationService, IPopupService popupService,
+            DatabaseServiceRemote databaseServiceRemote) : base(navigationService, popupService, databaseServiceRemote )
         {
             Title = "Shifts";
-            ShiftsService = shiftsService;
-            Items = new ObservableCollection<Shift>(ShiftsService.GetAll());
             PopupName = nameof(ShiftPopup);
         }
     }

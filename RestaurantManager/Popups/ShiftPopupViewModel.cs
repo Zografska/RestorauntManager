@@ -56,9 +56,9 @@ namespace RestaurantManager.Popups
 
             Shift = shift ?? new Shift();
         }
-        private void SaveShift()
+        private async void SaveShift()
         {
-            var updatedShift = ShiftsService.Save(Shift);
+            var updatedShift = await ShiftsService.Save(Shift);
             var parameters = new PopupParameters { { Constants.NavigationConstants.ItemUpdated, updatedShift } };
             UpdateCommand.Execute(parameters);
         }
@@ -68,8 +68,8 @@ namespace RestaurantManager.Popups
             var answer = await Application.Current.MainPage.DisplayAlert("Delete Shift", "Do you want to delete this shift?", "Yes", "No");
             if (answer)
             {
-                ShiftsService.Remove(Shift);
-                var parameters = new PopupParameters() { {  Constants.NavigationConstants.ItemDeleted, true } };
+                var itemDeleted = await ShiftsService.RemoveById<Shift>(Shift.Id);
+                var parameters = new PopupParameters() { {  Constants.NavigationConstants.ItemDeleted, itemDeleted } };
                 UpdateCommand.Execute(parameters);
             }
         }

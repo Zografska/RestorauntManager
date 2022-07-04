@@ -1,10 +1,11 @@
+using Prism.AppModel;
 using Prism.Mvvm;
 using Prism.Navigation;
 using XCT.Popups.Prism;
 
 namespace RestaurantManager
 {
-    public class ViewModelBase : BindableBase, INavigationAware, IDestructible
+    public class ViewModelBase : BindableBase, INavigationAware, IDestructible, IPageLifecycleAware
 
     {
         protected INavigationService NavigationService { get; }
@@ -33,6 +34,14 @@ namespace RestaurantManager
         }
 
         public void Destroy()
+        {
+        }
+
+        public virtual void OnAppearing()
+        {
+        }
+
+        public virtual void OnDisappearing()
         {
         }
     }

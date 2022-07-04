@@ -1,4 +1,3 @@
-using System;
 using System.Windows.Input;
 using Prism.Navigation;
 using RestaurantManager.Model;
@@ -56,9 +55,9 @@ namespace RestaurantManager.Popups
             Note = note ?? new Note();
         }
         
-        private void SaveNote()
+        private async void SaveNote()
         {
-            var updatedNote = NoteService.Save(Note);
+            var updatedNote = await NoteService.Save(Note);
             var parameters = new PopupParameters { { Constants.NavigationConstants.ItemUpdated, updatedNote } };
             UpdateCommand.Execute(parameters);
         }
@@ -68,8 +67,8 @@ namespace RestaurantManager.Popups
            var answer = await Application.Current.MainPage.DisplayAlert("Delete Note", "Do you want to delete this note?", "Yes", "No");
            if (answer)
            {
-               NoteService.Remove(Note);
-               var parameters = new PopupParameters { {  Constants.NavigationConstants.ItemDeleted, true } };
+               var itemDeleted = await NoteService.RemoveById<Note>(Note.Id);
+               var parameters = new PopupParameters { {  Constants.NavigationConstants.ItemDeleted, itemDeleted } };
                UpdateCommand.Execute(parameters);
            }
         }

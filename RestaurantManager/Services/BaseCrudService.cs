@@ -2,60 +2,53 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text.Json;
+using System.Threading.Tasks;
+using RestaurantManager.Extensions;
 using RestaurantManager.Model;
 
 namespace RestaurantManager.Services
 {
-    public class BaseCrudService<T> : IServiceBase<T> where T : ModelBase
+    public class BaseCrudService : IServiceBase
     {
-        public List<T> Entities { get; set; }
-
-        public T GetById(int id)
+        private readonly DatabaseServiceRemote _databaseServiceRemote;
+        protected BaseCrudService(DatabaseServiceRemote databaseServiceRemote)
         {
-            var result = Entities.FirstOrDefault(x => x.Id.Equals(id));
-            return result;
+            _databaseServiceRemote = databaseServiceRemote;
         }
 
-        public virtual bool Update(T updatedEntity)
+        public async Task<T> GetById<T>(int id) where T : ModelBase
         {
-            var entity = Entities.FirstOrDefault(x => x.Id.Equals(updatedEntity.Id));
-            if (entity == null)
-            {
-                return false;
-            }
-            Entities.Remove(entity);
-            Entities.Add(updatedEntity);
-            return true;
+            return await _databaseServiceRemote.Get<T>(id);
         }
 
-        public ObservableCollection<T> GetAll()
+        public virtual async Task<bool> Update<T>(T updatedEntity) where T : ModelBase
         {
-            return new ObservableCollection<T>(Entities);
+            return await _databaseServiceRemote.Update(updatedEntity);
         }
 
-        public bool RemoveById(int id)
+        public async Task<ObservableCollection<T>> GetAll<T>() where T : ModelBase
         {
-            var entity = GetById(id);
-            return Remove(entity);
+            return await _databaseServiceRemote.GetAll<T>();
         }
 
-        public bool Remove(T entity)
+        public async Task<bool> RemoveById<T>(int id) where T : ModelBase
         {
-            return Entities.Remove(entity);
+            return await _databaseServiceRemote.Delete<T>(id);
         }
 
-        public T Add(T entity)
+        public async Task<T> Add<T>(T entity) where T : ModelBase
         {
-            Entities.Add(entity);
-            return entity;
+            var serializedResult = await _databaseServiceRemote.Add<T>(entity.ToJson());
+            return JsonSerializer.Deserialize<T>(serializedResult);
         }
 
-        public virtual T Save(T entity)
+        public virtual async Task<T> Save<T>(T entity) where T : ModelBase
         {
-            var updateComplete = Update(entity);
+            var updateComplete = await Update(entity);
             if (!updateComplete)
             {
-                Add(entity);
+                await Add(entity);
             }
 
             return entity;

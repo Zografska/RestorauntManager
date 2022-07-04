@@ -11,6 +11,7 @@ namespace RestaurantManager.Pages
     public class ListViewModel<T> : ViewModelBase
         where T : ModelBase
     {
+        protected readonly DatabaseServiceRemote _databaseServiceRemote;
         protected string PopupName { get; set; }
         public ICommand ItemTappedCommand { get; }
         public ICommand AddItemCommand { get; }
@@ -22,14 +23,22 @@ namespace RestaurantManager.Pages
             set => SetProperty(ref _items, value);
         }
 
-        protected ListViewModel(INavigationService navigationService, IPopupService popupService) : base(
+        protected ListViewModel(INavigationService navigationService, IPopupService popupService, DatabaseServiceRemote databaseServiceRemote) : base(
             navigationService, popupService)
         {
+            _databaseServiceRemote = databaseServiceRemote;
+            
             ItemTappedCommand = new SingleClickCommand<object>(ShowPopup);
             AddItemCommand = new SingleClickCommand(ShowCniPopup);
         }
 
-        protected void HandlePopupResult(IPopupParameters resultParameters, T oldItem = null)
+        public override async void OnAppearing()
+        {
+            base.OnAppearing();
+            Items = await _databaseServiceRemote.GetAll<T>();
+        }
+
+        private void HandlePopupResult(IPopupParameters resultParameters, T oldItem = null)
         {
             if (resultParameters.TryGetValue(Constants.NavigationConstants.ItemUpdated, out T item))
             {

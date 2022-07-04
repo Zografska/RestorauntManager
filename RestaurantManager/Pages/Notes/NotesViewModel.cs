@@ -1,21 +1,16 @@
-using System.Collections.ObjectModel;
 using Prism.Navigation;
 using RestaurantManager.Model;
 using RestaurantManager.Popups;
-using RestaurantManager.Services;
 using XCT.Popups.Prism;
 
 namespace RestaurantManager.Pages
 {
     public class NotesViewModel : ListViewModel<Note>
     {
-        private INoteService NoteService { get; set; }
-
-        public NotesViewModel(INavigationService navigationService, IPopupService popupService, INoteService noteService) : base(navigationService, popupService)
+        public NotesViewModel(INavigationService navigationService, IPopupService popupService, 
+            DatabaseServiceRemote databaseServiceRemote) : base(navigationService, popupService, databaseServiceRemote)
         {
             Title = "Notes";
-            NoteService = noteService;
-            Items = new ObservableCollection<Note>(NoteService.GetAll());
             PopupName = nameof(NotePopup);
         }
     }

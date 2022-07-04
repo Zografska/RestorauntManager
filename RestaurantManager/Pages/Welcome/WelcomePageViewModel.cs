@@ -1,6 +1,8 @@
+using System;
 using System.Windows.Input;
 using Prism.Navigation;
 using RestaurantManager.Extensions;
+using RestaurantManager.Model;
 using RestaurantManager.Pages;
 using RestaurantManager.Pages.Base;
 using RestaurantManager.Pages.Reservations;
@@ -15,8 +17,7 @@ namespace RestaurantManager
         public ICommand NavigateToShiftsCommand { get; }
         public ICommand NavigateToReservationsCommand { get; }
 
-        protected IPopupService PopupService { get; private set; }
-        public WelcomePageViewModel(INavigationService navigationService, IPopupService popupService) : base(navigationService, popupService)
+        public WelcomePageViewModel(INavigationService navigationService, IPopupService popupService, DatabaseServiceRemote databaseServiceRemote) : base(navigationService, popupService)
         {
             Title = "WelcomePage";
             NavigateToNotesCommand = new Command(NavigateToNotesPage);
