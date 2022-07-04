@@ -55,7 +55,7 @@
             </ListView>
             <Button
                 Text="Add Shift"
-                Command="{Binding AddShiftCommand}"
+                Command="{Binding AddItemCommand}"
             />
         </StackLayout>
     </ContentPage.Content>

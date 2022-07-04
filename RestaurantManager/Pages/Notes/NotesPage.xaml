@@ -50,7 +50,7 @@
             </ListView>
             <Button
                 Text="Add Note"
-                Command="{Binding AddNoteCommand}"
+                Command="{Binding AddItemCommand}"
             />
         </StackLayout>
     </ContentPage.Content>

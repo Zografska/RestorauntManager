@@ -27,10 +27,11 @@ namespace RestaurantManager
             containerRegistry.RegisterForNavigation<ShiftsPage, ShiftsViewModel>();
             containerRegistry.RegisterForNavigation<ReservationsPage, ReservationsPageViewModel>();
 
-            
             containerRegistry.RegisterPopup<NotePopup, NotePopupViewModel>();
             containerRegistry.RegisterPopup<ShiftPopup, ShiftPopupViewModel>();
             containerRegistry.RegisterPopup<ReservationPopup, ReservationPopupViewModel>();
+
+            containerRegistry.Register<DatabaseServiceRemote>();
         }
 
         protected override async void OnInitialized()
