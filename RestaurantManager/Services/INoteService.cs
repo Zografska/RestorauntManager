@@ -3,7 +3,7 @@ using RestaurantManager.Model;
 
 namespace RestaurantManager.Services
 {
-    public interface INoteService : IServiceBase
+    public interface INoteService : IServiceBase<Note>
     {
     }
 }

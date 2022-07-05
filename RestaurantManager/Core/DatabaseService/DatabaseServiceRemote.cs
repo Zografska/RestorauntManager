@@ -1,10 +1,9 @@
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text.Json;
 using System.Threading.Tasks;
 using Firebase.Database;
 using Firebase.Database.Query;
+using RestaurantManager.Core;
 using RestaurantManager.Core.DatabaseService;
 using RestaurantManager.Extensions;
 using RestaurantManager.Model;
@@ -12,7 +11,7 @@ namespace RestaurantManager
 {
     public class DatabaseServiceRemote : IDatabaseService 
     {
-        private readonly FirebaseClient _firebase = new FirebaseClient("https://restaurantmanagerdb-default-rtdb.europe-west1.firebasedatabase.app/");
+        private readonly FirebaseClient _firebase = new FirebaseClient(Configuration.DatabaseUrl);
 
         public async Task<ObservableCollection<T>> GetAll<T>() where T : ModelBase
         {

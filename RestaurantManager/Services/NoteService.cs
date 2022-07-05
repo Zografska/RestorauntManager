@@ -5,22 +5,20 @@ using RestaurantManager.Model;
 
 namespace RestaurantManager.Services
 {
-    public class NoteService : BaseCrudService, INoteService
+    public class NoteService : BaseCrudService<Note>, INoteService
     {
         public NoteService(DatabaseServiceRemote databaseServiceRemote): base(databaseServiceRemote)
-        {
+        { }
 
-        }
-
-        public override async Task<bool> Update<T>(T updatedEntity)
+        public override async Task<bool> Update(Note note)
         {
-            var shift = updatedEntity as Note;
-            if (shift == null)
+            if (note == null)
             {
                 return false;
             }
-            shift.LastModified = DateTime.Now;
-            return await base.Update(shift);
+            note.LastModified = DateTime.Now;
+            return await base.Update(note);
         }
+
     }
 }

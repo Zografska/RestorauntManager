@@ -68,7 +68,7 @@ namespace RestaurantManager.Popups
             var answer = await Application.Current.MainPage.DisplayAlert("Delete Shift", "Do you want to delete this shift?", "Yes", "No");
             if (answer)
             {
-                var itemDeleted = await ShiftsService.RemoveById<Shift>(Shift.Id);
+                var itemDeleted = await ShiftsService.RemoveById(Shift.Id);
                 var parameters = new PopupParameters() { {  Constants.NavigationConstants.ItemDeleted, itemDeleted } };
                 UpdateCommand.Execute(parameters);
             }
