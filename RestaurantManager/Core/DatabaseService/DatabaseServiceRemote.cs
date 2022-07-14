@@ -14,13 +14,11 @@ namespace RestaurantManager
         private readonly FirebaseClient _firebase = new FirebaseClient(Configuration.DatabaseUrl);
 
         public async Task<ObservableCollection<T>> GetAll<T>() where T : ModelBase
-        {
-            return (await _firebase
+            => (await _firebase
                 .Child(typeof(T).Name)
                 .OnceAsync<T>())
                 .Select(entity => entity.Object)
                 .ToObservableCollection();
-        }
 
         public async Task<string> Add<T>(string serializedData) where T : ModelBase
         {
@@ -38,30 +36,30 @@ namespace RestaurantManager
 
         public async Task<bool> Update<T>(T updatedEntity) where T : ModelBase
         {
-            var toUpdatePerson = (await _firebase
+            var entityToUpdate = (await _firebase
                 .Child(typeof(T).Name)
                 .OnceAsync<T>())
                 .FirstOrDefault(a => a.Object.Id == updatedEntity.Id);
 
-            if (toUpdatePerson == default)
+            if (entityToUpdate == default)
                 return false;
             
             await _firebase
                 .Child(typeof(T).Name)
-                .Child(toUpdatePerson.Key)
+                .Child(entityToUpdate.Key)
                 .PutAsync(updatedEntity);
             return true;
         }
 
         public async Task<bool> Delete<T>(int id) where T : ModelBase
         {
-            var toDeletePerson = (await _firebase
+            var toDeleteEntity = (await _firebase
                 .Child(typeof(T).Name)
                 .OnceAsync<T>())
                 .FirstOrDefault(a => a.Object.Id == id);
-            if (toDeletePerson == null) return false;
+            if (toDeleteEntity == null) return false;
             
-            await _firebase.Child(typeof(T).Name).Child(toDeletePerson.Key).DeleteAsync();
+            await _firebase.Child(typeof(T).Name).Child(toDeleteEntity.Key).DeleteAsync();
             return true;
         }
     }
