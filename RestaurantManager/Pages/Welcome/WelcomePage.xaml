@@ -1,9 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <base:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:base="clr-namespace:RestaurantManager.Pages.Base;assembly=RestaurantManager"
+             xmlns:vm="clr-namespace:RestaurantManager;assembly=RestaurantManager"
              xmlns:controls="clr-namespace:RestaurantManager.Controls;assembly=RestaurantManager"
              xmlns:behaviors="http://prismlibrary.com"
-             xmlns:base="clr-namespace:RestaurantManager.Pages.Base;assembly=RestaurantManager"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance vm:WelcomePageViewModel}"
              x:Class="RestaurantManager.WelcomePage">
 
     <StackLayout Spacing="0">

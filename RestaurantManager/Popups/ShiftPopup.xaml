@@ -3,7 +3,12 @@
 <popups:BasePopup xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:popups="clr-namespace:RestaurantManager.PopUps;assembly=RestaurantManager"
+             xmlns:vm="clr-namespace:RestaurantManager.Popups;assembly=RestaurantManager"
              xmlns:converters="clr-namespace:RestaurantManager.Converters;assembly=RestaurantManager"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance vm:ShiftPopupViewModel}"
              x:Class="RestaurantManager.Popups.ShiftPopup">
             <StackLayout
         BackgroundColor="IndianRed"
