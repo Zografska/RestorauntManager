@@ -3,11 +3,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Firebase.Database;
 using Firebase.Database.Query;
-using RestaurantManager.Core;
-using RestaurantManager.Core.DatabaseService;
 using RestaurantManager.Extensions;
 using RestaurantManager.Model;
-namespace RestaurantManager
+
+namespace RestaurantManager.Core.DatabaseService
 {
     public class DatabaseServiceRemote : IDatabaseService 
     {

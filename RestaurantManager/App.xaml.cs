@@ -1,5 +1,6 @@
 ﻿using Prism;
 using Prism.Ioc;
+using RestaurantManager.Core.DatabaseService;
 using RestaurantManager.Extensions;
 using RestaurantManager.Pages;
 using RestaurantManager.Pages.Reservations;
