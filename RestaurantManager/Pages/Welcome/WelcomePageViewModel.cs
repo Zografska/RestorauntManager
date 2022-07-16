@@ -34,8 +34,15 @@ namespace RestaurantManager
 
         private void Logout()
         {
-            _authService.Logout();
-            NavigationService.GoBackToRootAsync();
+            var successful =_authService.Logout();
+            if (successful)
+            {
+                NavigationService.GoBackToRootAsync();
+            }
+            else
+            {
+                DisplayAlert(Constants.AlertConstants.LogoutUnsuccessful);
+            }
         }
 
         private async void NavigateToReservationsPage()

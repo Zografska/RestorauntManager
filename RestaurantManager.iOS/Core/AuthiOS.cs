@@ -56,5 +56,9 @@ namespace RestaurantManager.iOS.Core
                 return false;
             }
         }
+        public string GetCurrentProfile()
+        {
+            return Auth.DefaultInstance.CurrentUser.Uid;
+        }
     }
 }

@@ -52,5 +52,10 @@ namespace RestaurantManager.Droid.Core
                 return false;
             }
         }
+
+        public string GetCurrentProfile()
+        {
+            return FirebaseAuth.Instance.CurrentUser.Uid;
+        }
     }
 }
