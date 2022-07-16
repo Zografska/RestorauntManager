@@ -20,7 +20,7 @@ namespace RestaurantManager
 
         public WelcomePageViewModel(INavigationService navigationService, IPopupService popupService, DatabaseServiceRemote databaseServiceRemote) : base(navigationService, popupService)
         {
-            Title = "WelcomePage";
+            Title = "Restaurant Manager";
             NavigateToNotesCommand = new Command(NavigateToNotesPage);
             NavigateToShiftsCommand = new Command(NavigateToShiftsPage);
             NavigateToReservationsCommand = new Command(NavigateToReservationsPage);

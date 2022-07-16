@@ -11,14 +11,15 @@
              d:DataContext="{d:DesignInstance vm:ShiftPopupViewModel}"
              x:Class="RestaurantManager.Popups.ShiftPopup">
             <StackLayout
-        BackgroundColor="IndianRed"
-        Margin="25, 0, 25, 25">
+        BackgroundColor="White"
+        Margin="25, 25, 25, 25"
+        >
         <StackLayout.Resources>
            <ResourceDictionary>
                <converters:DateToStringConverter x:Key="DateToStringConverter"/>
            </ResourceDictionary>
         </StackLayout.Resources>
-        <Grid Background="Teal" HorizontalOptions="FillAndExpand" Padding="15" VerticalOptions="FillAndExpand">
+        <Grid BackgroundColor="White" HorizontalOptions="FillAndExpand"  Padding="15" VerticalOptions="FillAndExpand">
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*" />
                 <RowDefinition Height="*"/>
@@ -29,58 +30,85 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <Entry
+            <Label
                 Grid.Row="0"
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
-                Text="{Binding Shift.User}"
-                FontSize="Title"
-                WidthRequest="200"
-                BackgroundColor="Aqua"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="Start"/>
-            <Label
-                Grid.Row="1"
-                Grid.Column="0"
-                Text="Shift Type:"
-                BackgroundColor="Aquamarine"
+                Text="Employee:"
+                TextColor="DimGray"
                 FontSize="Medium"
                 HorizontalOptions="Start"
                 VerticalOptions="CenterAndExpand"/>
+            <Entry
+                Grid.Row="0"
+                Grid.Column="2"
+                Grid.ColumnSpan="2"
+                Text="{Binding Shift.User}"
+                FontSize="Medium"
+                TextColor="DimGray"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="Fill"/>
             <Label
                 Grid.Row="1"
-                Grid.Column="1"
-                Text="{Binding Shift.Type}"
-                FontSize="Caption"
-                BackgroundColor="Aqua"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Text="Shift Type:"
+                TextColor="DimGray"
+                FontSize="Medium"
+                HorizontalOptions="Start"
+                VerticalOptions="CenterAndExpand"/>
+            <Picker
+                Grid.Row="1"
+                Grid.Column="2"
+                Grid.ColumnSpan="2"
+                Title="Select Shift Type"
+                SelectedItem="{Binding Shift.Type}"
+                TextColor="DimGray"
+                FontSize="Medium"
                 VerticalOptions="CenterAndExpand"
-                HorizontalOptions="Start"/>
+                HorizontalOptions="Start"
+                >
+                <Picker.Items>
+                    <x:String>Daily</x:String>
+                    <x:String>Nightly</x:String>
+                </Picker.Items>
+            </Picker>
             <Label
                 Grid.Row="2"
                 Grid.Column="0"
+                Grid.ColumnSpan="2"
                 Text="Shift Hours:"
-                BackgroundColor="Aquamarine"
+                TextColor="DimGray"
                 FontSize="Medium"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="Start"/>
             
-            <Label
+            <Entry
                 Grid.Row="2"
-                Grid.Column="1"
+                Grid.Column="2"
                 Text="{Binding Shift.Hours}"
-                BackgroundColor="Aquamarine"
+                TextColor="DimGray"
                 FontSize="Medium"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="Start"/>
-            <DatePicker
+            <Label
                 Grid.Row="3"
                 Grid.Column="0"
+                Text="Date:"
+                TextColor="DimGray"
+                FontSize="Medium"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="Start"/>
+            <DatePicker
+                Grid.Row="3"
+                Grid.Column="1"
                 Grid.ColumnSpan="2"
                 Date="{Binding Shift.Date}"
-                Format="D"
-                Margin="30, 0, 0, 30"
-                HorizontalOptions="Fill"/>
+                Format="d"
+                Margin="30, 0, 0, 30"/>
         </Grid>
       
         <Button
