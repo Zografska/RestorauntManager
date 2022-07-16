@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "704852469616",
+    "firebase_url": "https://restaurantmanagerdb-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "restaurantmanagerdb",
+    "storage_bucket": "restaurantmanagerdb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:704852469616:android:0a2897b37d48a09d9a91b5",
+        "android_client_info": {
+          "package_name": "com.codechem.restaurantManager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "704852469616-ikg03aua7jrh28et7lpds7up2pbgdloh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYEDdAmzLxHqv3kr1appOe7rJa_drFhyo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "704852469616-ikg03aua7jrh28et7lpds7up2pbgdloh.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "704852469616-jc1r4s9fa626k981nj35ulqus3mmvik7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.codechem.restorauntManager"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
