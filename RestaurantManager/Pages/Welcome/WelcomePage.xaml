@@ -22,30 +22,30 @@
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <controls:GridButton Grid.Row="0" Grid.Column="0" Text="Notes" TextColor="LightGray" BackgroundColor="DimGray">
+            <controls:GridButton Grid.Row="0" Grid.Column="0" Text="Notes">
                 <controls:GridButton.Behaviors>
                     <behaviors:EventToCommandBehavior 
                         EventName="Clicked"
                         Command="{Binding NavigateToNotesCommand}"/>
                 </controls:GridButton.Behaviors>
             </controls:GridButton>
-            <controls:GridButton Grid.Row="1" Grid.Column="0" Text="Shifts" TextColor="LightGray" BackgroundColor="DimGray">
+            <controls:GridButton Grid.Row="1" Grid.Column="0" Text="Shifts">
                 <controls:GridButton.Behaviors>
                     <behaviors:EventToCommandBehavior
                         EventName="Clicked"
                         Command="{Binding NavigateToShiftsCommand}"/>
                 </controls:GridButton.Behaviors>
             </controls:GridButton>
-            <controls:GridButton Grid.Row="0" Grid.Column="1" Text="Reservations" TextColor="LightGray" BackgroundColor="DimGray">
+            <controls:GridButton Grid.Row="0" Grid.Column="1" Text="Reservations">
                 <controls:GridButton.Behaviors>
                     <behaviors:EventToCommandBehavior 
                         EventName="Clicked"
                         Command="{Binding NavigateToReservationsCommand}"/>
                 </controls:GridButton.Behaviors>
             </controls:GridButton>
-            <controls:GridButton Grid.Row="1" Grid.Column="1" Text="Employees" TextColor="LightGray" BackgroundColor="DimGray"/>
-            <controls:GridButton Grid.Row="2" Grid.Column="0" Text="Inventory" TextColor="LightGray" BackgroundColor="DimGray"/>
-            <controls:GridButton Grid.Row="2" Grid.Column="1" Text="Settings" TextColor="LightGray" BackgroundColor="DimGray"/>
+            <controls:GridButton Grid.Row="1" Grid.Column="1" Text="Employees"/>
+            <controls:GridButton Grid.Row="2" Grid.Column="0" Text="Inventory"/>
+            <controls:GridButton Grid.Row="2" Grid.Column="1" Text="Settings"/>
 
         </Grid>
     </StackLayout>
