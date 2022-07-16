@@ -42,6 +42,13 @@ namespace RestaurantManager.Pages.Authentication.Login
 
         private async void Login()
         {
+            if (Username.IsNullOrEmpty() || Password.IsNullOrEmpty())
+            {
+                await Application.Current.MainPage.DisplayAlert("Login Failed",
+                    "Login unsuccessful. \n Please try again", "OK");
+                return;
+            }
+            
             var token = await _authService.LoginWithEmailPassword(Username, Password);
             if (!token.IsNullOrEmpty())
             {

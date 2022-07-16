@@ -24,8 +24,6 @@
 	<string>8.0</string>
 	<key>CFBundleDisplayName</key>
 	<string>RestaurantManager</string>
-	<key>CFBundleIdentifier</key>
-	<string>mk.ukim.finki.restaurantManager.RestaurantManager</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>UILaunchStoryboardName</key>
@@ -34,5 +32,9 @@
 	<string>RestaurantManager</string>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.tenforce.RestaurantManager</string>
 </dict>
 </plist>

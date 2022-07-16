@@ -27,6 +27,8 @@
     <MtouchArch>x86_64</MtouchArch>
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -61,6 +63,7 @@
     <MtouchArch>ARM64</MtouchArch>
     <CodesignKey>iPhone Developer</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchLink>SdkOnly</MtouchLink>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Core\AuthiOS.cs" />
@@ -116,6 +119,9 @@
     </ImageAsset>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Firebase.Auth, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\.nuget\packages\xamarin.firebase.ios.auth\6.2.1.2\lib\xamarinios10\Firebase.Auth.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -135,5 +141,10 @@
       <Project>{98B248DD-9B73-4358-8738-92AA9AFCC9C0}</Project>
       <Name>RestaurantManager</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\Downloads\GoogleService-Info.plist">
+      <Link>GoogleService-Info.plist</Link>
+    </Content>
   </ItemGroup>
 </Project>
