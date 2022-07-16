@@ -9,5 +9,11 @@ namespace RestaurantManager.Utility
             public const string ItemAdded = "ItemAdded";
             public const string Item = "Item";
         }
+
+        public class AlertConstants
+        {
+            public const string LoginUnsuccessfulAlert = "Login unsuccessful. \n Please try again";
+            public const string ValidationAlert = "Please fill in all the blanks";
+        }
     }
 }

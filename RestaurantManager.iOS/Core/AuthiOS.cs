@@ -1,16 +1,18 @@
 using System;
 using System.Threading.Tasks;
 using Firebase.Auth;
+using Foundation;
 using RestaurantManager.Core.Authentication;
 using RestaurantManager.iOS.Core;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(AuthiOS))]
+
 namespace RestaurantManager.iOS.Core
 {
     public class AuthiOS : IAuthService
     {
-        
+
         public async Task<string> LoginWithEmailPassword(string email, string password)
         {
             try
@@ -20,6 +22,7 @@ namespace RestaurantManager.iOS.Core
             }
             catch (Exception e)
             {
+                Console.WriteLine(e.Message);
                 return "";
             }
 
@@ -35,8 +38,23 @@ namespace RestaurantManager.iOS.Core
             }
             catch (Exception e)
             {
+                Console.WriteLine(e.Message);
                 return false;
-            } 
+            }
+        }
+
+        public bool Logout()
+        {
+            try
+            {
+                _ = Auth.DefaultInstance.SignOut(out NSError error);
+                return error == null;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
         }
     }
 }

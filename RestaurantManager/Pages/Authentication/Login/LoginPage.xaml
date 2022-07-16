@@ -24,7 +24,7 @@
         
             <Entry
                 Placeholder="E-mail"
-                Text="{Binding Username}"
+                Text="{Binding Username, Mode=TwoWay}"
                 Keyboard="Email"
                 x:Name="EmailInput"
             />
@@ -32,7 +32,7 @@
             <Entry
                 Placeholder="Password"
                 IsPassword="true"
-                Text="{Binding Password}"
+                Text="{Binding Password, Mode=TwoWay}"
                 x:Name="PasswordInput"
             />
         

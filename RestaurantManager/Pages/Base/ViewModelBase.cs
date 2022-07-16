@@ -1,6 +1,7 @@
 using Prism.AppModel;
 using Prism.Mvvm;
 using Prism.Navigation;
+using Xamarin.Forms;
 using XCT.Popups.Prism;
 
 namespace RestaurantManager
@@ -43,6 +44,11 @@ namespace RestaurantManager
 
         public virtual void OnDisappearing()
         {
+        }
+
+        protected virtual async void DisplayAlert(string alertMessage, string title = "")
+        {
+            await Application.Current.MainPage.DisplayAlert(title, alertMessage, "OK");
         }
     }
 }

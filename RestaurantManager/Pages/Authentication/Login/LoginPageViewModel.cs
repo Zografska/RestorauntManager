@@ -1,4 +1,3 @@
-using System;
 using System.Windows.Input;
 using Prism.Navigation;
 using RestaurantManager.Core.Authentication;
@@ -6,7 +5,6 @@ using RestaurantManager.Extensions;
 using RestaurantManager.Pages.Authentication.Signup;
 using RestaurantManager.Pages.Base;
 using RestaurantManager.Utility;
-using Xamarin.Forms;
 using XCT.Popups.Prism;
 
 namespace RestaurantManager.Pages.Authentication.Login
@@ -14,12 +12,29 @@ namespace RestaurantManager.Pages.Authentication.Login
     public class LoginPageViewModel : PageViewModelBase
     {
         private readonly IAuthService _authService;
-        
-        public string Username { get; set; }
-        public string Password { get; set; }
-        
+        private string _username { get; set; }
+        private string _password { get; set; }
         public ICommand LoginCommand { get; set; }
         public ICommand NavigateToSignupCommand { get; set; }
+        
+        public string Username
+        {
+            get => _username;
+            set
+            {
+                _username = value;
+                RaisePropertyChanged(Username);
+            }
+        } 
+        public string Password
+        {
+            get => _password;
+            set
+            {
+                _password = value;
+                RaisePropertyChanged(Password);
+            }
+        }
         
         public LoginPageViewModel(INavigationService navigationService, IPopupService popupService, IAuthService auth) : base(navigationService, popupService)
         {
@@ -30,22 +45,14 @@ namespace RestaurantManager.Pages.Authentication.Login
 
         private async void NavigateToSignup()
         {
-            try
-            {
-                await NavigationService.NavigateTo<SignupPage>();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }
+            await NavigationService.NavigateTo<SignupPage>();
         }
 
         private async void Login()
         {
             if (Username.IsNullOrEmpty() || Password.IsNullOrEmpty())
             {
-                await Application.Current.MainPage.DisplayAlert("Login Failed",
-                    "Login unsuccessful. \n Please try again", "OK");
+                DisplayAlert(Constants.AlertConstants.ValidationAlert);
                 return;
             }
             
@@ -53,12 +60,17 @@ namespace RestaurantManager.Pages.Authentication.Login
             if (!token.IsNullOrEmpty())
             {
                 await NavigationService.NavigateTo<WelcomePage>();
+                ClearCredentials();
             }
             else
             {
-                await Application.Current.MainPage.DisplayAlert("Login Failed",
-                    "Login unsuccessful. \n Please try again", "OK");
+                DisplayAlert(Constants.AlertConstants.LoginUnsuccessfulAlert);
             }
+        }
+
+        private void ClearCredentials()
+        {
+            Username = Password = string.Empty;
         }
     }
 }

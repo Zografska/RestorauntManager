@@ -39,5 +39,18 @@ namespace RestaurantManager.Droid.Core
                 return false;
             }
         }
+
+        public bool Logout()
+        {
+            try
+            {
+                FirebaseAuth.Instance.SignOut();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }
