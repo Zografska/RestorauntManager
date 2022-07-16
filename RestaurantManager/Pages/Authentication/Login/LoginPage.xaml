@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:behaviors="http://prismlibrary.com"
+             x:Class="RestaurantManager.Pages.Authentication.Login.LoginPage"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:login="clr-namespace:RestaurantManager.Pages.Authentication.Login;assembly=RestaurantManager"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance login:LoginPageViewModel}">
+    <ContentPage.Content>
+        <StackLayout
+            VerticalOptions="Center"
+            Margin="20">
+        
+            <Label
+                Text="FireAuth"
+                HorizontalOptions="Center"
+                TextColor="#4682B4"
+                FontSize="35"
+                Margin="0, 20"
+            />
+        
+            <Entry
+                Placeholder="E-mail"
+                Text="{Binding Username}"
+                Keyboard="Email"
+                x:Name="EmailInput"
+            />
+        
+            <Entry
+                Placeholder="Password"
+                IsPassword="true"
+                Text="{Binding Password}"
+                x:Name="PasswordInput"
+            />
+        
+            <Button
+                Text="Enter"
+                Margin="60, 40"
+                BackgroundColor="#4682B4"
+                TextColor="White"
+                Command="{Binding LoginCommand}"
+            />
+                
+            <Button
+                Text="Signup"
+                Margin="60, 40"
+                BackgroundColor="Transparent"
+                TextColor="Blue"
+                Command="{Binding NavigateToSignupCommand}"
+            />
+                
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

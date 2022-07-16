@@ -1,8 +1,12 @@
 ﻿using Prism;
+using Prism.DryIoc;
 using Prism.Ioc;
 using RestaurantManager.Core.DatabaseService;
+using RestaurantManager.Core.Authentication;
 using RestaurantManager.Extensions;
 using RestaurantManager.Pages;
+using RestaurantManager.Pages.Authentication.Login;
+using RestaurantManager.Pages.Authentication.Signup;
 using RestaurantManager.Pages.Reservations;
 using RestaurantManager.Popups;
 using RestaurantManager.Services;
@@ -11,9 +15,8 @@ using XCT.Popups.Prism;
 
 namespace RestaurantManager
 {
-    public partial class App
+    public partial class App : PrismApplication
     {
-        public App() : this(null) {}
         public App(IPlatformInitializer initializer) : base(initializer) {}
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -23,6 +26,8 @@ namespace RestaurantManager
             containerRegistry.RegisterSingleton<IShiftsService, ShiftsService>();
             
             containerRegistry.RegisterForNavigation<NavigationPage>();
+            containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();
+            containerRegistry.RegisterForNavigation<SignupPage, SignupPageViewModel>();
             containerRegistry.RegisterForNavigation<WelcomePage, WelcomePageViewModel>();
             containerRegistry.RegisterForNavigation<NotesPage, NotesViewModel>();
             containerRegistry.RegisterForNavigation<ShiftsPage, ShiftsViewModel>();
@@ -39,7 +44,7 @@ namespace RestaurantManager
         {
             InitializeComponent();
 
-            await NavigationService.NavigateTo<WelcomePage>(true);
+            await NavigationService.NavigateTo<LoginPage>(true);
         }
     }
 }

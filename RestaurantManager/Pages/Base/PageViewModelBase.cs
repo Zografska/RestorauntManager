@@ -5,7 +5,8 @@ namespace RestaurantManager.Pages.Base
 {
     public class PageViewModelBase : ViewModelBase
     {
-        public PageViewModelBase(INavigationService navigationService, IPopupService popupService) : base(navigationService, popupService)
+        public PageViewModelBase(INavigationService navigationService, IPopupService popupService)
+            : base(navigationService, popupService)
         {
         }
     }
