@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<popups:BasePopup xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:popups="clr-namespace:RestaurantManager.PopUps;assembly=RestaurantManager"
+                  xmlns:vm="clr-namespace:RestaurantManager.Popups;assembly=RestaurantManager"
+                  xmlns:converters="clr-namespace:RestaurantManager.Converters;assembly=RestaurantManager"
+                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                  mc:Ignorable="d"
+                  d:DataContext="{d:DesignInstance vm:EmployeePopupViewModel}"
+                  x:Class="RestaurantManager.Popups.EmployeePopup">
+    <StackLayout
+        BackgroundColor="White"
+        Margin="25, 25, 25, 25">
+        <StackLayout.Resources>
+            <ResourceDictionary>
+                <converters:DateToStringConverter x:Key="DateToStringConverter" />
+            </ResourceDictionary>
+        </StackLayout.Resources>
+        <Grid
+            BackgroundColor="White"
+            HorizontalOptions="FillAndExpand"
+            Padding="15"
+            VerticalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Label
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Text="Name:"
+                TextColor="DimGray"
+                FontSize="Medium"
+                HorizontalOptions="Start"
+                VerticalOptions="CenterAndExpand" />
+            <Entry
+                Grid.Row="0"
+                Grid.Column="2"
+                Grid.ColumnSpan="2"
+                Text="{Binding Employee.Name}"
+                FontSize="Medium"
+                TextColor="DimGray"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="Fill" />
+            <Label
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Text="Surname:"
+                TextColor="DimGray"
+                FontSize="Medium"
+                HorizontalOptions="Start"
+                VerticalOptions="CenterAndExpand" />
+            <Entry
+                Grid.Row="1"
+                Grid.Column="2"
+                Grid.ColumnSpan="2"
+                Text="{Binding Employee.Surname}"
+                TextColor="DimGray"
+                FontSize="Medium"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="Fill"/>
+        </Grid>
+
+        <Button
+            Text="Save"
+            Command="{Binding SaveCommand}" />
+
+        <Button
+            Text="Delete"
+            IsVisible="{Binding IsDeletePossible}"
+            Command="{Binding DeleteCommand}" />
+    </StackLayout>
+</popups:BasePopup>
