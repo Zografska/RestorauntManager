@@ -6,8 +6,10 @@ using RestaurantManager.Core.Authentication;
 using RestaurantManager.Extensions;
 using RestaurantManager.Pages;
 using RestaurantManager.Pages.Authentication.Login;
+using RestaurantManager.Pages.Authentication.ResetPassword;
 using RestaurantManager.Pages.Authentication.Signup;
 using RestaurantManager.Pages.Reservations;
+using RestaurantManager.Pages.Welcome;
 using RestaurantManager.Popups;
 using RestaurantManager.Services;
 using Xamarin.Forms;
@@ -28,6 +30,7 @@ namespace RestaurantManager
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();
             containerRegistry.RegisterForNavigation<SignupPage, SignupPageViewModel>();
+            containerRegistry.RegisterForNavigation<ResetPasswordPage, ResetPasswordPageViewModel>();
             containerRegistry.RegisterForNavigation<WelcomePage, WelcomePageViewModel>();
             containerRegistry.RegisterForNavigation<NotesPage, NotesViewModel>();
             containerRegistry.RegisterForNavigation<ShiftsPage, ShiftsViewModel>();

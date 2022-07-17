@@ -2,6 +2,7 @@ using System.Windows.Input;
 using Prism.Navigation;
 using RestaurantManager.Core.Authentication;
 using RestaurantManager.Extensions;
+using RestaurantManager.Pages.Authentication.ResetPassword;
 using RestaurantManager.Pages.Authentication.Signup;
 using RestaurantManager.Pages.Base;
 using RestaurantManager.Utility;
@@ -11,7 +12,6 @@ namespace RestaurantManager.Pages.Authentication.Login
 {
     public class LoginPageViewModel : PageViewModelBase
     {
-        private readonly IAuthService _authService;
         private string _username { get; set; }
         private string _password { get; set; }
         private bool _usernameValid { get; set; }
@@ -20,6 +20,7 @@ namespace RestaurantManager.Pages.Authentication.Login
         public bool IsLoginPossible => _usernameValid && _passwordValid;
         public ICommand LoginCommand { get; set; }
         public ICommand NavigateToSignupCommand { get; set; }
+        public ICommand NavigateToResetPasswordCommand { get; set; }
         public bool PasswordValid
         {
             set
@@ -55,11 +56,17 @@ namespace RestaurantManager.Pages.Authentication.Login
             }
         }
         
-        public LoginPageViewModel(INavigationService navigationService, IPopupService popupService, IAuthService auth) : base(navigationService, popupService)
+        public LoginPageViewModel(INavigationService navigationService, IPopupService popupService, IAuthService auth) 
+            : base(navigationService, popupService, auth)
         {
-            _authService = auth;
             LoginCommand = new SingleClickCommand(Login);
             NavigateToSignupCommand = new SingleClickCommand(NavigateToSignup);
+            NavigateToResetPasswordCommand = new SingleClickCommand(NavigateToResetPassword);
+        }
+
+        private async void NavigateToResetPassword()
+        {
+            await NavigationService.NavigateTo<ResetPasswordPage>();
         }
 
         private async void NavigateToSignup()
@@ -69,7 +76,7 @@ namespace RestaurantManager.Pages.Authentication.Login
 
         private async void Login()
         {
-            var token = await _authService.LoginWithEmailPassword(Username, Password);
+            var token = await AuthService.LoginWithEmailPassword(Username, Password);
             if (!token.IsNullOrEmpty())
             {
                 await NavigationService.NavigateTo<WelcomePage>();

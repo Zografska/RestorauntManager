@@ -60,5 +60,10 @@ namespace RestaurantManager.iOS.Core
         {
             return Auth.DefaultInstance.CurrentUser.Uid;
         }
+        
+        public async Task ResetPassword(string email)
+        {
+            await Auth.DefaultInstance.SendPasswordResetAsync(email);
+        }
     }
 }

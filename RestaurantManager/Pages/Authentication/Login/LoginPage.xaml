@@ -61,12 +61,17 @@
                 Command="{Binding LoginCommand}"/>
                 
             <Button
-                Text="Signup"
-                Margin="60, 40"
+                Text="Don't have an account? Signup!"
+                Margin="60, 40,60, 10"
                 BackgroundColor="Transparent"
                 TextColor="Blue"
                 Command="{Binding NavigateToSignupCommand}"/>
-                
+            <Button
+                Text="Forgot password?"
+                Margin="60, 0"
+                BackgroundColor="Transparent"
+                TextColor="Blue"
+                Command="{Binding NavigateToResetPasswordCommand}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

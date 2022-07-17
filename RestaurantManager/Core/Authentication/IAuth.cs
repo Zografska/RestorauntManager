@@ -8,5 +8,6 @@ namespace RestaurantManager.Core.Authentication
         Task<bool> SignUpWithEmailPassword(string email, string password);
         bool Logout();
         string GetCurrentProfile();
+        Task ResetPassword(string email);
     }
 }

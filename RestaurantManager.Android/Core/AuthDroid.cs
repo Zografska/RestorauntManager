@@ -57,5 +57,10 @@ namespace RestaurantManager.Droid.Core
         {
             return FirebaseAuth.Instance.CurrentUser.Uid;
         }
+
+        public async Task ResetPassword(string email)
+        {
+            await FirebaseAuth.Instance.SendPasswordResetEmailAsync(email);
+        }
     }
 }

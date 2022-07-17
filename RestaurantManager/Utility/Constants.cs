@@ -13,7 +13,7 @@ namespace RestaurantManager.Utility
         public class AlertConstants
         {
             public const string LoginUnsuccessfulAlert = "Login unsuccessful. \n Please try again";
-            public const string ValidationAlert = "Please fill in all the blanks";
+            public const string ResetInstructionsSent = "Reset instructions sent to your email";
             public static string LogoutUnsuccessful = "There was some trouble in logging you out \n Please try again";
         }
     }
