@@ -68,7 +68,7 @@
             <Label
                 Grid.Row="3"
                 Grid.Column="1"
-                Text="{Binding Note.Creator}"
+                Text="{Binding Note.CreatorUid}"
                 BackgroundColor="Aquamarine"
                 FontSize="Medium"
                 VerticalOptions="CenterAndExpand" 

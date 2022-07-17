@@ -3,6 +3,7 @@ using Prism.Navigation;
 using RestaurantManager.Core.Authentication;
 using RestaurantManager.Extensions;
 using RestaurantManager.Pages.Base;
+using RestaurantManager.Pages.Notes;
 using RestaurantManager.Pages.Reservations;
 using RestaurantManager.Utility;
 using XCT.Popups.Prism;
@@ -46,7 +47,7 @@ namespace RestaurantManager.Pages.Welcome
 
         private async void NavigateToNotesPage()
         {
-            await NavigationService.NavigateTo<NotesPage>();
+            await NavigationService.NavigateTo<NotesTabbedPage>();
         }
 
         private async void NavigateToShiftsPage()

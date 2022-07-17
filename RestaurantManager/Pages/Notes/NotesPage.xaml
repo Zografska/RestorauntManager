@@ -6,11 +6,13 @@
                xmlns:vm="clr-namespace:RestaurantManager.Pages;assembly=RestaurantManager"
                xmlns:behaviors="http://prismlibrary.com"
                xmlns:converters="http://xamarin.com/schemas/2020/toolkit"
-               x:Class="RestaurantManager.Pages.NotesPage"
+               x:Class="RestaurantManager.Pages.Notes.NotesPage"
+               x:Name="NotePage"
                xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+               xmlns:notes="clr-namespace:RestaurantManager.Pages.Notes;assembly=RestaurantManager"
                mc:Ignorable="d"
-               d:DataContext="{d:DesignInstance vm:NotesViewModel}">
+               d:DataContext="{d:DesignInstance notes:NotesViewModel}">
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:ItemTappedEventArgsConverter x:Key="ItemTappedEventArgsConverter"/>
@@ -18,7 +20,9 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
-            <ListView Margin="0,20,0,0" HorizontalOptions="FillAndExpand" ItemsSource="{Binding Items}">
+            <ListView Margin="0,20,0,0"
+                      HorizontalOptions="FillAndExpand"
+                      ItemsSource="{Binding Items}">
                 <ListView.Behaviors>
                     <behaviors:EventToCommandBehavior
                         EventName="ItemTapped"
@@ -55,6 +59,7 @@
             </ListView>
             <Button
                 Text="Add Note"
+                IsVisible="{Binding IsButtonVisible, Source={x:Reference NotePage}}"
                 Command="{Binding AddItemCommand}"
             />
         </StackLayout>
