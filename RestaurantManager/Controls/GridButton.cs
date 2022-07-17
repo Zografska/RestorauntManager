@@ -6,7 +6,8 @@ namespace RestaurantManager.Controls
     {
         public GridButton()
         {
-            BackgroundColor = Color.AliceBlue;
+            BackgroundColor = Color.DimGray;
+            TextColor = Color.LightGray;
             CornerRadius = 10;
             Margin = 15;
         }

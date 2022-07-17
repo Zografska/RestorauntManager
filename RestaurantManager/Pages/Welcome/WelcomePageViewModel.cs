@@ -19,7 +19,7 @@ namespace RestaurantManager.Pages.Welcome
         public WelcomePageViewModel(INavigationService navigationService, IPopupService popupService,
             IAuthService authService) : base(navigationService, popupService, authService)
         {
-            Title = "WelcomePage";
+            Title = "Restaurant Manager";
             NavigateToNotesCommand = new SingleClickCommand(NavigateToNotesPage);
             NavigateToShiftsCommand = new SingleClickCommand(NavigateToShiftsPage);
             NavigateToReservationsCommand = new SingleClickCommand(NavigateToReservationsPage);
