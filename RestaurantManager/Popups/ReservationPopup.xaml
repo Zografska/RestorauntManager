@@ -9,7 +9,10 @@
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance vm:ReservationPopupViewModel}"
              x:Class="RestaurantManager.Popups.ReservationPopup">
-    <StackLayout>
+    <StackLayout
+        BackgroundColor="{AppThemeBinding 
+        Light={StaticResource WindowBackgroundColor},
+        Dark={StaticResource WindowBackgroundColorDark}}">
             <Label Text="Hello, world!"
                    VerticalOptions="CenterAndExpand"
                    HorizontalOptions="CenterAndExpand" />

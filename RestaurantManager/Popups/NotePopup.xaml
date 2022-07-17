@@ -12,14 +12,19 @@
              x:Class="RestaurantManager.Popups.NotePopup"
              BackgroundColor="Aquamarine">
     <StackLayout
-        BackgroundColor="IndianRed"
         Margin="25, 0, 25, 25">
         <StackLayout.Resources>
            <ResourceDictionary>
                <converters:DateToStringConverter x:Key="DateToStringConverter"/>
            </ResourceDictionary>
         </StackLayout.Resources>
-        <Grid Background="Teal" HorizontalOptions="FillAndExpand" Padding="15" VerticalOptions="FillAndExpand">
+        <Grid  
+            BackgroundColor="{AppThemeBinding 
+                Light={StaticResource WindowBackgroundColor},
+                Dark={StaticResource WindowBackgroundColorDark}}" 
+            HorizontalOptions="FillAndExpand" 
+            Padding="15" 
+            VerticalOptions="FillAndExpand">
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*" />
                 <RowDefinition Height="*"/>
