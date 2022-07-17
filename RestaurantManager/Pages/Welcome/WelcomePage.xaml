@@ -12,7 +12,7 @@
              x:Class="RestaurantManager.WelcomePage">
 
     <StackLayout Spacing="0">
-        <Grid Background="Teal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Grid BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*"/>
