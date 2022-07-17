@@ -1,12 +1,11 @@
-using RestaurantManager.PopUps;
 using Xamarin.Forms.Xaml;
 
-namespace RestaurantManager.Popups
+namespace RestaurantManager.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ShiftPopup : BasePopup
+    public partial class EmployeesPage
     {
-        public ShiftPopup()
+        public EmployeesPage()
         {
             InitializeComponent();
         }

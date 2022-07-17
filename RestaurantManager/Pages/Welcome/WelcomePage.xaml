@@ -43,7 +43,13 @@
                         Command="{Binding NavigateToReservationsCommand}"/>
                 </controls:GridButton.Behaviors>
             </controls:GridButton>
-            <controls:GridButton Grid.Row="1" Grid.Column="1" Text="Employees"/>
+            <controls:GridButton Grid.Row="1" Grid.Column="1" Text="Employees">
+                <controls:GridButton.Behaviors>
+                    <behaviors:EventToCommandBehavior
+                        EventName="Clicked"
+                        Command="{Binding NavigateToEmployeesCommand}"/>
+                </controls:GridButton.Behaviors>
+            </controls:GridButton>
             <controls:GridButton Grid.Row="2" Grid.Column="0" Text="Inventory"/>
             <controls:GridButton Grid.Row="2" Grid.Column="1" Text="Settings"/>
 

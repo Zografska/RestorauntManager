@@ -2,7 +2,9 @@
 using Prism.Ioc;
 using RestaurantManager.Core.DatabaseService;
 using RestaurantManager.Extensions;
+using RestaurantManager.Model;
 using RestaurantManager.Pages;
+using RestaurantManager.Pages.Employees;
 using RestaurantManager.Pages.Reservations;
 using RestaurantManager.Popups;
 using RestaurantManager.Services;
@@ -21,16 +23,19 @@ namespace RestaurantManager
             containerRegistry.RegisterSingleton<IPopupService, PopupService>();
             containerRegistry.RegisterSingleton<INoteService, NoteService>();
             containerRegistry.RegisterSingleton<IShiftsService, ShiftsService>();
+            containerRegistry.RegisterSingleton<IEmployeeService, EmployeeService>();
             
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<WelcomePage, WelcomePageViewModel>();
             containerRegistry.RegisterForNavigation<NotesPage, NotesViewModel>();
             containerRegistry.RegisterForNavigation<ShiftsPage, ShiftsViewModel>();
             containerRegistry.RegisterForNavigation<ReservationsPage, ReservationsPageViewModel>();
+            containerRegistry.RegisterForNavigation<EmployeesPage, EmployeesViewModel>();
 
             containerRegistry.RegisterPopup<NotePopup, NotePopupViewModel>();
             containerRegistry.RegisterPopup<ShiftPopup, ShiftPopupViewModel>();
             containerRegistry.RegisterPopup<ReservationPopup, ReservationPopupViewModel>();
+            containerRegistry.RegisterPopup<EmployeePopup, EmployeePopupViewModel>();
 
             containerRegistry.Register<DatabaseServiceRemote>();
         }

@@ -10,16 +10,16 @@
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance vm:NotePopupViewModel}"
              x:Class="RestaurantManager.Popups.NotePopup"
-             BackgroundColor="Aquamarine">
+             >
     <StackLayout
-        BackgroundColor="IndianRed"
+        BackgroundColor="White"
         Margin="25, 0, 25, 25">
         <StackLayout.Resources>
            <ResourceDictionary>
                <converters:DateToStringConverter x:Key="DateToStringConverter"/>
            </ResourceDictionary>
         </StackLayout.Resources>
-        <Grid Background="Teal" HorizontalOptions="FillAndExpand" Padding="15" VerticalOptions="FillAndExpand">
+        <Grid BackgroundColor="White" HorizontalOptions="FillAndExpand" Padding="15" VerticalOptions="FillAndExpand">
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*" />
                 <RowDefinition Height="*"/>
@@ -36,9 +36,9 @@
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
                 Text="{Binding Note.Title}"
-                FontSize="Title"
+                FontSize="Medium"
                 WidthRequest="200"
-                BackgroundColor="Aqua"
+                TextColor="DimGray"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="Start"/>
             
@@ -52,7 +52,7 @@
                 WidthRequest="500"
                 Text="{Binding Note.Description}"
                 FontSize="Caption"
-                BackgroundColor="Aqua"
+                BackgroundColor="LightGray"
                 VerticalOptions="StartAndExpand"
                 HorizontalOptions="StartAndExpand"/>
             
@@ -60,7 +60,7 @@
                 Grid.Row="3"
                 Grid.Column="0"
                 Text="Creator:"
-                BackgroundColor="Aquamarine"
+                TextColor="DimGray"
                 FontSize="Medium"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="Start"/>
@@ -69,7 +69,7 @@
                 Grid.Row="3"
                 Grid.Column="1"
                 Text="{Binding Note.Creator}"
-                BackgroundColor="Aquamarine"
+                TextColor="DimGray"
                 FontSize="Medium"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="Start"/>
@@ -78,6 +78,7 @@
                 Grid.Row="4"
                 Grid.Column="0"
                 Text="LastModified:"
+                TextColor="DimGray"
                 FontSize="Micro"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="End"/>
@@ -85,6 +86,7 @@
                 Grid.Row="4"
                 Grid.Column="1"
                 Text="{Binding Note.LastModified, Converter={StaticResource DateToStringConverter}}"
+                TextColor="DimGray"
                 FontSize="Micro"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="Start"/>
