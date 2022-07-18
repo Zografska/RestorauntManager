@@ -116,8 +116,13 @@
                             Value="System">
                             <RadioButton.Content>
                                 <StackLayout HorizontalOptions="Center" VerticalOptions="Center" >
-                                    <Image Scale="0.75" Source="{FontImage FontFamily=FontAwesomeBrands, Glyph={x:Static fontAwesome:FontAwesomeIcons.Gear}, Color=#323130}" />
                                     <Label
+                                        HorizontalOptions="CenterAndExpand"
+                                        FontFamily="{StaticResource FontAwesomeSolid}"
+                                        Text="{x:Static fontAwesome:FontAwesomeIcons.Gear}"
+                                        TextColor="#323130" />
+                                    <Label
+                                        HorizontalOptions="CenterAndExpand"
                                         FontSize="Small"
                                         Text="System"
                                         TextColor="#323130" />
@@ -131,8 +136,13 @@
                             Value="Light">
                             <RadioButton.Content>
                                 <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                                    <Image Scale="0.75" Source="{FontImage FontFamily=FontAwesomeBrands, Glyph={x:Static fontAwesome:FontAwesomeIcons.Sun}, Color=#323130}" />
                                     <Label
+                                        HorizontalOptions="CenterAndExpand"
+                                        FontFamily="{StaticResource FontAwesomeRegular}"  
+                                        Text="{x:Static fontAwesome:FontAwesomeIcons.Lightbulb}"
+                                        TextColor="#323130" />
+                                    <Label
+                                        HorizontalOptions="CenterAndExpand"
                                         FontSize="Small"
                                         Text="Light"
                                         TextColor="#323130" />
@@ -146,8 +156,13 @@
                             Value="Dark">
                             <RadioButton.Content>
                                 <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                                    <Image Scale="0.75" Source="{FontImage FontFamily=FontAwesomeBrands, Glyph={x:Static fontAwesome:FontAwesomeIcons.Moon}, Color=#323130}" />
                                     <Label
+                                        HorizontalOptions="CenterAndExpand"
+                                        FontFamily="{StaticResource FontAwesomeRegular}"
+                                        Text="{x:Static fontAwesome:FontAwesomeIcons.Moon}"
+                                        TextColor="#323130" />
+                                    <Label
+                                        HorizontalOptions="CenterAndExpand"
                                         FontSize="Small"
                                         Text="Dark"
                                         TextColor="#323130" />
