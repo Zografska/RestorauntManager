@@ -4,6 +4,7 @@ using RestaurantManager.Core.DatabaseService;
 using RestaurantManager.Extensions;
 using RestaurantManager.Pages;
 using RestaurantManager.Pages.Reservations;
+using RestaurantManager.Pages.Settings;
 using RestaurantManager.Popups;
 using RestaurantManager.Services;
 using Xamarin.Forms;
@@ -27,6 +28,7 @@ namespace RestaurantManager
             containerRegistry.RegisterForNavigation<NotesPage, NotesViewModel>();
             containerRegistry.RegisterForNavigation<ShiftsPage, ShiftsViewModel>();
             containerRegistry.RegisterForNavigation<ReservationsPage, ReservationsPageViewModel>();
+            containerRegistry.RegisterForNavigation<SettingsPage, SettingsPageViewModel>();
 
             containerRegistry.RegisterPopup<NotePopup, NotePopupViewModel>();
             containerRegistry.RegisterPopup<ShiftPopup, ShiftPopupViewModel>();

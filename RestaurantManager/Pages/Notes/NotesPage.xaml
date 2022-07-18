@@ -17,7 +17,10 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout
+            BackgroundColor="{AppThemeBinding 
+            Light={StaticResource WindowBackgroundColor},
+            Dark={StaticResource WindowBackgroundColorDark}}">
             <ListView Margin="0,20,0,0" HorizontalOptions="FillAndExpand" ItemsSource="{Binding Items}">
                 <ListView.Behaviors>
                     <behaviors:EventToCommandBehavior
@@ -38,6 +41,7 @@
                                 <Label 
                                     Grid.Column="0"
                                     Text="{Binding Title}"
+                                    TextColor="DimGray"
                                     LineBreakMode="TailTruncation"
                                     FontAttributes="Bold"/>
                             
@@ -45,6 +49,7 @@
                                     Grid.Column="1"
                                     Grid.RowSpan="2"
                                     Text="{Binding Description}" 
+                                    TextColor="DimGray"
                                     LineBreakMode="TailTruncation" 
                                     HorizontalTextAlignment="Start"/>
                             

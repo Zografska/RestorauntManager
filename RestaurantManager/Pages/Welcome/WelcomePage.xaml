@@ -12,9 +12,11 @@
              x:Class="RestaurantManager.WelcomePage">
 
     <StackLayout Spacing="0">
-        <Grid BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Grid BackgroundColor="{AppThemeBinding 
+        Light={StaticResource WindowBackgroundColor},
+        Dark={StaticResource WindowBackgroundColorDark}}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
+                <RowDefinition Height="*" /> 
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
@@ -45,7 +47,13 @@
             </controls:GridButton>
             <controls:GridButton Grid.Row="1" Grid.Column="1" Text="Employees"/>
             <controls:GridButton Grid.Row="2" Grid.Column="0" Text="Inventory"/>
-            <controls:GridButton Grid.Row="2" Grid.Column="1" Text="Settings"/>
+            <controls:GridButton Grid.Row="2" Grid.Column="1" Text="Settings">
+                <controls:GridButton.Behaviors>
+                    <behaviors:EventToCommandBehavior
+                        EventName="Clicked"
+                        Command="{Binding  NavigateToSettingsCommand}"/>
+                </controls:GridButton.Behaviors>
+            </controls:GridButton>
 
         </Grid>
     </StackLayout>
