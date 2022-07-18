@@ -19,6 +19,7 @@ namespace RestaurantManager
         public ICommand NavigateToShiftsCommand { get; }
         public ICommand NavigateToReservationsCommand { get; }
         public ICommand NavigateToSettingsCommand { get; set; }
+        public ICommand NavigateToInventoryCommand { get; set; }
 
         public WelcomePageViewModel(INavigationService navigationService, IPopupService popupService, DatabaseServiceRemote databaseServiceRemote) : base(navigationService, popupService)
         {
@@ -27,6 +28,7 @@ namespace RestaurantManager
             NavigateToShiftsCommand = new Command(NavigateToShiftsPage);
             NavigateToReservationsCommand = new Command(NavigateToReservationsPage);
             NavigateToSettingsCommand = new Command(NavigateToSettingsPage);
+            NavigateToInventoryCommand = new Command(NavigateToInventoryPage);
         }
 
         private async void NavigateToReservationsPage()
@@ -47,6 +49,11 @@ namespace RestaurantManager
         private async void NavigateToSettingsPage()
         {
             await NavigationService.NavigateTo<SettingsPage>();
+        }
+
+        private async void NavigateToInventoryPage()
+        {
+            await NavigationService.NavigateTo<InventoryPage>();
         }
     }
 }
