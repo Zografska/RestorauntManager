@@ -47,7 +47,7 @@ namespace RestaurantManager.Pages.Welcome
 
         private async void NavigateToNotesPage()
         {
-            await NavigationService.NavigateTo<NotesTabbedPage>();
+            await NavigationService.NavigateTo<NotesPage>();
         }
 
         private async void NavigateToShiftsPage()

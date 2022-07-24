@@ -33,7 +33,6 @@ namespace RestaurantManager
             containerRegistry.RegisterForNavigation<SignupPage, SignupPageViewModel>();
             containerRegistry.RegisterForNavigation<ResetPasswordPage, ResetPasswordPageViewModel>();
             containerRegistry.RegisterForNavigation<WelcomePage, WelcomePageViewModel>();
-            containerRegistry.RegisterForNavigation<NotesTabbedPage, NotesTabbedPageViewModel>();
             containerRegistry.RegisterForNavigation<NotesPage, NotesViewModel>();
             containerRegistry.RegisterForNavigation<ShiftsPage, ShiftsViewModel>();
             containerRegistry.RegisterForNavigation<ReservationsPage, ReservationsPageViewModel>();
