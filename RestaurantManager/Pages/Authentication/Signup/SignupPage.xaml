@@ -19,6 +19,14 @@
             Margin="0, 20" />
         
         <Entry
+            Placeholder="Name"
+            Text="{Binding Name}" />
+        
+        <Entry
+            Placeholder="Surname"
+            Text="{Binding Surname}" />
+        
+        <Entry
             Placeholder="E-mail"
             Keyboard="Email"
             Text="{Binding Email}" />

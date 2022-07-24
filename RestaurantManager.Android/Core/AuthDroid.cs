@@ -25,17 +25,16 @@ namespace RestaurantManager.Droid.Core
             }
         }
 
-        public async Task<bool> SignUpWithEmailPassword(string email, string password)
+        public async Task<string> SignUpWithEmailPassword(string email, string password)
         {
             try
             {
-                var signUpTask = FirebaseAuth.Instance.CreateUserWithEmailAndPassword(email, password);
-
-                return signUpTask.Result != null;
+                IAuthResult authResult = await FirebaseAuth.Instance.CreateUserWithEmailAndPasswordAsync(email, password);
+                return authResult.User.Uid;
             }
             catch (Exception e)
             {
-                return false;
+                return string.Empty;
             }
         }
 

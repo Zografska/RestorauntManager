@@ -28,18 +28,18 @@ namespace RestaurantManager.iOS.Core
 
         }
 
-        public async Task<bool> SignUpWithEmailPassword(string email, string password)
+        public async Task<string> SignUpWithEmailPassword(string email, string password)
         {
             try
             {
                 var signUpTask = Auth.DefaultInstance.CreateUserAsync(email, password);
-                var res = await signUpTask;
-                return signUpTask.Result != null;
+                AuthDataResult res = await signUpTask;
+                return res.User.Uid;
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                return false;
+                return string.Empty;
             }
         }
 

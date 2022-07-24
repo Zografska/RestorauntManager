@@ -2,7 +2,6 @@
 using Prism.DryIoc;
 using Prism.Ioc;
 using RestaurantManager.Core.DatabaseService;
-using RestaurantManager.Core.Authentication;
 using RestaurantManager.Extensions;
 using RestaurantManager.Pages;
 using RestaurantManager.Pages.Authentication.Login;
@@ -24,6 +23,7 @@ namespace RestaurantManager
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            containerRegistry.RegisterSingleton<IProfileService, ProfileService>();
             containerRegistry.RegisterSingleton<IPopupService, PopupService>();
             containerRegistry.RegisterSingleton<INoteService, NoteService>();
             containerRegistry.RegisterSingleton<IShiftsService, ShiftsService>();
