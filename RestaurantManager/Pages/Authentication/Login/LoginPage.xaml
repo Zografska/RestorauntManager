@@ -72,6 +72,13 @@
                 BackgroundColor="Transparent"
                 TextColor="Blue"
                 Command="{Binding NavigateToResetPasswordCommand}"/>
+            
+            <Button
+                Text="Login As Sadmin"
+                Margin="60, 40"
+                BackgroundColor="#4682B4"
+                TextColor="White"
+                Command="{Binding LoginAsSadminCommand}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

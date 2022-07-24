@@ -12,6 +12,8 @@ namespace RestaurantManager.Pages.Authentication.Login
 {
     public class LoginPageViewModel : PageViewModelBase
     {
+        private readonly string SADMIN_EMAIL = "aleksandrazografska@halicea.com";
+        private readonly string SADMIN_PASS = "zografska1";
         private string _username { get; set; }
         private string _password { get; set; }
         private bool _usernameValid { get; set; }
@@ -19,6 +21,7 @@ namespace RestaurantManager.Pages.Authentication.Login
 
         public bool IsLoginPossible => _usernameValid && _passwordValid;
         public ICommand LoginCommand { get; set; }
+        public ICommand LoginAsSadminCommand { get; set; }
         public ICommand NavigateToSignupCommand { get; set; }
         public ICommand NavigateToResetPasswordCommand { get; set; }
         public bool PasswordValid
@@ -59,9 +62,23 @@ namespace RestaurantManager.Pages.Authentication.Login
         public LoginPageViewModel(INavigationService navigationService, IPopupService popupService, IAuthService auth) 
             : base(navigationService, popupService, auth)
         {
-            LoginCommand = new SingleClickCommand(Login);
+            LoginCommand = new SingleClickCommand(Login, () => IsLoginPossible);
             NavigateToSignupCommand = new SingleClickCommand(NavigateToSignup);
             NavigateToResetPasswordCommand = new SingleClickCommand(NavigateToResetPassword);
+            LoginAsSadminCommand = new SingleClickCommand(LoginAsSadmin);
+        }
+
+        private async void LoginAsSadmin()
+        {
+            var token = await AuthService.LoginWithEmailPassword(SADMIN_EMAIL, SADMIN_PASS);
+            if (!token.IsNullOrEmpty())
+            {
+                await NavigationService.NavigateTo<WelcomePage>();
+            }
+            else
+            {
+                DisplayAlert(Constants.AlertConstants.LoginUnsuccessfulAlert);
+            }
         }
 
         private async void NavigateToResetPassword()
