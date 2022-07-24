@@ -16,8 +16,7 @@ namespace RestaurantManager.Droid.Core
             try 
             {
                 var user = await FirebaseAuth.Instance.SignInWithEmailAndPasswordAsync(email, password);
-                var token = await user.User.GetIdToken(false);
-                return token.ToString();
+                return user.User.Uid;
             } 
             catch(FirebaseAuthInvalidUserException e)
             {
