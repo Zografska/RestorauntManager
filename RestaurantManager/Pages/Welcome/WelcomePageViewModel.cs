@@ -6,6 +6,7 @@ using RestaurantManager.Pages.Base;
 using RestaurantManager.Pages.Notes;
 using RestaurantManager.Pages.Reservations;
 using RestaurantManager.Services;
+using RestaurantManager.Services.Network;
 using RestaurantManager.Utility;
 using XCT.Popups.Prism;
 
@@ -20,7 +21,8 @@ namespace RestaurantManager.Pages.Welcome
         public ICommand LogoutCommand { get; }
 
         public WelcomePageViewModel(INavigationService navigationService, IPopupService popupService,
-            IAuthService authService, IProfileService profileService) : base(navigationService, popupService, authService)
+            IAuthService authService, IProfileService profileService, INetworkService networkService) 
+            : base(navigationService, popupService, authService, networkService)
         {
             Title = "Restaurant Manager";
             NavigateToNotesCommand = new SingleClickCommand(NavigateToNotesPage);

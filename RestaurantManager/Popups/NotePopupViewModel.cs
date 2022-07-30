@@ -3,6 +3,7 @@ using Prism.Navigation;
 using RestaurantManager.Model;
 using RestaurantManager.PopUps;
 using RestaurantManager.Services;
+using RestaurantManager.Services.Network;
 using RestaurantManager.Utility;
 using Xamarin.Forms;
 using XCT.Popups.Prism;
@@ -29,7 +30,9 @@ namespace RestaurantManager.Popups
         public ICommand SaveCommand { get; }
         public Command DeleteCommand { get; }
 
-        public NotePopupViewModel(INavigationService navigationService, IPopupService popupService, INoteService noteService) : base(navigationService, popupService)
+        public NotePopupViewModel(INavigationService navigationService, IPopupService popupService,
+            INoteService noteService, INetworkService networkService) 
+            : base(navigationService, popupService, networkService)
         {
             NoteService = noteService;
             DeleteCommand = new Command(DeleteNote);

@@ -15,6 +15,7 @@
     <PackageReference Include="Plugin.XCalendar" Version="2.1.0" />
     <PackageReference Include="Prism.DryIoc.Forms" Version="8.1.97" />
     <PackageReference Include="Prism.Plugin.Popups" Version="8.0.76" />
+    <PackageReference Include="System.Reactive" Version="5.0.0" />
     <PackageReference Include="System.Text.Json" Version="7.0.0-preview.5.22301.12" />
     <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.1" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />

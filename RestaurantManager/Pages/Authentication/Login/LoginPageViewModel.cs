@@ -5,6 +5,7 @@ using RestaurantManager.Extensions;
 using RestaurantManager.Pages.Authentication.ResetPassword;
 using RestaurantManager.Pages.Authentication.Signup;
 using RestaurantManager.Pages.Base;
+using RestaurantManager.Services.Network;
 using RestaurantManager.Utility;
 using XCT.Popups.Prism;
 
@@ -59,8 +60,9 @@ namespace RestaurantManager.Pages.Authentication.Login
             }
         }
         
-        public LoginPageViewModel(INavigationService navigationService, IPopupService popupService, IAuthService auth) 
-            : base(navigationService, popupService, auth)
+        public LoginPageViewModel(INavigationService navigationService, IPopupService popupService, 
+            IAuthService authService, INetworkService networkService) 
+            : base(navigationService, popupService, authService, networkService)
         {
             LoginCommand = new SingleClickCommand(Login, () => IsLoginPossible);
             NavigateToSignupCommand = new SingleClickCommand(NavigateToSignup);

@@ -3,6 +3,7 @@ using Prism.Navigation;
 using RestaurantManager.Model;
 using RestaurantManager.PopUps;
 using RestaurantManager.Services;
+using RestaurantManager.Services.Network;
 using RestaurantManager.Utility;
 using Xamarin.Forms;
 using XCT.Popups.Prism;
@@ -31,7 +32,8 @@ namespace RestaurantManager.Popups
         public Command DeleteCommand { get; }
 
         public ShiftPopupViewModel(INavigationService navigationService, IPopupService popupService,
-            IShiftsService shiftsService) : base(navigationService, popupService)
+            IShiftsService shiftsService, INetworkService networkService) 
+            : base(navigationService, popupService, networkService)
         {
             ShiftsService = shiftsService;
             SaveCommand = new Command(SaveShift);

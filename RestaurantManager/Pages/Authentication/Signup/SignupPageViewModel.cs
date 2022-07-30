@@ -4,6 +4,7 @@ using RestaurantManager.Core.Authentication;
 using RestaurantManager.Extensions;
 using RestaurantManager.Pages.Base;
 using RestaurantManager.Services;
+using RestaurantManager.Services.Network;
 using RestaurantManager.Utility;
 using Xamarin.Forms;
 using XCT.Popups.Prism;
@@ -20,7 +21,8 @@ namespace RestaurantManager.Pages.Authentication.Signup
         public string Password { get; set; }
         
         public SignupPageViewModel(INavigationService navigationService, IPopupService popupService,
-            IAuthService authService, IProfileService profileService) : base(navigationService, popupService, authService)
+            IAuthService authService, IProfileService profileService, INetworkService networkService)
+            : base(navigationService, popupService, authService, networkService)
         {
             SignUpCommand = new SingleClickCommand(SignUpUser);
             _profileService = profileService;

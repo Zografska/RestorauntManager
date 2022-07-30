@@ -4,6 +4,7 @@ using RestaurantManager.Core.DatabaseService;
 using RestaurantManager.Model;
 using RestaurantManager.Popups;
 using RestaurantManager.Services;
+using RestaurantManager.Services.Network;
 using RestaurantManager.Utility;
 using Xamarin.Forms;
 using XCT.Popups.Prism;
@@ -25,7 +26,8 @@ namespace RestaurantManager.Pages.Notes
         }
         public ICommand ChangeItemsCommand { get; set; }
         public NotesViewModel(INavigationService navigationService, IPopupService popupService, 
-            DatabaseServiceRemote databaseServiceRemote, INoteService noteService) : base(navigationService, popupService, databaseServiceRemote)
+            DatabaseServiceRemote databaseServiceRemote, INoteService noteService, INetworkService networkService) 
+            : base(navigationService, popupService, databaseServiceRemote, networkService)
         {
             Title = XamlConstants.MyNotes;
             _noteService = noteService;

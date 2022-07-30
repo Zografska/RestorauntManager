@@ -4,6 +4,7 @@ using Prism.Navigation;
 using RestaurantManager.Core.DatabaseService;
 using RestaurantManager.Extensions;
 using RestaurantManager.Model;
+using RestaurantManager.Services.Network;
 using RestaurantManager.Utility;
 using XCT.Popups.Prism;
 
@@ -24,8 +25,9 @@ namespace RestaurantManager.Pages
             set => SetProperty(ref _items, value);
         }
 
-        protected ListViewModel(INavigationService navigationService, IPopupService popupService, DatabaseServiceRemote databaseServiceRemote) : base(
-            navigationService, popupService)
+        protected ListViewModel(INavigationService navigationService, IPopupService popupService,
+            DatabaseServiceRemote databaseServiceRemote, INetworkService networkService) 
+            : base(navigationService, popupService, networkService)
         {
             _databaseServiceRemote = databaseServiceRemote;
             

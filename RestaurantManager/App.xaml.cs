@@ -12,6 +12,7 @@ using RestaurantManager.Pages.Reservations;
 using RestaurantManager.Pages.Welcome;
 using RestaurantManager.Popups;
 using RestaurantManager.Services;
+using RestaurantManager.Services.Network;
 using Xamarin.Forms;
 using XCT.Popups.Prism;
 
@@ -27,6 +28,7 @@ namespace RestaurantManager
             containerRegistry.RegisterSingleton<IPopupService, PopupService>();
             containerRegistry.RegisterSingleton<INoteService, NoteService>();
             containerRegistry.RegisterSingleton<IShiftsService, ShiftsService>();
+            containerRegistry.RegisterSingleton<INetworkService, NetworkService>();
             
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();

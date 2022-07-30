@@ -1,6 +1,7 @@
 using Prism.AppModel;
 using Prism.Mvvm;
 using Prism.Navigation;
+using RestaurantManager.Services.Network;
 using Xamarin.Forms;
 using XCT.Popups.Prism;
 
@@ -11,6 +12,7 @@ namespace RestaurantManager
     {
         protected INavigationService NavigationService { get; }
         protected IPopupService PopupService { get; }
+        protected INetworkService NetworkService { get; }
 
         private string _title;
 
@@ -20,10 +22,11 @@ namespace RestaurantManager
             set { SetProperty(ref _title, value); }
         }
 
-        public ViewModelBase(INavigationService navigationService, IPopupService popupService)
+        public ViewModelBase(INavigationService navigationService, IPopupService popupService, INetworkService networkService)
         {
             NavigationService = navigationService;
             PopupService = popupService;
+            NetworkService = networkService;
         }
 
         public virtual void OnNavigatedFrom(INavigationParameters parameters)

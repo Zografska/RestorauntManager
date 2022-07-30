@@ -3,6 +3,7 @@ using Prism.Navigation;
 using RestaurantManager.Core.Authentication;
 using RestaurantManager.Extensions;
 using RestaurantManager.Pages.Base;
+using RestaurantManager.Services.Network;
 using RestaurantManager.Utility;
 using XCT.Popups.Prism;
 
@@ -13,7 +14,8 @@ namespace RestaurantManager.Pages.Authentication.ResetPassword
         public ICommand ResetPasswordCommand { get; }
         public string Email { get; set; }
         public ResetPasswordPageViewModel(INavigationService navigationService, IPopupService popupService,
-            IAuthService authService) : base(navigationService, popupService, authService)
+            IAuthService authService, INetworkService networkService) 
+            : base(navigationService, popupService, authService, networkService)
         {
             ResetPasswordCommand = new SingleClickCommand(ResetPassword);
         }
