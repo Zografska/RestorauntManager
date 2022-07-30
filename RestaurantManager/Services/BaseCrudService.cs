@@ -7,6 +7,7 @@ using RestaurantManager.Core.Authentication;
 using RestaurantManager.Core.DatabaseService;
 using RestaurantManager.Extensions;
 using RestaurantManager.Model;
+using RestaurantManager.Services.Network;
 
 namespace RestaurantManager.Services
 {
@@ -14,10 +15,13 @@ namespace RestaurantManager.Services
     {
         private readonly DatabaseServiceRemote _databaseServiceRemote;
         protected readonly IAuthService AuthService;
-        protected BaseCrudService(DatabaseServiceRemote databaseServiceRemote, IAuthService authService)
+        protected readonly INetworkService NetworkService;
+        protected BaseCrudService(DatabaseServiceRemote databaseServiceRemote, IAuthService authService,
+            INetworkService networkService)
         {
             _databaseServiceRemote = databaseServiceRemote;
             AuthService = authService;
+            NetworkService = networkService;
         }
 
         public async Task<T> GetById(int id)

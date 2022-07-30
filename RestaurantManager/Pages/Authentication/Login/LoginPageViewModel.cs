@@ -72,14 +72,21 @@ namespace RestaurantManager.Pages.Authentication.Login
 
         private async void LoginAsSadmin()
         {
-            var token = await AuthService.LoginWithEmailPassword(SADMIN_EMAIL, SADMIN_PASS);
-            if (!token.IsNullOrEmpty())
+            if (NetworkService.IsNetworkConnected())
             {
-                await NavigationService.NavigateTo<WelcomePage>();
+                var token = await AuthService.LoginWithEmailPassword(SADMIN_EMAIL, SADMIN_PASS);
+                if (!token.IsNullOrEmpty())
+                {
+                    await NavigationService.NavigateTo<WelcomePage>();
+                }
+                else
+                {
+                    DisplayAlert(Constants.AlertConstants.LoginUnsuccessfulAlert);
+                }
             }
             else
             {
-                DisplayAlert(Constants.AlertConstants.LoginUnsuccessfulAlert);
+                DisplayAlert(Constants.AlertConstants.NoInternet);
             }
         }
 
@@ -95,15 +102,22 @@ namespace RestaurantManager.Pages.Authentication.Login
 
         private async void Login()
         {
-            var token = await AuthService.LoginWithEmailPassword(Username, Password);
-            if (!token.IsNullOrEmpty())
+            if (NetworkService.IsNetworkConnected())
             {
-                await NavigationService.NavigateTo<WelcomePage>();
-                ClearCredentials();
+                var token = await AuthService.LoginWithEmailPassword(Username, Password);
+                if (!token.IsNullOrEmpty())
+                {
+                    await NavigationService.NavigateTo<WelcomePage>();
+                    ClearCredentials();
+                }
+                else
+                {
+                    DisplayAlert(Constants.AlertConstants.LoginUnsuccessfulAlert);
+                } 
             }
             else
             {
-                DisplayAlert(Constants.AlertConstants.LoginUnsuccessfulAlert);
+                DisplayAlert(Constants.AlertConstants.NoInternet);
             }
         }
 

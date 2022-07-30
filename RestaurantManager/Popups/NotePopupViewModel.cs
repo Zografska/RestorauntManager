@@ -60,19 +60,33 @@ namespace RestaurantManager.Popups
         
         private async void SaveNote()
         {
-            var updatedNote = await NoteService.Save(Note);
-            var parameters = new PopupParameters { { Constants.NavigationConstants.ItemUpdated, updatedNote } };
-            UpdateCommand.Execute(parameters);
+            if (NetworkService.IsNetworkConnected())
+            {
+                var updatedNote = await NoteService.Save(Note);
+                var parameters = new PopupParameters { { Constants.NavigationConstants.ItemUpdated, updatedNote } };
+                UpdateCommand.Execute(parameters);
+            }
+            else
+            {
+                DisplayAlert(Constants.AlertConstants.NoInternet);
+            }
         }
         
         private async void DeleteNote()
         {
            var answer = await Application.Current.MainPage.DisplayAlert("Delete Note", "Do you want to delete this note?", "Yes", "No");
-           if (answer)
+           
+           if(!answer) return;
+          
+           if (NetworkService.IsNetworkConnected())
            {
                var itemDeleted = await NoteService.RemoveById(Note.Id);
                var parameters = new PopupParameters { {  Constants.NavigationConstants.ItemDeleted, itemDeleted } };
                UpdateCommand.Execute(parameters);
+           }
+           else
+           {
+               DisplayAlert(Constants.AlertConstants.NoInternet);
            }
         }
     }

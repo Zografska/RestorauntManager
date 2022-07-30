@@ -35,14 +35,20 @@ namespace RestaurantManager.Pages.Authentication.Signup
                 DisplayAlert("Fill in all the blanks");
                 return;
             }
-            
-            var result = await AuthService.SignUpWithEmailPassword(Email, Password);
-            if (!result.IsNullOrEmpty())
+            if (NetworkService.IsNetworkConnected())
             {
-                _ = _profileService.CreateUser(result, Name, Surname, Email);
+                var result = await AuthService.SignUpWithEmailPassword(Email, Password);
+                if (!result.IsNullOrEmpty())
+                {
+                    _ = _profileService.CreateUser(result, Name, Surname, Email);
+                }
+                var resultMessage = !result.IsNullOrEmpty() ? "User is successfully signed in" : "User is not signed in";
+                DisplayAlert(resultMessage);
             }
-            var resultMessage = !result.IsNullOrEmpty() ? "User is successfully signed in" : "User is not signed in";
-            DisplayAlert(resultMessage);
+            else
+            {
+                DisplayAlert(Constants.AlertConstants.NoInternet);
+            }
             await NavigationService.GoBackAsync();
         }
     }

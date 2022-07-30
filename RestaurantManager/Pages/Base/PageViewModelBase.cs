@@ -2,6 +2,7 @@ using System;
 using Prism.Navigation;
 using RestaurantManager.Core.Authentication;
 using RestaurantManager.Services.Network;
+using RestaurantManager.Utility;
 using XCT.Popups.Prism;
 
 namespace RestaurantManager.Pages.Base
@@ -19,7 +20,11 @@ namespace RestaurantManager.Pages.Base
             {
                 if (!message.IsConnected)
                 {
-                    DisplayAlert("Please connect to the internet");
+                    DisplayAlert(Constants.AlertConstants.NoInternet);
+                }
+                else
+                {
+                    DisplayAlert(Constants.AlertConstants.BackOnline);
                 }
             });
         }

@@ -26,8 +26,16 @@ namespace RestaurantManager.Pages.Authentication.ResetPassword
             {
                 return;
             }
-            await AuthService.ResetPassword(Email);
-            DisplayAlert(Constants.AlertConstants.ResetInstructionsSent);
+            
+            if (NetworkService.IsNetworkConnected())
+            {
+                await AuthService.ResetPassword(Email);
+                DisplayAlert(Constants.AlertConstants.ResetInstructionsSent);
+            }
+            else
+            {
+                DisplayAlert(Constants.AlertConstants.NoInternet);
+            }
         }
     }
 }

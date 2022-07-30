@@ -34,14 +34,21 @@ namespace RestaurantManager.Pages.Welcome
 
         private void Logout()
         {
-            var successful = AuthService.Logout();
-            if (successful)
+            if (NetworkService.IsNetworkConnected())
             {
-                NavigationService.GoBackToRootAsync();
+                var successful = AuthService.Logout();
+                if (successful)
+                {
+                    NavigationService.GoBackToRootAsync();
+                }
+                else
+                {
+                    DisplayAlert(Constants.AlertConstants.LogoutUnsuccessful);
+                }
             }
             else
             {
-                DisplayAlert(Constants.AlertConstants.LogoutUnsuccessful);
+                DisplayAlert(Constants.AlertConstants.NoInternet);
             }
         }
 

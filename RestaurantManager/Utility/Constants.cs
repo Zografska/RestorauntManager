@@ -14,7 +14,9 @@ namespace RestaurantManager.Utility
         {
             public const string LoginUnsuccessfulAlert = "Login unsuccessful. \n Please try again";
             public const string ResetInstructionsSent = "Reset instructions sent to your email";
-            public static string LogoutUnsuccessful = "There was some trouble in logging you out \n Please try again";
+            public const string LogoutUnsuccessful = "There was some trouble in logging you out \n Please try again";
+            public const string NoInternet = "Please connect to the internet :( <3";
+            public const string BackOnline = "You're back online :)";
         }
     }
 }

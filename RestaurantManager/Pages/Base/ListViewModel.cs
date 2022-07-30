@@ -38,7 +38,15 @@ namespace RestaurantManager.Pages
         public override async void OnAppearing()
         {
             base.OnAppearing();
-            Items = await _databaseServiceRemote.GetAll<T>();
+           
+            if (NetworkService.IsNetworkConnected())
+            {
+                Items = await _databaseServiceRemote.GetAll<T>();
+            }
+            else
+            {
+                DisplayAlert(Constants.AlertConstants.NoInternet);
+            }
         }
 
         private void HandlePopupResult(IPopupParameters resultParameters, T oldItem = null)

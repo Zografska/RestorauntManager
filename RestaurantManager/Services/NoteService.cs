@@ -6,14 +6,16 @@ using RestaurantManager.Core.Authentication;
 using RestaurantManager.Core.DatabaseService;
 using RestaurantManager.Extensions;
 using RestaurantManager.Model;
+using RestaurantManager.Services.Network;
+using RestaurantManager.Utility;
 
 
 namespace RestaurantManager.Services
 {
     public class NoteService : BaseCrudService<Note>, INoteService
     {
-        public NoteService(DatabaseServiceRemote databaseServiceRemote, IAuthService authService)
-            : base(databaseServiceRemote, authService)
+        public NoteService(DatabaseServiceRemote databaseServiceRemote, IAuthService authService,
+            INetworkService networkService) : base(databaseServiceRemote, authService, networkService)
         { }
 
         public override Task<Note> Save(Note note)
@@ -34,9 +36,14 @@ namespace RestaurantManager.Services
 
         public async Task<ObservableCollection<Note>> GetNotesByUser()
         { 
-            var currentUser = AuthService.GetCurrentProfile();
-            var allNotes = await GetAll();
-            return allNotes.Where(note => note.CreatorUid == currentUser).ToObservableCollection();
+            if (NetworkService.IsNetworkConnected())
+            {
+                var currentUser = AuthService.GetCurrentProfile();
+                var allNotes = await GetAll();
+                return allNotes.Where(note => note.CreatorUid == currentUser).ToObservableCollection();
+            }
+           
+            return new ObservableCollection<Note>();
         }
 
         public async Task<ObservableCollection<Note>> GetNotesSharedWithUser()
