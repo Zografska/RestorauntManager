@@ -18,10 +18,15 @@
              x:Class="RestaurantManager.WelcomePage">
     <base:BasePage.ContentValue>
         <StackLayout Spacing="0">
-        <Grid BackgroundColor="CadetBlue" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+       
+            <Grid HorizontalOptions="FillAndExpand" 
+                  VerticalOptions="FillAndExpand"
+                  Margin="30, 30">
             <Grid.RowDefinitions>
+                <RowDefinition Height="3*" />
                 <RowDefinition Height="*" />
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
@@ -29,16 +34,51 @@
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-    
-    
+                
+                <!-- This frame is a placeholder for displaying some profile info -->
+                <Frame
+                    Padding="10"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Grid.RowSpan="2"
+                    HorizontalOptions="FillAndExpand"
+                    HasShadow="False"
+                    BackgroundColor="AntiqueWhite"
+                    BorderColor="Chocolate"
+                    VerticalOptions="FillAndExpand"
+                    CornerRadius="10">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavigateToNotesCommand}"/>
+                    </Frame.GestureRecognizers>
+                    <Label
+                        Text="Welcome User"
+                        FontSize="20"
+                        TextColor="Chocolate"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"/>
+                </Frame>
+                
+                <BoxView Grid.Column="0" 
+                         Grid.ColumnSpan="2" 
+                         Grid.Row="2"  
+                         Color="#88D2691E" 
+                         Margin="5"
+                         VerticalOptions="Center"
+                         HeightRequest="2"/>
+                
             <Frame
                 Margin="10"
                 Padding="10"
-                Grid.Row="0"
+                Grid.Row="3"
                 Grid.Column="0"
-                BackgroundColor="DimGray"
-                CornerRadius="10"
-                BorderColor="Coral">
+                HasShadow="False"
+                BackgroundColor="Chocolate"
+                BorderColor="AntiqueWhite"
+                CornerRadius="20">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding NavigateToNotesCommand}"/>
                 </Frame.GestureRecognizers>
@@ -54,11 +94,13 @@
             <Frame
                 Margin="10"
                 Padding="10"
-                Grid.Row="0"
+                Grid.Row="3"
                 Grid.Column="1"
-                BackgroundColor="DimGray"
-                CornerRadius="10"
-                BorderColor="Coral">
+                CornerRadius="20"
+                HasShadow="False"
+                BackgroundColor="Chocolate"
+                BorderColor="AntiqueWhite"
+                >
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding NavigateToNotesCommand}"/>
                 </Frame.GestureRecognizers>
@@ -74,11 +116,12 @@
             <Frame
                 Margin="10"
                 Padding="10"
-                Grid.Row="1"
+                Grid.Row="4"
                 Grid.Column="0"
-                BackgroundColor="DimGray"
-                CornerRadius="10"
-                BorderColor="Coral">
+                HasShadow="False"
+                CornerRadius="20"
+                BackgroundColor="Chocolate"
+                BorderColor="White">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding NavigateToNotesCommand}"/>
                 </Frame.GestureRecognizers>
@@ -94,14 +137,13 @@
             <Frame
                 Margin="10"
                 Padding="10"
-                Grid.Row="1"
+                Grid.Row="4"
                 Grid.Column="1"
-                BackgroundColor="DimGray"
-                CornerRadius="10"
-                BorderColor="Coral">
-                <Frame.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding NavigateToNotesCommand}"/>
-                </Frame.GestureRecognizers>
+                CornerRadius="20"
+                HasShadow="False"
+                BackgroundColor="Chocolate"
+                BorderColor="AntiqueWhite">
+                
                 <Label
                     Text="Employees"
                     FontSize="20"
@@ -110,31 +152,7 @@
                     HorizontalTextAlignment="Center"
                     VerticalTextAlignment="Center"/>
             </Frame>
-    
-            <!-- <controls:GridButton  -->
-            <!--     Grid.Row="0"  -->
-            <!--     Grid.Column="0"  -->
-            <!--     Text="Notes"  -->
-            <!--     Command="{Binding NavigateToNotesCommand}"/> -->
-    
-            <!-- <controls:GridButton Grid.Row="1"  -->
-            <!--                      Grid.Column="0" -->
-            <!--                      Text="Shifts"  -->
-            <!--                      Command="{Binding NavigateToShiftsCommand}"/> -->
-            <!-- -->
-            <!-- <controls:GridButton Grid.Row="0"  -->
-            <!--                      Grid.Column="1"  -->
-            <!--                      Text="Reservations" -->
-            <!--                      Command="{Binding NavigateToReservationsCommand}"/> -->
-            <!--                       -->
-            <!-- <controls:GridButton Grid.Row="1" Grid.Column="1" Text="Employees"/> -->
-            <!-- <controls:GridButton Grid.Row="2" Grid.Column="0" Text="Inventory"/> -->
-            <!-- <controls:GridButton Grid.Row="2" Grid.Column="1" Text="Settings"/> -->
-            <!-- <controls:GridButton Grid.Row="3" -->
-            <!--                      Grid.Column="0" -->
-            <!--                      Text="Logout" -->
-            <!--                      Command="{Binding LogoutCommand}"/> -->
-        </Grid>
+            </Grid>
     </StackLayout>
         </base:BasePage.ContentValue>
 </base:BasePage>
