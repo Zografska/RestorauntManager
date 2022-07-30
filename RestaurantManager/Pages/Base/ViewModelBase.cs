@@ -1,7 +1,9 @@
+using System.Windows.Input;
 using Prism.AppModel;
 using Prism.Mvvm;
 using Prism.Navigation;
 using RestaurantManager.Services.Network;
+using RestaurantManager.Utility;
 using Xamarin.Forms;
 using XCT.Popups.Prism;
 
@@ -22,11 +24,18 @@ namespace RestaurantManager
             set { SetProperty(ref _title, value); }
         }
 
+        public ICommand NavigateBackCommand { get; }
         public ViewModelBase(INavigationService navigationService, IPopupService popupService, INetworkService networkService)
         {
             NavigationService = navigationService;
             PopupService = popupService;
             NetworkService = networkService;
+            NavigateBackCommand = new SingleClickCommand(NavigateBack);
+        }
+
+        private void NavigateBack()
+        {
+            NavigationService.GoBackAsync();
         }
 
         public virtual void OnNavigatedFrom(INavigationParameters parameters)

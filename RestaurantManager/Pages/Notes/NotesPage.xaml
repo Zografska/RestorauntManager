@@ -3,7 +3,6 @@
 <base:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                xmlns:base="clr-namespace:RestaurantManager.Pages.Base;assembly=RestaurantManager"
-               xmlns:vm="clr-namespace:RestaurantManager.Pages;assembly=RestaurantManager"
                xmlns:behaviors="http://prismlibrary.com"
                xmlns:converters="http://xamarin.com/schemas/2020/toolkit"
                x:Class="RestaurantManager.Pages.Notes.NotesPage"
@@ -19,10 +18,12 @@
             <converters:ItemTappedEventArgsConverter x:Key="ItemTappedEventArgsConverter"/>
         </ResourceDictionary>
     </ContentPage.Resources>
-    <ContentPage.Content>
+    <base:BasePage.ContentValue>
         <StackLayout>
             <ListView Margin="0,20,0,0"
                       HorizontalOptions="FillAndExpand"
+                      SeparatorVisibility="None"
+                      HasUnevenRows="False"
                       ItemsSource="{Binding Items}">
                 <ListView.Behaviors>
                     <behaviors:EventToCommandBehavior
@@ -40,18 +41,28 @@
                                     <ColumnDefinition Width="0.1*" />
                                 </Grid.ColumnDefinitions>
                             
-                                <Label 
-                                    Grid.Column="0"
-                                    Text="{Binding Title}"
-                                    LineBreakMode="TailTruncation"
-                                    FontAttributes="Bold"/>
+                                <StackLayout Grid.Column="0" Spacing="0">
+                                    <Label 
+                                        Text="Title"
+                                        FontSize="10"
+                                        FontAttributes="Bold"/>
+                                    <Label 
+                                        Text="{Binding Title}"
+                                        LineBreakMode="TailTruncation"
+                                        FontAttributes="Bold"/>
+                                </StackLayout>
                             
-                                <Label 
-                                    Grid.Column="1"
-                                    Grid.RowSpan="2"
-                                    Text="{Binding Description}" 
-                                    LineBreakMode="TailTruncation" 
-                                    HorizontalTextAlignment="Start"/>
+                                <StackLayout Grid.Column="1" Spacing="0">
+                                    <Label 
+                                        Text="Description"
+                                        FontSize="10"/>
+                                    <Label 
+                                        Grid.Column="1"
+                                        Grid.RowSpan="2"
+                                        Text="{Binding Description}" 
+                                        LineBreakMode="TailTruncation" 
+                                        HorizontalTextAlignment="Start"/>
+                                </StackLayout>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
@@ -78,5 +89,5 @@
                     CommandParameter="{x:Static utility:XamlConstants.SharedNotes}"/>
             </StackLayout>
         </StackLayout>
-    </ContentPage.Content>
+    </base:BasePage.ContentValue>
 </base:BasePage>

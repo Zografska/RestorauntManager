@@ -16,9 +16,9 @@
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance welcome:WelcomePageViewModel}"
              x:Class="RestaurantManager.WelcomePage">
-
-    <StackLayout Spacing="0">
-        <Grid BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+    <base:BasePage.ContentValue>
+        <StackLayout Spacing="0">
+        <Grid BackgroundColor="CadetBlue" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*"/>
@@ -29,30 +29,112 @@
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            
-            <controls:GridButton Grid.Row="0" 
-                                 Grid.Column="0" 
-                                 Text="Notes" 
-                                 Command="{Binding NavigateToNotesCommand}"/>
-
-            <controls:GridButton Grid.Row="1" 
-                                 Grid.Column="0"
-                                 Text="Shifts" 
-                                 Command="{Binding NavigateToShiftsCommand}"/>
-            
-            <controls:GridButton Grid.Row="0" 
-                                 Grid.Column="1" 
-                                 Text="Reservations"
-                                 Command="{Binding NavigateToReservationsCommand}"/>
-                                 
-            <controls:GridButton Grid.Row="1" Grid.Column="1" Text="Employees"/>
-            <controls:GridButton Grid.Row="2" Grid.Column="0" Text="Inventory"/>
-            <controls:GridButton Grid.Row="2" Grid.Column="1" Text="Settings"/>
-            <controls:GridButton Grid.Row="3"
-                                 Grid.Column="0"
-                                 Text="Logout"
-                                 Command="{Binding LogoutCommand}"/>
+    
+    
+            <Frame
+                Margin="10"
+                Padding="10"
+                Grid.Row="0"
+                Grid.Column="0"
+                BackgroundColor="DimGray"
+                CornerRadius="10"
+                BorderColor="Coral">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToNotesCommand}"/>
+                </Frame.GestureRecognizers>
+                <Label
+                    Text="Notes"
+                    FontSize="20"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center"/>
+            </Frame>
+    
+            <Frame
+                Margin="10"
+                Padding="10"
+                Grid.Row="0"
+                Grid.Column="1"
+                BackgroundColor="DimGray"
+                CornerRadius="10"
+                BorderColor="Coral">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToNotesCommand}"/>
+                </Frame.GestureRecognizers>
+                <Label
+                    Text="Reservations"
+                    FontSize="20"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center"/>
+            </Frame>
+    
+            <Frame
+                Margin="10"
+                Padding="10"
+                Grid.Row="1"
+                Grid.Column="0"
+                BackgroundColor="DimGray"
+                CornerRadius="10"
+                BorderColor="Coral">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToNotesCommand}"/>
+                </Frame.GestureRecognizers>
+                <Label
+                    Text="Settings"
+                    FontSize="20"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center"/>
+            </Frame>
+    
+            <Frame
+                Margin="10"
+                Padding="10"
+                Grid.Row="1"
+                Grid.Column="1"
+                BackgroundColor="DimGray"
+                CornerRadius="10"
+                BorderColor="Coral">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToNotesCommand}"/>
+                </Frame.GestureRecognizers>
+                <Label
+                    Text="Employees"
+                    FontSize="20"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center"/>
+            </Frame>
+    
+            <!-- <controls:GridButton  -->
+            <!--     Grid.Row="0"  -->
+            <!--     Grid.Column="0"  -->
+            <!--     Text="Notes"  -->
+            <!--     Command="{Binding NavigateToNotesCommand}"/> -->
+    
+            <!-- <controls:GridButton Grid.Row="1"  -->
+            <!--                      Grid.Column="0" -->
+            <!--                      Text="Shifts"  -->
+            <!--                      Command="{Binding NavigateToShiftsCommand}"/> -->
+            <!-- -->
+            <!-- <controls:GridButton Grid.Row="0"  -->
+            <!--                      Grid.Column="1"  -->
+            <!--                      Text="Reservations" -->
+            <!--                      Command="{Binding NavigateToReservationsCommand}"/> -->
+            <!--                       -->
+            <!-- <controls:GridButton Grid.Row="1" Grid.Column="1" Text="Employees"/> -->
+            <!-- <controls:GridButton Grid.Row="2" Grid.Column="0" Text="Inventory"/> -->
+            <!-- <controls:GridButton Grid.Row="2" Grid.Column="1" Text="Settings"/> -->
+            <!-- <controls:GridButton Grid.Row="3" -->
+            <!--                      Grid.Column="0" -->
+            <!--                      Text="Logout" -->
+            <!--                      Command="{Binding LogoutCommand}"/> -->
         </Grid>
     </StackLayout>
-
+        </base:BasePage.ContentValue>
 </base:BasePage>

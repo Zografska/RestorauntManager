@@ -2,10 +2,48 @@
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:converters="clr-namespace:RestaurantManager.Converters;assembly=RestaurantManager"
+             forms:NavigationPage.HasNavigationBar="False"
+             xmlns:forms="http://xamarin.com/schemas/2014/forms"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
              x:Class="RestaurantManager.Pages.Base.BasePage"
-             Title="{Binding Title}">
+             x:Name="self">
     <ContentPage.Content>
-        
+        <StackLayout>
+            <Grid HorizontalOptions="FillAndExpand"
+                  VerticalOptions="Start"
+                  Margin="15,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0"
+                        Text="Back"
+                        HorizontalOptions="Start" 
+                        VerticalOptions="Center"
+                        TextColor="SandyBrown"
+                        Command="{Binding NavigateBackCommand}"/>
+                
+                <Label Grid.Column="1" 
+                       HorizontalOptions="Center" 
+                       VerticalTextAlignment="Center" 
+                       Text="{Binding BindingContext.Title, Source={x:Reference self}}" 
+                       FontSize="20"
+                       FontAttributes="Bold" 
+                       TextColor="Black"/>
+                
+                <Button Grid.Column="2"
+                        Text="Logout"
+                        HorizontalOptions="End" 
+                        VerticalOptions="Center"
+                        TextColor="SandyBrown"
+                        Command="{Binding LogoutCommand}"/>
+                </Grid>
+            <ContentView
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand"
+                Content="{Binding ContentValue, Source={x:Reference self}}"/>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
