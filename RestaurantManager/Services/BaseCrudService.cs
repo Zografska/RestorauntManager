@@ -3,18 +3,25 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text.Json;
 using System.Threading.Tasks;
+using RestaurantManager.Core.Authentication;
 using RestaurantManager.Core.DatabaseService;
 using RestaurantManager.Extensions;
 using RestaurantManager.Model;
+using RestaurantManager.Services.Network;
 
 namespace RestaurantManager.Services
 {
     public class BaseCrudService<T> : IServiceBase<T> where T : ModelBase
     {
         private readonly DatabaseServiceRemote _databaseServiceRemote;
-        protected BaseCrudService(DatabaseServiceRemote databaseServiceRemote)
+        protected readonly IAuthService AuthService;
+        protected readonly INetworkService NetworkService;
+        protected BaseCrudService(DatabaseServiceRemote databaseServiceRemote, IAuthService authService,
+            INetworkService networkService)
         {
             _databaseServiceRemote = databaseServiceRemote;
+            AuthService = authService;
+            NetworkService = networkService;
         }
 
         public async Task<T> GetById(int id)

@@ -1,7 +1,10 @@
 using System;
 using Prism.Navigation;
+using RestaurantManager.Core.Authentication;
 using RestaurantManager.Pages.Base;
 using RestaurantManager.Popups;
+using RestaurantManager.Services;
+using RestaurantManager.Services.Network;
 using Xamarin.Forms;
 using XCT.Popups.Prism;
 
@@ -10,7 +13,9 @@ namespace RestaurantManager.Pages.Reservations
     public class ReservationsPageViewModel : PageViewModelBase
     {
         public Command DateTappedCommand { get; }
-        public ReservationsPageViewModel(INavigationService navigationService, IPopupService popupService) : base(navigationService, popupService)
+        public ReservationsPageViewModel(INavigationService navigationService, IPopupService popupService,
+            IAuthService authService, INetworkService networkService) 
+            : base(navigationService, popupService, authService, networkService)
         {
             Title = "Reservations";
             DateTappedCommand = new Command<DateTime>(OpenReservationPopup);

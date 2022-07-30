@@ -6,11 +6,14 @@
                xmlns:vm="clr-namespace:RestaurantManager.Pages;assembly=RestaurantManager"
                xmlns:behaviors="http://prismlibrary.com"
                xmlns:converters="http://xamarin.com/schemas/2020/toolkit"
-               x:Class="RestaurantManager.Pages.NotesPage"
+               x:Class="RestaurantManager.Pages.Notes.NotesPage"
+               x:Name="NotePage"
                xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+               xmlns:notes="clr-namespace:RestaurantManager.Pages.Notes;assembly=RestaurantManager"
+               xmlns:utility="clr-namespace:RestaurantManager.Utility;assembly=RestaurantManager"
                mc:Ignorable="d"
-               d:DataContext="{d:DesignInstance vm:NotesViewModel}">
+               d:DataContext="{d:DesignInstance notes:NotesViewModel}">
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:ItemTappedEventArgsConverter x:Key="ItemTappedEventArgsConverter"/>
@@ -18,7 +21,9 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
-            <ListView Margin="0,20,0,0" HorizontalOptions="FillAndExpand" ItemsSource="{Binding Items}">
+            <ListView Margin="0,20,0,0"
+                      HorizontalOptions="FillAndExpand"
+                      ItemsSource="{Binding Items}">
                 <ListView.Behaviors>
                     <behaviors:EventToCommandBehavior
                         EventName="ItemTapped"
@@ -47,7 +52,6 @@
                                     Text="{Binding Description}" 
                                     LineBreakMode="TailTruncation" 
                                     HorizontalTextAlignment="Start"/>
-                            
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
@@ -55,8 +59,24 @@
             </ListView>
             <Button
                 Text="Add Note"
+                IsVisible="{Binding IsCreateButtonVisible}"
                 Command="{Binding AddItemCommand}"
             />
+            <StackLayout 
+                Orientation="Horizontal" 
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
+                <Button
+                    Text="My Notes"
+                    Command="{Binding ChangeItemsCommand}"
+                    HorizontalOptions="FillAndExpand"
+                    CommandParameter="{x:Static utility:XamlConstants.MyNotes}"/>
+                <Button
+                    Text="Shared Notes"
+                    Command="{Binding ChangeItemsCommand}"
+                    HorizontalOptions="FillAndExpand"
+                    CommandParameter="{x:Static utility:XamlConstants.SharedNotes}"/>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </base:BasePage>

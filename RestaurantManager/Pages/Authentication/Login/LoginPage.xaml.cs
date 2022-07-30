@@ -1,11 +1,11 @@
 using Xamarin.Forms.Xaml;
 
-namespace RestaurantManager.Popups
+namespace RestaurantManager.Pages.Authentication.Login
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ShiftPopup
+    public partial class LoginPage
     {
-        public ShiftPopup()
+        public LoginPage()
         {
             InitializeComponent();
         }
