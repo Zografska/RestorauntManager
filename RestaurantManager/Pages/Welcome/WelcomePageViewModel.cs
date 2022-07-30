@@ -50,21 +50,25 @@ namespace RestaurantManager.Pages.Welcome
             {
                 DisplayAlert(Constants.AlertConstants.NoInternet);
             }
+            SingleClickCommand.ResetLastClick();
         }
 
         private async void NavigateToReservationsPage()
         {
             await NavigationService.NavigateTo<ReservationsPage>();
+            SingleClickCommand.ResetLastClick();
         }
 
         private async void NavigateToNotesPage()
         {
             await NavigationService.NavigateTo<NotesPage>();
+            SingleClickCommand.ResetLastClick();
         }
 
         private async void NavigateToShiftsPage()
         {
             await NavigationService.NavigateTo<ShiftsPage>();
+            SingleClickCommand.ResetLastClick();
         }
     }
 }

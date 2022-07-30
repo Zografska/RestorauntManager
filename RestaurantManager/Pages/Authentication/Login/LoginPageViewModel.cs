@@ -88,6 +88,7 @@ namespace RestaurantManager.Pages.Authentication.Login
             {
                 DisplayAlert(Constants.AlertConstants.NoInternet);
             }
+            SingleClickCommand.ResetLastClick();
         }
 
         private async void NavigateToResetPassword()
@@ -119,6 +120,7 @@ namespace RestaurantManager.Pages.Authentication.Login
             {
                 DisplayAlert(Constants.AlertConstants.NoInternet);
             }
+            SingleClickCommand.ResetLastClick();
         }
 
         private void ClearCredentials()
