@@ -1,3 +1,4 @@
+using System;
 using System.Windows.Input;
 using Prism.Navigation;
 using RestaurantManager.Core.DatabaseService;
@@ -33,12 +34,22 @@ namespace RestaurantManager.Pages.Notes
             _noteService = noteService;
             PopupName = nameof(NotePopup);
             ChangeItemsCommand = new Command<string>(PopulateItems);
+
+            NetworkService.OnNetworkStatusChanged.Subscribe(message => IsCreateButtonVisible = message.IsConnected);
         }
 
-        public override async void OnAppearing()
+        public override async void OnNavigatedTo(INavigationParameters parameters)
         {
-            Items = await _noteService.GetNotesByUser();
-            IsCreateButtonVisible = true;
+            if (NetworkService.IsNetworkConnected())
+            {
+                IsCreateButtonVisible = true;
+                Items = await _noteService.GetNotesByUser();
+            }
+            else
+            {
+                IsCreateButtonVisible = false;
+                DisplayAlert(Constants.AlertConstants.NoInternet);
+            }
         }
 
         private async void PopulateItems(string notesType)
