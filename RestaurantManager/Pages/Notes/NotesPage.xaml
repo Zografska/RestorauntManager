@@ -24,14 +24,14 @@
                 BackgroundColor="#88FFE4C4">
                 <controls:FrameButton BackgroundColor="Chocolate"
                                       BorderColor="AntiqueWhite"
-                                      Text="My Notes"
+                                      Text="{x:Static utility:XamlConstants.MyNotes}"
                                       TextColor="AntiqueWhite"
                                       FrameTappedCommand="{Binding ChangeItemsCommand}"
                                       FrameTappedCommandParameter="{x:Static utility:XamlConstants.MyNotes}"/>
                 
                 <controls:FrameButton BackgroundColor="Chocolate"
                                       BorderColor="AntiqueWhite"
-                                      Text="Shared"
+                                      Text="{x:Static utility:XamlConstants.SharedNotes}"
                                       TextColor="AntiqueWhite"
                                       FrameTappedCommand="{Binding ChangeItemsCommand}"
                                       FrameTappedCommandParameter="{x:Static utility:XamlConstants.SharedNotes}"/>
@@ -58,7 +58,7 @@
                 BackgroundColor="#BBD2691E"
                 BorderColor="AntiqueWhite"
                 CornerRadius="20"
-                Text="Add Note"
+                Text="{x:Static utility:XamlConstants.AddNote}"
                 IsVisible="{Binding IsCreateButtonVisible}"
                 FrameTappedCommand="{Binding AddItemCommand}"/>
             

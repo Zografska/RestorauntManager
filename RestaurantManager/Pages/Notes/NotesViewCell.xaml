@@ -2,6 +2,7 @@
 
 <ViewCell xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:utility="clr-namespace:RestaurantManager.Utility;assembly=RestaurantManager"
              x:Class="RestaurantManager.Pages.Notes.NotesViewCell">
         <Grid Padding="20,0,10,0"
               VerticalOptions="FillAndExpand"
@@ -20,7 +21,7 @@
                          HorizontalOptions="FillAndExpand"
                          VerticalOptions="FillAndExpand">
                 <Label 
-                    Text="Title"
+                    Text="{x:Static utility:XamlConstants.Title}"
                     FontSize="10"
                     Margin="0, 5"
                     HorizontalOptions="FillAndExpand"
@@ -38,7 +39,7 @@
                          HorizontalOptions="FillAndExpand"
                          VerticalOptions="FillAndExpand">
                 <Label 
-                    Text="Description"
+                    Text="{x:Static utility:XamlConstants.Description}"
                     FontSize="10"
                     Margin="0, 5"
                     HorizontalOptions="FillAndExpand"

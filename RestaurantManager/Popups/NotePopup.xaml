@@ -8,6 +8,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:controls="clr-namespace:RestaurantManager.Controls;assembly=RestaurantManager"
+             xmlns:utility="clr-namespace:RestaurantManager.Utility;assembly=RestaurantManager"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance vm:NotePopupViewModel}"
              x:Class="RestaurantManager.Popups.NotePopup"
@@ -37,7 +38,7 @@
                 Grid.Row="0"
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
-                Placeholder="Title"
+                Placeholder= "{x:Static utility:XamlConstants.Title}"
                 Text="{Binding Note.Title}"
                 FontSize="Title"
                 VerticalOptions="CenterAndExpand" 
@@ -49,7 +50,7 @@
                 Grid.ColumnSpan="2"
                 Grid.RowSpan="2"
                 AutoSize="Disabled"
-                Placeholder="Description"
+                Placeholder="{x:Static utility:XamlConstants.Description}"
                 Text="{Binding Note.Description}"
                 FontSize="Caption"
                 VerticalOptions="FillAndExpand"
@@ -59,10 +60,10 @@
                          Grid.Column="0"
                          Grid.ColumnSpan="2"
                          IsVisible="{Binding IsEditing}">
-                <Label Text="Creator:"
-                       FontSize="Medium"
-                       VerticalOptions="CenterAndExpand" 
-                       HorizontalOptions="Start"/>
+                <Label  Text="{x:Static utility:XamlConstants.Creator}"
+                        FontSize="Medium"
+                        VerticalOptions="CenterAndExpand" 
+                        HorizontalOptions="Start"/>
             
                 <Label Text="{Binding Note.CreatorUid}"
                        FontSize="Medium"
@@ -73,7 +74,7 @@
             <Label
                 Grid.Row="4"
                 Grid.Column="0"
-                Text="LastModified:"
+                Text="{x:Static utility:XamlConstants.LastModified}"
                 FontSize="Micro"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="End"/>
@@ -89,21 +90,22 @@
         <StackLayout HorizontalOptions="CenterAndExpand"
                      Orientation="Horizontal">
             <controls:FrameButton
-                Text="Save" 
+                Text="{x:Static utility:XamlConstants.Save}"
                 CornerRadius="15"
                 BackgroundColor="WhiteSmoke"
                 TextColor="DodgerBlue"
                 FontSize="15"
                 BorderColor="Black"
                 FrameTappedCommand="{Binding SaveCommand}"/>
-            <!-- IsVisible="{Binding IsDeletePossible}" -->
+            
             <controls:FrameButton
-                Text="Delete"
+                Text="{x:Static utility:XamlConstants.Delete}"
                 CornerRadius="15"
                 BackgroundColor="WhiteSmoke"
                 TextColor="OrangeRed"
                 FontSize="15"
                 BorderColor="Black"
+                IsVisible="{Binding IsDeletePossible}"
                 FrameTappedCommand="{Binding DeleteCommand}"/>
         </StackLayout>
         
