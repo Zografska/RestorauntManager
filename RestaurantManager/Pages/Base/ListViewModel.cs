@@ -35,10 +35,9 @@ namespace RestaurantManager.Pages
             AddItemCommand = new SingleClickCommand(ShowCniPopup);
         }
 
-        public override async void OnAppearing()
+        public override async void OnNavigatedTo(INavigationParameters parameters)
         {
-            base.OnAppearing();
-           
+            base.OnNavigatedTo(parameters);
             if (NetworkService.IsNetworkConnected())
             {
                 Items = await _databaseServiceRemote.GetAll<T>();

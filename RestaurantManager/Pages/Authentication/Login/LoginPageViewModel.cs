@@ -68,6 +68,8 @@ namespace RestaurantManager.Pages.Authentication.Login
             NavigateToSignupCommand = new SingleClickCommand(NavigateToSignup);
             NavigateToResetPasswordCommand = new SingleClickCommand(NavigateToResetPassword);
             LoginAsSadminCommand = new SingleClickCommand(LoginAsSadmin);
+            IsBackButtonVisible = false;
+            IsLogoutButtonVisible = false;
         }
 
         private async void LoginAsSadmin()

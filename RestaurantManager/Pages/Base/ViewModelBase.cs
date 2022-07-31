@@ -1,7 +1,9 @@
+using System.Windows.Input;
 using Prism.AppModel;
 using Prism.Mvvm;
 using Prism.Navigation;
 using RestaurantManager.Services.Network;
+using RestaurantManager.Utility;
 using Xamarin.Forms;
 using XCT.Popups.Prism;
 
@@ -10,6 +12,29 @@ namespace RestaurantManager
     public class ViewModelBase : BindableBase, INavigationAware, IDestructible, IPageLifecycleAware
 
     {
+        private bool _isBackButtonVisible;
+
+        public bool IsBackButtonVisible
+        {
+            get => _isBackButtonVisible;
+            set
+            {
+                _isBackButtonVisible = value;
+                RaisePropertyChanged(nameof(IsBackButtonVisible));   
+            }
+        }
+        
+        private bool _isLogoutButtonVisible;
+
+        public bool IsLogoutButtonVisible
+        {
+            get => _isLogoutButtonVisible;
+            set
+            {
+                _isLogoutButtonVisible = value;
+                RaisePropertyChanged(nameof(IsLogoutButtonVisible));   
+            }
+        }
         protected INavigationService NavigationService { get; }
         protected IPopupService PopupService { get; }
         protected INetworkService NetworkService { get; }
@@ -22,11 +47,20 @@ namespace RestaurantManager
             set { SetProperty(ref _title, value); }
         }
 
+        public ICommand NavigateBackCommand { get; }
         public ViewModelBase(INavigationService navigationService, IPopupService popupService, INetworkService networkService)
         {
             NavigationService = navigationService;
             PopupService = popupService;
             NetworkService = networkService;
+            NavigateBackCommand = new SingleClickCommand(NavigateBack);
+            IsBackButtonVisible = true;
+            IsLogoutButtonVisible = true;
+        }
+
+        private void NavigateBack()
+        {
+            NavigationService.GoBackAsync();
         }
 
         public virtual void OnNavigatedFrom(INavigationParameters parameters)

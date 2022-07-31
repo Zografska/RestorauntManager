@@ -142,9 +142,4 @@
       <Name>RestaurantManager</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="..\..\Downloads\GoogleService-Info.plist">
-      <Link>GoogleService-Info.plist</Link>
-    </Content>
-  </ItemGroup>
 </Project>

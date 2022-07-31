@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace RestaurantManager.Pages.Authentication.ResetPassword
+namespace RestaurantManager.Pages.Notes
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ResetPasswordPage
+    public partial class NotesViewCell
     {
-        public ResetPasswordPage()
+        public NotesViewCell()
         {
             InitializeComponent();
         }

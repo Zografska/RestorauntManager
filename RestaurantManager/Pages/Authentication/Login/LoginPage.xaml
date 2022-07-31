@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<base:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:behaviors="http://prismlibrary.com"
              x:Class="RestaurantManager.Pages.Authentication.Login.LoginPage"
@@ -8,6 +8,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:login="clr-namespace:RestaurantManager.Pages.Authentication.Login;assembly=RestaurantManager"
              xmlns:toolkit="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:base="clr-namespace:RestaurantManager.Pages.Base;assembly=RestaurantManager"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance login:LoginPageViewModel}">
     <ContentPage.Resources>
@@ -15,7 +16,7 @@
             <Setter Property="BackgroundColor" Value="IndianRed" />
         </Style>
     </ContentPage.Resources>
-    <ContentPage.Content>
+    <base:BasePage.ContentValue>
         <StackLayout
             VerticalOptions="Center"
             Margin="20">
@@ -80,5 +81,5 @@
                 TextColor="White"
                 Command="{Binding LoginAsSadminCommand}"/>
         </StackLayout>
-    </ContentPage.Content>
-</ContentPage>
+    </base:BasePage.ContentValue>
+</base:BasePage>
