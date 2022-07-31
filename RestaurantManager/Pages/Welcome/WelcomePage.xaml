@@ -8,10 +8,12 @@
          xmlns:base="clr-namespace:RestaurantManager.Pages.Base;assembly=RestaurantManager"
          xmlns:vm="clr-namespace:RestaurantManager;assembly=RestaurantManager"
          xmlns:controls="clr-namespace:RestaurantManager.Controls;assembly=RestaurantManager"
-
+         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
          xmlns:forms="http://xamarin.com/schemas/2014/forms"
          xmlns:welcome="clr-namespace:RestaurantManager.Pages.Welcome;assembly=RestaurantManager"
-
+         mc:Ignorable="d"
+         d:DataContext="{d:DesignInstance welcome:WelcomePageViewModel}"
          x:Class="RestaurantManager.WelcomePage">
     <base:BasePage.ContentValue>
         <StackLayout Spacing="0">
