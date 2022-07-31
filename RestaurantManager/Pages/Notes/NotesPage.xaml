@@ -7,9 +7,12 @@
                xmlns:converters="http://xamarin.com/schemas/2020/toolkit"
                x:Class="RestaurantManager.Pages.Notes.NotesPage"
                x:Name="NotePage"
-               xmlns:utility="clr-namespace:RestaurantManager.Utility;assembly=RestaurantManager"
+               xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+               xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                xmlns:notes="clr-namespace:RestaurantManager.Pages.Notes;assembly=RestaurantManager"
-               xmlns:controls="clr-namespace:RestaurantManager.Controls;assembly=RestaurantManager">
+               xmlns:utility="clr-namespace:RestaurantManager.Utility;assembly=RestaurantManager"
+               mc:Ignorable="d"
+               d:DataContext="{d:DesignInstance notes:NotesViewModel}">
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:ItemTappedEventArgsConverter x:Key="ItemTappedEventArgsConverter"/>
