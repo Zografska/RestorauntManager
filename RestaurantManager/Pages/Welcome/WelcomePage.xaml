@@ -1,21 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <base:BasePage
-               forms:NavigationPage.HasBackButton="False"
-               ios:Page.UseSafeArea="true"
-               xmlns="http://xamarin.com/schemas/2014/forms"
-               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-               xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-               
-             xmlns:base="clr-namespace:RestaurantManager.Pages.Base;assembly=RestaurantManager"
-             xmlns:vm="clr-namespace:RestaurantManager;assembly=RestaurantManager"
-             xmlns:controls="clr-namespace:RestaurantManager.Controls;assembly=RestaurantManager"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:forms="http://xamarin.com/schemas/2014/forms"
-             xmlns:welcome="clr-namespace:RestaurantManager.Pages.Welcome;assembly=RestaurantManager"
-             mc:Ignorable="d"
-             d:DataContext="{d:DesignInstance welcome:WelcomePageViewModel}"
-             x:Class="RestaurantManager.WelcomePage">
+         forms:NavigationPage.HasBackButton="False"
+         ios:Page.UseSafeArea="true"
+         xmlns="http://xamarin.com/schemas/2014/forms"
+         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+         xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+         xmlns:base="clr-namespace:RestaurantManager.Pages.Base;assembly=RestaurantManager"
+         xmlns:vm="clr-namespace:RestaurantManager;assembly=RestaurantManager"
+         xmlns:controls="clr-namespace:RestaurantManager.Controls;assembly=RestaurantManager"
+
+         xmlns:forms="http://xamarin.com/schemas/2014/forms"
+         xmlns:welcome="clr-namespace:RestaurantManager.Pages.Welcome;assembly=RestaurantManager"
+
+         x:Class="RestaurantManager.WelcomePage">
     <base:BasePage.ContentValue>
         <StackLayout Spacing="0">
        
@@ -24,6 +21,7 @@
                   Margin="30, 30">
             <Grid.RowDefinitions>
                 <RowDefinition Height="3*" />
+                <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
@@ -102,7 +100,7 @@
                 BorderColor="AntiqueWhite"
                 >
                 <Frame.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding NavigateToNotesCommand}"/>
+                    <TapGestureRecognizer Command="{Binding NavigateToReservationsCommand}"/>
                 </Frame.GestureRecognizers>
                 <Label
                     Text="Reservations"
@@ -123,10 +121,10 @@
                 BackgroundColor="Chocolate"
                 BorderColor="White">
                 <Frame.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding NavigateToNotesCommand}"/>
+                    <TapGestureRecognizer Command="{Binding NavigateToShiftsCommand}"/>
                 </Frame.GestureRecognizers>
                 <Label
-                    Text="Settings"
+                    Text="Shifts"
                     FontSize="20"
                     TextColor="White"
                     FontAttributes="Bold"
@@ -143,7 +141,9 @@
                 HasShadow="False"
                 BackgroundColor="Chocolate"
                 BorderColor="AntiqueWhite">
-                
+                <!-- <Frame.GestureRecognizers> -->
+                <!--     <TapGestureRecognizer Command="{Binding NavigateToEmployeesCommand}"/> -->
+                <!-- </Frame.GestureRecognizers> -->
                 <Label
                     Text="Employees"
                     FontSize="20"
@@ -152,6 +152,32 @@
                     HorizontalTextAlignment="Center"
                     VerticalTextAlignment="Center"/>
             </Frame>
+                
+                <Frame
+                    Margin="10"
+                    Padding="10"
+                    Grid.Row="5"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    HasShadow="False"
+                    CornerRadius="20"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"
+                    BorderColor="Orange"
+                    BackgroundColor="DimGray">
+                    <!-- <Frame.GestureRecognizers> -->
+                    <!--     <TapGestureRecognizer Command="{Binding NavigateToSettingsPage}"/> -->
+                    <!-- </Frame.GestureRecognizers> -->
+                    <Label
+                        Text="S"
+                        FontSize="20"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"/>
+                </Frame>
             </Grid>
     </StackLayout>
         </base:BasePage.ContentValue>
