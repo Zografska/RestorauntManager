@@ -11,6 +11,7 @@
                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                xmlns:notes="clr-namespace:RestaurantManager.Pages.Notes;assembly=RestaurantManager"
                xmlns:utility="clr-namespace:RestaurantManager.Utility;assembly=RestaurantManager"
+               xmlns:controls="clr-namespace:RestaurantManager.Controls;assembly=RestaurantManager"
                mc:Ignorable="d"
                d:DataContext="{d:DesignInstance notes:NotesViewModel}">
     <ContentPage.Resources>

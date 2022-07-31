@@ -10,6 +10,8 @@
          xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
          xmlns:forms="http://xamarin.com/schemas/2014/forms"
          xmlns:welcome="clr-namespace:RestaurantManager.Pages.Welcome;assembly=RestaurantManager"
+         xmlns:controls="clr-namespace:RestaurantManager.Controls;assembly=RestaurantManager"
+         xmlns:utility="clr-namespace:RestaurantManager.Utility;assembly=RestaurantManager"
          mc:Ignorable="d"
          d:DataContext="{d:DesignInstance welcome:WelcomePageViewModel}"
          x:Class="RestaurantManager.WelcomePage">
@@ -68,116 +70,52 @@
                          VerticalOptions="Center"
                          HeightRequest="2"/>
                 
-            <Frame
-                Margin="10"
-                Padding="10"
-                Grid.Row="3"
-                Grid.Column="0"
-                HasShadow="False"
-                BackgroundColor="Chocolate"
-                BorderColor="AntiqueWhite"
-                CornerRadius="20">
-                <Frame.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding NavigateToNotesCommand}"/>
-                </Frame.GestureRecognizers>
-                <Label
-                    Text="Notes"
-                    FontSize="20"
-                    TextColor="White"
-                    FontAttributes="Bold"
-                    HorizontalTextAlignment="Center"
-                    VerticalTextAlignment="Center"/>
-            </Frame>
-    
-            <Frame
-                Margin="10"
-                Padding="10"
-                Grid.Row="3"
-                Grid.Column="1"
-                CornerRadius="20"
-                HasShadow="False"
-                BackgroundColor="Chocolate"
-                BorderColor="AntiqueWhite"
-                >
-                <Frame.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding NavigateToReservationsCommand}"/>
-                </Frame.GestureRecognizers>
-                <Label
-                    Text="Reservations"
-                    FontSize="20"
-                    TextColor="White"
-                    FontAttributes="Bold"
-                    HorizontalTextAlignment="Center"
-                    VerticalTextAlignment="Center"/>
-            </Frame>
-    
-            <Frame
-                Margin="10"
-                Padding="10"
-                Grid.Row="4"
-                Grid.Column="0"
-                HasShadow="False"
-                CornerRadius="20"
-                BackgroundColor="Chocolate"
-                BorderColor="White">
-                <Frame.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding NavigateToShiftsCommand}"/>
-                </Frame.GestureRecognizers>
-                <Label
-                    Text="Shifts"
-                    FontSize="20"
-                    TextColor="White"
-                    FontAttributes="Bold"
-                    HorizontalTextAlignment="Center"
-                    VerticalTextAlignment="Center"/>
-            </Frame>
-    
-            <Frame
-                Margin="10"
-                Padding="10"
-                Grid.Row="4"
-                Grid.Column="1"
-                CornerRadius="20"
-                HasShadow="False"
-                BackgroundColor="Chocolate"
-                BorderColor="AntiqueWhite">
-                <!-- <Frame.GestureRecognizers> -->
-                <!--     <TapGestureRecognizer Command="{Binding NavigateToEmployeesCommand}"/> -->
-                <!-- </Frame.GestureRecognizers> -->
-                <Label
-                    Text="Employees"
-                    FontSize="20"
-                    TextColor="White"
-                    FontAttributes="Bold"
-                    HorizontalTextAlignment="Center"
-                    VerticalTextAlignment="Center"/>
-            </Frame>
+                <controls:FrameButton 
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    BackgroundColor="Chocolate"
+                    BorderColor="AntiqueWhite"
+                    FrameTappedCommand="{Binding NavigateToNotesCommand}"
+                    Text="{x:Static utility:XamlConstants.Notes}"
+                    TextColor="White"/>
                 
-                <Frame
-                    Margin="10"
-                    Padding="10"
+                <controls:FrameButton 
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    BackgroundColor="Chocolate"
+                    BorderColor="AntiqueWhite"
+                    FrameTappedCommand="{Binding NavigateToReservationsCommand}"
+                    Text="{x:Static utility:XamlConstants.Reservations}"
+                    TextColor="White"/> 
+                
+                <controls:FrameButton 
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    BackgroundColor="Chocolate"
+                    BorderColor="AntiqueWhite"
+                    FrameTappedCommand="{Binding NavigateToShiftsCommand}"
+                    Text="{x:Static utility:XamlConstants.Shifts}"
+                    TextColor="White"/>
+                
+                <controls:FrameButton 
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    BackgroundColor="Chocolate"
+                    BorderColor="AntiqueWhite"
+                    Text="{x:Static utility:XamlConstants.Employees}"
+                    TextColor="White"/> 
+                
+                <controls:FrameButton 
                     Grid.Row="5"
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
-                    HasShadow="False"
-                    CornerRadius="20"
+                    BackgroundColor="DimGray"
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="FillAndExpand"
                     BorderColor="Orange"
-                    BackgroundColor="DimGray">
-                    <!-- <Frame.GestureRecognizers> -->
-                    <!--     <TapGestureRecognizer Command="{Binding NavigateToSettingsPage}"/> -->
-                    <!-- </Frame.GestureRecognizers> -->
-                    <Label
-                        Text="Settings"
-                        FontSize="20"
-                        TextColor="White"
-                        FontAttributes="Bold"
-                        HorizontalOptions="FillAndExpand"
-                        VerticalOptions="FillAndExpand"
-                        HorizontalTextAlignment="Center"
-                        VerticalTextAlignment="Center"/>
-                </Frame>
+                    Text="{x:Static utility:XamlConstants.Settings}"
+                    TextColor="White"/>
+                
             </Grid>
     </StackLayout>
         </base:BasePage.ContentValue>

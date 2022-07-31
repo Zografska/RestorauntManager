@@ -12,6 +12,8 @@ namespace RestaurantManager.Controls
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FrameButton
     {
+        private const string DEFAULT_SIZE = "20";
+        
         public new static readonly BindableProperty BackgroundColorProperty = BindableProperty.Create(nameof(BackgroundColor), typeof(Color),
             typeof(FrameButton), Color.Default);
         
@@ -31,10 +33,10 @@ namespace RestaurantManager.Controls
             BindableProperty.Create(nameof(FrameTappedCommandParameter), typeof(object), typeof(FrameButton));
         
         public static readonly BindableProperty CornerRadiusProperty = BindableProperty.Create(nameof(CornerRadius), 
-            typeof(float), typeof(FrameButton));
+            typeof(float), typeof(FrameButton), float.Parse(DEFAULT_SIZE));
         
         public static readonly BindableProperty FontSizeProperty = BindableProperty.Create(nameof(FontSize), 
-            typeof(double), typeof(FrameButton), double.Parse("20"));
+            typeof(double), typeof(FrameButton), double.Parse(DEFAULT_SIZE));
         
         public new Color BackgroundColor
         {
