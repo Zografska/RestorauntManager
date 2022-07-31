@@ -30,6 +30,7 @@ namespace RestaurantManager.Pages.Welcome
             NavigateToReservationsCommand = new SingleClickCommand(NavigateToReservationsPage);
             LogoutCommand = new SingleClickCommand(Logout);
             _profileService = profileService;
+            IsBackButtonVisible = false;
         }
 
         private void Logout()

@@ -12,6 +12,29 @@ namespace RestaurantManager
     public class ViewModelBase : BindableBase, INavigationAware, IDestructible, IPageLifecycleAware
 
     {
+        private bool _isBackButtonVisible;
+
+        public bool IsBackButtonVisible
+        {
+            get => _isBackButtonVisible;
+            set
+            {
+                _isBackButtonVisible = value;
+                RaisePropertyChanged(nameof(IsBackButtonVisible));   
+            }
+        }
+        
+        private bool _isLogoutButtonVisible;
+
+        public bool IsLogoutButtonVisible
+        {
+            get => _isLogoutButtonVisible;
+            set
+            {
+                _isLogoutButtonVisible = value;
+                RaisePropertyChanged(nameof(IsLogoutButtonVisible));   
+            }
+        }
         protected INavigationService NavigationService { get; }
         protected IPopupService PopupService { get; }
         protected INetworkService NetworkService { get; }
@@ -31,6 +54,8 @@ namespace RestaurantManager
             PopupService = popupService;
             NetworkService = networkService;
             NavigateBackCommand = new SingleClickCommand(NavigateBack);
+            IsBackButtonVisible = true;
+            IsLogoutButtonVisible = true;
         }
 
         private void NavigateBack()

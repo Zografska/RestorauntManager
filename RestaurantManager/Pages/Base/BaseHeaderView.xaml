@@ -21,6 +21,7 @@
                 HorizontalOptions="Start" 
                 VerticalOptions="Center"
                 TextColor="SandyBrown"
+                IsVisible="{Binding IsBackButtonVisible}"
                 Command="{Binding NavigateBackCommand}" />
                 
         <Label Grid.Column="1" 
@@ -36,6 +37,7 @@
                 HorizontalOptions="End" 
                 VerticalOptions="Center"
                 TextColor="SandyBrown"
+                IsVisible="{Binding IsLogoutButtonVisible}"
                 Command="{Binding LogoutCommand}"/>
     </Grid>
 </ContentView>

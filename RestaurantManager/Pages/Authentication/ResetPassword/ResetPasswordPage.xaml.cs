@@ -10,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace RestaurantManager.Pages.Authentication.ResetPassword
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ResetPasswordPage : ContentPage
+    public partial class ResetPasswordPage
     {
         public ResetPasswordPage()
         {
