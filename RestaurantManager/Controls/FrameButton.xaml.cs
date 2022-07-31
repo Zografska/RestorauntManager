@@ -34,7 +34,7 @@ namespace RestaurantManager.Controls
             typeof(float), typeof(FrameButton));
         
         public static readonly BindableProperty FontSizeProperty = BindableProperty.Create(nameof(FontSize), 
-            typeof(double), typeof(FrameButton));
+            typeof(double), typeof(FrameButton), double.Parse("20"));
         
         public new Color BackgroundColor
         {

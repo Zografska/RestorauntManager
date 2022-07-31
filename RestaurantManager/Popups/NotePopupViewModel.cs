@@ -18,9 +18,17 @@ namespace RestaurantManager.Popups
         {
             get => _note;
             set => SetProperty(ref _note, value);
-        }  
+        }
         
+        private bool _isEditing;
+        public bool IsEditing
+        {
+            get => _isEditing;
+            set => _isEditing = value;
+        }
+
         private bool _isDeletePossible;
+
         public bool IsDeletePossible
         {
             get => _isDeletePossible;
@@ -53,6 +61,7 @@ namespace RestaurantManager.Popups
             if (note != null)
             {
                 IsDeletePossible = true;
+                IsEditing = true;
             }
 
             Note = note ?? new Note();

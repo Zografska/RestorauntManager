@@ -17,7 +17,7 @@
         </Frame.GestureRecognizers>
         <Label
             Text="{Binding Text, Source={x:Reference Self}}"
-            FontSize="20"
+            FontSize="{Binding FontSize, Source={x:Reference Self}}"
             TextColor="{Binding TextColor, Source={x:Reference Self}}"
             FontAttributes="Bold"
             HorizontalTextAlignment="Center"
