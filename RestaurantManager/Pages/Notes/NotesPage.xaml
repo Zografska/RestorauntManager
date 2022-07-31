@@ -7,12 +7,9 @@
                xmlns:converters="http://xamarin.com/schemas/2020/toolkit"
                x:Class="RestaurantManager.Pages.Notes.NotesPage"
                x:Name="NotePage"
-               xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-               xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-               xmlns:notes="clr-namespace:RestaurantManager.Pages.Notes;assembly=RestaurantManager"
                xmlns:utility="clr-namespace:RestaurantManager.Utility;assembly=RestaurantManager"
-               mc:Ignorable="d"
-               d:DataContext="{d:DesignInstance notes:NotesViewModel}">
+               xmlns:notes="clr-namespace:RestaurantManager.Pages.Notes;assembly=RestaurantManager"
+               xmlns:controls="clr-namespace:RestaurantManager.Controls;assembly=RestaurantManager">
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:ItemTappedEventArgsConverter x:Key="ItemTappedEventArgsConverter"/>
@@ -20,8 +17,27 @@
     </ContentPage.Resources>
     <base:BasePage.ContentValue>
         <StackLayout>
-            <ListView Margin="0,20,0,0"
-                      HorizontalOptions="FillAndExpand"
+            <StackLayout 
+                Orientation="Horizontal" 
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="FillAndExpand"
+                BackgroundColor="#88FFE4C4">
+                <controls:FrameButton BackgroundColor="Chocolate"
+                                      BorderColor="AntiqueWhite"
+                                      Text="My Notes"
+                                      TextColor="AntiqueWhite"
+                                      FrameTappedCommand="{Binding ChangeItemsCommand}"
+                                      FrameTappedCommandParameter="{x:Static utility:XamlConstants.MyNotes}"/>
+                
+                <controls:FrameButton BackgroundColor="Chocolate"
+                                      BorderColor="AntiqueWhite"
+                                      Text="Shared"
+                                      TextColor="AntiqueWhite"
+                                      FrameTappedCommand="{Binding ChangeItemsCommand}"
+                                      FrameTappedCommandParameter="{x:Static utility:XamlConstants.SharedNotes}"/>
+            </StackLayout>
+            
+            <ListView HorizontalOptions="FillAndExpand"
                       SeparatorVisibility="None"
                       HasUnevenRows="True"
                       ItemsSource="{Binding Items}">
@@ -37,26 +53,15 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button
+            
+            <controls:FrameButton
+                BackgroundColor="#BBD2691E"
+                BorderColor="AntiqueWhite"
+                CornerRadius="20"
                 Text="Add Note"
                 IsVisible="{Binding IsCreateButtonVisible}"
-                Command="{Binding AddItemCommand}"
-            />
-            <StackLayout 
-                Orientation="Horizontal" 
-                HorizontalOptions="FillAndExpand"
-                VerticalOptions="FillAndExpand">
-                <Button
-                    Text="My Notes"
-                    Command="{Binding ChangeItemsCommand}"
-                    HorizontalOptions="FillAndExpand"
-                    CommandParameter="{x:Static utility:XamlConstants.MyNotes}"/>
-                <Button
-                    Text="Shared Notes"
-                    Command="{Binding ChangeItemsCommand}"
-                    HorizontalOptions="FillAndExpand"
-                    CommandParameter="{x:Static utility:XamlConstants.SharedNotes}"/>
-            </StackLayout>
+                FrameTappedCommand="{Binding AddItemCommand}"/>
+            
         </StackLayout>
     </base:BasePage.ContentValue>
 </base:BasePage>
