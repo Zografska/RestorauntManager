@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RestaurantManager.Pages.Base.BaseHeaderView"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:welcome="clr-namespace:RestaurantManager.Pages.Welcome;assembly=RestaurantManager"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance welcome:WelcomePageViewModel}">
+    <Grid HorizontalOptions="FillAndExpand"
+          VerticalOptions="Start"
+          Margin="15,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Button Grid.Column="0"
+                Text="Back"
+                HorizontalOptions="Start" 
+                VerticalOptions="Center"
+                TextColor="SandyBrown"
+                Command="{Binding NavigateBackCommand}" />
+                
+        <Label Grid.Column="1" 
+               HorizontalOptions="Center" 
+               VerticalTextAlignment="Center" 
+               Text="{Binding Title}" 
+               FontSize="20"
+               FontAttributes="Bold" 
+               TextColor="Black"/>
+                
+        <Button Grid.Column="2"
+                Text="Logout"
+                HorizontalOptions="End" 
+                VerticalOptions="Center"
+                TextColor="SandyBrown"
+                Command="{Binding LogoutCommand}"/>
+    </Grid>
+</ContentView>

@@ -5,41 +5,19 @@
              forms:NavigationPage.HasNavigationBar="False"
              xmlns:forms="http://xamarin.com/schemas/2014/forms"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:base="clr-namespace:RestaurantManager.Pages.Base;assembly=RestaurantManager"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:welcome="clr-namespace:RestaurantManager.Pages.Welcome;assembly=RestaurantManager"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance welcome:WelcomePageViewModel}"
              ios:Page.UseSafeArea="true"
              x:Class="RestaurantManager.Pages.Base.BasePage"
              x:Name="self">
     <ContentPage.Content>
         <StackLayout>
-            <Grid HorizontalOptions="FillAndExpand"
-                  VerticalOptions="Start"
-                  Margin="15,0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition Width="3*" />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <Button Grid.Column="0"
-                        Text="Back"
-                        HorizontalOptions="Start" 
-                        VerticalOptions="Center"
-                        TextColor="SandyBrown"
-                        Command="{Binding NavigateBackCommand}"/>
-                
-                <Label Grid.Column="1" 
-                       HorizontalOptions="Center" 
-                       VerticalTextAlignment="Center" 
-                       Text="{Binding BindingContext.Title, Source={x:Reference self}}" 
-                       FontSize="20"
-                       FontAttributes="Bold" 
-                       TextColor="Black"/>
-                
-                <Button Grid.Column="2"
-                        Text="Logout"
-                        HorizontalOptions="End" 
-                        VerticalOptions="Center"
-                        TextColor="SandyBrown"
-                        Command="{Binding LogoutCommand}"/>
-                </Grid>
+            <!-- NavigateBackCommand="{Binding NavigateBackCommand}"  -->
+            <base:BaseHeaderView />
             <ContentView
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="FillAndExpand"
