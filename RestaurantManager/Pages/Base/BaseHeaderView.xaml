@@ -18,26 +18,46 @@
         </Grid.ColumnDefinitions>
         <Button Grid.Column="0"
                 Text="Back"
-                HorizontalOptions="Start" 
+                HorizontalOptions="StartAndExpand" 
                 VerticalOptions="Center"
+                BackgroundColor="Transparent"
                 TextColor="SandyBrown"
                 IsVisible="{Binding IsBackButtonVisible}"
-                Command="{Binding NavigateBackCommand}" />
+                Command="{Binding NavigateBackCommand}" >
+            <Button.FontSize>
+                <OnPlatform x:TypeArguments="x:Double">
+                    <OnPlatform.Platforms>
+                        <On Platform="iOS" Value="14"></On>
+                        <On Platform="Android" Value="12"></On>
+                    </OnPlatform.Platforms>
+                </OnPlatform>
+            </Button.FontSize>
+        </Button>
                 
         <Label Grid.Column="1" 
                HorizontalOptions="Center" 
                VerticalTextAlignment="Center" 
                Text="{Binding Title}" 
-               FontSize="20"
+               FontSize="Medium"
                FontAttributes="Bold" 
                TextColor="Black"/>
                 
         <Button Grid.Column="2"
                 Text="Logout"
-                HorizontalOptions="End" 
+                HorizontalOptions="EndAndExpand" 
                 VerticalOptions="Center"
+                BackgroundColor="Transparent"
                 TextColor="SandyBrown"
                 IsVisible="{Binding IsLogoutButtonVisible}"
-                Command="{Binding LogoutCommand}"/>
+                Command="{Binding LogoutCommand}">
+            <Button.FontSize>
+                <OnPlatform x:TypeArguments="x:Double">
+                    <OnPlatform.Platforms>
+                        <On Platform="iOS" Value="14"></On>
+                        <On Platform="Android" Value="12"></On>
+                    </OnPlatform.Platforms>
+                </OnPlatform>
+            </Button.FontSize>
+        </Button>
     </Grid>
 </ContentView>
