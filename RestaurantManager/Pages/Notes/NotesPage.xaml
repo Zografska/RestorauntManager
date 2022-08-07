@@ -53,7 +53,7 @@
                 </controls:CustomListView.Behaviors>
                 <controls:CustomListView.ItemTemplate>
                     <DataTemplate>
-                        <notes:NotesViewCell Height="75"/>
+                        <notes:NotesViewCell Height="100"/>
                     </DataTemplate>
                 </controls:CustomListView.ItemTemplate>
             </controls:CustomListView>

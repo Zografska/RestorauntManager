@@ -47,7 +47,9 @@
                 <Label 
                     Text="{Binding Description}" 
                     HorizontalOptions="FillAndExpand"
-                    VerticalOptions="FillAndExpand"
+                    VerticalOptions="Start"
+                    LineBreakMode="TailTruncation"
+                    MaxLines="3"
                     HorizontalTextAlignment="Start"/>
             </StackLayout>
             
