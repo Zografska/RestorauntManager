@@ -41,22 +41,22 @@
                                       FrameTappedCommandParameter="{x:Static utility:XamlConstants.SharedNotes}"/>
             </StackLayout>
             
-            <ListView HorizontalOptions="FillAndExpand"
+            <controls:CustomListView HorizontalOptions="FillAndExpand"
                       SeparatorVisibility="None"
                       HasUnevenRows="True"
                       ItemsSource="{Binding Items}">
-                <ListView.Behaviors>
+                <controls:CustomListView.Behaviors>
                     <behaviors:EventToCommandBehavior
                         EventName="ItemTapped"
                         Command="{Binding ItemTappedCommand}"
                         EventArgsConverter="{StaticResource ItemTappedEventArgsConverter}"/>
-                </ListView.Behaviors>
-                <ListView.ItemTemplate>
+                </controls:CustomListView.Behaviors>
+                <controls:CustomListView.ItemTemplate>
                     <DataTemplate>
                         <notes:NotesViewCell Height="75"/>
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                </controls:CustomListView.ItemTemplate>
+            </controls:CustomListView>
             
             <controls:FrameButton
                 BackgroundColor="#BBD2691E"
