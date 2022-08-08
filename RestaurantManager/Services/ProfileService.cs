@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using RestaurantManager.Core.Authentication;
@@ -26,10 +27,16 @@ namespace RestaurantManager.Services
                 Uid = userId,
                 Name = name,
                 Surname = surname,
-                Email = email
+                Email = email,
+                FullName = $"{name} {surname}"
             };
 
            return await Save(newUser);
+        }
+
+        public Task<List<User>> GetAllUsers()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

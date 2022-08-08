@@ -45,11 +45,12 @@
                 FontSize="Medium"
                 HorizontalOptions="Start"
                 VerticalOptions="CenterAndExpand" />
-            <Entry
+            <Picker
                 Grid.Row="0"
                 Grid.Column="2"
                 Grid.ColumnSpan="2"
-                Text="{Binding Shift.User}"
+                ItemsSource="{Binding Users}"
+                ItemDisplayBinding="{Binding FullName}"
                 FontSize="Medium"
                 TextColor="DimGray"
                 VerticalOptions="CenterAndExpand"
