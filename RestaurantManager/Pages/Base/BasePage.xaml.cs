@@ -24,5 +24,10 @@ namespace RestaurantManager.Pages.Base
         {
             InitializeComponent();
         }
+
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
+        }
     }
 }
