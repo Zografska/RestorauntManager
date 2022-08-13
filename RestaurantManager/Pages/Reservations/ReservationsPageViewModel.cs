@@ -15,12 +15,29 @@ namespace RestaurantManager.Pages.Reservations
     {
         private ObservableCollection<string> _items = new ObservableCollection<string>()
         {
-            "1","2","3","4","5","6","7"
+            "1","22","3","4","5","6","7"
         };
         public ObservableCollection<string> Week1
         {
             get => _items;
             set => SetProperty(ref _items, value);
+        }
+        
+        private ObservableCollection<DayOfWeek> _week = new ObservableCollection<DayOfWeek>()
+        {
+           new DayOfWeek(new DateTime(2022,8,1)),
+           new DayOfWeek(new DateTime(2022,8,2)),
+           new DayOfWeek(new DateTime(2022,8,3)),
+           new DayOfWeek(new DateTime(2022,8,4)),
+           new DayOfWeek(new DateTime(2022,8,5)),
+           new DayOfWeek(new DateTime(2022,8,6)),
+           new DayOfWeek(new DateTime(2022,8,7))
+        };
+        
+        public ObservableCollection<DayOfWeek> WeekElements
+        {
+            get => _week;
+            set => SetProperty(ref _week, value);
         }
         
         private ObservableCollection<string> _daysOfWeek = new ObservableCollection<string>()
@@ -46,5 +63,19 @@ namespace RestaurantManager.Pages.Reservations
         {
             PopupService.ShowPopupAsync(nameof(ReservationPopup), new PopupParameters {{"Date", date}} );
         }
+    }
+}
+
+public class DayOfWeek
+{
+    public string Day { get; set; }
+    public DateTime Value { get; set; }
+    public string Position { get; set; }
+
+    public DayOfWeek(DateTime date)
+    {
+        Day = date.Day.ToString();
+        Position = ((date.Day - 1) % 7).ToString();
+        Value = date;
     }
 }

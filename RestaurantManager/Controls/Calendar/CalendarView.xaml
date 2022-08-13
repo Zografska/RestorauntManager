@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Grid VerticalOptions="Fill"
+      xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      xmlns:calendar="clr-namespace:RestaurantManager.Controls.Calendar;assembly=RestaurantManager"
+      x:Class="RestaurantManager.Controls.Calendar.CalendarView"
+      x:Name="calendar">
+    <Grid.RowDefinitions>
+        <RowDefinition Height="0.5*" />
+        <RowDefinition Height="0.1*" />
+        <RowDefinition Height="0.75*" />
+        <RowDefinition Height="0.75*" />
+        <RowDefinition Height="0.75*" />
+        <RowDefinition Height="0.75*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+    <StackLayout Grid.Row="0"
+                 BindableLayout.ItemsSource="{Binding DaysOfWeek}"
+                 Orientation="Horizontal"
+                 HorizontalOptions="FillAndExpand"
+                 VerticalOptions="FillAndExpand"
+                 Padding="-5">
+        <BindableLayout.ItemTemplate>
+            <DataTemplate>
+                <Frame BackgroundColor="Transparent"
+                       CornerRadius="20"
+                       HorizontalOptions="FillAndExpand"
+                       HasShadow="False"
+                       BorderColor="Blue"
+                       VerticalOptions="FillAndExpand">
+                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <Label Text="{Binding }"
+                               VerticalOptions="FillAndExpand"
+                               FontSize="16"
+                               Padding="0"
+                               HorizontalOptions="FillAndExpand" />
+                    </StackLayout>
+                </Frame>
+            </DataTemplate>
+        </BindableLayout.ItemTemplate>
+    </StackLayout>
+
+    <Grid Grid.Row="2"
+          BindableLayout.ItemsSource="{Binding WeekElements}"
+          HorizontalOptions="FillAndExpand"
+          VerticalOptions="FillAndExpand">
+        <BindableLayout.ItemTemplate>
+            <DataTemplate>
+                <calendar:CalendarDayFrame 
+                    Grid.Column="{Binding Position}"
+                    FrameTappedCommand="{Binding FrameTappedCommand, Source={x:Reference calendar}}" />
+            </DataTemplate>
+        </BindableLayout.ItemTemplate>
+    </Grid>
+    <Grid Grid.Row="3"
+          BindableLayout.ItemsSource="{Binding WeekElements}"
+          HorizontalOptions="FillAndExpand"
+          VerticalOptions="FillAndExpand">
+        <BindableLayout.ItemTemplate>
+            <DataTemplate>
+                <calendar:CalendarDayFrame 
+                    Grid.Column="{Binding Position}" 
+                    FrameTappedCommand="{Binding FrameTappedCommand, Source={x:Reference calendar}}" />
+            </DataTemplate>
+        </BindableLayout.ItemTemplate>
+    </Grid>
+    <Grid Grid.Row="4"
+          BindableLayout.ItemsSource="{Binding WeekElements}"
+          HorizontalOptions="FillAndExpand"
+          VerticalOptions="FillAndExpand">
+        <BindableLayout.ItemTemplate>
+            <DataTemplate>
+                <calendar:CalendarDayFrame 
+                    Grid.Column="{Binding Position}" 
+                    FrameTappedCommand="{Binding FrameTappedCommand, Source={x:Reference calendar}}" />
+            </DataTemplate>
+        </BindableLayout.ItemTemplate>
+    </Grid>
+    <Grid Grid.Row="5"
+          BindableLayout.ItemsSource="{Binding WeekElements}"
+          HorizontalOptions="FillAndExpand"
+          VerticalOptions="FillAndExpand">
+        <BindableLayout.ItemTemplate>
+            <DataTemplate>
+                <calendar:CalendarDayFrame 
+                    Grid.Column="{Binding Position}" 
+                    FrameTappedCommand="{Binding FrameTappedCommand, Source={x:Reference calendar}}" />
+            </DataTemplate>
+        </BindableLayout.ItemTemplate>
+    </Grid>
+</Grid>
