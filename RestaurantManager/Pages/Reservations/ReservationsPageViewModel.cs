@@ -6,6 +6,7 @@ using RestaurantManager.Pages.Base;
 using RestaurantManager.Popups;
 using RestaurantManager.Services;
 using RestaurantManager.Services.Network;
+using RestaurantManager.Utility;
 using Xamarin.Forms;
 using XCT.Popups.Prism;
 
@@ -50,13 +51,25 @@ namespace RestaurantManager.Pages.Reservations
             get => _daysOfWeek;
             set => SetProperty(ref _daysOfWeek, value);
         }
+
+        private readonly IReservationService _reservationService;
+        
         public Command DateTappedCommand { get; }
+        public Command AddReservationCommand { get; }
         public ReservationsPageViewModel(INavigationService navigationService, IPopupService popupService,
-            IAuthService authService, INetworkService networkService) 
+            IAuthService authService, INetworkService networkService, IReservationService reservationService) 
             : base(navigationService, popupService, authService, networkService)
         {
             Title = "Reservations";
+            _reservationService = reservationService;
             DateTappedCommand = new Command<DateTime>(OpenReservationPopup);
+            AddReservationCommand = new Command(AddReservation);
+        }
+
+        private void AddReservation()
+        {
+            PopupService.ShowPopupAsync(nameof(ReservationPopup), new PopupParameters {
+                { Constants.NavigationConstants.Service, _reservationService }} );
         }
 
         private void OpenReservationPopup(DateTime date)

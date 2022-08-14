@@ -6,12 +6,84 @@
              xmlns:vm="clr-namespace:RestaurantManager.Popups;assembly=RestaurantManager"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:converters="clr-namespace:RestaurantManager.Converters;assembly=RestaurantManager"
+             xmlns:utility="clr-namespace:RestaurantManager.Utility;assembly=RestaurantManager"
+             xmlns:controls="clr-namespace:RestaurantManager.Controls;assembly=RestaurantManager"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance vm:ReservationPopupViewModel}"
              x:Class="RestaurantManager.Popups.ReservationPopup">
     <StackLayout>
-            <Label Text="Hello, world!"
-                   VerticalOptions="CenterAndExpand"
-                   HorizontalOptions="CenterAndExpand" />
+                <StackLayout
+        BackgroundColor="Bisque"
+        Margin="25, 0, 25, 25">
+        <StackLayout.Resources>
+           <ResourceDictionary>
+               <converters:DateToStringConverter x:Key="DateToStringConverter"/>
+           </ResourceDictionary>
+        </StackLayout.Resources>
+        <Grid BackgroundColor="Orange" HorizontalOptions="FillAndExpand" Padding="15" VerticalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            
+            <Entry
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Placeholder= "{x:Static utility:XamlConstants.OnName}"
+                Text="{Binding Item.OnName}"
+                FontSize="Title"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="FillAndExpand"/>
+            
+            <Editor
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Grid.RowSpan="2"
+                AutoSize="Disabled"
+                Placeholder="{x:Static utility:XamlConstants.NumberInParty}"
+                Text="{Binding Item.NumberInParty}"
+                FontSize="Caption"
+                Keyboard="Numeric"/>
+            
+            <Label
+                Grid.Row="4"
+                Grid.Column="0"
+                Text="{x:Static utility:XamlConstants.ReservationTime}"
+                FontSize="Micro"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="End"/>
+            <Label
+                Grid.Row="4"
+                Grid.Column="1"
+                Text="{Binding Item.ReservationDate, Converter={StaticResource DateToStringConverter}}"
+                FontSize="Micro"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="Start"/>
+        </Grid>
+      
+        <StackLayout HorizontalOptions="CenterAndExpand"
+                     Orientation="Horizontal">
+            <controls:FrameButton
+                Text="{x:Static utility:XamlConstants.Save}"
+                CornerRadius="15"
+                BackgroundColor="WhiteSmoke"
+                TextColor="DodgerBlue"
+                FontSize="15"
+                BorderColor="Black"
+                FrameTappedCommand="{Binding SaveCommand}"/>
+            
+        </StackLayout>
+        
+    </StackLayout>
     </StackLayout>
 </popUps:BasePopup>

@@ -29,6 +29,7 @@ namespace RestaurantManager
             containerRegistry.RegisterSingleton<INoteService, NoteService>();
             containerRegistry.RegisterSingleton<IShiftsService, ShiftsService>();
             containerRegistry.RegisterSingleton<INetworkService, NetworkService>();
+            containerRegistry.RegisterSingleton<IReservationService, ReservationService>();
             
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();
