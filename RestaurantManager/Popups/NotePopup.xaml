@@ -39,7 +39,7 @@
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
                 Placeholder= "{x:Static utility:XamlConstants.Title}"
-                Text="{Binding Note.Title}"
+                Text="{Binding Item.Title}"
                 FontSize="Title"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="FillAndExpand"/>
@@ -51,7 +51,7 @@
                 Grid.RowSpan="2"
                 AutoSize="Disabled"
                 Placeholder="{x:Static utility:XamlConstants.Description}"
-                Text="{Binding Note.Description}"
+                Text="{Binding Item.Description}"
                 FontSize="Caption"
                 VerticalOptions="FillAndExpand"
                 HorizontalOptions="FillAndExpand"/>
@@ -65,7 +65,7 @@
                         VerticalOptions="CenterAndExpand" 
                         HorizontalOptions="Start"/>
             
-                <Label Text="{Binding Note.CreatorUid}"
+                <Label Text="{Binding Item.CreatorUid}"
                        FontSize="Medium"
                        VerticalOptions="CenterAndExpand" 
                        HorizontalOptions="Start"/>
@@ -81,7 +81,7 @@
             <Label
                 Grid.Row="4"
                 Grid.Column="1"
-                Text="{Binding Note.LastModified, Converter={StaticResource DateToStringConverter}}"
+                Text="{Binding Item.LastModified, Converter={StaticResource DateToStringConverter}}"
                 FontSize="Micro"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="Start"/>

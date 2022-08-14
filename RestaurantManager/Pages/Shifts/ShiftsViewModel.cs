@@ -12,11 +12,12 @@ namespace RestaurantManager.Pages
     public class ShiftsViewModel : ListViewModel<Shift>
     {
         public ShiftsViewModel(INavigationService navigationService, IPopupService popupService,
-            DatabaseServiceRemote databaseServiceRemote, INetworkService networkService) 
+            DatabaseServiceRemote databaseServiceRemote, INetworkService networkService, ShiftsService shiftsService) 
             : base(navigationService, popupService, databaseServiceRemote, networkService)
         {
             Title = "Shifts";
             PopupName = nameof(ShiftPopup);
+            _service = shiftsService;
         }
     }
 }
