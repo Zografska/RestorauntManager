@@ -7,9 +7,10 @@
                   xmlns:converters="clr-namespace:RestaurantManager.Converters;assembly=RestaurantManager"
                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                  xmlns:behaviors="http://prismlibrary.com"
                   mc:Ignorable="d"
                   d:DataContext="{d:DesignInstance vm:ShiftPopupViewModel}"
-                  x:Class="RestaurantManager.Popups.ShiftPopup">
+                  x:Class="RestaurantManager.Popups.ShiftPopup">    
     <StackLayout
         BackgroundColor="White"
         Margin="25, 25, 25, 25">
@@ -46,15 +47,25 @@
                 HorizontalOptions="Start"
                 VerticalOptions="CenterAndExpand" />
             <Picker
+                x:Name="ZogsiIVladoPicker"
                 Grid.Row="0"
                 Grid.Column="2"
                 Grid.ColumnSpan="2"
+                Title="Select employee:"
                 ItemsSource="{Binding Users}"
                 ItemDisplayBinding="{Binding FullName}"
                 FontSize="Medium"
                 TextColor="DimGray"
                 VerticalOptions="CenterAndExpand"
-                HorizontalOptions="Fill" />
+                HorizontalOptions="Fill" >
+                <Picker.Behaviors>
+                    <behaviors:EventToCommandBehavior
+                        EventName="SelectedIndexChanged"
+                        Command="{Binding OnUserSelectionCommand}"
+                        CommandParameter="{Binding Source={x:Reference ZogsiIVladoPicker}, Path=SelectedIndex}"
+                         />
+                </Picker.Behaviors>
+            </Picker>
             <Label
                 Grid.Row="1"
                 Grid.Column="0"
@@ -108,7 +119,8 @@
             <DatePicker
                 Grid.Row="3"
                 Grid.Column="1"
-                Grid.ColumnSpan="2"
+                Grid.ColumnSpan="3"
+                HorizontalOptions="CenterAndExpand"
                 Date="{Binding Shift.Date}"
                 Format="d"
                 Margin="30, 0, 0, 30" />

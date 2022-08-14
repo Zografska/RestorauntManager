@@ -1,16 +1,12 @@
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using Prism.Navigation;
-using RestaurantManager.Core.Authentication;
 using RestaurantManager.Model;
 using RestaurantManager.PopUps;
 using RestaurantManager.Services;
 using RestaurantManager.Services.Network;
 using RestaurantManager.Utility;
 using Xamarin.Forms;
-using Xamarin.Forms.Internals;
 using XCT.Popups.Prism;
 
 namespace RestaurantManager.Popups
@@ -44,6 +40,8 @@ namespace RestaurantManager.Popups
 
         public ICommand SaveCommand { get; }
         public Command DeleteCommand { get; }
+        public ICommand OnUserSelectionCommand { get; }
+
 
         public ShiftPopupViewModel(INavigationService navigationService, IPopupService popupService,
             IShiftsService shiftsService, INetworkService networkService, IProfileService profileService) 
@@ -53,6 +51,7 @@ namespace RestaurantManager.Popups
             ProfileService = profileService;
             SaveCommand = new Command(SaveShift);
             DeleteCommand = new Command(DeleteShift);
+            OnUserSelectionCommand = new Command<int>(OnUserSelection);
         }
 
         public override void OnPopupOpened(IPopupParameters parameters)
@@ -70,12 +69,8 @@ namespace RestaurantManager.Popups
             {
                 IsDeletePossible = true;
             }
-            else
-            {
-                Users = await ProfileService.GetAll();
-            }
-            
-            
+            Users = await ProfileService.GetAll();
+
             Shift = shift ?? new Shift();
         }
         private async void SaveShift()
@@ -95,7 +90,11 @@ namespace RestaurantManager.Popups
                 UpdateCommand.Execute(parameters);
             }
         }
-        
-  
+
+        private void OnUserSelection(int selectedIndex)
+        {
+            Shift.User = Users[selectedIndex].FullName;
+        }
+
     }
 }
