@@ -16,7 +16,6 @@
              x:Name="self">
     <ContentPage.Content>
         <StackLayout>
-            <!-- NavigateBackCommand="{Binding NavigateBackCommand}"  -->
             <base:BaseHeaderView />
             <ContentView
                 HorizontalOptions="FillAndExpand"

@@ -16,17 +16,6 @@ namespace RestaurantManager.Pages.Base
         {
             AuthService = authService;
             Title = "RestaurantManager";
-            NetworkService.OnNetworkStatusChanged.Subscribe(message =>
-            {
-                if (!message.IsConnected)
-                {
-                    DisplayAlert(Constants.AlertConstants.NoInternet);
-                }
-                else
-                {
-                    DisplayAlert(Constants.AlertConstants.BackOnline);
-                }
-            });
         }
     }
 }

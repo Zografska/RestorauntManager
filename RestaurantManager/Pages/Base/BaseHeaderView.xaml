@@ -5,9 +5,10 @@
              x:Class="RestaurantManager.Pages.Base.BaseHeaderView"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:welcome="clr-namespace:RestaurantManager.Pages.Welcome;assembly=RestaurantManager"
+             xmlns:controls="clr-namespace:RestaurantManager.Controls;assembly=RestaurantManager"
+             xmlns:restaurantManager="clr-namespace:RestaurantManager;assembly=RestaurantManager"
              mc:Ignorable="d"
-             d:DataContext="{d:DesignInstance welcome:WelcomePageViewModel}">
+             d:DataContext="{d:DesignInstance restaurantManager:ViewModelBase}">
     <Grid HorizontalOptions="FillAndExpand"
           VerticalOptions="Start"
           Margin="15,0">
@@ -34,13 +35,14 @@
             </Button.FontSize>
         </Button>
                 
-        <Label Grid.Column="1" 
+        <controls:LogoButton Grid.Column="1" 
                HorizontalOptions="Center" 
-               VerticalTextAlignment="Center" 
                Text="{Binding Title}" 
-               FontSize="Medium"
+               IsNetworkConnected="{Binding IsNetworkConnected}"
+               CornerRadius="20"
+               FontSize="Small"
                FontAttributes="Bold" 
-               TextColor="Black"/>
+               TextColor="DarkBlue"/>
                 
         <Button Grid.Column="2"
                 Text="Logout"

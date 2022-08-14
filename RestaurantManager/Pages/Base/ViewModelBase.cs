@@ -1,3 +1,4 @@
+using System;
 using System.Windows.Input;
 using Prism.AppModel;
 using Prism.Mvvm;
@@ -34,6 +35,18 @@ namespace RestaurantManager
                 _isLogoutButtonVisible = value;
                 RaisePropertyChanged(nameof(IsLogoutButtonVisible));   
             }
+        } 
+        
+        private bool _isNetworkConnected;
+
+        public bool IsNetworkConnected
+        {
+            get => _isNetworkConnected;
+            set
+            {
+                _isNetworkConnected = value;
+                RaisePropertyChanged(nameof(IsNetworkConnected));   
+            }
         }
         protected INavigationService NavigationService { get; }
         protected IPopupService PopupService { get; }
@@ -56,6 +69,10 @@ namespace RestaurantManager
             NavigateBackCommand = new SingleClickCommand(NavigateBack);
             IsBackButtonVisible = true;
             IsLogoutButtonVisible = true;
+            NetworkService.OnNetworkStatusChanged.Subscribe(message =>
+            {
+                IsNetworkConnected = message.IsConnected;
+            });
         }
 
         private void NavigateBack()
@@ -77,6 +94,7 @@ namespace RestaurantManager
 
         public virtual void OnAppearing()
         {
+            IsNetworkConnected = NetworkService.IsNetworkConnected();
         }
 
         public virtual void OnDisappearing()
