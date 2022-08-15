@@ -8,6 +8,10 @@
              xmlns:behaviors="http://prismlibrary.com"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:RestaurantManager.Controls;assembly=RestaurantManager"
+             xmlns:shifts="clr-namespace:RestaurantManager.Pages;assembly=RestaurantManager"
+             xmlns:shifts1="clr-namespace:RestaurantManager.Pages.Shifts;assembly=RestaurantManager"
+             xmlns:utility="clr-namespace:RestaurantManager.Utility;assembly=RestaurantManager"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance vm:ShiftsViewModel}"
              x:Class="RestaurantManager.Pages.ShiftsPage">
@@ -16,52 +20,31 @@
             <converters:ItemTappedEventArgsConverter x:Key="ItemTappedEventArgsConverter"/>
         </ResourceDictionary>
     </ContentPage.Resources>
-    <ContentPage.Content>
+    <base:BasePage.ContentValue>
         <StackLayout>
-            <ListView Margin="0,20,0,0" HorizontalOptions="FillAndExpand" ItemsSource="{Binding Items}">
-                <ListView.Behaviors>
+            <controls:CustomListView 
+                HorizontalOptions="FillAndExpand"
+                SeparatorVisibility="None"
+                HasUnevenRows="True"
+                ItemsSource="{Binding Items}">
+                <controls:CustomListView.Behaviors>
                     <behaviors:EventToCommandBehavior
                         EventName="ItemTapped"
                         Command="{Binding ItemTappedCommand}"
                         EventArgsConverter="{StaticResource ItemTappedEventArgsConverter}"/>
-                </ListView.Behaviors>
-                <ListView.ItemTemplate>
+                </controls:CustomListView.Behaviors>
+                <controls:CustomListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
-                            <Grid Padding="20,0,10,0">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="0.3*" />
-                                    <ColumnDefinition Width="0.6*" />
-                                    <ColumnDefinition Width="0.1*" />
-                                </Grid.ColumnDefinitions>
-                            
-                                <Label 
-                                    Grid.Column="0"
-                                    Text="{Binding User}"
-                                    LineBreakMode="TailTruncation"
-                                    FontAttributes="Bold"/>
-                            
-                                <Label 
-                                    Grid.Column="1"
-                                    Grid.RowSpan="1"
-                                    Text="{Binding Type}" 
-                                    LineBreakMode="TailTruncation" 
-                                    HorizontalTextAlignment="Start"/>
-                                <Label
-                                    Grid.Column="2"
-                                    Text="{Binding Hours}"
-                                    LineBreakMode="TailTruncation"
-                                    HorizontalTextAlignment="Start" />
-                            
-                            </Grid>
-                        </ViewCell>
+                        <shifts1:ShiftsViewCell Height="100"/>
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-            <Button
-                Text="Add Shift"
-                Command="{Binding AddItemCommand}"
-            />
+                </controls:CustomListView.ItemTemplate>
+            </controls:CustomListView>
+            <controls:FrameButton
+                BackgroundColor="#BBD2691E"
+                BorderColor="AntiqueWhite"
+                CornerRadius="20"
+                Text="{x:Static utility:XamlConstants.AddShift}"
+                FrameTappedCommand="{Binding AddItemCommand}"/>
         </StackLayout>
-    </ContentPage.Content>
+    </base:BasePage.ContentValue>
 </base:BasePage>
