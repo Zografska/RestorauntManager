@@ -24,10 +24,10 @@ namespace RestaurantManager.Utility
 
             var nav = App.Current.MainPage as Xamarin.Forms.NavigationPage;
 
-            var e = DependencyService.Get<IEnvironment>();
+            var environment = DependencyService.Get<IEnvironment>();
             if (App.Current.RequestedTheme == OSAppTheme.Dark)
             {
-                e?.SetStatusBarColor(Color.Black, false);
+                environment?.SetStatusBarColor(Color.Black, false);
                 if (nav != null)
                 {
                     nav.BarBackgroundColor = Color.Black;
@@ -36,7 +36,7 @@ namespace RestaurantManager.Utility
             }
             else
             {
-                e?.SetStatusBarColor(Color.White, true);
+                environment?.SetStatusBarColor(Color.White, true);
                 if (nav != null)
                 {
                     nav.BarBackgroundColor = Color.White;

@@ -30,33 +30,6 @@ namespace RestaurantManager.Pages.Settings
             base.OnAppearing();
             loaded = true;
         }
-
-        private void RadioButton_CheckedChanged(object sender, CheckedChangedEventArgs e)
-        {
-            if (!loaded)
-                return;
-
-            if (!e.Value)
-                return;
-
-            var val = (sender as RadioButton)?.Value as string;
-            if (string.IsNullOrWhiteSpace(val))
-                return;
-
-            switch (val)
-            {
-                case "System":
-                    Utility.Settings.Theme = 0;
-                    break;
-                case "Light":
-                    Utility.Settings.Theme = 1;
-                    break;
-                case "Dark":
-                    Utility.Settings.Theme = 2;
-                    break;
-            }
-
-            Theme.SetTheme();
-        }
+        
     }
 }
