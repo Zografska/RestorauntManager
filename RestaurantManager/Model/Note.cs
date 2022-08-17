@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Globalization;
 
 namespace RestaurantManager.Model
 {
@@ -7,7 +9,8 @@ namespace RestaurantManager.Model
         public string Title { get; set; }
         public string Description { get; set; }
         public DateTime LastModified { get; set; }
-        public string Creator { get; set; }
+        public string CreatorUid { get; set; }
+        public string[] UsersSharedWith { get; set; }
 
         public Note()
         {

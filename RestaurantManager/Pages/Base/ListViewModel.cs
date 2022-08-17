@@ -4,6 +4,7 @@ using Prism.Navigation;
 using RestaurantManager.Core.DatabaseService;
 using RestaurantManager.Extensions;
 using RestaurantManager.Model;
+using RestaurantManager.Services.Network;
 using RestaurantManager.Utility;
 using XCT.Popups.Prism;
 
@@ -24,8 +25,9 @@ namespace RestaurantManager.Pages
             set => SetProperty(ref _items, value);
         }
 
-        protected ListViewModel(INavigationService navigationService, IPopupService popupService, DatabaseServiceRemote databaseServiceRemote) : base(
-            navigationService, popupService)
+        protected ListViewModel(INavigationService navigationService, IPopupService popupService,
+            DatabaseServiceRemote databaseServiceRemote, INetworkService networkService) 
+            : base(navigationService, popupService, networkService)
         {
             _databaseServiceRemote = databaseServiceRemote;
             
@@ -33,10 +35,17 @@ namespace RestaurantManager.Pages
             AddItemCommand = new SingleClickCommand(ShowCniPopup);
         }
 
-        public override async void OnAppearing()
+        public override async void OnNavigatedTo(INavigationParameters parameters)
         {
-            base.OnAppearing();
-            Items = await _databaseServiceRemote.GetAll<T>();
+            base.OnNavigatedTo(parameters);
+            if (NetworkService.IsNetworkConnected())
+            {
+                Items = await _databaseServiceRemote.GetAll<T>();
+            }
+            else
+            {
+                DisplayAlert(Constants.AlertConstants.NoInternet);
+            }
         }
 
         private void HandlePopupResult(IPopupParameters resultParameters, T oldItem = null)

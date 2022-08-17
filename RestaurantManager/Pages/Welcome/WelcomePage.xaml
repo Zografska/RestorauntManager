@@ -1,61 +1,122 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<base:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:base="clr-namespace:RestaurantManager.Pages.Base;assembly=RestaurantManager"
-             xmlns:vm="clr-namespace:RestaurantManager;assembly=RestaurantManager"
-             xmlns:controls="clr-namespace:RestaurantManager.Controls;assembly=RestaurantManager"
-             xmlns:behaviors="http://prismlibrary.com"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             d:DataContext="{d:DesignInstance vm:WelcomePageViewModel}"
-             x:Class="RestaurantManager.WelcomePage">
-
-    <StackLayout Spacing="0">
-        <Grid BackgroundColor="{AppThemeBinding 
-        Light={StaticResource WindowBackgroundColor},
-        Dark={StaticResource WindowBackgroundColorDark}}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+<base:BasePage
+         forms:NavigationPage.HasBackButton="False"
+         ios:Page.UseSafeArea="true"
+         xmlns="http://xamarin.com/schemas/2014/forms"
+         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+         xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+         xmlns:base="clr-namespace:RestaurantManager.Pages.Base;assembly=RestaurantManager"
+         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+         xmlns:forms="http://xamarin.com/schemas/2014/forms"
+         xmlns:welcome="clr-namespace:RestaurantManager.Pages.Welcome;assembly=RestaurantManager"
+         xmlns:controls="clr-namespace:RestaurantManager.Controls;assembly=RestaurantManager"
+         xmlns:utility="clr-namespace:RestaurantManager.Utility;assembly=RestaurantManager"
+         mc:Ignorable="d"
+         d:DataContext="{d:DesignInstance welcome:WelcomePageViewModel}"
+         x:Class="RestaurantManager.WelcomePage">
+    <base:BasePage.ContentValue>
+        <StackLayout Spacing="0">
+       
+            <Grid HorizontalOptions="FillAndExpand" 
+                  VerticalOptions="FillAndExpand"
+                  Margin="30, 30">
             <Grid.RowDefinitions>
-                <RowDefinition Height="*" /> 
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <controls:GridButton Grid.Row="0" Grid.Column="0" Text="Notes">
-                <controls:GridButton.Behaviors>
-                    <behaviors:EventToCommandBehavior 
-                        EventName="Clicked"
-                        Command="{Binding NavigateToNotesCommand}"/>
-                </controls:GridButton.Behaviors>
-            </controls:GridButton>
-            <controls:GridButton Grid.Row="1" Grid.Column="0" Text="Shifts">
-                <controls:GridButton.Behaviors>
-                    <behaviors:EventToCommandBehavior
-                        EventName="Clicked"
-                        Command="{Binding NavigateToShiftsCommand}"/>
-                </controls:GridButton.Behaviors>
-            </controls:GridButton>
-            <controls:GridButton Grid.Row="0" Grid.Column="1" Text="Reservations">
-                <controls:GridButton.Behaviors>
-                    <behaviors:EventToCommandBehavior 
-                        EventName="Clicked"
-                        Command="{Binding NavigateToReservationsCommand}"/>
-                </controls:GridButton.Behaviors>
-            </controls:GridButton>
-            <controls:GridButton Grid.Row="1" Grid.Column="1" Text="Employees"/>
-            <controls:GridButton Grid.Row="2" Grid.Column="0" Text="Inventory"/>
-            <controls:GridButton Grid.Row="2" Grid.Column="1" Text="Settings">
-                <controls:GridButton.Behaviors>
-                    <behaviors:EventToCommandBehavior
-                        EventName="Clicked"
-                        Command="{Binding  NavigateToSettingsCommand}"/>
-                </controls:GridButton.Behaviors>
-            </controls:GridButton>
-
-        </Grid>
+                
+                <!-- This frame is a placeholder for displaying some profile info -->
+                <Frame
+                    Padding="10"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Grid.RowSpan="2"
+                    HorizontalOptions="FillAndExpand"
+                    HasShadow="False"
+                    BackgroundColor="AntiqueWhite"
+                    BorderColor="Chocolate"
+                    VerticalOptions="FillAndExpand"
+                    CornerRadius="10">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavigateToNotesCommand}"/>
+                    </Frame.GestureRecognizers>
+                    <Label
+                        Text="Welcome User"
+                        FontSize="20"
+                        TextColor="Chocolate"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"/>
+                </Frame>
+                
+                <BoxView Grid.Column="0" 
+                         Grid.ColumnSpan="2" 
+                         Grid.Row="2"  
+                         Color="#88D2691E" 
+                         Margin="5"
+                         VerticalOptions="Center"
+                         HeightRequest="2"/>
+                
+                <controls:FrameButton 
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    BackgroundColor="Chocolate"
+                    BorderColor="AntiqueWhite"
+                    FrameTappedCommand="{Binding NavigateToNotesCommand}"
+                    Text="{x:Static utility:XamlConstants.Notes}"
+                    TextColor="White"/>
+                
+                <controls:FrameButton 
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    BackgroundColor="Chocolate"
+                    BorderColor="AntiqueWhite"
+                    FrameTappedCommand="{Binding NavigateToReservationsCommand}"
+                    Text="{x:Static utility:XamlConstants.Reservations}"
+                    TextColor="White"/> 
+                
+                <controls:FrameButton 
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    BackgroundColor="Chocolate"
+                    BorderColor="AntiqueWhite"
+                    FrameTappedCommand="{Binding NavigateToShiftsCommand}"
+                    Text="{x:Static utility:XamlConstants.Shifts}"
+                    TextColor="White"/>
+                
+                <controls:FrameButton 
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    BackgroundColor="Chocolate"
+                    BorderColor="AntiqueWhite"
+                    Text="{x:Static utility:XamlConstants.Employees}"
+                    TextColor="White"/> 
+                
+                <controls:FrameButton 
+                    Grid.Row="5"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    BackgroundColor="DimGray"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"
+                    BorderColor="Orange"
+                    Text="{x:Static utility:XamlConstants.Settings}"
+                    TextColor="White"/>
+                
+            </Grid>
     </StackLayout>
-
+        </base:BasePage.ContentValue>
 </base:BasePage>

@@ -1,3 +1,5 @@
+using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using Prism.Navigation;
 
@@ -23,6 +25,7 @@ namespace RestaurantManager.Extensions
         {
             var result = await navigationService.NavigateAsync(screenName, parameters);
 
+            if(!result.Success) Debugger.Break();
             return result;
         }
     }

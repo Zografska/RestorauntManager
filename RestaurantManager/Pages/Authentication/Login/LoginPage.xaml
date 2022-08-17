@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<base:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:behaviors="http://prismlibrary.com"
+             x:Class="RestaurantManager.Pages.Authentication.Login.LoginPage"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:login="clr-namespace:RestaurantManager.Pages.Authentication.Login;assembly=RestaurantManager"
+             xmlns:toolkit="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:base="clr-namespace:RestaurantManager.Pages.Base;assembly=RestaurantManager"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance login:LoginPageViewModel}">
+    <ContentPage.Resources>
+        <Style x:Key="InvalidEntryStyle" TargetType="Entry"> 
+            <Setter Property="BackgroundColor" Value="IndianRed" />
+        </Style>
+    </ContentPage.Resources>
+    <base:BasePage.ContentValue>
+        <StackLayout
+            VerticalOptions="Center"
+            Margin="20">
+        
+            <Label
+                Text="FireAuth"
+                HorizontalOptions="Center"
+                TextColor="#4682B4"
+                FontSize="35"
+                Margin="0, 20"
+            />
+            
+            <Entry
+                Placeholder="E-mail"
+                Text="{Binding Username, Mode=TwoWay}"
+                Keyboard="Email">
+            <Entry.Behaviors>
+                <toolkit:EmailValidationBehavior
+                    DecorationFlags="Trim"
+                    IsValid="{Binding UsernameValid, Mode=OneWayToSource}"
+                    InvalidStyle="{StaticResource InvalidEntryStyle}"/>
+            </Entry.Behaviors>
+            </Entry>
+        
+            <Entry
+                Placeholder="Password"
+                IsPassword="true"
+                Text="{Binding Password, Mode=TwoWay}">
+                <Entry.Behaviors>
+                    <toolkit:TextValidationBehavior
+                        IsValid="{Binding PasswordValid, Mode=OneWayToSource}"
+                        InvalidStyle="{StaticResource InvalidEntryStyle}"
+                        MinimumLength="6"/>
+                </Entry.Behaviors>
+            </Entry>
+        
+            <Button
+                Text="Enter"
+                Margin="60, 40"
+                BackgroundColor="#4682B4"
+                TextColor="White"
+                IsEnabled="{Binding IsLoginPossible}"
+                Command="{Binding LoginCommand}"/>
+                
+            <Button
+                Text="Don't have an account? Signup!"
+                Margin="60, 40,60, 10"
+                BackgroundColor="Transparent"
+                TextColor="Blue"
+                Command="{Binding NavigateToSignupCommand}"/>
+            <Button
+                Text="Forgot password?"
+                Margin="60, 0"
+                BackgroundColor="Transparent"
+                TextColor="Blue"
+                Command="{Binding NavigateToResetPasswordCommand}"/>
+            
+            <Button
+                Text="Login As Sadmin"
+                Margin="60, 40"
+                BackgroundColor="#4682B4"
+                TextColor="White"
+                Command="{Binding LoginAsSadminCommand}"/>
+        </StackLayout>
+    </base:BasePage.ContentValue>
+</base:BasePage>

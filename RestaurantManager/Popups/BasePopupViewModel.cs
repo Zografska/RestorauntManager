@@ -1,6 +1,7 @@
 using System;
 using Prism.Commands;
 using Prism.Navigation;
+using RestaurantManager.Services.Network;
 using XCT.Popups.Prism;
 
 namespace RestaurantManager.PopUps
@@ -12,8 +13,8 @@ namespace RestaurantManager.PopUps
 
         public event Action<IPopupParameters> RequestDismiss;
 
-        public BasePopupViewModel(INavigationService navigationService, IPopupService popupService)
-            : base(navigationService, popupService)
+        public BasePopupViewModel(INavigationService navigationService, IPopupService popupService,
+            INetworkService networkService) : base(navigationService, popupService, networkService)
         {
             DismissCommand = new DelegateCommand(DimsissCommandExecuted);
             UpdateCommand = new DelegateCommand<IPopupParameters>(UpdateCommandExecuted);

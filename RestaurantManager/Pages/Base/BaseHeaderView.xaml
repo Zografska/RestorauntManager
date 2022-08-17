@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RestaurantManager.Pages.Base.BaseHeaderView"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:RestaurantManager.Controls;assembly=RestaurantManager"
+             xmlns:restaurantManager="clr-namespace:RestaurantManager;assembly=RestaurantManager"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance restaurantManager:ViewModelBase}">
+    <Grid HorizontalOptions="FillAndExpand"
+          VerticalOptions="Start"
+          Margin="15,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Button Grid.Column="0"
+                Text="Back"
+                HorizontalOptions="StartAndExpand" 
+                VerticalOptions="Center"
+                BackgroundColor="Transparent"
+                TextColor="SandyBrown"
+                IsVisible="{Binding IsBackButtonVisible}"
+                Command="{Binding NavigateBackCommand}" >
+            <Button.FontSize>
+                <OnPlatform x:TypeArguments="x:Double">
+                    <OnPlatform.Platforms>
+                        <On Platform="iOS" Value="14"></On>
+                        <On Platform="Android" Value="12"></On>
+                    </OnPlatform.Platforms>
+                </OnPlatform>
+            </Button.FontSize>
+        </Button>
+                
+        <controls:LogoButton Grid.Column="1" 
+               HorizontalOptions="Center" 
+               Text="{Binding Title}" 
+               IsNetworkConnected="{Binding IsNetworkConnected}"
+               CornerRadius="20"
+               FontSize="Small"
+               FontAttributes="Bold" 
+               TextColor="DarkBlue"/>
+                
+        <Button Grid.Column="2"
+                Text="Logout"
+                HorizontalOptions="EndAndExpand" 
+                VerticalOptions="Center"
+                BackgroundColor="Transparent"
+                TextColor="SandyBrown"
+                IsVisible="{Binding IsLogoutButtonVisible}"
+                Command="{Binding LogoutCommand}">
+            <Button.FontSize>
+                <OnPlatform x:TypeArguments="x:Double">
+                    <OnPlatform.Platforms>
+                        <On Platform="iOS" Value="14"></On>
+                        <On Platform="Android" Value="12"></On>
+                    </OnPlatform.Platforms>
+                </OnPlatform>
+            </Button.FontSize>
+        </Button>
+    </Grid>
+</ContentView>

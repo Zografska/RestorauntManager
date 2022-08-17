@@ -2,10 +2,25 @@
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:converters="clr-namespace:RestaurantManager.Converters;assembly=RestaurantManager"
+             forms:NavigationPage.HasNavigationBar="False"
+             xmlns:forms="http://xamarin.com/schemas/2014/forms"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:base="clr-namespace:RestaurantManager.Pages.Base;assembly=RestaurantManager"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:welcome="clr-namespace:RestaurantManager.Pages.Welcome;assembly=RestaurantManager"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance welcome:WelcomePageViewModel}"
+             ios:Page.UseSafeArea="true"
              x:Class="RestaurantManager.Pages.Base.BasePage"
-             Title="{Binding Title}">
+             x:Name="self">
     <ContentPage.Content>
-        
+        <StackLayout>
+            <base:BaseHeaderView />
+            <ContentView
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand"
+                Content="{Binding ContentValue, Source={x:Reference self}}"/>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

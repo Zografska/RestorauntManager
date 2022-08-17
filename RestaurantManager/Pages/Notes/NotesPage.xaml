@@ -3,65 +3,69 @@
 <base:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                xmlns:base="clr-namespace:RestaurantManager.Pages.Base;assembly=RestaurantManager"
-               xmlns:vm="clr-namespace:RestaurantManager.Pages;assembly=RestaurantManager"
                xmlns:behaviors="http://prismlibrary.com"
                xmlns:converters="http://xamarin.com/schemas/2020/toolkit"
-               x:Class="RestaurantManager.Pages.NotesPage"
+               x:Class="RestaurantManager.Pages.Notes.NotesPage"
+               x:Name="NotePage"
                xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+               xmlns:notes="clr-namespace:RestaurantManager.Pages.Notes;assembly=RestaurantManager"
+               xmlns:utility="clr-namespace:RestaurantManager.Utility;assembly=RestaurantManager"
+               xmlns:controls="clr-namespace:RestaurantManager.Controls;assembly=RestaurantManager"
                mc:Ignorable="d"
-               d:DataContext="{d:DesignInstance vm:NotesViewModel}">
+               d:DataContext="{d:DesignInstance notes:NotesViewModel}">
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:ItemTappedEventArgsConverter x:Key="ItemTappedEventArgsConverter"/>
         </ResourceDictionary>
     </ContentPage.Resources>
-    <ContentPage.Content>
-        <StackLayout
-            BackgroundColor="{AppThemeBinding 
-            Light={StaticResource WindowBackgroundColor},
-            Dark={StaticResource WindowBackgroundColorDark}}">
-            <ListView Margin="0,20,0,0" HorizontalOptions="FillAndExpand" ItemsSource="{Binding Items}">
-                <ListView.Behaviors>
+    <base:BasePage.ContentValue>
+        <StackLayout>
+            <StackLayout 
+                Orientation="Horizontal" 
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="FillAndExpand"
+                BackgroundColor="#88FFE4C4">
+                <controls:FrameButton BackgroundColor="Chocolate"
+                                      BorderColor="AntiqueWhite"
+                                      Text="{x:Static utility:XamlConstants.MyNotes}"
+                                      TextColor="AntiqueWhite"
+                                      FrameTappedCommand="{Binding ChangeItemsCommand}"
+                                      FrameTappedCommandParameter="{x:Static utility:XamlConstants.MyNotes}"/>
+                
+                <controls:FrameButton BackgroundColor="Chocolate"
+                                      BorderColor="AntiqueWhite"
+                                      Text="{x:Static utility:XamlConstants.SharedNotes}"
+                                      TextColor="AntiqueWhite"
+                                      FrameTappedCommand="{Binding ChangeItemsCommand}"
+                                      FrameTappedCommandParameter="{x:Static utility:XamlConstants.SharedNotes}"/>
+            </StackLayout>
+            
+            <controls:CustomListView HorizontalOptions="FillAndExpand"
+                      SeparatorVisibility="None"
+                      HasUnevenRows="True"
+                      ItemsSource="{Binding Items}">
+                <controls:CustomListView.Behaviors>
                     <behaviors:EventToCommandBehavior
                         EventName="ItemTapped"
                         Command="{Binding ItemTappedCommand}"
                         EventArgsConverter="{StaticResource ItemTappedEventArgsConverter}"/>
-                </ListView.Behaviors>
-                <ListView.ItemTemplate>
+                </controls:CustomListView.Behaviors>
+                <controls:CustomListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
-                            <Grid Padding="20,0,10,0">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="0.3*" />
-                                    <ColumnDefinition Width="0.6*" />
-                                    <ColumnDefinition Width="0.1*" />
-                                </Grid.ColumnDefinitions>
-                            
-                                <Label 
-                                    Grid.Column="0"
-                                    Text="{Binding Title}"
-                                    TextColor="DimGray"
-                                    LineBreakMode="TailTruncation"
-                                    FontAttributes="Bold"/>
-                            
-                                <Label 
-                                    Grid.Column="1"
-                                    Grid.RowSpan="2"
-                                    Text="{Binding Description}" 
-                                    TextColor="DimGray"
-                                    LineBreakMode="TailTruncation" 
-                                    HorizontalTextAlignment="Start"/>
-                            
-                            </Grid>
-                        </ViewCell>
+                        <notes:NotesViewCell Height="100"/>
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-            <Button
-                Text="Add Note"
-                Command="{Binding AddItemCommand}"
-            />
+                </controls:CustomListView.ItemTemplate>
+            </controls:CustomListView>
+            
+            <controls:FrameButton
+                BackgroundColor="#BBD2691E"
+                BorderColor="AntiqueWhite"
+                CornerRadius="20"
+                Text="{x:Static utility:XamlConstants.AddNote}"
+                IsVisible="{Binding IsCreateButtonVisible}"
+                FrameTappedCommand="{Binding AddItemCommand}"/>
+            
         </StackLayout>
-    </ContentPage.Content>
+    </base:BasePage.ContentValue>
 </base:BasePage>

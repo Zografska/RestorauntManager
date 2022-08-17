@@ -1,52 +1,75 @@
-using System;
 using System.Windows.Input;
 using Prism.Navigation;
-using RestaurantManager.Core.DatabaseService;
+using RestaurantManager.Core.Authentication;
 using RestaurantManager.Extensions;
-using RestaurantManager.Model;
-using RestaurantManager.Pages;
 using RestaurantManager.Pages.Base;
+using RestaurantManager.Pages.Notes;
 using RestaurantManager.Pages.Reservations;
-using RestaurantManager.Pages.Settings;
-using Xamarin.Forms;
+using RestaurantManager.Services;
+using RestaurantManager.Services.Network;
+using RestaurantManager.Utility;
 using XCT.Popups.Prism;
 
-namespace RestaurantManager
+namespace RestaurantManager.Pages.Welcome
 {
     public class WelcomePageViewModel : PageViewModelBase
     {
+        private readonly IProfileService _profileService;
         public ICommand NavigateToNotesCommand { get; }
         public ICommand NavigateToShiftsCommand { get; }
         public ICommand NavigateToReservationsCommand { get; }
-        public ICommand NavigateToSettingsCommand { get; set; }
+        public ICommand LogoutCommand { get; }
 
-        public WelcomePageViewModel(INavigationService navigationService, IPopupService popupService, DatabaseServiceRemote databaseServiceRemote) : base(navigationService, popupService)
+        public WelcomePageViewModel(INavigationService navigationService, IPopupService popupService,
+            IAuthService authService, IProfileService profileService, INetworkService networkService) 
+            : base(navigationService, popupService, authService, networkService)
         {
             Title = "Restaurant Manager";
-            NavigateToNotesCommand = new Command(NavigateToNotesPage);
-            NavigateToShiftsCommand = new Command(NavigateToShiftsPage);
-            NavigateToReservationsCommand = new Command(NavigateToReservationsPage);
-            NavigateToSettingsCommand = new Command(NavigateToSettingsPage);
+            NavigateToNotesCommand = new SingleClickCommand(NavigateToNotesPage);
+            NavigateToShiftsCommand = new SingleClickCommand(NavigateToShiftsPage);
+            NavigateToReservationsCommand = new SingleClickCommand(NavigateToReservationsPage);
+            LogoutCommand = new SingleClickCommand(Logout);
+            _profileService = profileService;
+            IsBackButtonVisible = false;
+        }
+
+        private void Logout()
+        {
+            if (NetworkService.IsNetworkConnected())
+            {
+                var successful = AuthService.Logout();
+                if (successful)
+                {
+                    NavigationService.GoBackToRootAsync();
+                }
+                else
+                {
+                    DisplayAlert(Constants.AlertConstants.LogoutUnsuccessful);
+                }
+            }
+            else
+            {
+                DisplayAlert(Constants.AlertConstants.NoInternet);
+            }
+            SingleClickCommand.ResetLastClick();
         }
 
         private async void NavigateToReservationsPage()
         {
             await NavigationService.NavigateTo<ReservationsPage>();
+            SingleClickCommand.ResetLastClick();
         }
 
         private async void NavigateToNotesPage()
         {
             await NavigationService.NavigateTo<NotesPage>();
+            SingleClickCommand.ResetLastClick();
         }
 
         private async void NavigateToShiftsPage()
         {
             await NavigationService.NavigateTo<ShiftsPage>();
-        }
-
-        private async void NavigateToSettingsPage()
-        {
-            await NavigationService.NavigateTo<SettingsPage>();
+            SingleClickCommand.ResetLastClick();
         }
     }
 }
