@@ -5,6 +5,7 @@ using RestaurantManager.Extensions;
 using RestaurantManager.Pages.Base;
 using RestaurantManager.Pages.Notes;
 using RestaurantManager.Pages.Reservations;
+using RestaurantManager.Pages.Settings;
 using RestaurantManager.Services;
 using RestaurantManager.Services.Network;
 using RestaurantManager.Utility;
@@ -18,6 +19,7 @@ namespace RestaurantManager.Pages.Welcome
         public ICommand NavigateToNotesCommand { get; }
         public ICommand NavigateToShiftsCommand { get; }
         public ICommand NavigateToReservationsCommand { get; }
+        public ICommand NavigateToSettingsCommand { get; set; }
         public ICommand LogoutCommand { get; }
 
         public WelcomePageViewModel(INavigationService navigationService, IPopupService popupService,
@@ -28,6 +30,7 @@ namespace RestaurantManager.Pages.Welcome
             NavigateToNotesCommand = new SingleClickCommand(NavigateToNotesPage);
             NavigateToShiftsCommand = new SingleClickCommand(NavigateToShiftsPage);
             NavigateToReservationsCommand = new SingleClickCommand(NavigateToReservationsPage);
+            NavigateToSettingsCommand = new SingleClickCommand(NavigateToSettingsPage);
             LogoutCommand = new SingleClickCommand(Logout);
             _profileService = profileService;
             IsBackButtonVisible = false;
@@ -69,6 +72,12 @@ namespace RestaurantManager.Pages.Welcome
         private async void NavigateToShiftsPage()
         {
             await NavigationService.NavigateTo<ShiftsPage>();
+            SingleClickCommand.ResetLastClick();
+        }
+
+        private async void NavigateToSettingsPage()
+        {
+            await NavigationService.NavigateTo<SettingsPage>();
             SingleClickCommand.ResetLastClick();
         }
     }

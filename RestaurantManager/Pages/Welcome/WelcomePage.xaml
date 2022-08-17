@@ -113,6 +113,7 @@
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="FillAndExpand"
                     BorderColor="Orange"
+                    FrameTappedCommand="{Binding NavigateToSettingsCommand}"
                     Text="{x:Static utility:XamlConstants.Settings}"
                     TextColor="White"/>
                 

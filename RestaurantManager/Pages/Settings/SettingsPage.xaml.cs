@@ -5,7 +5,7 @@ using Xamarin.Forms.Xaml;
 namespace RestaurantManager.Pages.Settings
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SettingsPage : ContentPage
+    public partial class SettingsPage
     {
         public SettingsPage()
         {

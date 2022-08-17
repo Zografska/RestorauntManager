@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
+<base:BasePage
     x:Class="RestaurantManager.Pages.Settings.SettingsPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:fontAwesome="clr-namespace:FontAwesome;assembly=RestaurantManager"
-    BackgroundColor="{AppThemeBinding 
-                        Dark={StaticResource WindowBackgroundColorDark}, 
-                        Light={StaticResource WindowBackgroundColor}}">
+    xmlns:base="clr-namespace:RestaurantManager.Pages.Base;assembly=RestaurantManager">
     <ContentPage.Resources>
         <ResourceDictionary>
 
@@ -95,6 +93,7 @@
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
+    <base:BasePage.ContentValue>
     <ScrollView >
         <Grid Padding="12" ColumnDefinitions=".05*,.9*,.05*" >
             <StackLayout Grid.Column="1">
@@ -174,4 +173,5 @@
             </StackLayout>
         </Grid>
     </ScrollView>
-</ContentPage>
+    </base:BasePage.ContentValue>
+</base:BasePage>
