@@ -9,9 +9,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:controls="clr-namespace:RestaurantManager.Controls;assembly=RestaurantManager"
-             xmlns:shifts="clr-namespace:RestaurantManager.Pages;assembly=RestaurantManager"
-             xmlns:shifts1="clr-namespace:RestaurantManager.Pages.Shifts;assembly=RestaurantManager"
              xmlns:utility="clr-namespace:RestaurantManager.Utility;assembly=RestaurantManager"
+             xmlns:shifts1="clr-namespace:RestaurantManager.Pages.Shifts;assembly=RestaurantManager"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance vm:ShiftsViewModel}"
              x:Class="RestaurantManager.Pages.ShiftsPage">

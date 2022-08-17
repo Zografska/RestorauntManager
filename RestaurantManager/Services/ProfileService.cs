@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using RestaurantManager.Core.Authentication;
@@ -32,11 +31,6 @@ namespace RestaurantManager.Services
             };
 
            return await Save(newUser);
-        }
-
-        public Task<List<User>> GetAllUsers()
-        {
-            throw new System.NotImplementedException();
         }
     }
 }
