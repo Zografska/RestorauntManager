@@ -4,20 +4,15 @@
                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                   xmlns:popups="clr-namespace:RestaurantManager.PopUps;assembly=RestaurantManager"
                   xmlns:vm="clr-namespace:RestaurantManager.Popups;assembly=RestaurantManager"
-                  xmlns:converters="clr-namespace:RestaurantManager.Converters;assembly=RestaurantManager"
                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                  xmlns:behaviors="http://prismlibrary.com"
                   mc:Ignorable="d"
                   d:DataContext="{d:DesignInstance vm:ShiftPopupViewModel}"
-                  x:Class="RestaurantManager.Popups.ShiftPopup">
+                  x:Class="RestaurantManager.Popups.ShiftPopup">    
     <StackLayout
         BackgroundColor="White"
         Margin="25, 25, 25, 25">
-        <StackLayout.Resources>
-            <ResourceDictionary>
-                <converters:DateToStringConverter x:Key="DateToStringConverter" />
-            </ResourceDictionary>
-        </StackLayout.Resources>
         <Grid
             BackgroundColor="White"
             HorizontalOptions="FillAndExpand"
@@ -45,15 +40,26 @@
                 FontSize="Medium"
                 HorizontalOptions="Start"
                 VerticalOptions="CenterAndExpand" />
-            <Entry
+            <Picker
+                x:Name="EmployeePicker"
                 Grid.Row="0"
                 Grid.Column="2"
                 Grid.ColumnSpan="2"
-                Text="{Binding Shift.User}"
+                Title="Select employee:"
+                ItemsSource="{Binding Users}"
+                ItemDisplayBinding="{Binding FullName}"
                 FontSize="Medium"
                 TextColor="DimGray"
                 VerticalOptions="CenterAndExpand"
-                HorizontalOptions="Fill" />
+                HorizontalOptions="Fill" >
+                <Picker.Behaviors>
+                    <behaviors:EventToCommandBehavior
+                        EventName="SelectedIndexChanged"
+                        Command="{Binding OnUserSelectionCommand}"
+                        CommandParameter="{Binding Source={x:Reference EmployeePicker}, Path=SelectedIndex}"
+                         />
+                </Picker.Behaviors>
+            </Picker>
             <Label
                 Grid.Row="1"
                 Grid.Column="0"
@@ -107,7 +113,8 @@
             <DatePicker
                 Grid.Row="3"
                 Grid.Column="1"
-                Grid.ColumnSpan="2"
+                Grid.ColumnSpan="3"
+                HorizontalOptions="CenterAndExpand"
                 Date="{Binding Shift.Date}"
                 Format="d"
                 Margin="30, 0, 0, 30" />

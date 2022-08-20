@@ -26,7 +26,8 @@ namespace RestaurantManager.Services
                 Uid = userId,
                 Name = name,
                 Surname = surname,
-                Email = email
+                Email = email,
+                FullName = $"{name} {surname}"
             };
 
            return await Save(newUser);

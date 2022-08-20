@@ -16,5 +16,10 @@ namespace RestaurantManager.Utility
         public const string Employees = "Employees";
         public const string Reservations = "Reservations";
         public const string Shifts = "Shifts";
+        public const string Employee = "Employee";
+        public const string Type = "Type";
+        public const string Hours = "Hours";
+        public const string Date = "Date";
+        public const string AddShift = "Add Shift";
     }
 }
