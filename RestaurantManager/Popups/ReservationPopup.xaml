@@ -3,19 +3,16 @@
 <popUps:BasePopup xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:popUps="clr-namespace:RestaurantManager.PopUps;assembly=RestaurantManager"
-             xmlns:vm="clr-namespace:RestaurantManager.Popups;assembly=RestaurantManager"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:converters="clr-namespace:RestaurantManager.Converters;assembly=RestaurantManager"
              xmlns:utility="clr-namespace:RestaurantManager.Utility;assembly=RestaurantManager"
              xmlns:controls="clr-namespace:RestaurantManager.Controls;assembly=RestaurantManager"
-             mc:Ignorable="d"
-             d:DataContext="{d:DesignInstance vm:ReservationPopupViewModel}"
+             xmlns:behaviors="http://prismlibrary.com"
              x:Class="RestaurantManager.Popups.ReservationPopup">
     <StackLayout>
                 <StackLayout
         BackgroundColor="Bisque"
-        Margin="25, 0, 25, 25">
+        Margin="25, 0, 25, 25"
+        VerticalOptions="FillAndExpand">
         <StackLayout.Resources>
            <ResourceDictionary>
                <converters:DateToStringConverter x:Key="DateToStringConverter"/>
@@ -44,16 +41,28 @@
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="FillAndExpand"/>
             
-            <Editor
+            <Label
                 Grid.Row="1"
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
-                Grid.RowSpan="2"
-                AutoSize="Disabled"
-                Placeholder="{x:Static utility:XamlConstants.NumberInParty}"
-                Text="{Binding Item.NumberInParty}"
-                FontSize="Caption"
-                Keyboard="Numeric"/>
+                Text="{x:Static utility:XamlConstants.NumberInParty}"
+                FontSize="Medium"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="Center"/>
+            
+            <controls:NumberPicker Grid.Row="1"
+                                   Grid.Column="1"
+                                   Grid.ColumnSpan="2"
+                                   x:Name="NumberPicker"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="End">
+                <controls:NumberPicker.Behaviors>
+                    <behaviors:EventToCommandBehavior
+                        EventName="SelectedIndexChanged"
+                        Command="{Binding PartyPickedCommand}"
+                        CommandParameter="{Binding Source={x:Reference NumberPicker}, Path=SelectedItem}"/>
+                </controls:NumberPicker.Behaviors>
+            </controls:NumberPicker>
             
             <Label
                 Grid.Row="4"

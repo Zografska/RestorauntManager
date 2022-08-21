@@ -6,7 +6,7 @@ namespace RestaurantManager.Model
     {
         public DateTime ReservationDate { get; set; }
         public string OnName { get; set; }
-        public int NumberInParty { get; set; }
+        public int NumberOfPeople { get; set; }
         public bool IsCancelled { get; set; }
         
         public Reservation()
