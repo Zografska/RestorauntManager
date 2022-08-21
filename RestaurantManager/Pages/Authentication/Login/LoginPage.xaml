@@ -58,7 +58,6 @@
                 Margin="60, 40"
                 BackgroundColor="#4682B4"
                 TextColor="White"
-                IsEnabled="{Binding IsLoginPossible}"
                 Command="{Binding LoginCommand}"/>
                 
             <Button
