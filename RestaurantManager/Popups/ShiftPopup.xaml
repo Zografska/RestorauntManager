@@ -11,10 +11,11 @@
                   d:DataContext="{d:DesignInstance vm:ShiftPopupViewModel}"
                   x:Class="RestaurantManager.Popups.ShiftPopup">    
     <StackLayout
-        BackgroundColor="White"
         Margin="25, 25, 25, 25">
         <Grid
-            BackgroundColor="White"
+            BackgroundColor="{AppThemeBinding 
+                Light={StaticResource WindowBackgroundColor},
+                Dark={StaticResource WindowBackgroundColorDark}}"
             HorizontalOptions="FillAndExpand"
             Padding="15"
             VerticalOptions="FillAndExpand">
