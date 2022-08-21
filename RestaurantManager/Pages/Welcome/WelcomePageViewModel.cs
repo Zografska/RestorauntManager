@@ -1,3 +1,4 @@
+using System;
 using System.Windows.Input;
 using Prism.Navigation;
 using RestaurantManager.Core.Authentication;
@@ -8,6 +9,7 @@ using RestaurantManager.Pages.Reservations;
 using RestaurantManager.Services;
 using RestaurantManager.Services.Network;
 using RestaurantManager.Utility;
+using Xamarin.Essentials;
 using XCT.Popups.Prism;
 
 namespace RestaurantManager.Pages.Welcome
@@ -19,6 +21,7 @@ namespace RestaurantManager.Pages.Welcome
         public ICommand NavigateToShiftsCommand { get; }
         public ICommand NavigateToReservationsCommand { get; }
         public ICommand LogoutCommand { get; }
+        public ICommand MapClickCommand { get; }
 
         public WelcomePageViewModel(INavigationService navigationService, IPopupService popupService,
             IAuthService authService, IProfileService profileService, INetworkService networkService) 
@@ -28,6 +31,7 @@ namespace RestaurantManager.Pages.Welcome
             NavigateToNotesCommand = new SingleClickCommand(NavigateToNotesPage);
             NavigateToShiftsCommand = new SingleClickCommand(NavigateToShiftsPage);
             NavigateToReservationsCommand = new SingleClickCommand(NavigateToReservationsPage);
+            MapClickCommand = new SingleClickCommand(NavigateToRestaurant);
             LogoutCommand = new SingleClickCommand(Logout);
             _profileService = profileService;
             IsBackButtonVisible = false;
@@ -70,6 +74,22 @@ namespace RestaurantManager.Pages.Welcome
         {
             await NavigationService.NavigateTo<ShiftsPage>();
             SingleClickCommand.ResetLastClick();
+        }
+
+        private async void NavigateToRestaurant()
+        {
+            var location = new Location(42.00417398712801, 21.409539851372777);
+            var options = new MapLaunchOptions{ Name = "FCSE Building"};
+
+            try
+            {
+                await Map.OpenAsync(location, options);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
         }
     }
 }
