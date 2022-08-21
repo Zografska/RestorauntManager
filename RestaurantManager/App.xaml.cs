@@ -42,7 +42,7 @@ namespace RestaurantManager
 
             containerRegistry.RegisterPopup<NotePopup, NotePopupViewModel>();
             containerRegistry.RegisterPopup<ShiftPopup, ShiftPopupViewModel>();
-            containerRegistry.RegisterPopup<ReservationPopup, ReservationPopupViewModel>();
+            containerRegistry.RegisterPopup<ReservationCNIPopup, ReservationCNIPopupViewModel>();
 
             containerRegistry.Register<DatabaseServiceRemote>();
         }

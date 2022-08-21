@@ -18,7 +18,9 @@ namespace RestaurantManager.Utility
         public const string Creator = "Creator: ";
         public const string ReservationTime = "Reservation Time: ";
         public const string OnName = "On Name: ";
-        public const string NumberInParty = "Table for _ persons:: ";
+        public const string NumberInParty = "Table for _ persons: ";
+        public const string Time = "Time: ";
+        public const string Date = "Date: ";
 
     }
 }

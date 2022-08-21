@@ -7,7 +7,7 @@
              xmlns:utility="clr-namespace:RestaurantManager.Utility;assembly=RestaurantManager"
              xmlns:controls="clr-namespace:RestaurantManager.Controls;assembly=RestaurantManager"
              xmlns:behaviors="http://prismlibrary.com"
-             x:Class="RestaurantManager.Popups.ReservationPopup">
+             x:Class="RestaurantManager.Popups.ReservationCNIPopup">
     <StackLayout>
                 <StackLayout
         BackgroundColor="Bisque"
@@ -64,20 +64,35 @@
                 </controls:NumberPicker.Behaviors>
             </controls:NumberPicker>
             
-            <Label
-                Grid.Row="4"
-                Grid.Column="0"
-                Text="{x:Static utility:XamlConstants.ReservationTime}"
-                FontSize="Micro"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="End"/>
-            <Label
-                Grid.Row="4"
-                Grid.Column="1"
-                Text="{Binding Item.ReservationDate, Converter={StaticResource DateToStringConverter}}"
-                FontSize="Micro"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="Start"/>
+            <Label Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   Grid.Row="2" 
+                   FontSize="Medium"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="Center"
+                   Text="{x:Static utility:XamlConstants.Time}" />
+            
+            <TimePicker Grid.Column="1"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="2"
+                        VerticalOptions="Center"
+                        HorizontalOptions="End"
+                        Time="{Binding Time}"/>
+            
+            <Label Grid.Column="0" 
+                   Grid.ColumnSpan="2"
+                   Grid.Row="3" 
+                   FontSize="Medium"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="Center"
+                   Text="{x:Static utility:XamlConstants.Date}" />
+            
+            <DatePicker Grid.Column="1" 
+                        Grid.ColumnSpan="2"
+                        Grid.Row="3"
+                        VerticalOptions="Center"
+                        HorizontalOptions="End"
+                        Date="{Binding Date}"/>
         </Grid>
       
         <StackLayout HorizontalOptions="CenterAndExpand"

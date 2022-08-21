@@ -45,7 +45,7 @@ namespace RestaurantManager.Popups
             INetworkService networkService) : base(navigationService, popupService, networkService)
         {
             DeleteCommand = new Command(DeleteNote);
-            SaveCommand = new Command(SaveNote);
+            SaveCommand = new Command(SaveItem);
         }
 
         public override void OnPopupOpened(IPopupParameters parameters)
@@ -54,7 +54,7 @@ namespace RestaurantManager.Popups
             InitPopup(parameters);
         }
 
-        private void InitPopup(IPopupParameters parameters)
+        protected virtual void InitPopup(IPopupParameters parameters)
         {
             T item;
             IServiceBase<T> service;
@@ -71,7 +71,7 @@ namespace RestaurantManager.Popups
             Item = item ?? GenericHelpers.GetInstance<T>(typeof(T).FullName);
         }
 
-        private async void SaveNote()
+        protected async virtual void SaveItem()
         {
             if (NetworkService.IsNetworkConnected())
             {

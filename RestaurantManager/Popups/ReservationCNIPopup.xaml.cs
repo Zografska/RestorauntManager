@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace RestaurantManager.Popups
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ReservationPopup
+    public partial class ReservationCNIPopup
     {
-        public ReservationPopup()
+        public ReservationCNIPopup()
         {
             InitializeComponent();
         }

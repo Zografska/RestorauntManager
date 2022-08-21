@@ -9,7 +9,7 @@ namespace RestaurantManager.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var date = value is DateTime ? (DateTime)value : default;
-            return date.ToString(CultureInfo.CurrentCulture);
+            return date.ToString("dddd, dd MMMM yyyy");
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

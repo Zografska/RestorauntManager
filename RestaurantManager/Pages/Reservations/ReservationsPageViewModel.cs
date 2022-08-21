@@ -43,8 +43,7 @@ namespace RestaurantManager.Pages.Reservations
         
         private ObservableCollection<string> _daysOfWeek = new ObservableCollection<string>()
         {
-        
-                "M","T","W","T","F","S","S"
+            "M","T","W","T","F","S","S"
         };
         public ObservableCollection<string> DaysOfWeek
         {
@@ -66,15 +65,14 @@ namespace RestaurantManager.Pages.Reservations
             AddReservationCommand = new Command(AddReservation);
         }
 
-        private void AddReservation()
+        private async void AddReservation()
         {
-            PopupService.ShowPopupAsync(nameof(ReservationPopup), new PopupParameters {
+            await PopupService.ShowPopupAsync(nameof(ReservationCNIPopup), new PopupParameters {
                 { Constants.NavigationConstants.Service, _reservationService }} );
         }
 
-        private void OpenReservationPopup(DateTime date)
+        private async void OpenReservationPopup(DateTime date)
         {
-            PopupService.ShowPopupAsync(nameof(ReservationPopup), new PopupParameters {{"Date", date}} );
         }
     }
 }
