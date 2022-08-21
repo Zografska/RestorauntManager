@@ -3,27 +3,28 @@
 <base:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
           xmlns:base="clr-namespace:RestaurantManager.Pages.Base;assembly=RestaurantManager"
-          xmlns:converters="clr-namespace:RestaurantManager.Converters;assembly=RestaurantManager"
           xmlns:calendar="clr-namespace:RestaurantManager.Controls.Calendar;assembly=RestaurantManager"
           xmlns:controls="clr-namespace:RestaurantManager.Controls;assembly=RestaurantManager"
+          xmlns:converters="clr-namespace:RestaurantManager.Converters;assembly=RestaurantManager"
           x:Class="RestaurantManager.Pages.Reservations.ReservationsPage">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <converters:DateSelectionChangedEventArgsConverter x:Key="DateSelectionChangedEventArgsConverter"/>
+            <converters:DateToStringConverter x:Key="DateToStringConverter"/>
         </ResourceDictionary>
     </ContentPage.Resources>
     <base:BasePage.ContentValue>
-        <Grid BackgroundColor="LightYellow"
-              RowDefinitions="*,4*,0.5*"
+        <Grid RowDefinitions="*,4*,0.5*"
               Margin="10">
             
             <Grid Grid.Row="0" ColumnDefinitions="*,8*,*" VerticalOptions="Center">
                 <Label Grid.Column="0" Text="-" HorizontalOptions="EndAndExpand"/>
-                <Label Grid.Column="1" Text="DateTimeBrat" HorizontalOptions="CenterAndExpand"/>
+                <Label Grid.Column="1" Text="{Binding CurrentDate, Converter={StaticResource DateToStringConverter}}" HorizontalOptions="CenterAndExpand"/>
                 <Label Grid.Column="2" Text="-" HorizontalOptions="StartAndExpand"/>
             </Grid>
             
             <calendar:CalendarView Grid.Row="1" 
+                                   CurrentDate="{Binding CurrentDate}"
+                                   DaysOfWeek = "{Binding CalendarDays}"
                                    FrameTappedCommand="{Binding DateTappedCommand}"/>
             
             <controls:FrameButton Grid.Row="2"

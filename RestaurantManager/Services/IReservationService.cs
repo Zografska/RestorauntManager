@@ -1,6 +1,8 @@
+using RestaurantManager.Model;
+
 namespace RestaurantManager.Services
 {
-    public interface IReservationService
+    public interface IReservationService : IServiceBase<Reservation>
     {
 
     }

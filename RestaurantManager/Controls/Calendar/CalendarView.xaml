@@ -17,7 +17,7 @@
         <RowDefinition Height="*" />
     </Grid.RowDefinitions>
     <StackLayout Grid.Row="0"
-                 BindableLayout.ItemsSource="{Binding DaysOfWeek}"
+                 BindableLayout.ItemsSource="{Binding Weekdays, Source={x:Reference calendar}}"
                  Orientation="Horizontal"
                  HorizontalOptions="FillAndExpand"
                  VerticalOptions="FillAndExpand"
@@ -43,7 +43,7 @@
     </StackLayout>
 
     <Grid Grid.Row="2"
-          BindableLayout.ItemsSource="{Binding WeekElements}"
+          BindableLayout.ItemsSource="{Binding Week1, Source={x:Reference calendar}}"
           HorizontalOptions="FillAndExpand"
           VerticalOptions="FillAndExpand">
         <BindableLayout.ItemTemplate>
@@ -55,7 +55,7 @@
         </BindableLayout.ItemTemplate>
     </Grid>
     <Grid Grid.Row="3"
-          BindableLayout.ItemsSource="{Binding WeekElements}"
+          BindableLayout.ItemsSource="{Binding Week2, Source={x:Reference calendar}}"
           HorizontalOptions="FillAndExpand"
           VerticalOptions="FillAndExpand">
         <BindableLayout.ItemTemplate>
@@ -67,7 +67,7 @@
         </BindableLayout.ItemTemplate>
     </Grid>
     <Grid Grid.Row="4"
-          BindableLayout.ItemsSource="{Binding WeekElements}"
+          BindableLayout.ItemsSource="{Binding Week3, Source={x:Reference calendar}}"
           HorizontalOptions="FillAndExpand"
           VerticalOptions="FillAndExpand">
         <BindableLayout.ItemTemplate>
@@ -79,7 +79,19 @@
         </BindableLayout.ItemTemplate>
     </Grid>
     <Grid Grid.Row="5"
-          BindableLayout.ItemsSource="{Binding WeekElements}"
+          BindableLayout.ItemsSource="{Binding Week4, Source={x:Reference calendar}}"
+          HorizontalOptions="FillAndExpand"
+          VerticalOptions="FillAndExpand">
+        <BindableLayout.ItemTemplate>
+            <DataTemplate>
+                <calendar:CalendarDayFrame 
+                    Grid.Column="{Binding Position}" 
+                    FrameTappedCommand="{Binding FrameTappedCommand, Source={x:Reference calendar}}" />
+            </DataTemplate>
+        </BindableLayout.ItemTemplate>
+    </Grid>
+    <Grid Grid.Row="6"
+          BindableLayout.ItemsSource="{Binding Week5, Source={x:Reference calendar}}"
           HorizontalOptions="FillAndExpand"
           VerticalOptions="FillAndExpand">
         <BindableLayout.ItemTemplate>

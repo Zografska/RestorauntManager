@@ -1,7 +1,10 @@
 using System;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
 using Prism.Navigation;
 using RestaurantManager.Core.Authentication;
+using RestaurantManager.Extensions;
+using RestaurantManager.Model.DTOs;
 using RestaurantManager.Pages.Base;
 using RestaurantManager.Popups;
 using RestaurantManager.Services;
@@ -14,55 +17,43 @@ namespace RestaurantManager.Pages.Reservations
 {
     public class ReservationsPageViewModel : PageViewModelBase
     {
-        private ObservableCollection<string> _items = new ObservableCollection<string>()
-        {
-            "1","22","3","4","5","6","7"
-        };
-        public ObservableCollection<string> Week1
-        {
-            get => _items;
-            set => SetProperty(ref _items, value);
-        }
-        
-        private ObservableCollection<DayOfWeek> _week = new ObservableCollection<DayOfWeek>()
-        {
-           new DayOfWeek(new DateTime(2022,8,1)),
-           new DayOfWeek(new DateTime(2022,8,2)),
-           new DayOfWeek(new DateTime(2022,8,3)),
-           new DayOfWeek(new DateTime(2022,8,4)),
-           new DayOfWeek(new DateTime(2022,8,5)),
-           new DayOfWeek(new DateTime(2022,8,6)),
-           new DayOfWeek(new DateTime(2022,8,7))
-        };
-        
-        public ObservableCollection<DayOfWeek> WeekElements
-        {
-            get => _week;
-            set => SetProperty(ref _week, value);
-        }
-        
-        private ObservableCollection<string> _daysOfWeek = new ObservableCollection<string>()
-        {
-            "M","T","W","T","F","S","S"
-        };
-        public ObservableCollection<string> DaysOfWeek
-        {
-            get => _daysOfWeek;
-            set => SetProperty(ref _daysOfWeek, value);
-        }
-
         private readonly IReservationService _reservationService;
         
-        public Command DateTappedCommand { get; }
-        public Command AddReservationCommand { get; }
+        public ICommand DateTappedCommand { get; }
+        public ICommand AddReservationCommand { get; }
+        
+        private ObservableCollection<ReservationDayDTO> _calendarDays;
+        
+        public ObservableCollection<ReservationDayDTO> CalendarDays
+        {
+            get => _calendarDays;
+            set => SetProperty(ref _calendarDays, value);
+        }
+        
+        private DateTime _currentDate;
+        
+        public DateTime CurrentDate
+        {
+            get => _currentDate;
+            set => SetProperty(ref _currentDate, value);
+        }
+        
         public ReservationsPageViewModel(INavigationService navigationService, IPopupService popupService,
             IAuthService authService, INetworkService networkService, IReservationService reservationService) 
             : base(navigationService, popupService, authService, networkService)
         {
             Title = "Reservations";
             _reservationService = reservationService;
-            DateTappedCommand = new Command<DateTime>(OpenReservationPopup);
-            AddReservationCommand = new Command(AddReservation);
+            DateTappedCommand = new SingleClickCommand<DateTime>(OpenReservationPopup);
+            AddReservationCommand = new SingleClickCommand(AddReservation);
+            CurrentDate = DateTime.Now.AddMonths(1);
+        }
+
+        public override async void OnNavigatedTo(INavigationParameters parameters)
+        {
+            base.OnNavigatedTo(parameters);
+            var reservations = await _reservationService.GetAll();
+            CalendarDays = DateTime.Now.ToCalendarData(reservations);
         }
 
         private async void AddReservation()
@@ -74,19 +65,5 @@ namespace RestaurantManager.Pages.Reservations
         private async void OpenReservationPopup(DateTime date)
         {
         }
-    }
-}
-
-public class DayOfWeek
-{
-    public string Day { get; set; }
-    public DateTime Value { get; set; }
-    public string Position { get; set; }
-
-    public DayOfWeek(DateTime date)
-    {
-        Day = date.Day.ToString();
-        Position = ((date.Day - 1) % 7).ToString();
-        Value = date;
     }
 }
