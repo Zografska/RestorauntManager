@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<base:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:base="clr-namespace:RestaurantManager.Pages.Base;assembly=RestaurantManager"
+             xmlns:sfavatar="clr-namespace:Syncfusion.XForms.AvatarView;assembly=Syncfusion.Core.XForms"
+             x:Class="RestaurantManager.Pages.Employees.EmployeeDetail">
+    <base:BasePage.ContentValue>
+        <ScrollView>    
+            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,*" Padding="{x:OnPlatform Android='0,40,0,20'}">
+                <sfavatar:SfAvatarView Grid.ColumnSpan="2" Grid.Row="0"  BorderWidth="0"
+                       ContentType="Custom" ImageSource="https://support.hubstaff.com/wp-content/uploads/2019/08/good-pic.png" HorizontalOptions="Center" VerticalOptions="Start" WidthRequest="140" HeightRequest="140" CornerRadius="70" Margin="0,0,0,30" />
+                
+                <Label Grid.ColumnSpan="2" Grid.Row="1" Text="{Binding Employee.FullName}" HorizontalOptions="Center" FontAttributes="Bold" FontSize="26" CharacterSpacing="1"/>
+                <Label Grid.ColumnSpan="2" Grid.Row="2" Text="{Binding Employee.JobTitle}" HorizontalOptions="Center" FontSize="20"/>
+                <Label Grid.ColumnSpan="2" Grid.Row="3" Text="{Binding Employee.Email}" HorizontalOptions="Center" FontSize="20"/>
+
+                <Button Grid.Row="6" Grid.Column="0" Text="Message" HeightRequest="50" FontAttributes="Bold" BorderColor="Chocolate" BorderWidth="1" TextColor="Chocolate" BackgroundColor="White" FontSize="18" CornerRadius="10" Margin="20,20,10,20"/>
+                <Button Grid.Row="6" Grid.Column="1" Text="Edit" HeightRequest="50" FontAttributes="Bold" BackgroundColor="Chocolate" TextColor="White" FontSize="18" CornerRadius="10" Margin="10,20,20,20"/>
+            </Grid>
+        </ScrollView>
+    </base:BasePage.ContentValue>
+</base:BasePage>

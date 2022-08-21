@@ -27,7 +27,8 @@ namespace RestaurantManager.Services
                 Name = name,
                 Surname = surname,
                 Email = email,
-                FullName = $"{name} {surname}"
+                FullName = $"{name} {surname}",
+                JobTitle = "Worker"
             };
 
            return await Save(newUser);

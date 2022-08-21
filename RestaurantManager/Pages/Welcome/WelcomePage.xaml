@@ -123,6 +123,7 @@
                     BackgroundColor="Chocolate"
                     BorderColor="AntiqueWhite"
                     Text="{x:Static utility:XamlConstants.Employees}"
+                    FrameTappedCommand="{Binding NavigateToEmployeesCommand}"
                     TextColor="White"/> 
                 
                 <controls:FrameButton 

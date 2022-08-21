@@ -7,5 +7,6 @@ namespace RestaurantManager.Model
         public string Email { get; set; }
         public string Uid { get; set; }
         public string FullName { get; set; }
+        public string JobTitle { get; set; }
     }
 }
