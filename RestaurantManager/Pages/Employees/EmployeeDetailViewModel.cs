@@ -8,7 +8,13 @@ namespace RestaurantManager.Pages.Employees
 {
     public class EmployeeDetailViewModel : ViewModelBase
     {
-        public User Employee { get; set; }
+        private User _employee;
+
+        public User Employee
+        {
+            get => _employee;
+            set => SetProperty(ref _employee, value);
+        }
         public EmployeeDetailViewModel(INavigationService navigationService, IPopupService popupService, INetworkService networkService) : base(navigationService, popupService, networkService)
         {
             Title = "Employee Detail";
