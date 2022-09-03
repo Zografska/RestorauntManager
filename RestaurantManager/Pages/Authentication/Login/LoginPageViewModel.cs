@@ -1,4 +1,7 @@
+using System;
 using System.Windows.Input;
+using Plugin.GoogleClient;
+using Plugin.GoogleClient.Shared;
 using Prism.Navigation;
 using RestaurantManager.Core.Authentication;
 using RestaurantManager.Extensions;
@@ -15,6 +18,7 @@ namespace RestaurantManager.Pages.Authentication.Login
     {
         private readonly string SADMIN_EMAIL = "aleksandrazografska@halicea.com";
         private readonly string SADMIN_PASS = "zografska1";
+        private readonly IGoogleClientManager _googleClientManager;
         private string _username { get; set; }
         private string _password { get; set; }
         private bool _usernameValid { get; set; }
@@ -59,7 +63,9 @@ namespace RestaurantManager.Pages.Authentication.Login
                 RaisePropertyChanged(nameof(Password));
             }
         }
-        
+
+        public ICommand LoginWithGoogleCommand { get; }
+
         public LoginPageViewModel(INavigationService navigationService, IPopupService popupService, 
             IAuthService authService, INetworkService networkService) 
             : base(navigationService, popupService, authService, networkService)
@@ -68,8 +74,43 @@ namespace RestaurantManager.Pages.Authentication.Login
             NavigateToSignupCommand = new SingleClickCommand(NavigateToSignup);
             NavigateToResetPasswordCommand = new SingleClickCommand(NavigateToResetPassword);
             LoginAsSadminCommand = new SingleClickCommand(LoginAsSadmin);
+            LoginWithGoogleCommand = new SingleClickCommand(LoginWithGoogle);
+            _googleClientManager = CrossGoogleClient.Current;
+            
             IsBackButtonVisible = false;
             IsLogoutButtonVisible = false;
+        }
+
+        private async void LoginWithGoogle()
+        {
+            _googleClientManager.OnLogin += OnLoginCompleted;
+            try 
+            {
+                await _googleClientManager.LoginAsync();
+            }
+            catch (Exception e)
+            {
+                await App.Current.MainPage.DisplayAlert("Error", e.Message, "OK");
+            }
+        }
+        
+        private void OnLoginCompleted(object sender, GoogleClientResultEventArgs<GoogleUser> loginEventArgs)
+        {
+            if (loginEventArgs.Data != null)
+            {
+                GoogleUser googleUser = loginEventArgs.Data;
+                var user = AuthService.GetCurrentProfile();
+
+                var token = CrossGoogleClient.Current.ActiveToken;
+               // Token = token;
+            }
+            else
+            {
+                DisplayAlert("Failed to Login with Google");
+            }
+
+            _googleClientManager.OnLogin -= OnLoginCompleted;
+
         }
 
         private async void LoginAsSadmin()

@@ -75,10 +75,17 @@
             
             <Button
                 Text="Login As Sadmin"
-                Margin="60, 40"
+                Margin="60, 20"
                 BackgroundColor="#4682B4"
                 TextColor="White"
                 Command="{Binding LoginAsSadminCommand}"/>
+            
+            <Button
+                Text="Login With Google"
+                Margin="60, 0"
+                BackgroundColor="#4682B4"
+                TextColor="White"
+                Command="{Binding LoginWithGoogleCommand}"/>
         </StackLayout>
     </base:BasePage.ContentValue>
 </base:BasePage>
