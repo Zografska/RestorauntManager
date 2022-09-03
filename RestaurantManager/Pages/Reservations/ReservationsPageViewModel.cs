@@ -10,7 +10,6 @@ using RestaurantManager.Popups;
 using RestaurantManager.Services;
 using RestaurantManager.Services.Network;
 using RestaurantManager.Utility;
-using Xamarin.Forms;
 using XCT.Popups.Prism;
 
 namespace RestaurantManager.Pages.Reservations
@@ -46,7 +45,7 @@ namespace RestaurantManager.Pages.Reservations
             _reservationService = reservationService;
             DateTappedCommand = new SingleClickCommand<DateTime>(OpenReservationPopup);
             AddReservationCommand = new SingleClickCommand(AddReservation);
-            CurrentDate = DateTime.Now.AddMonths(1);
+            CurrentDate = DateTime.Now;
         }
 
         public override async void OnNavigatedTo(INavigationParameters parameters)

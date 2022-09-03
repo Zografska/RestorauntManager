@@ -34,7 +34,7 @@ namespace RestaurantManager.Controls.Calendar
                     calendar.Week2 = days.Skip(7).Take(7).ToObservableCollection();
                     calendar.Week3 = days.Skip(14).Take(7).ToObservableCollection();
                     calendar.Week4 = days.Skip(21).Take(7).ToObservableCollection();
-                    calendar.Week5 = days.Skip(28).ToObservableCollection();
+                    calendar.Week5 = days.Skip(28).FillGrid();
                 });
         
         public ICommand FrameTappedCommand
