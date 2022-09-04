@@ -33,7 +33,7 @@
                     <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                         <Label Text="{Binding }"
                                VerticalOptions="FillAndExpand"
-                               FontSize="16"
+                               FontSize="12"
                                Padding="0"
                                HorizontalOptions="FillAndExpand" />
                     </StackLayout>

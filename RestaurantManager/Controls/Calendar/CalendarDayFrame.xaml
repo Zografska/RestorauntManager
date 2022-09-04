@@ -16,18 +16,22 @@
         <TapGestureRecognizer Command="{Binding FrameTappedCommand, Source={x:Reference frame}}"
                               CommandParameter="{Binding Value}"/>
     </Frame.GestureRecognizers>
-    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-        <Label Text="{Binding Day}"
+    <Grid RowDefinitions="3*,*" 
+          HorizontalOptions="FillAndExpand" 
+          VerticalOptions="FillAndExpand">
+        <Label Grid.Row="0"
+               Text="{Binding Day}"
                VerticalOptions="CenterAndExpand"
                HorizontalTextAlignment="Center"
                VerticalTextAlignment="Center"
                FontSize="16"
                HorizontalOptions="FillAndExpand"/> 
-        <Ellipse Stroke="Red"
+        <Ellipse Grid.Row="1"
+                 Stroke="Red"
                  HeightRequest="5" 
                  WidthRequest="5" 
                  HorizontalOptions="CenterAndExpand" 
-                 VerticalOptions="CenterAndExpand"
+                 VerticalOptions="StartAndExpand"
                  IsVisible="{Binding HasReservations}"/>
-    </StackLayout>
+    </Grid>
 </Frame>
