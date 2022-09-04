@@ -2,15 +2,11 @@
 
 <base:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:behaviors="http://prismlibrary.com"
              x:Class="RestaurantManager.Pages.Authentication.Login.LoginPage"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:login="clr-namespace:RestaurantManager.Pages.Authentication.Login;assembly=RestaurantManager"
              xmlns:toolkit="http://xamarin.com/schemas/2020/toolkit"
              xmlns:base="clr-namespace:RestaurantManager.Pages.Base;assembly=RestaurantManager"
-             mc:Ignorable="d"
-             d:DataContext="{d:DesignInstance login:LoginPageViewModel}">
+             xmlns:fontAwesome="clr-namespace:FontAwesome;assembly=RestaurantManager"
+             xmlns:controls="clr-namespace:RestaurantManager.Controls;assembly=RestaurantManager">
     <ContentPage.Resources>
         <Style x:Key="InvalidEntryStyle" TargetType="Entry"> 
             <Setter Property="BackgroundColor" Value="IndianRed" />
@@ -80,12 +76,14 @@
                 TextColor="White"
                 Command="{Binding LoginAsSadminCommand}"/>
             
-            <Button
+            <controls:FrameButton
+                Icon="{x:Static fontAwesome:FontAwesomeIcons.Google}"
                 Text="Login With Google"
                 Margin="60, 0"
                 BackgroundColor="#4682B4"
                 TextColor="White"
-                Command="{Binding LoginWithGoogleCommand}"/>
+                FrameTappedCommand="{Binding LoginWithGoogleCommand}"/>
+
         </StackLayout>
     </base:BasePage.ContentValue>
 </base:BasePage>

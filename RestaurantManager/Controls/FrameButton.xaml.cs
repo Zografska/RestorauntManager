@@ -24,7 +24,10 @@ namespace RestaurantManager.Controls
             typeof(Color), typeof(FrameButton), Color.Default);
         
         public static readonly BindableProperty TextProperty = BindableProperty.Create(nameof(Text), 
-            typeof(string), typeof(FrameButton));
+            typeof(string), typeof(FrameButton)); 
+        
+        public static readonly BindableProperty IconProperty = BindableProperty.Create(nameof(Icon), 
+            typeof(string), typeof(FrameButton), string.Empty);
         
         public static readonly BindableProperty FrameTappedCommandProperty =
             BindableProperty.Create(nameof(FrameTappedCommand), typeof(ICommand), typeof(FrameButton));
@@ -55,13 +58,19 @@ namespace RestaurantManager.Controls
             get { return (Color)GetValue(BorderColorProperty); }
             set { SetValue(BorderColorProperty, value); }
         }
+
+        public string Icon
+        {
+            get { return (string)GetValue(IconProperty); }
+            set { SetValue(IconProperty, value); }
+        }
         
         public string Text
         {
             get { return (string)GetValue(TextProperty); }
             set { SetValue(TextProperty, value); }
         }
-        
+
         public ICommand FrameTappedCommand
         {
             get { return (ICommand)GetValue(FrameTappedCommandProperty); }
