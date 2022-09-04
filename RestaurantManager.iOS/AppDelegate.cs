@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Foundation;
+using Plugin.GoogleClient;
 using Prism;
 using Prism.Ioc;
 using RestaurantManager.Core.Authentication;
@@ -26,8 +27,8 @@ namespace RestaurantManager.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+            GoogleClientManager.Initialize();
             LoadApplication(new App(this));
-
             Firebase.Core.App.Configure();
             return base.FinishedLaunching(app, options);
         }
@@ -35,6 +36,11 @@ namespace RestaurantManager.iOS
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.Register<IAuthService, AuthiOS>();
+        }
+
+        public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
+        {
+            return GoogleClientManager.OnOpenUrl(app, url, options);
         }
     }
 }

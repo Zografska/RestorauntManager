@@ -15,12 +15,25 @@
             <TapGestureRecognizer Command="{Binding FrameTappedCommand, Source={x:Reference Self}}"
                                   CommandParameter="{Binding FrameTappedCommandParameter, Source={x:Reference Self}}"/>
         </Frame.GestureRecognizers>
-        <Label
-            Text="{Binding Text, Source={x:Reference Self}}"
-            FontSize="{Binding FontSize, Source={x:Reference Self}}"
-            TextColor="{Binding TextColor, Source={x:Reference Self}}"
-            FontAttributes="Bold"
-            HorizontalTextAlignment="Center"
-            VerticalTextAlignment="Center"/>
+        <StackLayout Orientation="Horizontal" 
+                     VerticalOptions="CenterAndExpand" 
+                     HorizontalOptions="CenterAndExpand">
+            <Label
+                Text="{Binding Icon, Source={x:Reference Self}}"
+                FontSize="{Binding FontSize, Source={x:Reference Self}}"
+                TextColor="{Binding TextColor, Source={x:Reference Self}}"
+                FontAttributes="Bold"
+                FontFamily="{StaticResource FontAwesomeBrands}"
+                HorizontalTextAlignment="End"
+                VerticalTextAlignment="Center"/>
+            <Label
+                Text="{Binding Text, Source={x:Reference Self}}"
+                FontSize="{Binding FontSize, Source={x:Reference Self}}"
+                TextColor="{Binding TextColor, Source={x:Reference Self}}"
+                FontAttributes="Bold"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"/>
+        </StackLayout>
+
     </Frame>  
 </ContentView>
