@@ -53,6 +53,7 @@
             <controls:NumberPicker Grid.Row="1"
                                    Grid.Column="1"
                                    Grid.ColumnSpan="2"
+                                   SelectedItem="{Binding Item.NumberOfPeople}"
                                    x:Name="NumberPicker"
                                    VerticalOptions="Center"
                                    HorizontalOptions="End">

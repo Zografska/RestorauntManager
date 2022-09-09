@@ -4,6 +4,7 @@ using Prism.Navigation;
 using RestaurantManager.Extensions;
 using RestaurantManager.Model;
 using RestaurantManager.Services.Network;
+using RestaurantManager.Utility;
 using Xamarin.Forms;
 using XCT.Popups.Prism;
 
@@ -52,7 +53,8 @@ namespace RestaurantManager.Popups
         protected override void InitPopup(IPopupParameters parameters)
         {
             base.InitPopup(parameters);
-            var todayDate = DateTime.Now;
+            
+            var todayDate = Item.ReservationDate;
             Time = todayDate.TimeOfDay;
             Date = todayDate;
         }

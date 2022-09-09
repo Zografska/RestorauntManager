@@ -37,20 +37,7 @@ namespace RestaurantManager.Pages
             AddItemCommand = new SingleClickCommand(ShowCniPopup);
         }
 
-        public override async void OnNavigatedTo(INavigationParameters parameters)
-        {
-            base.OnNavigatedTo(parameters);
-            if (NetworkService.IsNetworkConnected())
-            {
-                Items = await _databaseServiceRemote.GetAll<T>();
-            }
-            else
-            {
-                DisplayAlert(Constants.AlertConstants.NoInternet);
-            }
-        }
-
-        private void HandlePopupResult(IPopupParameters resultParameters, T oldItem = null)
+        protected virtual T HandlePopupResult(IPopupParameters resultParameters, T oldItem = null)
         {
             if (resultParameters.TryGetValue(Constants.NavigationConstants.ItemUpdated, out T item))
             {
@@ -69,6 +56,8 @@ namespace RestaurantManager.Pages
             {
                 Items.Remove(oldItem);
             }
+
+            return item;
         }
 
         private async void ShowCniPopup()

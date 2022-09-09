@@ -39,6 +39,7 @@ namespace RestaurantManager
             containerRegistry.RegisterForNavigation<NotesPage, NotesViewModel>();
             containerRegistry.RegisterForNavigation<ShiftsPage, ShiftsViewModel>();
             containerRegistry.RegisterForNavigation<ReservationsPage, ReservationsPageViewModel>();
+            containerRegistry.RegisterForNavigation<ReservationDayDetailsPage, ReservationDayDetailsPageViewModel>();
 
             containerRegistry.RegisterPopup<NotePopup, NotePopupViewModel>();
             containerRegistry.RegisterPopup<ShiftPopup, ShiftPopupViewModel>();

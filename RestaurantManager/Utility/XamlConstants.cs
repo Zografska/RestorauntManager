@@ -21,6 +21,6 @@ namespace RestaurantManager.Utility
         public const string NumberInParty = "Table for _ persons: ";
         public const string Time = "Time: ";
         public const string Date = "Date: ";
-
+        public const string AddReservation = "Add a reservation";
     }
 }

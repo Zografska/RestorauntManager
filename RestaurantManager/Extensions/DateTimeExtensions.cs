@@ -64,5 +64,14 @@ namespace RestaurantManager.Extensions
             return weekdays;
         }
 
+        public static bool IsDefaultDate(this DateTime dateTime)
+        {
+            return dateTime == default;
+        }
+
+        public static bool EqualsByDate(this DateTime d1, DateTime d2)
+        {
+            return d1.Day.Equals(d2.Day) && d1.Month.Equals(d2.Month) && d1.Year.Equals(d2.Year);
+        }
     }
 }

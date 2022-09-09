@@ -9,6 +9,7 @@ namespace RestaurantManager.Utility
             public const string ItemAdded = "ItemAdded";
             public const string Item = "Item";
             public static string Service = "Service";
+            public static string Date = "Date";
         }
 
         public class AlertConstants

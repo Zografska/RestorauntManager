@@ -1,5 +1,6 @@
 using System;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Prism.Navigation;
 using RestaurantManager.Core.Authentication;
@@ -50,7 +51,11 @@ namespace RestaurantManager.Pages.Reservations
 
         public override async void OnNavigatedTo(INavigationParameters parameters)
         {
-            base.OnNavigatedTo(parameters);
+            await RefreshCalendar();
+        }
+
+        private async Task RefreshCalendar()
+        {
             var reservations = await _reservationService.GetAll();
             CalendarDays = DateTime.Now.ToCalendarData(reservations);
         }
@@ -59,10 +64,15 @@ namespace RestaurantManager.Pages.Reservations
         {
             await PopupService.ShowPopupAsync(nameof(ReservationCNIPopup), new PopupParameters {
                 { Constants.NavigationConstants.Service, _reservationService }} );
+            
+            SingleClickCommand.ResetLastClick();
         }
 
         private async void OpenReservationPopup(DateTime date)
         {
+            await NavigationService.NavigateTo<ReservationDayDetailsPage>(new NavigationParameters { { Constants.NavigationConstants.Date, date }});
+            
+            SingleClickCommand.ResetLastClick();
         }
     }
 }

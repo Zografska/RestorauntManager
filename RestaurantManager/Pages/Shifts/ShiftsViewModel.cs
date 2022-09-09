@@ -5,6 +5,7 @@ using RestaurantManager.Model;
 using RestaurantManager.Popups;
 using RestaurantManager.Services;
 using RestaurantManager.Services.Network;
+using RestaurantManager.Utility;
 using XCT.Popups.Prism;
 
 namespace RestaurantManager.Pages
@@ -18,6 +19,18 @@ namespace RestaurantManager.Pages
             Title = "Shifts";
             PopupName = nameof(ShiftPopup);
             _service = shiftsService;
+        }
+
+        public override async void Initialize(INavigationParameters parameters)
+        {
+            if (NetworkService.IsNetworkConnected())
+            {
+                Items = await _databaseServiceRemote.GetAll<Shift>();
+            }
+            else
+            {
+                DisplayAlert(Constants.AlertConstants.NoInternet);
+            }
         }
     }
 }
