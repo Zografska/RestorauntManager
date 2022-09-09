@@ -26,10 +26,23 @@ namespace RestaurantManager.Services
                 Uid = userId,
                 Name = name,
                 Surname = surname,
-                Email = email
+                Email = email,
+                FullName = $"{name} {surname}"
             };
 
            return await Save(newUser);
+        }
+
+        public async Task<bool> IsUserExistent(string email)
+        {
+            var users = await GetAll();
+            return users.FirstOrDefault(user => user.Email == email) != default;
+        }
+
+        // TODO: find a smarter way to create a password for the google user
+        public string GetGoogleUserPassword(string googleUserEmail)
+        {
+            return googleUserEmail.GetHashCode().ToString();
         }
     }
 }

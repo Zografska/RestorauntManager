@@ -36,5 +36,18 @@
 	<string>1.0</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.tenforce.RestaurantManager</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>Google Services</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.704852469616-8un5si8m7ljb8f41s85qfbq6t4fqjhkm</string>
+			</array>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+		</dict>
+	</array>
 </dict>
 </plist>

@@ -13,7 +13,10 @@
              d:DataContext="{d:DesignInstance welcome:WelcomePageViewModel}"
              ios:Page.UseSafeArea="true"
              x:Class="RestaurantManager.Pages.Base.BasePage"
-             x:Name="self">
+             x:Name="self"
+             BackgroundColor="{AppThemeBinding 
+                        Dark={StaticResource WindowBackgroundColorDark}, 
+                        Light={StaticResource WindowBackgroundColor}}">
     <ContentPage.Content>
         <StackLayout>
             <base:BaseHeaderView />

@@ -12,6 +12,7 @@
          xmlns:welcome="clr-namespace:RestaurantManager.Pages.Welcome;assembly=RestaurantManager"
          xmlns:controls="clr-namespace:RestaurantManager.Controls;assembly=RestaurantManager"
          xmlns:utility="clr-namespace:RestaurantManager.Utility;assembly=RestaurantManager"
+         xmlns:behaviors="http://prismlibrary.com"
          mc:Ignorable="d"
          d:DataContext="{d:DesignInstance welcome:WelcomePageViewModel}"
          x:Class="RestaurantManager.WelcomePage">
@@ -51,6 +52,7 @@
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding NavigateToNotesCommand}"/>
                     </Frame.GestureRecognizers>
+                    <StackLayout>
                     <Label
                         Text="Welcome User"
                         FontSize="20"
@@ -60,6 +62,24 @@
                         VerticalOptions="Center"
                         HorizontalTextAlignment="Center"
                         VerticalTextAlignment="Center"/>
+                    <Button
+                        Text="Restaurant Location"
+                        FontSize="16"
+                        BackgroundColor="AntiqueWhite"
+                        TextColor="Chocolate"
+                        BorderColor="Chocolate"
+                        CornerRadius="10"
+                        BorderWidth="2"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center">
+                        <Button.Behaviors>
+                            <behaviors:EventToCommandBehavior
+                                EventName="Clicked"
+                                Command="{Binding MapClickCommand}"/>
+                        </Button.Behaviors>
+                    </Button>
+                    </StackLayout>
                 </Frame>
                 
                 <BoxView Grid.Column="0" 
@@ -113,6 +133,7 @@
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="FillAndExpand"
                     BorderColor="Orange"
+                    FrameTappedCommand="{Binding NavigateToSettingsCommand}"
                     Text="{x:Static utility:XamlConstants.Settings}"
                     TextColor="White"/>
                 

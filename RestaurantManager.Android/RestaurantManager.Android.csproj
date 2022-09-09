@@ -57,6 +57,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Plugin.GoogleClient" Version="2.0.18-beta" />
+    <PackageReference Include="Xamarin.Android.Support.Fragment" Version="28.0.0.3" />
     <PackageReference Include="Xamarin.Firebase.Auth" Version="121.0.1.7" />
     <PackageReference Include="Xamarin.Firebase.Core" Version="119.0.1.6" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
@@ -92,12 +94,18 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
+    <Folder Include="Resources\Fonts" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RestaurantManager\RestaurantManager.csproj">
       <Project>{98B248DD-9B73-4358-8738-92AA9AFCC9C0}</Project>
       <Name>RestaurantManager</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\FontAwesome5Brands.otf" />
+    <AndroidAsset Include="Assets\FontAwesome5Regular.otf" />
+    <AndroidAsset Include="Assets\FontAwesome5Solid.otf" />
   </ItemGroup>
   <ItemGroup>
     <GoogleServicesJson Include="google-services.json" />

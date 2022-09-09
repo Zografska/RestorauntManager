@@ -20,7 +20,11 @@ namespace RestaurantManager.Utility
         public const string OnName = "On Name: ";
         public const string NumberInParty = "Table for _ persons: ";
         public const string Time = "Time: ";
-        public const string Date = "Date: ";
         public const string AddReservation = "Add a reservation";
+        public const string Employee = "Employee";
+        public const string Type = "Type";
+        public const string Hours = "Hours";
+        public const string Date = "Date";
+        public const string AddShift = "Add Shift";
     }
 }
