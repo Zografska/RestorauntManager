@@ -49,7 +49,7 @@ namespace RestaurantManager.Extensions
             var monthDates = forMonth.GetDates();
             return monthDates.Select(x =>
                 new ReservationDayDTO(x,
-                    reservations.Any(reservation => reservation.ReservationDate.Date.Equals(x.Date)))).ToObservableCollection();
+                    reservations.Any(reservation => reservation.ReservationDate.EqualsByDate(x.Date)))).ToObservableCollection();
         }
 
         private static readonly ObservableCollection<string> WEEKDAYS = new ObservableCollection<string>

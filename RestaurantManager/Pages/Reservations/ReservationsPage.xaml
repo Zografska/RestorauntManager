@@ -6,6 +6,7 @@
           xmlns:calendar="clr-namespace:RestaurantManager.Controls.Calendar;assembly=RestaurantManager"
           xmlns:controls="clr-namespace:RestaurantManager.Controls;assembly=RestaurantManager"
           xmlns:converters="clr-namespace:RestaurantManager.Converters;assembly=RestaurantManager"
+          xmlns:utility="clr-namespace:RestaurantManager.Utility;assembly=RestaurantManager"
           x:Class="RestaurantManager.Pages.Reservations.ReservationsPage">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -16,10 +17,10 @@
         <Grid RowDefinitions="*,4*,0.5*"
               Margin="10">
             
-            <Grid Grid.Row="0" ColumnDefinitions="*,8*,*" VerticalOptions="Center">
-                <Label Grid.Column="0" Text="-" HorizontalOptions="EndAndExpand"/>
+            <Grid Grid.Row="0" ColumnDefinitions="*,6*,*" VerticalOptions="Center">
+                <Button Grid.Column="0" Text="Prev" HorizontalOptions="CenterAndExpand" Command="{Binding ChangeDateCommand}" CommandParameter="{x:Static utility:XamlConstants.Minus}"/>
                 <Label Grid.Column="1" Text="{Binding CurrentDate, Converter={StaticResource DateToStringConverter}}" HorizontalOptions="CenterAndExpand"/>
-                <Label Grid.Column="2" Text="-" HorizontalOptions="StartAndExpand"/>
+                <Button Grid.Column="2" Text="Next" HorizontalOptions="CenterAndExpand" Command="{Binding ChangeDateCommand}" CommandParameter="{x:Static utility:XamlConstants.Plus}"/>
             </Grid>
             
             <calendar:CalendarView Grid.Row="1" 

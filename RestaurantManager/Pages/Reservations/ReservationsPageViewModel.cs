@@ -21,6 +21,7 @@ namespace RestaurantManager.Pages.Reservations
         
         public ICommand DateTappedCommand { get; }
         public ICommand AddReservationCommand { get; }
+        public ICommand ChangeDateCommand { get; }
         
         private ObservableCollection<ReservationDayDTO> _calendarDays;
         
@@ -46,7 +47,21 @@ namespace RestaurantManager.Pages.Reservations
             _reservationService = reservationService;
             DateTappedCommand = new SingleClickCommand<DateTime>(OpenReservationPopup);
             AddReservationCommand = new SingleClickCommand(AddReservation);
+            ChangeDateCommand = new SingleClickCommand<string>(ChangeDate);
             CurrentDate = DateTime.Now;
+        }
+
+        private async void ChangeDate(string sign)
+        {
+            if (sign == XamlConstants.Plus)
+            {
+                CurrentDate = CurrentDate.AddMonths(1);
+            }else
+            {
+                CurrentDate = CurrentDate.AddMonths(-1);
+            }
+
+            await RefreshCalendar();
         }
 
         public override async void OnNavigatedTo(INavigationParameters parameters)
@@ -57,7 +72,7 @@ namespace RestaurantManager.Pages.Reservations
         private async Task RefreshCalendar()
         {
             var reservations = await _reservationService.GetAll();
-            CalendarDays = DateTime.Now.ToCalendarData(reservations);
+            CalendarDays = CurrentDate.ToCalendarData(reservations);
         }
 
         private async void AddReservation()

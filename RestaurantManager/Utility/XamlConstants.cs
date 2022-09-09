@@ -26,5 +26,7 @@ namespace RestaurantManager.Utility
         public const string Hours = "Hours";
         public const string Date = "Date";
         public const string AddShift = "Add Shift";
+        public const string Plus = "+";
+        public const string Minus = "-";
     }
 }

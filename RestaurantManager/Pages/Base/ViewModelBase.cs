@@ -78,6 +78,7 @@ namespace RestaurantManager
         private void NavigateBack()
         {
             NavigationService.GoBackAsync();
+            SingleClickCommand.ResetLastClick();
         }
 
         public virtual void OnNavigatedFrom(INavigationParameters parameters)
