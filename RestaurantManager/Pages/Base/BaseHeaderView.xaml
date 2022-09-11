@@ -17,7 +17,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
-            <ColumnDefinition Width="9*" />
+            <ColumnDefinition Width="5*" />
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
@@ -30,19 +30,22 @@
                 TextColor="{StaticResource AccentColor}"
                 IsVisible="{Binding IsBackButtonVisible}"
                 Command="{Binding NavigateBackCommand}"
-                FontSize="18"/>
+                FontSize="16"/>
 
         <buttons:LogoIndicator Grid.Column="1"
                HorizontalOptions="CenterAndExpand"
                IsNetworkConnected="{Binding IsNetworkConnected}"
+               BackgroundColor="{StaticResource TransparentColor}"
                Padding="-5"
                Text="{x:Static fontAwesome:FontAwesomeIcons.CircleDot}"
-               FontFamily="{StaticResource FontAwesomeSolid}" />
+               FontFamily="{StaticResource FontAwesomeSolid}"
+               FontSize="16"/>
 
         <Button Grid.Column="2"
                HorizontalOptions="CenterAndExpand"
                Text="{Binding Title}"
-               FontSize="Small"
+               BackgroundColor="{StaticResource TransparentColor}"
+               FontSize="16"
                FontAttributes="Bold"
                TextColor="{StaticResource PrimaryColor}" />
         
@@ -55,7 +58,7 @@
                 TextColor="{StaticResource AccentColor}"
                 IsVisible="{Binding IsLogoutButtonVisible}"
                 Command="{Binding LogoutCommand}"
-                FontSize="18">
+                FontSize="16">
         </Button>
     </Grid>
 </ContentView>

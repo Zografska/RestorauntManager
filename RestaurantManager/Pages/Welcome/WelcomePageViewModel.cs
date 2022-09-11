@@ -42,7 +42,6 @@ namespace RestaurantManager.Pages.Welcome
             IAuthService authService, IProfileService profileService, INetworkService networkService) 
             : base(navigationService, popupService, authService, networkService)
         {
-            Title = "Restaurant Manager";
             NavigateToNotesCommand = new SingleClickCommand(NavigateToNotesPage);
             NavigateToShiftsCommand = new SingleClickCommand(NavigateToShiftsPage);
             NavigateToReservationsCommand = new SingleClickCommand(NavigateToReservationsPage);

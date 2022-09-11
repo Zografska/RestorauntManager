@@ -46,25 +46,32 @@
                     Grid.RowSpan="2"
                     HorizontalOptions="FillAndExpand"
                     HasShadow="False"
-                    BorderColor="SkyBlue"
+                    BorderColor="{StaticResource GraySeparatorColor}"
                     VerticalOptions="FillAndExpand"
                     CornerRadius="10">
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding NavigateToNotesCommand}" />
                     </Frame.GestureRecognizers>
-                    <StackLayout>
+                    <StackLayout
+                        Margin="20"
+                        HorizontalOptions="CenterAndExpand" 
+                        VerticalOptions="CenterAndExpand">
+                        
                         <Label
                             Text="{Binding Username, StringFormat='Welcome {0:F2}!'}"
+                            TextColor="{StaticResource PrimaryChilledColor}"
                             FontSize="20"
                             FontAttributes="Bold"
                             HorizontalOptions="Center"
                             VerticalOptions="Center"
                             HorizontalTextAlignment="Center"
                             VerticalTextAlignment="Center" />
+                        
                         <Button
                             Text="Restaurant Location"
-                            FontSize="16"
-                            BackgroundColor="Transparent"
+                            FontSize="14"
+                            BackgroundColor="{StaticResource TransparentColor}"
+                            TextColor="{StaticResource DimGrayColor}"
                             CornerRadius="10"
                             FontAttributes="Bold"
                             HorizontalOptions="Center"
@@ -86,10 +93,12 @@
                 <controls:VerticalIconButton
                     Grid.Row="3"
                     Grid.Column="0"
-                    BorderColor="SkyBlue"
+                    BorderColor="{StaticResource GraySeparatorColor}"
+                    BackgroundColor="{StaticResource TransparentColor}"
                     TappedCommand="{Binding NavigateToNotesCommand}"
                     Title="{x:Static utility:XamlConstants.Notes}"
                     Icon="{x:Static fontAwesome:FontAwesomeIcons.PenToSquare}"
+                    IconColor="{StaticResource AccentColor}"
                     IconSize="25"
                     TitleSize="15"
                     IconFontFamily="{StaticResource FontAwesomeRegular}" />
@@ -97,10 +106,12 @@
                 <controls:VerticalIconButton
                     Grid.Row="3"
                     Grid.Column="1"
-                    BorderColor="SkyBlue"
+                    BorderColor="{StaticResource GraySeparatorColor}"
+                    BackgroundColor="{StaticResource TransparentColor}"
                     TappedCommand="{Binding NavigateToReservationsCommand}"
                     Title="{x:Static utility:XamlConstants.Reservations}"
                     Icon="{x:Static fontAwesome:FontAwesomeIcons.Calendar}"
+                    IconColor="{StaticResource AccentColor}"
                     IconSize="25"
                     TitleSize="15"
                     IconFontFamily="{StaticResource FontAwesomeRegular}" />
@@ -108,10 +119,12 @@
                 <controls:VerticalIconButton
                     Grid.Row="4"
                     Grid.Column="0"
-                    BorderColor="SkyBlue"
+                    BorderColor="{StaticResource GraySeparatorColor}"
+                    BackgroundColor="{StaticResource TransparentColor}"
                     Title="{x:Static utility:XamlConstants.Shifts}"
                     TappedCommand="{Binding NavigateToShiftsCommand}"
                     Icon="{x:Static fontAwesome:FontAwesomeIcons.Clock}"
+                    IconColor="{StaticResource AccentColor}"
                     IconSize="25"
                     TitleSize="15"
                     IconFontFamily="{StaticResource FontAwesomeRegular}" />
@@ -119,10 +132,12 @@
                 <controls:VerticalIconButton
                     Grid.Row="4"
                     Grid.Column="1"
-                    BorderColor="SkyBlue"
+                    BorderColor="{StaticResource GraySeparatorColor}"
+                    BackgroundColor="{StaticResource TransparentColor}"
                     Title="{x:Static utility:XamlConstants.Employees}"
                     TappedCommand="{Binding NavigateToShiftsCommand}"
                     Icon="{x:Static fontAwesome:FontAwesomeIcons.Person}"
+                    IconColor="{StaticResource AccentColor}"
                     IconSize="25"
                     TitleSize="15"
                     IconFontFamily="{StaticResource FontAwesomeSolid}" />
@@ -137,7 +152,8 @@
                     Grid.Column="1"
                     HorizontalOptions="End"
                     VerticalOptions="Center"
-                    BorderColor="Dimgray"
+                    BorderColor="{StaticResource GrayDarkerColor}"
+                    BackgroundColor="{StaticResource TransparentColor}"
                     Command="{Binding NavigateToSettingsCommand}"
                     Text="{x:Static fontAwesome:FontAwesomeIcons.Gear}"
                     FontFamily="{StaticResource FontAwesomeSolid}"
@@ -146,7 +162,7 @@
                     FontSize="20"
                     Padding="10"
                     Margin="10"
-                    TextColor="Black" />
+                    TextColor="{StaticResource DimGrayColor}" />
 
             </Grid>
         </ScrollView>

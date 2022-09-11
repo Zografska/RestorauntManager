@@ -10,8 +10,10 @@
 
     <Color x:Key="GraySeparatorColor">#d8d8d8</Color>
     <Color x:Key="GrayDarkerColor">#acb3bd</Color>
+    <Color x:Key="DimGrayColor">#ff696969</Color>
 
     <Color x:Key="PrimaryColor">#1e60e3</Color>
+    <Color x:Key="PrimaryChilledColor">#7da5f5</Color>
     <Color x:Key="SecondaryColor">#ffffff</Color>
     <Color x:Key="AccentColor">#fff4a460</Color>
     
