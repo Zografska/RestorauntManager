@@ -26,8 +26,8 @@
                 FontFamily="{StaticResource FontAwesomeSolid}" 
                 HorizontalOptions="StartAndExpand"
                 VerticalOptions="Center"
-                BackgroundColor="Transparent"
-                TextColor="SandyBrown"
+                BackgroundColor="{StaticResource TransparentColor}"
+                TextColor="{StaticResource AccentColor}"
                 IsVisible="{Binding IsBackButtonVisible}"
                 Command="{Binding NavigateBackCommand}"
                 FontSize="18"/>
@@ -44,15 +44,15 @@
                Text="{Binding Title}"
                FontSize="Small"
                FontAttributes="Bold"
-               TextColor="Black" />
+               TextColor="{StaticResource PrimaryColor}" />
         
         <Button Grid.Column="4"
                 Text="{x:Static fontAwesome:FontAwesomeIcons.RightFromBracket}"
                 FontFamily="{StaticResource FontAwesomeSolid}" 
                 HorizontalOptions="EndAndExpand"
                 VerticalOptions="Center"
-                BackgroundColor="Transparent"
-                TextColor="SandyBrown"
+                BackgroundColor="{StaticResource TransparentColor}"
+                TextColor="{StaticResource AccentColor}"
                 IsVisible="{Binding IsLogoutButtonVisible}"
                 Command="{Binding LogoutCommand}"
                 FontSize="18">

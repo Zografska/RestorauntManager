@@ -2,6 +2,7 @@
 <dryIoc:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:dryIoc="http://prismlibrary.com"
+             xmlns:resources="clr-namespace:RestaurantManager.Resources;assembly=RestaurantManager"
              x:Class="RestaurantManager.App">
     <Application.Resources>
         <Color x:Key="WindowBackgroundColor">White</Color>
@@ -31,6 +32,10 @@
                 <On Platform="iOS" 
                     Value="FontAwesome5Free-Regular" /> 
             </OnPlatform>
+            
+            <ResourceDictionary.MergedDictionaries>
+                <resources:Colors/>
+            </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
 </dryIoc:PrismApplication>

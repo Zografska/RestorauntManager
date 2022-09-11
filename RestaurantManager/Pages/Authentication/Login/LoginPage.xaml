@@ -18,16 +18,17 @@
             Margin="20">
         
             <Label
-                Text="FireAuth"
+                Text="Login"
                 HorizontalOptions="Center"
-                TextColor="#4682B4"
-                FontSize="35"
+                TextColor="{StaticResource PrimaryColor}"
+                FontSize="30"
                 Margin="0, 20"
             />
             
             <Entry
                 Placeholder="E-mail"
                 Text="{Binding Username, Mode=TwoWay}"
+                Margin="20,5"
                 Keyboard="Email">
             <Entry.Behaviors>
                 <toolkit:EmailValidationBehavior
@@ -40,6 +41,7 @@
             <Entry
                 Placeholder="Password"
                 IsPassword="true"
+                Margin="20,5"
                 Text="{Binding Password, Mode=TwoWay}">
                 <Entry.Behaviors>
                     <toolkit:TextValidationBehavior
@@ -48,42 +50,49 @@
                         MinimumLength="6"/>
                 </Entry.Behaviors>
             </Entry>
-        
-            <Button
-                Text="Enter"
-                Margin="60, 40"
-                BackgroundColor="#4682B4"
-                TextColor="White"
-                Command="{Binding LoginCommand}"/>
-                
-            <Button
-                Text="Don't have an account? Signup!"
-                Margin="60, 40,60, 10"
-                BackgroundColor="Transparent"
-                TextColor="Blue"
-                Command="{Binding NavigateToSignupCommand}"/>
-            <Button
-                Text="Forgot password?"
-                Margin="60, 0"
-                BackgroundColor="Transparent"
-                TextColor="Blue"
-                Command="{Binding NavigateToResetPasswordCommand}"/>
             
-            <Button
-                Text="Login As Sadmin"
-                Margin="60, 20"
-                BackgroundColor="#4682B4"
-                TextColor="White"
-                Command="{Binding LoginAsSadminCommand}"/>
+            <controls:FrameButton
+                Text="Login"
+                BorderColor="{StaticResource AccentColor}"
+                BackgroundColor="{StaticResource TransparentColor}"
+                FontSize="16"
+                TextColor="{StaticResource PrimaryColor}"
+                FrameTappedCommand="{Binding LoginCommand}"
+                Margin="30,15"/>
+            
+            <controls:FrameButton
+                Text="Don't have an account? Signup!"
+                BackgroundColor="{StaticResource TransparentColor}"
+                FontSize="16"
+                TextColor="{StaticResource AccentColor}"
+                FrameTappedCommand="{Binding NavigateToSignupCommand}"
+                Margin="30,-20"/>
+            
+            <controls:FrameButton
+                Text="Forgot password?"
+                BackgroundColor="{StaticResource TransparentColor}"
+                FontSize="16"
+                Margin="30,-10"
+                TextColor="{StaticResource AccentColor}"
+                FrameTappedCommand="{Binding NavigateToResetPasswordCommand}"/>
             
             <controls:FrameButton
                 Icon="{x:Static fontAwesome:FontAwesomeIcons.Google}"
                 IconFontFamily="{StaticResource FontAwesomeBrands}"
                 Text="Login With Google"
-                Margin="60, 0"
-                BackgroundColor="#4682B4"
+                BackgroundColor="{StaticResource PrimaryColor}"
                 TextColor="White"
+                FontSize="18"
+                Margin="30,0"
                 FrameTappedCommand="{Binding LoginWithGoogleCommand}"/>
+            
+            <controls:FrameButton
+                Text="Login As Sadmin"
+                BackgroundColor="{StaticResource PrimaryColor}"
+                TextColor="White"
+                FontSize="18"
+                Margin="30,0"
+                FrameTappedCommand="{Binding LoginAsSadminCommand}"/>
 
         </StackLayout>
     </base:BasePage.ContentValue>

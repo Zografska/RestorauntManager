@@ -24,8 +24,12 @@ namespace RestaurantManager.Extensions
         private static async Task<INavigationResult> Navigate(this INavigationService navigationService, string screenName, INavigationParameters parameters)
         {
             var result = await navigationService.NavigateAsync(screenName, parameters);
-
-            if(!result.Success) Debugger.Break();
+                
+            if(!result.Success)
+            {
+                Console.WriteLine(result.Exception);
+                Debugger.Break();
+            }
             return result;
         }
     }
