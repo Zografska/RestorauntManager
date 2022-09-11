@@ -23,7 +23,8 @@
                 FontSize="{Binding FontSize, Source={x:Reference Self}}"
                 TextColor="{Binding TextColor, Source={x:Reference Self}}"
                 FontAttributes="Bold"
-                FontFamily="{StaticResource FontAwesomeBrands}"
+                Margin="15 ,0,0,0"
+                FontFamily="{Binding IconFontFamily, Source={x:Reference Self}}"
                 HorizontalTextAlignment="End"
                 VerticalTextAlignment="Center"/>
             <Label

@@ -78,6 +78,7 @@
             
             <controls:FrameButton
                 Icon="{x:Static fontAwesome:FontAwesomeIcons.Google}"
+                IconFontFamily="{StaticResource FontAwesomeBrands}"
                 Text="Login With Google"
                 Margin="60, 0"
                 BackgroundColor="#4682B4"
