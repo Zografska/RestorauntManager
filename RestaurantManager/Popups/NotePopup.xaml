@@ -1,31 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <popups:BasePopup xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:popups="clr-namespace:RestaurantManager.PopUps;assembly=RestaurantManager"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:popups="clr-namespace:RestaurantManager.PopUps;assembly=RestaurantManager"
              xmlns:vm="clr-namespace:RestaurantManager.Popups;assembly=RestaurantManager"
-             xmlns:converters="clr-namespace:RestaurantManager.Converters;assembly=RestaurantManager"
+                  xmlns:converters="clr-namespace:RestaurantManager.Converters;assembly=RestaurantManager"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:controls="clr-namespace:RestaurantManager.Controls;assembly=RestaurantManager"
-             xmlns:utility="clr-namespace:RestaurantManager.Utility;assembly=RestaurantManager"
+                  xmlns:controls="clr-namespace:RestaurantManager.Controls;assembly=RestaurantManager"
+                  xmlns:utility="clr-namespace:RestaurantManager.Utility;assembly=RestaurantManager"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance vm:NotePopupViewModel}"
-             x:Class="RestaurantManager.Popups.NotePopup"
-             BackgroundColor="Aquamarine">
+                  xmlns:fontAwesome="clr-namespace:FontAwesome;assembly=RestaurantManager"
+                  x:Class="RestaurantManager.Popups.NotePopup">
     <StackLayout
-        BackgroundColor="Bisque"
         Margin="25, 0, 25, 25">
         <StackLayout.Resources>
-           <ResourceDictionary>
-               <converters:DateToStringConverter x:Key="DateToStringConverter"/>
-           </ResourceDictionary>
+            <ResourceDictionary>
+                <converters:DateToStringConverter x:Key="DateToStringConverter" />
+            </ResourceDictionary>
         </StackLayout.Resources>
-        <Grid BackgroundColor="Orange" HorizontalOptions="FillAndExpand" Padding="15" VerticalOptions="FillAndExpand">
+        <Grid BackgroundColor="{StaticResource TransparentColor}" HorizontalOptions="FillAndExpand" Padding="15"
+              VerticalOptions="FillAndExpand">
             <Grid.RowDefinitions>
-                <RowDefinition Height="2*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
@@ -33,81 +36,72 @@
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            
+
+            <Label Grid.Row="1"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   TextColor="{StaticResource PrimaryColor}"
+                   Text="{x:Static utility:XamlConstants.Title}"/>
             <Entry
-                Grid.Row="0"
+                Grid.Row="2"
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
-                Placeholder= "{x:Static utility:XamlConstants.Title}"
+                Placeholder="Write title here..."
                 Text="{Binding Item.Title}"
-                FontSize="Title"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="FillAndExpand"/>
-            
+                FontSize="26"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="FillAndExpand" />
+
+            <Label Grid.Row="4"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   TextColor="{StaticResource PrimaryColor}"
+                   Text="{x:Static utility:XamlConstants.Description}"/>
             <Editor
-                Grid.Row="1"
+                Grid.Row="5"
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
                 Grid.RowSpan="2"
                 AutoSize="Disabled"
-                Placeholder="{x:Static utility:XamlConstants.Description}"
+                Placeholder="Write your description here..."
                 Text="{Binding Item.Description}"
                 FontSize="Caption"
                 VerticalOptions="FillAndExpand"
-                HorizontalOptions="FillAndExpand"/>
-            
-            <StackLayout Grid.Row="3"
-                         Grid.Column="0"
-                         Grid.ColumnSpan="2"
-                         IsVisible="{Binding IsEditing}">
-                <Label  Text="{x:Static utility:XamlConstants.Creator}"
-                        FontSize="Medium"
-                        VerticalOptions="CenterAndExpand" 
-                        HorizontalOptions="Start"/>
-            
-                <Label Text="{Binding Item.CreatorUid}"
-                       FontSize="Medium"
-                       VerticalOptions="CenterAndExpand" 
-                       HorizontalOptions="Start"/>
-            </StackLayout>
-            
+                HorizontalOptions="FillAndExpand" />
+
             <Label
-                Grid.Row="4"
+                Grid.Row="7"
                 Grid.Column="0"
-                Text="{x:Static utility:XamlConstants.LastModified}"
+                Grid.ColumnSpan="2"
+                Text="{Binding Item.LastModified, Converter={StaticResource DateToStringConverter}, StringFormat='Last Modified: {0:F2}'}"
                 FontSize="Micro"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="End"/>
-            <Label
-                Grid.Row="4"
-                Grid.Column="1"
-                Text="{Binding Item.LastModified, Converter={StaticResource DateToStringConverter}}"
-                FontSize="Micro"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="Start"/>
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="Start" />
         </Grid>
-      
+
         <StackLayout HorizontalOptions="CenterAndExpand"
                      Orientation="Horizontal">
             <controls:FrameButton
                 Text="{x:Static utility:XamlConstants.Save}"
+                Icon="{x:Static fontAwesome:FontAwesomeIcons.SquareCheck}"
+                IconFontFamily="{StaticResource FontAwesomeSolid}"
                 CornerRadius="15"
-                BackgroundColor="WhiteSmoke"
-                TextColor="DodgerBlue"
+                BackgroundColor="{StaticResource TransparentColor}"
+                TextColor="{StaticResource PrimaryColor}"
                 FontSize="15"
-                BorderColor="Black"
-                FrameTappedCommand="{Binding SaveCommand}"/>
-            
+                FrameTappedCommand="{Binding SaveCommand}" />
+
             <controls:FrameButton
                 Text="{x:Static utility:XamlConstants.Delete}"
+                Icon="{x:Static fontAwesome:FontAwesomeIcons.Trash}"
+                IconFontFamily="{StaticResource FontAwesomeSolid}"
                 CornerRadius="15"
-                BackgroundColor="WhiteSmoke"
-                TextColor="OrangeRed"
+                BackgroundColor="{StaticResource TransparentColor}"
+                TextColor="{StaticResource WarningColor}"
                 FontSize="15"
-                BorderColor="Black"
                 IsVisible="{Binding IsDeletePossible}"
-                FrameTappedCommand="{Binding DeleteCommand}"/>
+                FrameTappedCommand="{Binding DeleteCommand}" />
         </StackLayout>
-        
+
     </StackLayout>
 </popups:BasePopup>
