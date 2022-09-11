@@ -4,6 +4,7 @@
       xmlns="http://xamarin.com/schemas/2014/forms"
       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
       xmlns:calendar="clr-namespace:RestaurantManager.Controls.Calendar;assembly=RestaurantManager"
+      xmlns:controls="clr-namespace:RestaurantManager.Controls;assembly=RestaurantManager"
       x:Class="RestaurantManager.Controls.Calendar.CalendarView"
       x:Name="calendar">
     <Grid.RowDefinitions>
@@ -20,23 +21,21 @@
                  BindableLayout.ItemsSource="{Binding Weekdays, Source={x:Reference calendar}}"
                  Orientation="Horizontal"
                  HorizontalOptions="FillAndExpand"
-                 VerticalOptions="FillAndExpand"
-                 Padding="-5">
+                 VerticalOptions="FillAndExpand">
         <BindableLayout.ItemTemplate>
             <DataTemplate>
-                <Frame BackgroundColor="Transparent"
-                       CornerRadius="20"
+                <Frame CornerRadius="20"
                        HorizontalOptions="FillAndExpand"
                        HasShadow="False"
-                       BorderColor="Blue"
+                       Padding="5"
                        VerticalOptions="FillAndExpand">
-                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                        <Label Text="{Binding }"
-                               VerticalOptions="FillAndExpand"
-                               FontSize="12"
-                               Padding="0"
-                               HorizontalOptions="FillAndExpand" />
-                    </StackLayout>
+                        <Label 
+                               Text="{Binding }"
+                               VerticalOptions="CenterAndExpand"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               FontSize="16"
+                               HorizontalOptions="FillAndExpand"/> 
                 </Frame>
             </DataTemplate>
         </BindableLayout.ItemTemplate>

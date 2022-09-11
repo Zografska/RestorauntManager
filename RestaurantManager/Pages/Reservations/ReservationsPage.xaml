@@ -7,6 +7,7 @@
           xmlns:controls="clr-namespace:RestaurantManager.Controls;assembly=RestaurantManager"
           xmlns:converters="clr-namespace:RestaurantManager.Converters;assembly=RestaurantManager"
           xmlns:utility="clr-namespace:RestaurantManager.Utility;assembly=RestaurantManager"
+          xmlns:fontAwesome="clr-namespace:FontAwesome;assembly=RestaurantManager"
           x:Class="RestaurantManager.Pages.Reservations.ReservationsPage">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -15,12 +16,42 @@
     </ContentPage.Resources>
     <base:BasePage.ContentValue>
         <Grid RowDefinitions="*,4*,0.5*"
-              Margin="10">
+              Margin="20">
             
-            <Grid Grid.Row="0" ColumnDefinitions="*,6*,*" VerticalOptions="Center">
-                <Button Grid.Column="0" Text="Prev" HorizontalOptions="CenterAndExpand" Command="{Binding ChangeDateCommand}" CommandParameter="{x:Static utility:XamlConstants.Minus}"/>
-                <Label Grid.Column="1" Text="{Binding CurrentDate, Converter={StaticResource DateToStringConverter}}" HorizontalOptions="CenterAndExpand"/>
-                <Button Grid.Column="2" Text="Next" HorizontalOptions="CenterAndExpand" Command="{Binding ChangeDateCommand}" CommandParameter="{x:Static utility:XamlConstants.Plus}"/>
+            <Grid Grid.Row="0" ColumnDefinitions="*,4*,*" VerticalOptions="Center">
+                <Button
+                    Grid.Column="0"
+                    VerticalOptions="Center"
+                    HorizontalOptions="CenterAndExpand" 
+                    BackgroundColor="{StaticResource TransparentColor}"
+                    Command="{Binding ChangeDateCommand}" 
+                    CommandParameter="{x:Static utility:XamlConstants.Minus}"
+                    Text="{x:Static fontAwesome:FontAwesomeIcons.ArrowLeft}"
+                    FontFamily="{StaticResource FontAwesomeSolid}"
+                    CornerRadius="10"
+                    FontSize="20"
+                    Padding="10"
+                    Margin="10"
+                    TextColor="{StaticResource DimGrayColor}" />
+            
+                <Button Grid.Column="1" 
+                        Text="{Binding CurrentDate, Converter={StaticResource DateToStringConverter}}"
+                        TextColor="{StaticResource AccentColor}"
+                        HorizontalOptions="CenterAndExpand"/>
+                <Button
+                    Grid.Column="2"
+                    VerticalOptions="Center"
+                    HorizontalOptions="CenterAndExpand" 
+                    BackgroundColor="{StaticResource TransparentColor}"
+                    Command="{Binding ChangeDateCommand}"
+                    CommandParameter="{x:Static utility:XamlConstants.Plus}"
+                    Text="{x:Static fontAwesome:FontAwesomeIcons.ArrowRight}"
+                    FontFamily="{StaticResource FontAwesomeSolid}"
+                    CornerRadius="10"
+                    FontSize="20"
+                    Padding="10"
+                    Margin="10"
+                    TextColor="{StaticResource DimGrayColor}" />
             </Grid>
             
             <calendar:CalendarView Grid.Row="1" 
@@ -29,9 +60,10 @@
                                    FrameTappedCommand="{Binding DateTappedCommand}"/>
             
             <controls:FrameButton Grid.Row="2"
-                                  BackgroundColor="Chocolate"
-                                  TextColor="AntiqueWhite"
-                                  Text="Add a Reservation"
+                                  BackgroundColor="{StaticResource PrimaryColor}"
+                                  Text="add reservation"
+                                  TextColor="{StaticResource SecondaryColor}"
+                                  Margin="40,0"
                                   FrameTappedCommand="{Binding AddReservationCommand}"/>
         </Grid>
     </base:BasePage.ContentValue>

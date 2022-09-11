@@ -60,7 +60,6 @@
             
             <controls:FrameButton
                 BackgroundColor="{StaticResource PrimaryChilledColor}"
-                BorderColor="AntiqueWhite"
                 CornerRadius="20"
                 Margin="40,20"
                 Icon="{x:Static fontAwesome:FontAwesomeIcons.PenToSquare}"

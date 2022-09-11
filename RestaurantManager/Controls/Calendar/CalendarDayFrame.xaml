@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<Frame BackgroundColor="Gold" 
+<Frame BackgroundColor="{StaticResource PrimaryChilledColor}" 
        xmlns="http://xamarin.com/schemas/2014/forms"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        x:Class="RestaurantManager.Controls.Calendar.CalendarDayFrame"
        CornerRadius="20"
        x:Name="frame"
-       
        HorizontalOptions="FillAndExpand"
        IsVisible="{Binding IsVisible}"
        HasShadow="False"
