@@ -9,20 +9,29 @@
              xmlns:controls="clr-namespace:RestaurantManager.Controls;assembly=RestaurantManager">
     <ContentPage.Resources>
         <Style x:Key="InvalidEntryStyle" TargetType="Entry"> 
-            <Setter Property="BackgroundColor" Value="IndianRed" />
+            <Setter Property="BackgroundColor" Value="{StaticResource WarningColor}" />
         </Style>
     </ContentPage.Resources>
     <base:BasePage.ContentValue>
         <StackLayout
             VerticalOptions="Center"
-            Margin="20">
+            Margin="20,0">
         
             <Label
-                Text="Login"
+                Text="Welcome to Restaurant Manager!"
                 HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
                 TextColor="{StaticResource PrimaryColor}"
-                FontSize="30"
-                Margin="0, 20"
+                FontSize="26"
+            />
+            
+            <Label
+                Text="Fill in your login details to proceed"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                TextColor="{StaticResource SubtitleColor}"
+                FontSize="14"
+                Margin="0, 10,0,20"
             />
             
             <Entry
