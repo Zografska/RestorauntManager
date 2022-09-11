@@ -9,57 +9,53 @@
              xmlns:restaurantManager="clr-namespace:RestaurantManager;assembly=RestaurantManager"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance restaurantManager:ViewModelBase}">
+             xmlns:fontAwesome="clr-namespace:FontAwesome;assembly=RestaurantManager"
+             xmlns:buttons="clr-namespace:RestaurantManager.Controls.Buttons;assembly=RestaurantManager">
     <Grid HorizontalOptions="FillAndExpand"
           VerticalOptions="Start"
           Margin="15,0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
-            <ColumnDefinition Width="3*" />
+            <ColumnDefinition />
+            <ColumnDefinition Width="9*" />
+            <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <Button Grid.Column="0"
-                Text="Back"
-                HorizontalOptions="StartAndExpand" 
+                Text="{x:Static fontAwesome:FontAwesomeIcons.ArrowLeft}"
+                FontFamily="{StaticResource FontAwesomeSolid}" 
+                HorizontalOptions="StartAndExpand"
                 VerticalOptions="Center"
                 BackgroundColor="Transparent"
                 TextColor="SandyBrown"
                 IsVisible="{Binding IsBackButtonVisible}"
-                Command="{Binding NavigateBackCommand}" >
-            <Button.FontSize>
-                <OnPlatform x:TypeArguments="x:Double">
-                    <OnPlatform.Platforms>
-                        <On Platform="iOS" Value="14"></On>
-                        <On Platform="Android" Value="12"></On>
-                    </OnPlatform.Platforms>
-                </OnPlatform>
-            </Button.FontSize>
-        </Button>
-                
-        <controls:LogoButton Grid.Column="1" 
-               HorizontalOptions="CenterAndExpand" 
-               Text="{Binding Title}" 
+                Command="{Binding NavigateBackCommand}"
+                FontSize="18"/>
+
+        <buttons:LogoIndicator Grid.Column="1"
+               HorizontalOptions="CenterAndExpand"
                IsNetworkConnected="{Binding IsNetworkConnected}"
-               CornerRadius="20"
-               FontSize="Small"
-               FontAttributes="Bold" 
-               TextColor="DarkBlue"/>
-                
+               Padding="-5"
+               Text="{x:Static fontAwesome:FontAwesomeIcons.CircleDot}"
+               FontFamily="{StaticResource FontAwesomeSolid}" />
+
         <Button Grid.Column="2"
-                Text="Logout"
-                HorizontalOptions="EndAndExpand" 
+               HorizontalOptions="CenterAndExpand"
+               Text="{Binding Title}"
+               FontSize="Small"
+               FontAttributes="Bold"
+               TextColor="Black" />
+        
+        <Button Grid.Column="4"
+                Text="{x:Static fontAwesome:FontAwesomeIcons.RightFromBracket}"
+                FontFamily="{StaticResource FontAwesomeSolid}" 
+                HorizontalOptions="EndAndExpand"
                 VerticalOptions="Center"
                 BackgroundColor="Transparent"
                 TextColor="SandyBrown"
                 IsVisible="{Binding IsLogoutButtonVisible}"
-                Command="{Binding LogoutCommand}">
-            <Button.FontSize>
-                <OnPlatform x:TypeArguments="x:Double">
-                    <OnPlatform.Platforms>
-                        <On Platform="iOS" Value="14"></On>
-                        <On Platform="Android" Value="12"></On>
-                    </OnPlatform.Platforms>
-                </OnPlatform>
-            </Button.FontSize>
+                Command="{Binding LogoutCommand}"
+                FontSize="18">
         </Button>
     </Grid>
 </ContentView>
