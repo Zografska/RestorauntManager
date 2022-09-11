@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Frame BackgroundColor="Gold" 
+       xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       x:Class="RestaurantManager.Controls.Calendar.CalendarDayFrame"
+       CornerRadius="20"
+       x:Name="frame"
+       
+       HorizontalOptions="FillAndExpand"
+       IsVisible="{Binding IsVisible}"
+       HasShadow="False"
+       Padding="5"
+       VerticalOptions="FillAndExpand">
+    <Frame.GestureRecognizers>
+        <TapGestureRecognizer Command="{Binding FrameTappedCommand, Source={x:Reference frame}}"
+                              CommandParameter="{Binding Value}"/>
+    </Frame.GestureRecognizers>
+    <Grid RowDefinitions="3*,*" 
+          HorizontalOptions="FillAndExpand" 
+          VerticalOptions="FillAndExpand">
+        <Label Grid.Row="0"
+               Text="{Binding Day}"
+               VerticalOptions="CenterAndExpand"
+               HorizontalTextAlignment="Center"
+               VerticalTextAlignment="Center"
+               FontSize="16"
+               HorizontalOptions="FillAndExpand"/> 
+        <Ellipse Grid.Row="1"
+                 Stroke="Red"
+                 HeightRequest="5" 
+                 WidthRequest="5" 
+                 HorizontalOptions="CenterAndExpand" 
+                 VerticalOptions="StartAndExpand"
+                 IsVisible="{Binding HasReservations}"/>
+    </Grid>
+</Frame>

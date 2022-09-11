@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace RestaurantManager.Popups
+namespace RestaurantManager.Pages.Reservations
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ReservationPopup
+    public partial class ReservationDayDetailsPage : ContentPage
     {
-        public ReservationPopup()
+        public ReservationDayDetailsPage()
         {
             InitializeComponent();
         }

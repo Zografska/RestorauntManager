@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<popUps:BasePopup xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:popUps="clr-namespace:RestaurantManager.PopUps;assembly=RestaurantManager"
+             xmlns:converters="clr-namespace:RestaurantManager.Converters;assembly=RestaurantManager"
+             xmlns:utility="clr-namespace:RestaurantManager.Utility;assembly=RestaurantManager"
+             xmlns:controls="clr-namespace:RestaurantManager.Controls;assembly=RestaurantManager"
+             xmlns:behaviors="http://prismlibrary.com"
+             x:Class="RestaurantManager.Popups.ReservationCNIPopup">
+    <StackLayout>
+                <StackLayout
+        BackgroundColor="Bisque"
+        Margin="25, 0, 25, 25"
+        VerticalOptions="FillAndExpand">
+        <StackLayout.Resources>
+           <ResourceDictionary>
+               <converters:DateToStringConverter x:Key="DateToStringConverter"/>
+           </ResourceDictionary>
+        </StackLayout.Resources>
+        <Grid BackgroundColor="Orange" HorizontalOptions="FillAndExpand" Padding="15" VerticalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            
+            <Entry
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Placeholder= "{x:Static utility:XamlConstants.OnName}"
+                Text="{Binding Item.OnName}"
+                FontSize="Title"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="FillAndExpand"/>
+            
+            <Label
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Text="{x:Static utility:XamlConstants.NumberInParty}"
+                FontSize="Medium"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="Center"/>
+            
+            <controls:NumberPicker Grid.Row="1"
+                                   Grid.Column="1"
+                                   Grid.ColumnSpan="2"
+                                   SelectedItem="{Binding Item.NumberOfPeople}"
+                                   x:Name="NumberPicker"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="End">
+                <controls:NumberPicker.Behaviors>
+                    <behaviors:EventToCommandBehavior
+                        EventName="SelectedIndexChanged"
+                        Command="{Binding PartyPickedCommand}"
+                        CommandParameter="{Binding Source={x:Reference NumberPicker}, Path=SelectedItem}"/>
+                </controls:NumberPicker.Behaviors>
+            </controls:NumberPicker>
+            
+            <Label Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   Grid.Row="2" 
+                   FontSize="Medium"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="Center"
+                   Text="{x:Static utility:XamlConstants.Time}" />
+            
+            <TimePicker Grid.Column="1"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="2"
+                        VerticalOptions="Center"
+                        HorizontalOptions="End"
+                        Time="{Binding Time}"/>
+            
+            <Label Grid.Column="0" 
+                   Grid.ColumnSpan="2"
+                   Grid.Row="3" 
+                   FontSize="Medium"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="Center"
+                   Text="{x:Static utility:XamlConstants.Date}" />
+            
+            <DatePicker Grid.Column="1" 
+                        Grid.ColumnSpan="2"
+                        Grid.Row="3"
+                        VerticalOptions="Center"
+                        HorizontalOptions="End"
+                        Date="{Binding Date}"/>
+        </Grid>
+      
+        <StackLayout HorizontalOptions="CenterAndExpand"
+                     Orientation="Horizontal">
+            <controls:FrameButton
+                Text="{x:Static utility:XamlConstants.Save}"
+                CornerRadius="15"
+                BackgroundColor="WhiteSmoke"
+                TextColor="DodgerBlue"
+                FontSize="15"
+                BorderColor="Black"
+                FrameTappedCommand="{Binding SaveCommand}"/>
+            
+        </StackLayout>
+        
+    </StackLayout>
+    </StackLayout>
+</popUps:BasePopup>

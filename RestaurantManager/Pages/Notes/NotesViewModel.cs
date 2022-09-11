@@ -32,6 +32,7 @@ namespace RestaurantManager.Pages.Notes
         {
             Title = XamlConstants.MyNotes;
             _noteService = noteService;
+            _service = noteService;
             PopupName = nameof(NotePopup);
             ChangeItemsCommand = new Command<string>(PopulateItems);
 
