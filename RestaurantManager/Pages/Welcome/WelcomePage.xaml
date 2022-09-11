@@ -54,7 +54,7 @@
                     </Frame.GestureRecognizers>
                     <StackLayout>
                         <Label
-                            Text="Welcome User"
+                            Text="{Binding Username, StringFormat='Welcome {0:F2}!'}"
                             FontSize="20"
                             FontAttributes="Bold"
                             HorizontalOptions="Center"
