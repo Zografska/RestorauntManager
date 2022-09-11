@@ -6,6 +6,7 @@ using RestaurantManager.Extensions;
 using RestaurantManager.Pages.Base;
 using RestaurantManager.Pages.Notes;
 using RestaurantManager.Pages.Reservations;
+using RestaurantManager.Pages.Settings;
 using RestaurantManager.Services;
 using RestaurantManager.Services.Network;
 using RestaurantManager.Utility;
@@ -35,6 +36,7 @@ namespace RestaurantManager.Pages.Welcome
         public ICommand NavigateToReservationsCommand { get; }
         public ICommand LogoutCommand { get; }
         public ICommand MapClickCommand { get; }
+        public SingleClickCommand NavigateToSettingsCommand { get; set; }
 
         public WelcomePageViewModel(INavigationService navigationService, IPopupService popupService,
             IAuthService authService, IProfileService profileService, INetworkService networkService) 
@@ -44,6 +46,7 @@ namespace RestaurantManager.Pages.Welcome
             NavigateToNotesCommand = new SingleClickCommand(NavigateToNotesPage);
             NavigateToShiftsCommand = new SingleClickCommand(NavigateToShiftsPage);
             NavigateToReservationsCommand = new SingleClickCommand(NavigateToReservationsPage);
+            NavigateToSettingsCommand = new SingleClickCommand(NavigateToSettingsPage);
             MapClickCommand = new SingleClickCommand(NavigateToRestaurant);
             LogoutCommand = new SingleClickCommand(Logout);
             _profileService = profileService;
@@ -77,6 +80,7 @@ namespace RestaurantManager.Pages.Welcome
             SingleClickCommand.ResetLastClick();
         }
 
+        // TODO: Refactor navigation commands into one command
         private async void NavigateToReservationsPage()
         {
             await NavigationService.NavigateTo<ReservationsPage>();
@@ -92,6 +96,12 @@ namespace RestaurantManager.Pages.Welcome
         private async void NavigateToShiftsPage()
         {
             await NavigationService.NavigateTo<ShiftsPage>();
+            SingleClickCommand.ResetLastClick();
+        }
+
+        private async void NavigateToSettingsPage()
+        {
+            await NavigationService.NavigateTo<SettingsPage>();
             SingleClickCommand.ResetLastClick();
         }
 
