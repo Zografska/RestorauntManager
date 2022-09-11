@@ -7,15 +7,15 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:base="clr-namespace:RestaurantManager.Pages.Base;assembly=RestaurantManager"
-         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:forms="http://xamarin.com/schemas/2014/forms"
-         xmlns:welcome="clr-namespace:RestaurantManager.Pages.Welcome;assembly=RestaurantManager"
+    xmlns:welcome="clr-namespace:RestaurantManager.Pages.Welcome;assembly=RestaurantManager"
     xmlns:controls="clr-namespace:RestaurantManager.Controls;assembly=RestaurantManager"
     xmlns:utility="clr-namespace:RestaurantManager.Utility;assembly=RestaurantManager"
     xmlns:behaviors="http://prismlibrary.com"
-         mc:Ignorable="d"
-         d:DataContext="{d:DesignInstance welcome:WelcomePageViewModel}"
+    mc:Ignorable="d"
+    d:DataContext="{d:DesignInstance welcome:WelcomePageViewModel}"
     xmlns:fontAwesome="clr-namespace:FontAwesome;assembly=RestaurantManager"
     x:Class="RestaurantManager.WelcomePage">
     <base:BasePage.ContentValue>
@@ -54,7 +54,7 @@
                     </Frame.GestureRecognizers>
                     <StackLayout>
                         <Label
-                            Text="Welcome User"
+                            Text="{Binding Username, StringFormat='Welcome {0:F2}!'}"
                             FontSize="20"
                             FontAttributes="Bold"
                             HorizontalOptions="Center"

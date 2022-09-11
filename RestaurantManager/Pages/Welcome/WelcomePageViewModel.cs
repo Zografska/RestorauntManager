@@ -17,6 +17,19 @@ namespace RestaurantManager.Pages.Welcome
     public class WelcomePageViewModel : PageViewModelBase
     {
         private readonly IProfileService _profileService;
+        
+        private string _username;
+
+        public string Username
+        {
+            get => _username;
+            set
+            {
+                _username = value;
+                RaisePropertyChanged(nameof(Username));
+            }
+        }
+
         public ICommand NavigateToNotesCommand { get; }
         public ICommand NavigateToShiftsCommand { get; }
         public ICommand NavigateToReservationsCommand { get; }
@@ -35,6 +48,12 @@ namespace RestaurantManager.Pages.Welcome
             LogoutCommand = new SingleClickCommand(Logout);
             _profileService = profileService;
             IsBackButtonVisible = false;
+        }
+
+        public override async void Initialize(INavigationParameters parameters)
+        {
+            base.Initialize(parameters);
+            Username = (await _profileService.GetCurrentUser()).FullName;
         }
 
         private void Logout()
