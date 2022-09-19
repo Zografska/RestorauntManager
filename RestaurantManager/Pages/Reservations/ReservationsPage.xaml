@@ -37,6 +37,7 @@
                 <Button Grid.Column="1" 
                         Text="{Binding CurrentDate, Converter={StaticResource DateToStringConverter}}"
                         TextColor="{StaticResource AccentColor}"
+                        BackgroundColor="{StaticResource TransparentColor}"
                         FontSize="20"
                         HorizontalOptions="CenterAndExpand"/>
                 <Button
