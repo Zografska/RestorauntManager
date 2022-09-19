@@ -37,7 +37,7 @@
                IsNetworkConnected="{Binding IsNetworkConnected}"
                BackgroundColor="{StaticResource TransparentColor}"
                Padding="-5"
-               Text="{x:Static fontAwesome:FontAwesomeIcons.CircleDot}"
+               Text="{x:Static fontAwesome:FontAwesomeIcons.Wifi}"
                FontFamily="{StaticResource FontAwesomeSolid}"
                FontSize="16"/>
 
@@ -45,9 +45,15 @@
                HorizontalOptions="CenterAndExpand"
                Text="{Binding Title}"
                BackgroundColor="{StaticResource TransparentColor}"
-               FontSize="16"
                FontAttributes="Bold"
-               TextColor="{StaticResource PrimaryColor}" />
+               TextColor="{StaticResource PrimaryColor}">
+            <Button.FontSize>
+                <OnPlatform x:TypeArguments="system:Double">
+                    <On Platform="Android" Value="12"/>
+                    <On Platform="iOS" Value="16"/>
+                </OnPlatform>
+            </Button.FontSize>
+        </Button>
         
         <Button Grid.Column="4"
                 Text="{x:Static fontAwesome:FontAwesomeIcons.RightFromBracket}"
