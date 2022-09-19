@@ -18,7 +18,7 @@
         <Grid RowDefinitions="*,4*,0.5*"
               Margin="20">
             
-            <Grid Grid.Row="0" ColumnDefinitions="*,4*,*" VerticalOptions="Center">
+            <Grid Grid.Row="0" ColumnDefinitions="*,4.5*,*" VerticalOptions="Center">
                 <Button
                     Grid.Column="0"
                     VerticalOptions="Center"
@@ -29,7 +29,7 @@
                     Text="{x:Static fontAwesome:FontAwesomeIcons.ArrowLeft}"
                     FontFamily="{StaticResource FontAwesomeSolid}"
                     CornerRadius="10"
-                    FontSize="20"
+                    FontSize="12"
                     Padding="10"
                     Margin="10"
                     TextColor="{StaticResource DimGrayColor}" />
@@ -37,6 +37,7 @@
                 <Button Grid.Column="1" 
                         Text="{Binding CurrentDate, Converter={StaticResource DateToStringConverter}}"
                         TextColor="{StaticResource AccentColor}"
+                        FontSize="20"
                         HorizontalOptions="CenterAndExpand"/>
                 <Button
                     Grid.Column="2"
@@ -48,7 +49,7 @@
                     Text="{x:Static fontAwesome:FontAwesomeIcons.ArrowRight}"
                     FontFamily="{StaticResource FontAwesomeSolid}"
                     CornerRadius="10"
-                    FontSize="20"
+                    FontSize="12"
                     Padding="10"
                     Margin="10"
                     TextColor="{StaticResource DimGrayColor}" />
@@ -61,7 +62,7 @@
             
             <controls:FrameButton Grid.Row="2"
                                   BackgroundColor="{StaticResource PrimaryColor}"
-                                  Text="add reservation"
+                                  Text="Add Reservation"
                                   TextColor="{StaticResource SecondaryColor}"
                                   Margin="40,0"
                                   FrameTappedCommand="{Binding AddReservationCommand}"/>

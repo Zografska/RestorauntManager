@@ -14,6 +14,7 @@
 
     <Color x:Key="PrimaryColor">#1e60e3</Color>
     <Color x:Key="PrimaryChilledColor">#7da5f5</Color>
+    <Color x:Key="PrimaryChilledColor2">#f4f7fe</Color>
     <Color x:Key="SecondaryColor">#ffffff</Color>
     <Color x:Key="AccentColor">#fff4a460</Color>
     <Color x:Key="ViewCellTextColor">#000000</Color>

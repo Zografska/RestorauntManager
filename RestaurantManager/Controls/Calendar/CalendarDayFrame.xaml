@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<Frame BackgroundColor="{StaticResource PrimaryChilledColor}" 
+<Frame BackgroundColor="{StaticResource PrimaryChilledColor2}" 
        xmlns="http://xamarin.com/schemas/2014/forms"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        x:Class="RestaurantManager.Controls.Calendar.CalendarDayFrame"
-       CornerRadius="20"
-       x:Name="frame"
+       CornerRadius="7"
+       x:Name="CalendarDay"
        HorizontalOptions="FillAndExpand"
        IsVisible="{Binding IsVisible}"
        HasShadow="False"
        Padding="5"
        VerticalOptions="FillAndExpand">
     <Frame.GestureRecognizers>
-        <TapGestureRecognizer Command="{Binding FrameTappedCommand, Source={x:Reference frame}}"
+        <TapGestureRecognizer Command="{Binding FrameTappedCommand, Source={x:Reference CalendarDay}}"
                               CommandParameter="{Binding Value}"/>
     </Frame.GestureRecognizers>
     <Grid RowDefinitions="3*,*" 
