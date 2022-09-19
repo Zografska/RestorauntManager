@@ -25,6 +25,7 @@ namespace RestaurantManager.Pages.Authentication.Signup
             : base(navigationService, popupService, authService, networkService)
         {
             SignUpCommand = new SingleClickCommand(SignUpUser);
+            IsLogoutButtonVisible = false;
             _profileService = profileService;
         }
 
