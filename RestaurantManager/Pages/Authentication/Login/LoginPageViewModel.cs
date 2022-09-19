@@ -21,7 +21,7 @@ namespace RestaurantManager.Pages.Authentication.Login
     public class LoginPageViewModel : PageViewModelBase
     {
         private readonly string SADMIN_EMAIL = "aleksandrazografska@halicea.com";
-        private readonly string SADMIN_PASS = "zografska1";
+        private readonly string SADMIN_PASS = "-1380954559";
         private readonly IGoogleClientManager _googleClientManager;
         private readonly IProfileService _profileService;
         private string _username { get; set; }
@@ -112,7 +112,7 @@ namespace RestaurantManager.Pages.Authentication.Login
                             if (!result.IsNullOrEmpty())
                             {
                                 await _profileService.CreateUser(result, googleUser.GivenName, googleUser.FamilyName,
-                                    Username);
+                                    Username, "");
                             }
                             else
                             {

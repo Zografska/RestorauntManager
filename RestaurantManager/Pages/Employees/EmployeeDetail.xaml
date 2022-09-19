@@ -9,7 +9,7 @@
         <ScrollView>    
             <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,*" Padding="{x:OnPlatform Android='0,40,0,20'}">
                 <sfavatar:SfAvatarView Grid.ColumnSpan="2" Grid.Row="0"  BorderWidth="0"
-                       ContentType="Custom" ImageSource="https://support.hubstaff.com/wp-content/uploads/2019/08/good-pic.png" HorizontalOptions="Center" VerticalOptions="Start" WidthRequest="140" HeightRequest="140" CornerRadius="70" Margin="0,0,0,30" />
+                       ContentType="Custom" ImageSource="{Binding ImageSource}" HorizontalOptions="Center" VerticalOptions="Start" WidthRequest="140" HeightRequest="140" CornerRadius="70" Margin="0,0,0,30" />
                 
                 <Label Grid.ColumnSpan="2" Grid.Row="1" Text="{Binding Employee.FullName}" HorizontalOptions="Center" FontAttributes="Bold" FontSize="26" CharacterSpacing="1"/>
                 <Label Grid.ColumnSpan="2" Grid.Row="2" Text="{Binding Employee.JobTitle}" HorizontalOptions="Center" FontSize="20"/>

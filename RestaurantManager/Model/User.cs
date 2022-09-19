@@ -20,5 +20,6 @@ namespace RestaurantManager.Model
         public string Uid { get; set; }
         public string FullName { get; set; }
         public string JobTitle { get; set; }
+        public string PhotoUrl { get; set; }
     }
 }
