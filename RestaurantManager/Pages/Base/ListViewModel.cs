@@ -4,6 +4,7 @@ using Prism.Navigation;
 using RestaurantManager.Core.DatabaseService;
 using RestaurantManager.Extensions;
 using RestaurantManager.Model;
+using RestaurantManager.Services;
 using RestaurantManager.Services.Network;
 using RestaurantManager.Utility;
 using XCT.Popups.Prism;
@@ -14,6 +15,7 @@ namespace RestaurantManager.Pages
         where T : ModelBase
     {
         protected readonly DatabaseServiceRemote _databaseServiceRemote;
+        protected IServiceBase<T> _service { get; set; }
         protected string PopupName { get; set; }
         public ICommand ItemTappedCommand { get; }
         public ICommand AddItemCommand { get; }
@@ -35,20 +37,7 @@ namespace RestaurantManager.Pages
             AddItemCommand = new SingleClickCommand(ShowCniPopup);
         }
 
-        public override async void OnNavigatedTo(INavigationParameters parameters)
-        {
-            base.OnNavigatedTo(parameters);
-            if (NetworkService.IsNetworkConnected())
-            {
-                Items = await _databaseServiceRemote.GetAll<T>();
-            }
-            else
-            {
-                DisplayAlert(Constants.AlertConstants.NoInternet);
-            }
-        }
-
-        private void HandlePopupResult(IPopupParameters resultParameters, T oldItem = null)
+        protected virtual T HandlePopupResult(IPopupParameters resultParameters, T oldItem = null)
         {
             if (resultParameters.TryGetValue(Constants.NavigationConstants.ItemUpdated, out T item))
             {
@@ -67,12 +56,18 @@ namespace RestaurantManager.Pages
             {
                 Items.Remove(oldItem);
             }
+
+            return item;
         }
 
         private async void ShowCniPopup()
         {
             IPopupResult result =
-                await PopupService.ShowPopupAsync(PopupName, new PopupParameters { { Constants.NavigationConstants.Item, null } });
+                await PopupService.ShowPopupAsync(PopupName, new PopupParameters
+                {
+                    { Constants.NavigationConstants.Item, null }, 
+                    { Constants.NavigationConstants.Service, _service }
+                });
 
             HandlePopupResult(result.Parameters);
         }
@@ -82,7 +77,11 @@ namespace RestaurantManager.Pages
             var item = tappedItem as T;
 
             IPopupResult result =
-                await PopupService.ShowPopupAsync(PopupName, new PopupParameters { { Constants.NavigationConstants.Item, item.Clone() as T } });
+                await PopupService.ShowPopupAsync(PopupName, new PopupParameters
+                {
+                    { Constants.NavigationConstants.Item, item.Clone() as T },
+                    { Constants.NavigationConstants.Service, _service }
+                });
             HandlePopupResult(result.Parameters, item);
         }
     }

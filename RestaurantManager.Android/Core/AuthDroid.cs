@@ -53,7 +53,7 @@ namespace RestaurantManager.Droid.Core
 
         public string GetCurrentProfile()
         {
-            return FirebaseAuth.Instance.CurrentUser.Uid;
+            return FirebaseAuth.Instance.CurrentUser?.Uid;
         }
 
         public async Task ResetPassword(string email)

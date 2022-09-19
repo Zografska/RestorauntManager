@@ -10,7 +10,7 @@ using XCT.Popups.Prism;
 
 namespace RestaurantManager
 {
-    public class ViewModelBase : BindableBase, INavigationAware, IDestructible, IPageLifecycleAware
+    public class ViewModelBase : BindableBase, INavigationAware, IDestructible, IPageLifecycleAware, IInitialize
 
     {
         private bool _isBackButtonVisible;
@@ -78,6 +78,7 @@ namespace RestaurantManager
         private void NavigateBack()
         {
             NavigationService.GoBackAsync();
+            SingleClickCommand.ResetLastClick();
         }
 
         public virtual void OnNavigatedFrom(INavigationParameters parameters)
@@ -104,6 +105,11 @@ namespace RestaurantManager
         protected virtual async void DisplayAlert(string alertMessage, string title = "")
         {
             await Application.Current.MainPage.DisplayAlert(title, alertMessage, "OK");
+        }
+
+        public virtual void Initialize(INavigationParameters parameters)
+        {
+            
         }
     }
 }

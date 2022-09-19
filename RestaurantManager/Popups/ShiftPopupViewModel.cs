@@ -11,7 +11,7 @@ using XCT.Popups.Prism;
 
 namespace RestaurantManager.Popups
 {
-    public class ShiftPopupViewModel : BasePopupViewModel
+    public class ShiftPopupViewModel : EditPopupViewModel<Shift>
     {
         public IShiftsService ShiftsService { get; set; }
         public IProfileService ProfileService { get; set; }

@@ -31,6 +31,7 @@ namespace RestaurantManager
             containerRegistry.RegisterSingleton<INoteService, NoteService>();
             containerRegistry.RegisterSingleton<IShiftsService, ShiftsService>();
             containerRegistry.RegisterSingleton<INetworkService, NetworkService>();
+            containerRegistry.RegisterSingleton<IReservationService, ReservationService>();
             
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();
@@ -40,13 +41,14 @@ namespace RestaurantManager
             containerRegistry.RegisterForNavigation<NotesPage, NotesViewModel>();
             containerRegistry.RegisterForNavigation<ShiftsPage, ShiftsViewModel>();
             containerRegistry.RegisterForNavigation<ReservationsPage, ReservationsPageViewModel>();
+            containerRegistry.RegisterForNavigation<ReservationDayDetailsPage, ReservationDayDetailsPageViewModel>();
             containerRegistry.RegisterForNavigation<SettingsPage, SettingsPageViewModel>();
             containerRegistry.RegisterForNavigation<EmployeesPage, EmployeesPageViewModel>();
             containerRegistry.RegisterForNavigation<EmployeeDetail, EmployeeDetailViewModel>();
 
             containerRegistry.RegisterPopup<NotePopup, NotePopupViewModel>();
             containerRegistry.RegisterPopup<ShiftPopup, ShiftPopupViewModel>();
-            containerRegistry.RegisterPopup<ReservationPopup, ReservationPopupViewModel>();
+            containerRegistry.RegisterPopup<ReservationCNIPopup, ReservationCNIPopupViewModel>();
 
             containerRegistry.Register<DatabaseServiceRemote>();
         }
