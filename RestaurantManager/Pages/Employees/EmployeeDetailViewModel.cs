@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using System.Net;
 using Prism.Common;
@@ -12,7 +13,12 @@ namespace RestaurantManager.Pages.Employees
     public class EmployeeDetailViewModel : ViewModelBase
     {
         private User _employee;
-        public ImageSource ImageSource { get; set; }
+        private ImageSource _imageSource;
+        public ImageSource ImageSource
+        {
+            get => _imageSource;
+            set => SetProperty(ref _imageSource, value);
+        }
         public User Employee
         {
             get => _employee;
@@ -31,8 +37,16 @@ namespace RestaurantManager.Pages.Employees
             parameters.TryGetValue("employee", out employee);
             Employee = employee;
 
-            byte[] imgBytes = webClient.DownloadData(employee.PhotoUrl);
-            ImageSource = ImageSource.FromStream(() => new MemoryStream(imgBytes));
+            try
+            {
+                var imgBytes = webClient.DownloadData(
+                    $"https://firebasestorage.googleapis.com/v0/b/restaurantmanagerdb.appspot.com/o{new Uri($"https://{employee.PhotoUrl}").PathAndQuery}?alt=media");
+                ImageSource = ImageSource.FromStream(() => new MemoryStream(imgBytes));
+            }
+            catch (Exception error)
+            {
+                Console.WriteLine(error);
+            }
         }
     }
 }
