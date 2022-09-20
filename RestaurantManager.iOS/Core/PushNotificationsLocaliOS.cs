@@ -11,7 +11,6 @@ namespace RestaurantManager.iOS.Core
     public class PushNotificationsLocaliOS : IPushNotificationsLocal
     {
         int messageId = 0;
-        bool hasNotificationsPermission;
         public event EventHandler NotificationReceived;
 
         public void Initialize()
@@ -19,18 +18,11 @@ namespace RestaurantManager.iOS.Core
             // request the permission to use local notifications
             UNUserNotificationCenter.Current.RequestAuthorization(UNAuthorizationOptions.Alert, (approved, err) =>
             {
-                hasNotificationsPermission = approved;
             });
         }
 
         public void SendNotification(string title, string message, DateTime? notifyTime = null)
         {
-            // EARLY OUT: app doesn't have permissions
-            if (!hasNotificationsPermission)
-            {
-                return;
-            }
-
             messageId++;
 
             var content = new UNMutableNotificationContent()
@@ -89,6 +81,11 @@ namespace RestaurantManager.iOS.Core
     
     public class iOSNotificationReceiver : UNUserNotificationCenterDelegate
     {
+        public iOSNotificationReceiver()
+        {
+            DependencyService.Get<IPushNotificationsLocal>().Initialize(); 
+        }
+        
         public override void WillPresentNotification(UNUserNotificationCenter center, UNNotification notification, Action<UNNotificationPresentationOptions> completionHandler)
         {
             ProcessNotification(notification);
