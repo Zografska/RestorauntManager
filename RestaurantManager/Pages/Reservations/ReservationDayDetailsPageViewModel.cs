@@ -57,6 +57,11 @@ namespace RestaurantManager.Pages.Reservations
             }
         }
 
+        protected override void ShowCniPopup(IEnumerable<KeyValuePair<string, object>> additionalKeys = null)
+        {
+            base.ShowCniPopup(new[] { new KeyValuePair<string, object>(Constants.NavigationConstants.Date, Day) });
+        }
+
         protected override Reservation HandlePopupResult(IPopupParameters resultParameters, Reservation oldItem = null)
         {
             var newReservation = base.HandlePopupResult(resultParameters, oldItem);

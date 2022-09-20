@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using Prism.Navigation;
@@ -7,6 +8,7 @@ using RestaurantManager.Model;
 using RestaurantManager.Services;
 using RestaurantManager.Services.Network;
 using RestaurantManager.Utility;
+using Xamarin.Forms.Internals;
 using XCT.Popups.Prism;
 
 namespace RestaurantManager.Pages
@@ -34,7 +36,7 @@ namespace RestaurantManager.Pages
             _databaseServiceRemote = databaseServiceRemote;
             
             ItemTappedCommand = new SingleClickCommand<object>(ShowPopup);
-            AddItemCommand = new SingleClickCommand(ShowCniPopup);
+            AddItemCommand = new SingleClickCommand<IEnumerable<KeyValuePair<string, object>>>(ShowCniPopup);
         }
 
         protected virtual T HandlePopupResult(IPopupParameters resultParameters, T oldItem = null)
@@ -60,15 +62,19 @@ namespace RestaurantManager.Pages
             return item;
         }
 
-        private async void ShowCniPopup()
+        protected virtual async void ShowCniPopup(IEnumerable<KeyValuePair<string, object>> additionalKeys = null)
         {
-            IPopupResult result =
-                await PopupService.ShowPopupAsync(PopupName, new PopupParameters
-                {
-                    { Constants.NavigationConstants.Item, null }, 
-                    { Constants.NavigationConstants.Service, _service }
-                });
+            var popupParameters = new PopupParameters
+            {
+                { Constants.NavigationConstants.Item, null }, 
+                { Constants.NavigationConstants.Service, _service }
+            };
 
+            additionalKeys?.ForEach(pair => popupParameters.Add(pair.Key, pair.Value));
+
+            IPopupResult result =
+                await PopupService.ShowPopupAsync(PopupName, popupParameters);
+            
             HandlePopupResult(result.Parameters);
         }
 
