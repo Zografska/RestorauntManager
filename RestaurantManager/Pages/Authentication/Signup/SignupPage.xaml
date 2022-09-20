@@ -38,6 +38,12 @@
                 Placeholder="Password"
                 IsPassword="true"
                 Text="{Binding Password}" />
+            <Button
+                Text="Upload Photo"
+                Command="{Binding UploadPhotoCommand}"
+                Margin="60, 40"
+                Background="#468284"
+                TextColor="White"/>
             
             <controls:FrameButton
                 Text="Sign Up"

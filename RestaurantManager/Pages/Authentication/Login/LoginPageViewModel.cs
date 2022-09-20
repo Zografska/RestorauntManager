@@ -112,7 +112,7 @@ namespace RestaurantManager.Pages.Authentication.Login
                             if (!result.IsNullOrEmpty())
                             {
                                 await _profileService.CreateUser(result, googleUser.GivenName, googleUser.FamilyName,
-                                    Username);
+                                    Username, "");
                             }
                             else
                             {

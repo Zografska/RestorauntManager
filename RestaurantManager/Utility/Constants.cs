@@ -20,5 +20,11 @@ namespace RestaurantManager.Utility
             public const string NoInternet = "Please connect to the internet :( <3";
             public const string BackOnline = "You're back online :)";
         }
+
+        public class FeatureConstants
+        {
+            public const string FeatureNotImplemented = "Feature not implemented";
+            public const string PermissionsNotGranted = "Permissions not granted";
+        }
     }
 }

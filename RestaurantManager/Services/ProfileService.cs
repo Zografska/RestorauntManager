@@ -19,7 +19,7 @@ namespace RestaurantManager.Services
             return (await GetAll()).FirstOrDefault(user => user.Uid == currentUserId);
         }
 
-        public async Task<User> CreateUser(string userId,string name, string surname, string email)
+        public async Task<User> CreateUser(string userId,string name, string surname, string email, string photoUrl)
         {
             var newUser = new User
             {
@@ -27,7 +27,9 @@ namespace RestaurantManager.Services
                 Name = name,
                 Surname = surname,
                 Email = email,
-                FullName = $"{name} {surname}"
+                FullName = $"{name} {surname}",
+                JobTitle = "Worker",
+                PhotoUrl = photoUrl
             };
 
            return await Save(newUser);
