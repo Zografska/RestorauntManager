@@ -1,4 +1,5 @@
 using Xamarin.Essentials;
+using Xamarin.Forms;
 
 namespace RestaurantManager.Utility
 {
@@ -9,7 +10,25 @@ namespace RestaurantManager.Utility
         public static int Theme
         {
             get => Preferences.Get(nameof(Theme), theme);
-            set => Preferences.Set(nameof(Theme), value);
+            set
+            {
+                Preferences.Set(nameof(Theme), value);
+                switch (value)
+                {
+                    //default
+                    case 0:
+                        App.Current.UserAppTheme = OSAppTheme.Unspecified;
+                        break;
+                    //light
+                    case 1:
+                        App.Current.UserAppTheme = OSAppTheme.Light;
+                        break;
+                    //dark
+                    case 2:
+                        App.Current.UserAppTheme = OSAppTheme.Dark;
+                        break;
+                }
+            } 
         }
     }
 }

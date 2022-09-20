@@ -16,6 +16,7 @@ using RestaurantManager.Pages.Welcome;
 using RestaurantManager.Popups;
 using RestaurantManager.Services;
 using RestaurantManager.Services.Network;
+using RestaurantManager.Utility;
 using Xamarin.Forms;
 using XCT.Popups.Prism;
 
@@ -60,6 +61,7 @@ namespace RestaurantManager
 
             CrossFirebasePushNotification.Current.OnTokenRefresh += Current_OnTokenRefresh;
 
+            Settings.Theme = Settings.Theme;
             await NavigationService.NavigateTo<LoginPage>(true);
         }
 

@@ -39,7 +39,7 @@ namespace RestaurantManager.Pages.Notes
             NetworkService.OnNetworkStatusChanged.Subscribe(message => IsCreateButtonVisible = message.IsConnected);
         }
 
-        public override async void OnNavigatedTo(INavigationParameters parameters)
+        public override async void Initialize(INavigationParameters parameters)
         {
             if (NetworkService.IsNetworkConnected())
             {

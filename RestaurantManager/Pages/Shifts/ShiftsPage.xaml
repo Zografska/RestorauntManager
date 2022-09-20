@@ -25,6 +25,8 @@
                 HorizontalOptions="FillAndExpand"
                 SeparatorVisibility="None"
                 HasUnevenRows="True"
+                Margin="20"
+                BackgroundColor="{StaticResource TransparentColor}"
                 ItemsSource="{Binding Items}">
                 <controls:CustomListView.Behaviors>
                     <behaviors:EventToCommandBehavior
@@ -34,13 +36,16 @@
                 </controls:CustomListView.Behaviors>
                 <controls:CustomListView.ItemTemplate>
                     <DataTemplate>
-                        <shifts:ShiftsViewCell Height="100"/>
+                        <shifts:ShiftsViewCell Height="180"/>
                     </DataTemplate>
                 </controls:CustomListView.ItemTemplate>
             </controls:CustomListView>
             <controls:FrameButton
-                BackgroundColor="#BBD2691E"
-                BorderColor="AntiqueWhite"
+                BackgroundColor="{AppThemeBinding Light={StaticResource PrimaryChilledColorLight},
+                             Dark={StaticResource PrimaryChilledColorDark}}"
+                TextColor="{AppThemeBinding Light={StaticResource SecondaryColorLight},
+                             Dark={StaticResource SecondaryColorDark}}"
+                Margin="40,20"
                 CornerRadius="20"
                 Text="{x:Static utility:XamlConstants.AddShift}"
                 FrameTappedCommand="{Binding AddItemCommand}"/>

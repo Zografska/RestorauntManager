@@ -33,6 +33,7 @@ namespace RestaurantManager.Pages.Authentication.Signup
         {
             SignUpCommand = new SingleClickCommand(SignUpUser);
             UploadPhotoCommand = new SingleClickCommand(UploadPhoto);
+            IsLogoutButtonVisible = false;
             _profileService = profileService;
         }
 

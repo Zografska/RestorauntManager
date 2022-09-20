@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -12,7 +13,8 @@ namespace RestaurantManager.Controls
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FrameButton
     {
-        private const string DEFAULT_SIZE = "20";
+        private const double DEFAULT_FONT_SIZE = 20;
+        private const float DEFAULT_CORNER_RADIUS_SIZE = 15;
         
         public new static readonly BindableProperty BackgroundColorProperty = BindableProperty.Create(nameof(BackgroundColor), typeof(Color),
             typeof(FrameButton), Color.Default);
@@ -24,11 +26,14 @@ namespace RestaurantManager.Controls
             typeof(Color), typeof(FrameButton), Color.Default);
         
         public static readonly BindableProperty TextProperty = BindableProperty.Create(nameof(Text), 
-            typeof(string), typeof(FrameButton)); 
-        
+            typeof(string), typeof(FrameButton));
+
         public static readonly BindableProperty IconProperty = BindableProperty.Create(nameof(Icon), 
             typeof(string), typeof(FrameButton), string.Empty);
         
+        public static readonly BindableProperty IconFontFamilyProperty = BindableProperty.Create(nameof(IconFontFamily), 
+            typeof(string), typeof(FrameButton));
+
         public static readonly BindableProperty FrameTappedCommandProperty =
             BindableProperty.Create(nameof(FrameTappedCommand), typeof(ICommand), typeof(FrameButton));
         
@@ -36,10 +41,10 @@ namespace RestaurantManager.Controls
             BindableProperty.Create(nameof(FrameTappedCommandParameter), typeof(object), typeof(FrameButton));
         
         public static readonly BindableProperty CornerRadiusProperty = BindableProperty.Create(nameof(CornerRadius), 
-            typeof(float), typeof(FrameButton), float.Parse(DEFAULT_SIZE));
+            typeof(float), typeof(FrameButton), DEFAULT_CORNER_RADIUS_SIZE);
         
         public static readonly BindableProperty FontSizeProperty = BindableProperty.Create(nameof(FontSize), 
-            typeof(double), typeof(FrameButton), double.Parse(DEFAULT_SIZE));
+            typeof(double), typeof(FrameButton), DEFAULT_FONT_SIZE);
         
         public new Color BackgroundColor
         {
@@ -63,6 +68,12 @@ namespace RestaurantManager.Controls
         {
             get { return (string)GetValue(IconProperty); }
             set { SetValue(IconProperty, value); }
+        }
+        
+        public string IconFontFamily
+        {
+            get { return (string)GetValue(IconFontFamilyProperty); }
+            set { SetValue(IconFontFamilyProperty, value); }
         }
         
         public string Text

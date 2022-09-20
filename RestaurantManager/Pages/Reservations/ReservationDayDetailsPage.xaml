@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<base:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:RestaurantManager.Controls;assembly=RestaurantManager"
              xmlns:behaviors="http://prismlibrary.com"
              xmlns:converters="http://xamarin.com/schemas/2020/toolkit"
              xmlns:utility="clr-namespace:RestaurantManager.Utility;assembly=RestaurantManager"
+             xmlns:base="clr-namespace:RestaurantManager.Pages.Base;assembly=RestaurantManager"
              x:Class="RestaurantManager.Pages.Reservations.ReservationDayDetailsPage"
              Title="{Binding Title}">
     <ContentPage.Resources>
@@ -13,7 +14,7 @@
             <converters:ItemTappedEventArgsConverter x:Key="ItemTappedEventArgsConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
-    <ContentPage.Content>
+    <base:BasePage.ContentValue>
         <StackLayout>
             <controls:CustomListView HorizontalOptions="FillAndExpand"
                                      SeparatorVisibility="None"
@@ -29,7 +30,7 @@
                 <controls:CustomListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell Height="100">
-                            <Frame BorderColor="Blue"
+                            <Frame BorderColor="{StaticResource PrimaryChilledColorLight}"
                                    CornerRadius="20"
                                    HasShadow="False">
                                 <Grid Padding="20,0,10,0"
@@ -59,7 +60,7 @@
                                         <Label
                                             HorizontalOptions="FillAndExpand"
                                             VerticalOptions="FillAndExpand"
-                                            TextColor="Orange"
+                                            TextColor="{StaticResource AccentColor}"
                                             Text="{Binding OnName}"
                                             FontAttributes="Bold" />
                                     </StackLayout>
@@ -81,13 +82,6 @@
                                             MaxLines="3"
                                             HorizontalTextAlignment="Start" />
                                     </StackLayout>
-
-                                    <BoxView Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1"
-                                             Color="#88D2691E"
-                                             Margin="5"
-                                             VerticalOptions="Center" />
-                                    <BoxView Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2" BackgroundColor="Orange" />
-
                                 </Grid>
                             </Frame>
                         </ViewCell>
@@ -96,12 +90,16 @@
             </controls:CustomListView>
 
             <controls:FrameButton
-                BackgroundColor="#BBD2691E"
-                BorderColor="AntiqueWhite"
+                BackgroundColor="{AppThemeBinding Light={StaticResource PrimaryColorLight},
+                             Dark={StaticResource PrimaryColorDark}}"
+                TextColor="{AppThemeBinding Light={StaticResource SecondaryColorLight},
+                             Dark={StaticResource SecondaryColorDark}}"
+                BorderColor="{StaticResource TransparentColor}"
                 CornerRadius="20"
+                Margin="40,20"
                 Text="{x:Static utility:XamlConstants.AddReservation}"
                 IsVisible="{Binding IsCreateButtonVisible}"
                 FrameTappedCommand="{Binding AddItemCommand}" />
         </StackLayout>
-    </ContentPage.Content>
-</ContentPage>
+    </base:BasePage.ContentValue>
+</base:BasePage>

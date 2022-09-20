@@ -37,5 +37,13 @@
       <DependentUpon>WelcomePage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Controls\Buttons\FrameButton.xaml.cs">
+      <DependentUpon>FrameButton.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\Buttons\VerticalIconButton.xaml.cs">
+      <DependentUpon>VerticalIconButton.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

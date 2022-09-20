@@ -4,20 +4,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:utility="clr-namespace:RestaurantManager.Utility;assembly=RestaurantManager"
              xmlns:converters="clr-namespace:RestaurantManager.Converters;assembly=RestaurantManager"
+             xmlns:fontAwesome="clr-namespace:FontAwesome;assembly=RestaurantManager"
              x:Class="RestaurantManager.Pages.Shifts.ShiftsViewCell">
-    <Grid Padding="20,0,10,0"
-          VerticalOptions="FillAndExpand"
-          HorizontalOptions="FillAndExpand">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="0.5"/>
-                <RowDefinition Height="0.5"/>
-            </Grid.RowDefinitions>
+    <Grid ColumnDefinitions="*,7*">
+        <Label 
+            Text="{x:Static fontAwesome:FontAwesomeIcons.MoneyBill1}"
+            TextColor="{StaticResource AccentColor}"
+            FontSize="20"
+            VerticalOptions="StartAndExpand"
+            FontFamily="{StaticResource FontAwesomeSolid}"/>
+        
+        <Grid Grid.Column="1"
+              Padding="20,0,10,0"
+              VerticalOptions="FillAndExpand"
+              HorizontalOptions="FillAndExpand"
+              RowDefinitions="*,*,*,*"
+              ColumnDefinitions="*,*">
         
             <StackLayout Grid.Column="0" Spacing="0" 
                          HorizontalOptions="FillAndExpand"
@@ -32,7 +34,7 @@
                 <Label 
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="FillAndExpand"
-                    TextColor="Orange"
+                    TextColor="{StaticResource AccentColor}"
                     Text="{Binding User}"
                     FontAttributes="Bold"/>
             </StackLayout>
@@ -55,7 +57,7 @@
                     HorizontalTextAlignment="Start"/>
             </StackLayout>
      
-            <StackLayout Grid.Row="0" Grid.Column="2" Spacing="0"
+            <StackLayout Grid.Row="1" Grid.Column="0" Spacing="0"
                          HorizontalOptions="FillAndExpand"
                          VerticalOptions="FillAndExpand">
                     <Label 
@@ -73,7 +75,7 @@
                         HorizontalTextAlignment="Start"/>
             </StackLayout>
      
-            <StackLayout Grid.Row="0" Grid.Column="3" Spacing="0"
+            <StackLayout Grid.Row="1" Grid.Column="1" Spacing="0"
                         HorizontalOptions="FillAndExpand"
                         VerticalOptions="FillAndExpand">
                 <StackLayout.Resources>
@@ -95,11 +97,6 @@
                         MaxLines="3"
                         HorizontalTextAlignment="Start"/>
             </StackLayout>
-            
-     <BoxView Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1"  
-              Color="#88D2691E" 
-              Margin="5"
-              VerticalOptions="Center"
-     />
         </Grid>
+    </Grid>
 </ViewCell>

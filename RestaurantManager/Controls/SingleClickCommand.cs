@@ -73,6 +73,7 @@ namespace RestaurantManager.Utility
             {
                 ExecuteInternal(parameter);
             }
+            ResetLastClick();
         }
 
         protected void ExecuteInternal(object parameter)

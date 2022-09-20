@@ -14,8 +14,8 @@
         Margin="25, 25, 25, 25">
         <Grid
             BackgroundColor="{AppThemeBinding 
-                Light={StaticResource WindowBackgroundColor},
-                Dark={StaticResource WindowBackgroundColorDark}}"
+                Light={StaticResource BackgroundColorLight},
+                Dark={StaticResource BackgroundColorDark}}"
             HorizontalOptions="FillAndExpand"
             Padding="15"
             VerticalOptions="FillAndExpand">
@@ -37,7 +37,7 @@
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
                 Text="Employee:"
-                TextColor="DimGray"
+                TextColor="{AppThemeBinding Light={StaticResource DimGrayColorLight}, Dark={StaticResource DimGrayColorDark}}"
                 FontSize="Medium"
                 HorizontalOptions="Start"
                 VerticalOptions="CenterAndExpand" />

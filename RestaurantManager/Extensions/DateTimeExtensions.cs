@@ -59,7 +59,7 @@ namespace RestaurantManager.Extensions
 
         public static ObservableCollection<string> GetWeekdays(this DateTime firstDay)
         {
-            var dayOfWeek = firstDay.Date.DayOfWeek is int ? (int)firstDay.Date.DayOfWeek + 1: 1;
+            var dayOfWeek = (int)firstDay.Date.DayOfWeek - 1;
             ObservableCollection<string> weekdays = WEEKDAYS.Skip(dayOfWeek).Concat(WEEKDAYS.Take(dayOfWeek)).ToObservableCollection();
             return weekdays;
         }
