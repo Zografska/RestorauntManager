@@ -4,8 +4,10 @@ using Prism.Navigation;
 using RestaurantManager.Core.Authentication;
 using RestaurantManager.Extensions;
 using RestaurantManager.Pages.Base;
+using RestaurantManager.Pages.Employees;
 using RestaurantManager.Pages.Notes;
 using RestaurantManager.Pages.Reservations;
+using RestaurantManager.Pages.Settings;
 using RestaurantManager.Services;
 using RestaurantManager.Services.Network;
 using RestaurantManager.Utility;
@@ -20,6 +22,8 @@ namespace RestaurantManager.Pages.Welcome
         public ICommand NavigateToNotesCommand { get; }
         public ICommand NavigateToShiftsCommand { get; }
         public ICommand NavigateToReservationsCommand { get; }
+        public ICommand NavigateToEmployeesCommand { get; }
+        public ICommand NavigateToSettingsCommand { get; }
         public ICommand LogoutCommand { get; }
         public ICommand MapClickCommand { get; }
 
@@ -31,6 +35,8 @@ namespace RestaurantManager.Pages.Welcome
             NavigateToNotesCommand = new SingleClickCommand(NavigateToNotesPage);
             NavigateToShiftsCommand = new SingleClickCommand(NavigateToShiftsPage);
             NavigateToReservationsCommand = new SingleClickCommand(NavigateToReservationsPage);
+            NavigateToSettingsCommand = new SingleClickCommand(NavigateToSettingsPage);
+            NavigateToEmployeesCommand = new SingleClickCommand(NavigateToEmployeesPage);
             MapClickCommand = new SingleClickCommand(NavigateToRestaurant);
             LogoutCommand = new SingleClickCommand(Logout);
             _profileService = profileService;
@@ -90,6 +96,18 @@ namespace RestaurantManager.Pages.Welcome
                 Console.WriteLine(ex);
             }
 
+        }
+
+        private async void NavigateToEmployeesPage()
+        {
+            await NavigationService.NavigateTo<EmployeesPage>();
+            SingleClickCommand.ResetLastClick();
+        }
+
+        private async void NavigateToSettingsPage()
+        {
+            await NavigationService.NavigateTo<SettingsPage>();
+            SingleClickCommand.ResetLastClick();
         }
     }
 }

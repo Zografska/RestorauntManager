@@ -7,6 +7,7 @@ using RestaurantManager.Pages;
 using RestaurantManager.Pages.Authentication.Login;
 using RestaurantManager.Pages.Authentication.ResetPassword;
 using RestaurantManager.Pages.Authentication.Signup;
+using RestaurantManager.Pages.Employees;
 using RestaurantManager.Pages.Notes;
 using RestaurantManager.Pages.Reservations;
 using RestaurantManager.Pages.Settings;
@@ -42,6 +43,8 @@ namespace RestaurantManager
             containerRegistry.RegisterForNavigation<ReservationsPage, ReservationsPageViewModel>();
             containerRegistry.RegisterForNavigation<ReservationDayDetailsPage, ReservationDayDetailsPageViewModel>();
             containerRegistry.RegisterForNavigation<SettingsPage, SettingsPageViewModel>();
+            containerRegistry.RegisterForNavigation<EmployeesPage, EmployeesPageViewModel>();
+            containerRegistry.RegisterForNavigation<EmployeeDetail, EmployeeDetailViewModel>();
 
             containerRegistry.RegisterPopup<NotePopup, NotePopupViewModel>();
             containerRegistry.RegisterPopup<ShiftPopup, ShiftPopupViewModel>();

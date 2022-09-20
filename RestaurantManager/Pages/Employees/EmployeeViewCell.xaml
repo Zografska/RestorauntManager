@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:utility1="clr-namespace:RestaurantManager.Utility;assembly=RestaurantManager"
+             x:Class="RestaurantManager.Pages.Employees.EmployeeViewCell">
+ <Grid Padding="20,0,10,0"
+          VerticalOptions="FillAndExpand"
+          HorizontalOptions="FillAndExpand">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.5"/>
+                <RowDefinition Height="0.5"/>
+            </Grid.RowDefinitions>
+        
+            <StackLayout Grid.Column="0" Spacing="0" 
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="FillAndExpand">
+                <Label 
+                    Text="{x:Static utility1:XamlConstants.Employee}"
+                    FontSize="10"
+                    Margin="0, 5"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"
+                    FontAttributes="Bold"/>
+                <Label 
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"
+                    TextColor="Orange"
+                    Text="{Binding FullName}"
+                    FontAttributes="Bold"/>
+            </StackLayout>
+        
+            <StackLayout Grid.Row="0" Grid.Column="1" Spacing="0"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="FillAndExpand">
+                <Label 
+                    Text="{x:Static utility1:XamlConstants.Email}"
+                    FontSize="10"
+                    Margin="0, 5"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"/>
+                <Label 
+                    Text="{Binding Email}" 
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Start"
+                    LineBreakMode="TailTruncation"
+                    MaxLines="3"
+                    HorizontalTextAlignment="Start"/>
+            </StackLayout>
+     
+            <StackLayout Grid.Row="0" Grid.Column="2" Spacing="0"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="FillAndExpand">
+                    <Label 
+                        Text="{x:Static utility1:XamlConstants.JobTitle}"
+                        FontSize="10"
+                        Margin="0, 5"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"/>
+                    <Label 
+                        Text="{Binding JobTitle}" 
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Start"
+                        LineBreakMode="TailTruncation"
+                        MaxLines="3"
+                        HorizontalTextAlignment="Start"/>
+            </StackLayout>
+     
+     <BoxView Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1"  
+              Color="#88D2691E" 
+              Margin="5"
+              VerticalOptions="Center"
+     />
+        </Grid>
+</ViewCell>
