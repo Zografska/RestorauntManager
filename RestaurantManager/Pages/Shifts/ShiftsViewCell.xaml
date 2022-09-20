@@ -34,7 +34,7 @@
                 <Label 
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="FillAndExpand"
-                    TextColor="Orange"
+                    TextColor="{StaticResource AccentColor}"
                     Text="{Binding User}"
                     FontAttributes="Bold"/>
             </StackLayout>

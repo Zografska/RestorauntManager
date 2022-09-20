@@ -26,6 +26,7 @@
                 SeparatorVisibility="None"
                 HasUnevenRows="True"
                 Margin="20"
+                BackgroundColor="{StaticResource TransparentColor}"
                 ItemsSource="{Binding Items}">
                 <controls:CustomListView.Behaviors>
                     <behaviors:EventToCommandBehavior
@@ -40,8 +41,10 @@
                 </controls:CustomListView.ItemTemplate>
             </controls:CustomListView>
             <controls:FrameButton
-                BackgroundColor="{StaticResource PrimaryChilledColor}"
-                TextColor="{StaticResource SecondaryColor}"
+                BackgroundColor="{AppThemeBinding Light={StaticResource PrimaryChilledColorLight},
+                             Dark={StaticResource PrimaryChilledColorDark}}"
+                TextColor="{AppThemeBinding Light={StaticResource SecondaryColorLight},
+                             Dark={StaticResource SecondaryColorDark}}"
                 Margin="40,20"
                 CornerRadius="20"
                 Text="{x:Static utility:XamlConstants.AddShift}"

@@ -46,7 +46,9 @@
                     Grid.RowSpan="2"
                     HorizontalOptions="FillAndExpand"
                     HasShadow="False"
-                    BorderColor="{StaticResource GraySeparatorColor}"
+                    BorderColor="{AppThemeBinding Light={StaticResource GraySeparatorColorLight}, 
+                    Dark={StaticResource GraySeparatorColorDark}}"
+                    BackgroundColor="{StaticResource TransparentColor}"
                     VerticalOptions="FillAndExpand"
                     CornerRadius="10">
                     <Frame.GestureRecognizers>
@@ -59,7 +61,8 @@
                         
                         <Label
                             Text="{Binding Username, StringFormat='Welcome {0:F2}!'}"
-                            TextColor="{StaticResource PrimaryChilledColor}"
+                            TextColor="{AppThemeBinding Light={StaticResource PrimaryChilledColorLight},
+                             Dark={StaticResource PrimaryChilledColorDark}}"
                             FontSize="20"
                             FontAttributes="Bold"
                             HorizontalOptions="Center"
@@ -71,7 +74,8 @@
                             Text="Restaurant Location"
                             FontSize="14"
                             BackgroundColor="{StaticResource TransparentColor}"
-                            TextColor="{StaticResource DimGrayColor}"
+                            TextColor="{AppThemeBinding Light={StaticResource DimGrayColorLight},
+                             Dark={StaticResource DimGrayColorDark}}"
                             CornerRadius="10"
                             FontAttributes="Bold"
                             HorizontalOptions="Center"
@@ -93,7 +97,8 @@
                 <controls:VerticalIconButton
                     Grid.Row="3"
                     Grid.Column="0"
-                    BorderColor="{StaticResource GraySeparatorColor}"
+                    BorderColor="{AppThemeBinding Light={StaticResource GraySeparatorColorLight}, 
+                    Dark={StaticResource GraySeparatorColorDark}}"
                     BackgroundColor="{StaticResource TransparentColor}"
                     TappedCommand="{Binding NavigateToNotesCommand}"
                     Title="{x:Static utility:XamlConstants.Notes}"
@@ -106,7 +111,8 @@
                 <controls:VerticalIconButton
                     Grid.Row="3"
                     Grid.Column="1"
-                    BorderColor="{StaticResource GraySeparatorColor}"
+                    BorderColor="{AppThemeBinding Light={StaticResource GraySeparatorColorLight}, 
+                    Dark={StaticResource GraySeparatorColorDark}}"
                     BackgroundColor="{StaticResource TransparentColor}"
                     TappedCommand="{Binding NavigateToReservationsCommand}"
                     Title="{x:Static utility:XamlConstants.Reservations}"
@@ -119,7 +125,8 @@
                 <controls:VerticalIconButton
                     Grid.Row="4"
                     Grid.Column="0"
-                    BorderColor="{StaticResource GraySeparatorColor}"
+                    BorderColor="{AppThemeBinding Light={StaticResource GraySeparatorColorLight}, 
+                    Dark={StaticResource GraySeparatorColorDark}}"
                     BackgroundColor="{StaticResource TransparentColor}"
                     Title="{x:Static utility:XamlConstants.Shifts}"
                     TappedCommand="{Binding NavigateToShiftsCommand}"
@@ -132,7 +139,8 @@
                 <controls:VerticalIconButton
                     Grid.Row="4"
                     Grid.Column="1"
-                    BorderColor="{StaticResource GraySeparatorColor}"
+                    BorderColor="{AppThemeBinding Light={StaticResource GraySeparatorColorLight}, 
+                    Dark={StaticResource GraySeparatorColorDark}}"
                     BackgroundColor="{StaticResource TransparentColor}"
                     Title="{x:Static utility:XamlConstants.Employees}"
                     TappedCommand="{Binding NavigateToShiftsCommand}"
@@ -152,7 +160,7 @@
                     Grid.Column="1"
                     HorizontalOptions="End"
                     VerticalOptions="Center"
-                    BorderColor="{StaticResource GrayDarkerColor}"
+                    BorderColor="{AppThemeBinding Light={StaticResource GrayDarkerColorLight}, Dark={StaticResource GrayDarkerColorDark}}"
                     BackgroundColor="{StaticResource TransparentColor}"
                     Command="{Binding NavigateToSettingsCommand}"
                     Text="{x:Static fontAwesome:FontAwesomeIcons.Gear}"
@@ -162,7 +170,7 @@
                     FontSize="20"
                     Padding="10"
                     Margin="10"
-                    TextColor="{StaticResource DimGrayColor}" />
+                    TextColor="{AppThemeBinding Light={StaticResource DimGrayColorLight}, Dark={StaticResource DimGrayColorDark}}" />
 
             </Grid>
         </ScrollView>

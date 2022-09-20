@@ -12,12 +12,7 @@
         <StackLayout
         Margin="25, 0, 25, 25"
         VerticalOptions="FillAndExpand">
-        <StackLayout.Resources>
-           <ResourceDictionary>
-               <converters:DateToStringConverter x:Key="DateToStringConverter"/>
-           </ResourceDictionary>
-        </StackLayout.Resources>
-        <Grid HorizontalOptions="FillAndExpand" Padding="15" VerticalOptions="FillAndExpand">
+            <Grid HorizontalOptions="FillAndExpand" Padding="15" VerticalOptions="FillAndExpand">
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*" />
                 <RowDefinition Height="*"/>
@@ -104,7 +99,7 @@
                 IconFontFamily="{StaticResource FontAwesomeSolid}"
                 CornerRadius="15"
                 BackgroundColor="{StaticResource TransparentColor}"
-                TextColor="{StaticResource PrimaryColor}"
+                TextColor="{AppThemeBinding Light={StaticResource PrimaryColorLight}, Dark={StaticResource PrimaryColorDark}}"
                 FontSize="15"
                 FrameTappedCommand="{Binding SaveCommand}" />
             

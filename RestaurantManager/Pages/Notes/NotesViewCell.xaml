@@ -41,7 +41,8 @@
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="FillAndExpand"
                     Text="{Binding Title}"
-                    TextColor="{StaticResource ViewCellTextColor}"
+                    TextColor="{AppThemeBinding Light={StaticResource ViewCellTextColorLight},
+                             Dark={StaticResource ViewCellTextColorDark}}"
                     FontAttributes="Bold"/>
             </StackLayout>
         
@@ -57,7 +58,8 @@
                     VerticalOptions="FillAndExpand"/>
                 <Label 
                     Text="{Binding Description}" 
-                    TextColor="{StaticResource ViewCellTextColor}"
+                    TextColor="{AppThemeBinding Light={StaticResource ViewCellTextColorLight},
+                             Dark={StaticResource ViewCellTextColorDark}}"
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="Start"
                     LineBreakMode="TailTruncation"

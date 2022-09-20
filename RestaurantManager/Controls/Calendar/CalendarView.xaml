@@ -4,7 +4,6 @@
       xmlns="http://xamarin.com/schemas/2014/forms"
       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
       xmlns:calendar="clr-namespace:RestaurantManager.Controls.Calendar;assembly=RestaurantManager"
-      xmlns:controls="clr-namespace:RestaurantManager.Controls;assembly=RestaurantManager"
       x:Class="RestaurantManager.Controls.Calendar.CalendarView"
       x:Name="calendar">
     <Grid.RowDefinitions>
@@ -19,6 +18,7 @@
     </Grid.RowDefinitions>
     <StackLayout Grid.Row="0"
                  BindableLayout.ItemsSource="{Binding Weekdays, Source={x:Reference calendar}}"
+                 BackgroundColor="{StaticResource TransparentColor}"
                  Orientation="Horizontal"
                  HorizontalOptions="FillAndExpand"
                  VerticalOptions="FillAndExpand">
@@ -28,6 +28,7 @@
                        HorizontalOptions="FillAndExpand"
                        HasShadow="False"
                        Padding="5"
+                       BackgroundColor="{StaticResource TransparentColor}"
                        VerticalOptions="FillAndExpand">
                         <Label 
                                Text="{Binding }"

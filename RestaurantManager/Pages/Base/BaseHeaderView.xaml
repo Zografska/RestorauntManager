@@ -3,14 +3,9 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RestaurantManager.Pages.Base.BaseHeaderView"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:controls="clr-namespace:RestaurantManager.Controls;assembly=RestaurantManager"
-             xmlns:restaurantManager="clr-namespace:RestaurantManager;assembly=RestaurantManager"
-             mc:Ignorable="d"
-             d:DataContext="{d:DesignInstance restaurantManager:ViewModelBase}">
              xmlns:fontAwesome="clr-namespace:FontAwesome;assembly=RestaurantManager"
-             xmlns:buttons="clr-namespace:RestaurantManager.Controls.Buttons;assembly=RestaurantManager">
+             xmlns:buttons="clr-namespace:RestaurantManager.Controls.Buttons;assembly=RestaurantManager"
+             xmlns:system="clr-namespace:System;assembly=netstandard">
     <Grid HorizontalOptions="FillAndExpand"
           VerticalOptions="Start"
           Margin="15,0">
@@ -46,7 +41,7 @@
                Text="{Binding Title}"
                BackgroundColor="{StaticResource TransparentColor}"
                FontAttributes="Bold"
-               TextColor="{StaticResource PrimaryColor}">
+               TextColor="{AppThemeBinding Light={StaticResource PrimaryColorLight}, Dark={StaticResource PrimaryColorDark}}">
             <Button.FontSize>
                 <OnPlatform x:TypeArguments="system:Double">
                     <On Platform="Android" Value="12"/>

@@ -32,7 +32,8 @@
                     FontSize="12"
                     Padding="10"
                     Margin="10"
-                    TextColor="{StaticResource DimGrayColor}" />
+                    TextColor="{AppThemeBinding Light={StaticResource DimGrayColorLight},
+                             Dark={StaticResource DimGrayColorDark}}" />
             
                 <Button Grid.Column="1" 
                         Text="{Binding CurrentDate, Converter={StaticResource DateToStringConverter}}"
@@ -53,7 +54,8 @@
                     FontSize="12"
                     Padding="10"
                     Margin="10"
-                    TextColor="{StaticResource DimGrayColor}" />
+                    TextColor="{AppThemeBinding Light={StaticResource DimGrayColorLight},
+                             Dark={StaticResource DimGrayColorDark}}" />
             </Grid>
             
             <calendar:CalendarView Grid.Row="1" 
@@ -62,9 +64,11 @@
                                    FrameTappedCommand="{Binding DateTappedCommand}"/>
             
             <controls:FrameButton Grid.Row="2"
-                                  BackgroundColor="{StaticResource PrimaryColor}"
+                                  BackgroundColor="{AppThemeBinding Light={StaticResource PrimaryColorLight},
+                             Dark={StaticResource DisabledColorDark}}"
                                   Text="Add Reservation"
-                                  TextColor="{StaticResource SecondaryColor}"
+                                  TextColor="{AppThemeBinding Light={StaticResource SecondaryColorLight},
+                             Dark={StaticResource DimGrayColorDark}}"
                                   Margin="40,0"
                                   FrameTappedCommand="{Binding AddReservationCommand}"/>
         </Grid>

@@ -17,7 +17,7 @@
             <Label
                 Text="Create your account"
                 HorizontalOptions="Center"
-                TextColor="{StaticResource PrimaryColor}"
+                TextColor="{AppThemeBinding Light={StaticResource PrimaryColorLight}, Dark={StaticResource PrimaryColorDark}}"
                 FontSize="30"
                 Margin="0, 20" />
             
@@ -43,7 +43,7 @@
                 Text="Sign Up"
                 FrameTappedCommand="{Binding SignUpCommand}"
                 Margin="60, 40"
-                BackgroundColor="{StaticResource PrimaryColor}"
+                BackgroundColor="{AppThemeBinding Light={StaticResource PrimaryColorLight}, Dark={StaticResource PrimaryColorDark}}"
                 TextColor="White" />
             
         </StackLayout>

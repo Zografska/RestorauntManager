@@ -31,8 +31,6 @@ namespace RestaurantManager.Pages.Settings
                     Utility.Settings.Theme = 2;
                     break;
             }
-            
-            Theme.SetTheme();
         }
     }
 }

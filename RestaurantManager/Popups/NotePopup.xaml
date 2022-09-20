@@ -40,7 +40,7 @@
             <Label Grid.Row="1"
                    Grid.Column="0"
                    Grid.ColumnSpan="2"
-                   TextColor="{StaticResource PrimaryColor}"
+                   TextColor="{AppThemeBinding Light={StaticResource PrimaryColorLight}, Dark={StaticResource PrimaryColorDark}}"
                    Text="{x:Static utility:XamlConstants.Title}"/>
             <Entry
                 Grid.Row="2"
@@ -55,7 +55,7 @@
             <Label Grid.Row="4"
                    Grid.Column="0"
                    Grid.ColumnSpan="2"
-                   TextColor="{StaticResource PrimaryColor}"
+                   TextColor="{AppThemeBinding Light={StaticResource PrimaryColorLight}, Dark={StaticResource PrimaryColorDark}}"
                    Text="{x:Static utility:XamlConstants.Description}"/>
             <Editor
                 Grid.Row="5"
@@ -87,7 +87,7 @@
                 IconFontFamily="{StaticResource FontAwesomeSolid}"
                 CornerRadius="15"
                 BackgroundColor="{StaticResource TransparentColor}"
-                TextColor="{StaticResource PrimaryColor}"
+                TextColor="{AppThemeBinding Light={StaticResource PrimaryColorLight}, Dark={StaticResource PrimaryColorDark}}"
                 FontSize="15"
                 FrameTappedCommand="{Binding SaveCommand}" />
 

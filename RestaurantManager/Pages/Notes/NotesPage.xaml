@@ -29,14 +29,14 @@
                 <controls:FrameButton BackgroundColor="{StaticResource TransparentColor}"
                                       HorizontalOptions="StartAndExpand"
                                       Text="{x:Static utility:XamlConstants.MyNotes}"
-                                      TextColor="{StaticResource PrimaryColor}"
+                                      TextColor="{AppThemeBinding Light={StaticResource PrimaryColorLight}, Dark={StaticResource PrimaryColorDark}}"
                                       FrameTappedCommand="{Binding ChangeItemsCommand}"
                                       FrameTappedCommandParameter="{x:Static utility:XamlConstants.MyNotes}"/>
                 
                 <controls:FrameButton BackgroundColor="{StaticResource TransparentColor}"
                                       HorizontalOptions="EndAndExpand"
                                       Text="{x:Static utility:XamlConstants.SharedNotes}"
-                                      TextColor="{StaticResource PrimaryColor}"
+                                      TextColor="{AppThemeBinding Light={StaticResource PrimaryColorLight}, Dark={StaticResource PrimaryColorDark}}"
                                       FrameTappedCommand="{Binding ChangeItemsCommand}"
                                       FrameTappedCommandParameter="{x:Static utility:XamlConstants.SharedNotes}"/>
             </StackLayout>
@@ -44,6 +44,7 @@
             <controls:CustomListView HorizontalOptions="FillAndExpand"
                       SeparatorVisibility="None"
                       HasUnevenRows="True"
+                      BackgroundColor="{StaticResource TransparentColor}"
                       ItemsSource="{Binding Items}">
                 <controls:CustomListView.Behaviors>
                     <behaviors:EventToCommandBehavior
@@ -59,7 +60,7 @@
             </controls:CustomListView>
             
             <controls:FrameButton
-                BackgroundColor="{StaticResource PrimaryChilledColor}"
+                BackgroundColor="{AppThemeBinding Light={StaticResource PrimaryChilledColorLight}, Dark={StaticResource PrimaryChilledColorDark}}"
                 CornerRadius="20"
                 Margin="40,20"
                 Icon="{x:Static fontAwesome:FontAwesomeIcons.PenToSquare}"
