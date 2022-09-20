@@ -38,7 +38,7 @@ namespace RestaurantManager.Pages.Employees
             await NavigationService.NavigateTo<EmployeeDetail>(new NavigationParameters()
             {
                 {
-                    "employee", employee
+                    XamlConstants.Employee, employee
                 }
             });
             SingleClickCommand.ResetLastClick();

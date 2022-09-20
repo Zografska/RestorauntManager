@@ -94,11 +94,11 @@ namespace RestaurantManager.Pages.Authentication.Signup
             }
             catch (FeatureNotSupportedException fnsEx)
             {
-                // Feature is not supported on the device
+                DisplayAlert(Constants.FeatureConstants.FeatureNotImplemented);
             }
             catch (PermissionException pEx)
             {
-                // Permissions not granted
+                DisplayAlert(Constants.FeatureConstants.PermissionsNotGranted);
             }
             catch (Exception ex)
             {

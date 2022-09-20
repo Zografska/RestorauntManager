@@ -37,12 +37,6 @@
                     </DataTemplate>
                 </controls:CustomListView.ItemTemplate>
             </controls:CustomListView>
-            <!-- <controls:FrameButton -->
-            <!--     BackgroundColor="#BBD2691E" -->
-            <!--     BorderColor="AntiqueWhite" -->
-            <!--     CornerRadius="20" -->
-            <!--     Text="{x:Static utility:XamlConstants.AddEmployee}" -->
-            <!--     FrameTappedCommand="{Binding AddItemCommand}"/> -->
         </StackLayout>
     </base:BasePage.ContentValue>
 </base:BasePage>
