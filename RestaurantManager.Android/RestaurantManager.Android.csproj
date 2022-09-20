@@ -71,6 +71,7 @@
   <ItemGroup>
     <Compile Include="Application.cs" />
     <Compile Include="Core\AuthDroid.cs" />
+    <Compile Include="Core\PushNotificationsLocal.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

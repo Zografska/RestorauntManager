@@ -53,9 +53,9 @@ namespace RestaurantManager.Popups
         protected override void InitPopup(IPopupParameters parameters)
         {
             base.InitPopup(parameters);
-            
-            var todayDate = Item.ReservationDate;
-            Time = todayDate.TimeOfDay;
+
+            parameters.TryGetValue<DateTime>(Constants.NavigationConstants.Date, out var todayDate);
+            Time = DateTime.Now.TimeOfDay;
             Date = todayDate;
         }
 

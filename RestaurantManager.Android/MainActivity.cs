@@ -15,6 +15,8 @@ using Firebase.Messaging;
 using Firebase.Iid;
 using Android.Util;
 using Plugin.FirebasePushNotification;
+using RestaurantManager.Services;
+using Xamarin.Forms;
 
 namespace RestaurantManager.Droid
 {
@@ -33,6 +35,7 @@ namespace RestaurantManager.Droid
             LoadApplication(new App(this));
             
             FirebasePushNotificationManager.ProcessIntent(this, Intent);
+            CreateNotificationFromIntent(Intent);
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions,
@@ -46,12 +49,28 @@ namespace RestaurantManager.Droid
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.Register<IAuthService, AuthDroid>();
+            containerRegistry.Register<IPushNotificationsLocal, PushNotificationsLocalDroid>();
         }
 
         protected override void OnActivityResult(int requestCode, Result resultCode, Android.Content.Intent data)
         {
             base.OnActivityResult(requestCode, resultCode, data);
             GoogleClientManager.OnAuthCompleted(requestCode, resultCode, data);
+        }
+        
+        protected override void OnNewIntent(Intent intent)
+        {
+            CreateNotificationFromIntent(intent);
+        }
+        
+        void CreateNotificationFromIntent(Intent intent)
+        {
+            if (intent?.Extras != null)
+            {
+                string title = intent.GetStringExtra(PushNotificationsLocalDroid.TitleKey);
+                string message = intent.GetStringExtra(PushNotificationsLocalDroid.MessageKey);
+                DependencyService.Get<IPushNotificationsLocal>().ReceiveNotification(title, message);
+            }
         }
     }
 }
