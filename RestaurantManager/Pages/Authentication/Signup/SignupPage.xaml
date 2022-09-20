@@ -6,6 +6,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:base="clr-namespace:RestaurantManager.Pages.Base;assembly=RestaurantManager"
+             xmlns:controls="clr-namespace:RestaurantManager.Controls;assembly=RestaurantManager"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance vm:SignupPageViewModel}">
     <base:BasePage.ContentValue>
@@ -16,7 +17,7 @@
             <Label
                 Text="Create your account"
                 HorizontalOptions="Center"
-                TextColor="#4682B4"
+                TextColor="{AppThemeBinding Light={StaticResource PrimaryColorLight}, Dark={StaticResource PrimaryColorDark}}"
                 FontSize="30"
                 Margin="0, 20" />
             
@@ -44,11 +45,11 @@
                 Background="#468284"
                 TextColor="White"/>
             
-            <Button
+            <controls:FrameButton
                 Text="Sign Up"
-                Command="{Binding SignUpCommand}"
+                FrameTappedCommand="{Binding SignUpCommand}"
                 Margin="60, 40"
-                BackgroundColor="#4682B4"
+                BackgroundColor="{AppThemeBinding Light={StaticResource PrimaryColorLight}, Dark={StaticResource PrimaryColorDark}}"
                 TextColor="White" />
             
         </StackLayout>

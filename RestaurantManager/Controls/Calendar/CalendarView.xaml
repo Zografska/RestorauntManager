@@ -18,25 +18,25 @@
     </Grid.RowDefinitions>
     <StackLayout Grid.Row="0"
                  BindableLayout.ItemsSource="{Binding Weekdays, Source={x:Reference calendar}}"
+                 BackgroundColor="{StaticResource TransparentColor}"
                  Orientation="Horizontal"
                  HorizontalOptions="FillAndExpand"
-                 VerticalOptions="FillAndExpand"
-                 Padding="-5">
+                 VerticalOptions="FillAndExpand">
         <BindableLayout.ItemTemplate>
             <DataTemplate>
-                <Frame BackgroundColor="Transparent"
-                       CornerRadius="20"
+                <Frame CornerRadius="20"
                        HorizontalOptions="FillAndExpand"
                        HasShadow="False"
-                       BorderColor="Blue"
+                       Padding="5"
+                       BackgroundColor="{StaticResource TransparentColor}"
                        VerticalOptions="FillAndExpand">
-                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                        <Label Text="{Binding }"
-                               VerticalOptions="FillAndExpand"
-                               FontSize="12"
-                               Padding="0"
-                               HorizontalOptions="FillAndExpand" />
-                    </StackLayout>
+                        <Label 
+                               Text="{Binding }"
+                               VerticalOptions="CenterAndExpand"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               FontSize="16"
+                               HorizontalOptions="FillAndExpand"/> 
                 </Frame>
             </DataTemplate>
         </BindableLayout.ItemTemplate>

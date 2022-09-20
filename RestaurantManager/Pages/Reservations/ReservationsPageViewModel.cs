@@ -18,29 +18,29 @@ namespace RestaurantManager.Pages.Reservations
     public class ReservationsPageViewModel : PageViewModelBase
     {
         private readonly IReservationService _reservationService;
-        
+
         public ICommand DateTappedCommand { get; }
         public ICommand AddReservationCommand { get; }
         public ICommand ChangeDateCommand { get; }
-        
+
         private ObservableCollection<ReservationDayDTO> _calendarDays;
-        
+
         public ObservableCollection<ReservationDayDTO> CalendarDays
         {
             get => _calendarDays;
             set => SetProperty(ref _calendarDays, value);
         }
-        
+
         private DateTime _currentDate;
-        
+
         public DateTime CurrentDate
         {
             get => _currentDate;
             set => SetProperty(ref _currentDate, value);
         }
-        
+
         public ReservationsPageViewModel(INavigationService navigationService, IPopupService popupService,
-            IAuthService authService, INetworkService networkService, IReservationService reservationService) 
+            IAuthService authService, INetworkService networkService, IReservationService reservationService)
             : base(navigationService, popupService, authService, networkService)
         {
             Title = "Reservations";
@@ -48,17 +48,18 @@ namespace RestaurantManager.Pages.Reservations
             DateTappedCommand = new SingleClickCommand<DateTime>(OpenReservationPopup);
             AddReservationCommand = new SingleClickCommand(AddReservation);
             ChangeDateCommand = new SingleClickCommand<string>(ChangeDate);
-            CurrentDate = DateTime.Now;
+            CurrentDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
         }
 
         private async void ChangeDate(string sign)
         {
             if (sign == XamlConstants.Plus)
             {
-                CurrentDate = CurrentDate.AddMonths(1);
-            }else
+                CurrentDate = new DateTime(CurrentDate.Year, CurrentDate.Month + 1, 1);
+            }
+            else
             {
-                CurrentDate = CurrentDate.AddMonths(-1);
+                CurrentDate = new DateTime(CurrentDate.Year, CurrentDate.Month - 1, 1);
             }
 
             await RefreshCalendar();
@@ -77,16 +78,19 @@ namespace RestaurantManager.Pages.Reservations
 
         private async void AddReservation()
         {
-            await PopupService.ShowPopupAsync(nameof(ReservationCNIPopup), new PopupParameters {
-                { Constants.NavigationConstants.Service, _reservationService }} );
-            
+            await PopupService.ShowPopupAsync(nameof(ReservationCNIPopup), new PopupParameters
+            {
+                { Constants.NavigationConstants.Service, _reservationService }
+            });
+
             SingleClickCommand.ResetLastClick();
         }
 
         private async void OpenReservationPopup(DateTime date)
         {
-            await NavigationService.NavigateTo<ReservationDayDetailsPage>(new NavigationParameters { { Constants.NavigationConstants.Date, date }});
-            
+            await NavigationService.NavigateTo<ReservationDayDetailsPage>(new NavigationParameters
+                { { Constants.NavigationConstants.Date, date } });
+
             SingleClickCommand.ResetLastClick();
         }
     }

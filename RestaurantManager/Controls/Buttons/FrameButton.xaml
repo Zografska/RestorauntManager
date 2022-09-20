@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RestaurantManager.Controls.FrameButton"
+             x:Name="FrameButtonControl">
+    <Frame
+        Margin="10"
+        Padding="10"
+        HasShadow="False"
+        BackgroundColor="{Binding BackgroundColor, Source={x:Reference FrameButtonControl}}"
+        BorderColor="{Binding BorderColor, Source={x:Reference FrameButtonControl}}"
+        CornerRadius="{Binding CornerRadius, Source={x:Reference FrameButtonControl}}">
+        <Frame.GestureRecognizers>
+            <TapGestureRecognizer Command="{Binding FrameTappedCommand, Source={x:Reference FrameButtonControl}}"
+                                  CommandParameter="{Binding FrameTappedCommandParameter, Source={x:Reference FrameButtonControl}}"/>
+        </Frame.GestureRecognizers>
+        <StackLayout Orientation="Horizontal" 
+                     VerticalOptions="CenterAndExpand" 
+                     HorizontalOptions="CenterAndExpand">
+            <Label
+                Text="{Binding Icon, Source={x:Reference FrameButtonControl}}"
+                FontSize="{Binding FontSize, Source={x:Reference FrameButtonControl}}"
+                TextColor="{Binding TextColor, Source={x:Reference FrameButtonControl}}"
+                FontAttributes="Bold"
+                FontFamily="{Binding IconFontFamily, Source={x:Reference FrameButtonControl}}"
+                HorizontalTextAlignment="End"
+                VerticalTextAlignment="Center"/>
+            <Label
+                Text="{Binding Text, Source={x:Reference FrameButtonControl}}"
+                FontSize="{Binding FontSize, Source={x:Reference FrameButtonControl}}"
+                TextColor="{Binding TextColor, Source={x:Reference FrameButtonControl}}"
+                FontAttributes="Bold"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"/>
+        </StackLayout>
+
+    </Frame>  
+</ContentView>

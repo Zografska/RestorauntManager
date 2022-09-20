@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ResourceDictionary
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="RestaurantManager.Resources.Colors">
+    
+    <!-- universal colors -->
+    <Color x:Key="WarningColor">#dc4a41</Color>
+    <Color x:Key="SuccessColor">#00793a</Color>
+    <Color x:Key="TransparentColor">#00ffffff</Color>
+    <Color x:Key="AccentColor">#fff4a460</Color>
+
+    
+    <!-- light colors -->
+    <Color x:Key="DisabledColorLight">#dcdcdc</Color>
+    <Color x:Key="DisabledTextColorLight">#adadad</Color>
+    <Color x:Key="SubtitleColorLight">#7c7c7c</Color>
+
+    <Color x:Key="GraySeparatorColorLight">#d8d8d8</Color>
+    <Color x:Key="GrayDarkerColorLight">#acb3bd</Color>
+    <Color x:Key="DimGrayColorLight">#ff696969</Color>
+
+    <Color x:Key="PrimaryColorLight">#1e60e3</Color>
+    <Color x:Key="PrimaryChilledColorLight">#7da5f5</Color>
+    <Color x:Key="PrimaryChilledColor2ColorLight">#f4f7fe</Color>
+    <Color x:Key="SecondaryColorLight">#ffffff</Color>
+    <Color x:Key="ViewCellTextColorLight">#000000</Color>
+
+    <Color x:Key="BackgroundColorLight">#ffffff</Color>
+    <Color x:Key="ButtonFontColorLight">#43464B</Color>
+    
+    <!-- dark colors -->
+    <Color x:Key="DisabledColorDark">#7c7c7c</Color>
+    <Color x:Key="DisabledTextColorDark">#adadad</Color>
+    <Color x:Key="SubtitleColorDark">#adadad</Color>
+
+    <Color x:Key="GraySeparatorColorDark">#ff696969</Color>
+    <Color x:Key="GrayDarkerColorDark">#acb3bd</Color>
+    <Color x:Key="DimGrayColorDark">#d8d8d8</Color>
+
+    <Color x:Key="PrimaryColorDark">#ffffff</Color>
+    <Color x:Key="PrimaryChilledColorDark">#7da5f5</Color>
+    <Color x:Key="PrimaryChilledColor2">#f4f7fe</Color>
+    <Color x:Key="SecondaryColorDark">#1e60e3</Color>
+    <Color x:Key="ViewCellTextColorDark">#000000</Color>
+    
+    <Color x:Key="BackgroundColorDark">#43464B</Color>
+    <Color x:Key="ButtonFontColorDark">#ffffff</Color>
+
+</ResourceDictionary>

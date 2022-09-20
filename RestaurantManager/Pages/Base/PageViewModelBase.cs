@@ -15,7 +15,6 @@ namespace RestaurantManager.Pages.Base
             : base(navigationService, popupService, networkService)
         {
             AuthService = authService;
-            Title = "RestaurantManager";
         }
     }
 }
