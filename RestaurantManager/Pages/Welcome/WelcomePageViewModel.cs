@@ -19,6 +19,19 @@ namespace RestaurantManager.Pages.Welcome
     public class WelcomePageViewModel : PageViewModelBase
     {
         private readonly IProfileService _profileService;
+        
+        private string _username;
+
+        public string Username
+        {
+            get => _username;
+            set
+            {
+                _username = value;
+                RaisePropertyChanged(nameof(Username));
+            }
+        }
+
         public ICommand NavigateToNotesCommand { get; }
         public ICommand NavigateToShiftsCommand { get; }
         public ICommand NavigateToReservationsCommand { get; }
@@ -31,7 +44,6 @@ namespace RestaurantManager.Pages.Welcome
             IAuthService authService, IProfileService profileService, INetworkService networkService) 
             : base(navigationService, popupService, authService, networkService)
         {
-            Title = "Restaurant Manager";
             NavigateToNotesCommand = new SingleClickCommand(NavigateToNotesPage);
             NavigateToShiftsCommand = new SingleClickCommand(NavigateToShiftsPage);
             NavigateToReservationsCommand = new SingleClickCommand(NavigateToReservationsPage);
@@ -41,6 +53,12 @@ namespace RestaurantManager.Pages.Welcome
             LogoutCommand = new SingleClickCommand(Logout);
             _profileService = profileService;
             IsBackButtonVisible = false;
+        }
+
+        public override async void Initialize(INavigationParameters parameters)
+        {
+            base.Initialize(parameters);
+            Username = (await _profileService.GetCurrentUser()).FullName;
         }
 
         private void Logout()
@@ -64,6 +82,7 @@ namespace RestaurantManager.Pages.Welcome
             SingleClickCommand.ResetLastClick();
         }
 
+        // TODO: Refactor navigation commands into one command
         private async void NavigateToReservationsPage()
         {
             await NavigationService.NavigateTo<ReservationsPage>();
@@ -79,6 +98,12 @@ namespace RestaurantManager.Pages.Welcome
         private async void NavigateToShiftsPage()
         {
             await NavigationService.NavigateTo<ShiftsPage>();
+            SingleClickCommand.ResetLastClick();
+        }
+
+        private async void NavigateToSettingsPage()
+        {
+            await NavigationService.NavigateTo<SettingsPage>();
             SingleClickCommand.ResetLastClick();
         }
 
@@ -101,12 +126,6 @@ namespace RestaurantManager.Pages.Welcome
         private async void NavigateToEmployeesPage()
         {
             await NavigationService.NavigateTo<EmployeesPage>();
-            SingleClickCommand.ResetLastClick();
-        }
-
-        private async void NavigateToSettingsPage()
-        {
-            await NavigationService.NavigateTo<SettingsPage>();
             SingleClickCommand.ResetLastClick();
         }
     }

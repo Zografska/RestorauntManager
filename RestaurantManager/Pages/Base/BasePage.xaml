@@ -15,8 +15,8 @@
              x:Class="RestaurantManager.Pages.Base.BasePage"
              x:Name="self"
              BackgroundColor="{AppThemeBinding 
-                        Dark={StaticResource WindowBackgroundColorDark}, 
-                        Light={StaticResource WindowBackgroundColor}}">
+                        Dark={StaticResource BackgroundColorDark}, 
+                        Light={StaticResource BackgroundColorLight}}">
     <ContentPage.Content>
         <StackLayout>
             <base:BaseHeaderView />

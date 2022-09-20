@@ -18,6 +18,7 @@ namespace RestaurantManager.Pages.Authentication.ResetPassword
             : base(navigationService, popupService, authService, networkService)
         {
             ResetPasswordCommand = new SingleClickCommand(ResetPassword);
+            IsLogoutButtonVisible = false;
         }
 
         private async void ResetPassword()

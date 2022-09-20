@@ -15,6 +15,7 @@ using RestaurantManager.Pages.Welcome;
 using RestaurantManager.Popups;
 using RestaurantManager.Services;
 using RestaurantManager.Services.Network;
+using RestaurantManager.Utility;
 using Xamarin.Forms;
 using XCT.Popups.Prism;
 
@@ -57,6 +58,7 @@ namespace RestaurantManager
         {
             InitializeComponent();
 
+            Settings.Theme = Settings.Theme;
             await NavigationService.NavigateTo<LoginPage>(true);
         }
     }

@@ -19,6 +19,7 @@ namespace RestaurantManager.Controls.Calendar
             BindableProperty.Create(nameof(CurrentDate), typeof(DateTime), typeof(CalendarView),
                 propertyChanged: (bindable, value, newValue) =>
                 {
+                    if (newValue == null) return;
                     if(!(bindable is CalendarView calendar)) return;
                     var date = newValue is DateTime ? (DateTime)newValue : default;
                     calendar.Weekdays = date.GetWeekdays();
@@ -28,6 +29,7 @@ namespace RestaurantManager.Controls.Calendar
             BindableProperty.Create(nameof(DaysOfWeek), typeof(ObservableCollection<ReservationDayDTO>), 
                 typeof(CalendarView), propertyChanged: (bindable, value, newValue) =>
                 {
+                    if (newValue == null) return;
                     if(!(bindable is CalendarView calendar)) return;
                     var days = newValue as ObservableCollection<ReservationDayDTO>;
                     calendar.Week1 = days.Take(7).ToObservableCollection();

@@ -9,18 +9,13 @@
     <ContentPage.Resources>
         <ResourceDictionary>
 
-            <Color x:Key="LightRadioButtonColor">#F3F2F1</Color>
-            <Color x:Key="DarkRadioButtonColor">#9B9A99</Color>
-
             <ControlTemplate x:Key="ThemeRadioTemplate">
                 <Frame
                     Padding="0"
-                    BackgroundColor="{AppThemeBinding 
-                        Dark={StaticResource DarkRadioButtonColor},
-                        Light={StaticResource LightRadioButtonColor}}"
-                    BorderColor="{AppThemeBinding 
-                        Dark={StaticResource DarkRadioButtonColor},
-                        Light={StaticResource LightRadioButtonColor}}"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource PrimaryColorLight},
+                             Dark={StaticResource PrimaryColorDark}}"
+                    BorderColor="{AppThemeBinding Light={StaticResource PrimaryColorLight},
+                             Dark={StaticResource PrimaryColorDark}}"
                     CornerRadius="8"
                     HasShadow="{OnPlatform Android=true}"
                     HeightRequest="80"
