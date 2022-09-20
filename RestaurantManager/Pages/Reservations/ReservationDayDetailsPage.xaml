@@ -20,6 +20,7 @@
                                      SeparatorVisibility="None"
                                      HasUnevenRows="True"
                                      Margin="20"
+                                     BackgroundColor="{StaticResource TransparentColor}"
                                      ItemsSource="{Binding Items}">
                 <controls:CustomListView.Behaviors>
                     <behaviors:EventToCommandBehavior

@@ -70,6 +70,7 @@
     <BundleResource Include="Resources\FontAwesome5Regular.otf" />
     <BundleResource Include="Resources\FontAwesome5Solid.otf" />
     <Compile Include="Core\AuthiOS.cs" />
+    <Compile Include="Core\PushNotificationsLocaliOS.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <None Include="Entitlements.plist" />
