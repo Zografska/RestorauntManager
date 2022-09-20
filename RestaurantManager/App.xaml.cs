@@ -1,4 +1,5 @@
-﻿using Prism;
+﻿using Plugin.FirebasePushNotification;
+using Prism;
 using Prism.DryIoc;
 using Prism.Ioc;
 using RestaurantManager.Core.DatabaseService;
@@ -57,7 +58,14 @@ namespace RestaurantManager
         {
             InitializeComponent();
 
+            CrossFirebasePushNotification.Current.OnTokenRefresh += Current_OnTokenRefresh;
+
             await NavigationService.NavigateTo<LoginPage>(true);
+        }
+
+        private void Current_OnTokenRefresh(object source, FirebasePushNotificationTokenEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine($"Token: {e.Token}");
         }
     }
 }
