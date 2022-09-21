@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "704852469616-fsail51ugu913avv40e5lcvepg5mgf2g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.codechem.restaurantManager",
+            "certificate_hash": "3b0a2976dcc0a0b9399bf471b97602e73ed2842c"
+          }
+        },
+        {
           "client_id": "704852469616-ikg03aua7jrh28et7lpds7up2pbgdloh.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -32,10 +40,10 @@
               "client_type": 3
             },
             {
-              "client_id": "704852469616-jc1r4s9fa626k981nj35ulqus3mmvik7.apps.googleusercontent.com",
+              "client_id": "704852469616-8un5si8m7ljb8f41s85qfbq6t4fqjhkm.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.codechem.restorauntManager"
+                "bundle_id": "com.tenforce.RestaurantManager"
               }
             }
           ]
