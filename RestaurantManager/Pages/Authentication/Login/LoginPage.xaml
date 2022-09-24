@@ -1,52 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <base:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="RestaurantManager.Pages.Authentication.Login.LoginPage"
-             xmlns:toolkit="http://xamarin.com/schemas/2020/toolkit"
-             xmlns:base="clr-namespace:RestaurantManager.Pages.Base;assembly=RestaurantManager"
-             xmlns:fontAwesome="clr-namespace:FontAwesome;assembly=RestaurantManager"
-             xmlns:controls="clr-namespace:RestaurantManager.Controls;assembly=RestaurantManager">
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               x:Class="RestaurantManager.Pages.Authentication.Login.LoginPage"
+               xmlns:toolkit="http://xamarin.com/schemas/2020/toolkit"
+               xmlns:base="clr-namespace:RestaurantManager.Pages.Base;assembly=RestaurantManager"
+               xmlns:fontAwesome="clr-namespace:FontAwesome;assembly=RestaurantManager"
+               xmlns:controls="clr-namespace:RestaurantManager.Controls;assembly=RestaurantManager">
     <ContentPage.Resources>
-        <Style x:Key="InvalidEntryStyle" TargetType="Entry"> 
-            <Setter Property="BackgroundColor" Value="{StaticResource WarningColor}" />
+        <Style x:Key="InvalidEntryStyle" TargetType="Entry">
+            <Setter Property="PlaceholderColor" Value="{StaticResource WarningColor}" />
+            <Setter Property="TextColor" Value="{StaticResource WarningColor}"/>
         </Style>
     </ContentPage.Resources>
     <base:BasePage.ContentValue>
         <StackLayout
             VerticalOptions="Center"
             Margin="20,0">
-        
-            <Label
-                Text="Welcome to Restaurant Manager!"
-                HorizontalOptions="Center"
-                HorizontalTextAlignment="Center"
-                TextColor="{AppThemeBinding Light={StaticResource PrimaryColorLight}, Dark={StaticResource PrimaryColorDark}}"
-                FontSize="26"
-            />
-            
-            <Label
-                Text="Fill in your login details to proceed"
-                HorizontalOptions="Center"
-                HorizontalTextAlignment="Center"
-                TextColor="{AppThemeBinding Light={StaticResource SubtitleColorLight}, Dark={StaticResource SubtitleColorDark}}"
-                FontSize="14"
-                Margin="0, 10,0,20"
-            />
-            
+
+            <Label Text="Welcome to Restaurant Manager!"
+                   Style="{StaticResource HeaderLabel}" />
+
+            <Label Text="Fill in your login details to proceed"
+                   Style="{StaticResource SubheaderLabel}"
+                   Margin="0, 10,0,20" />
+
             <Entry
                 Placeholder="E-mail"
                 Text="{Binding Username, Mode=TwoWay}"
                 Margin="20,5"
                 Keyboard="Email">
-            <Entry.Behaviors>
-                <toolkit:EmailValidationBehavior
-                    DecorationFlags="Trim"
-                    IsValid="{Binding UsernameValid, Mode=OneWayToSource}"
-                    InvalidStyle="{StaticResource InvalidEntryStyle}"/>
-            </Entry.Behaviors>
+                <Entry.Behaviors>
+                    <toolkit:EmailValidationBehavior
+                        DecorationFlags="Trim"
+                        IsValid="{Binding UsernameValid, Mode=OneWayToSource}"
+                        InvalidStyle="{StaticResource InvalidEntryStyle}" />
+                </Entry.Behaviors>
             </Entry>
-        
+
             <Entry
                 Placeholder="Password"
                 IsPassword="true"
@@ -56,52 +47,41 @@
                     <toolkit:TextValidationBehavior
                         IsValid="{Binding PasswordValid, Mode=OneWayToSource}"
                         InvalidStyle="{StaticResource InvalidEntryStyle}"
-                        MinimumLength="6"/>
+                        MinimumLength="6" />
                 </Entry.Behaviors>
             </Entry>
-            
+
             <controls:FrameButton
                 Text="Login"
-                BorderColor="{StaticResource AccentColor}"
-                BackgroundColor="{StaticResource TransparentColor}"
-                FontSize="16"
-                TextColor="{AppThemeBinding Light={StaticResource PrimaryColorLight}, Dark={StaticResource PrimaryColorDark}}"
+                Style="{StaticResource AccentButton}"
                 FrameTappedCommand="{Binding LoginCommand}"
-                Margin="30,15"/>
-            
+                Margin="30,15" />
+
             <controls:FrameButton
                 Text="Don't have an account? Signup!"
-                BackgroundColor="{StaticResource TransparentColor}"
-                FontSize="16"
-                TextColor="{StaticResource AccentColor}"
+                Style="{StaticResource HypertextButton}"
                 FrameTappedCommand="{Binding NavigateToSignupCommand}"
-                Margin="30,-20"/>
-            
+                Margin="30,-20" />
+
             <controls:FrameButton
                 Text="Forgot password?"
-                BackgroundColor="{StaticResource TransparentColor}"
-                FontSize="16"
+                Style="{StaticResource HypertextButton}"
                 Margin="30,-10"
-                TextColor="{StaticResource AccentColor}"
-                FrameTappedCommand="{Binding NavigateToResetPasswordCommand}"/>
-            
+                FrameTappedCommand="{Binding NavigateToResetPasswordCommand}" />
+
             <controls:FrameButton
                 Icon="{x:Static fontAwesome:FontAwesomeIcons.Google}"
                 IconFontFamily="{StaticResource FontAwesomeBrands}"
                 Text="Login With Google"
-                BackgroundColor="{AppThemeBinding Light={StaticResource PrimaryColorLight}, Dark={StaticResource PrimaryColorDark}}"
-                TextColor="{AppThemeBinding Light={StaticResource SecondaryColorLight}, Dark={StaticResource PrimaryColorLight}}"
-                FontSize="18"
+                Style="{StaticResource PrimaryButton}"
                 Margin="30,0"
-                FrameTappedCommand="{Binding LoginWithGoogleCommand}"/>
-            
+                FrameTappedCommand="{Binding LoginWithGoogleCommand}" />
+
             <controls:FrameButton
                 Text="Login As Sadmin"
-                BackgroundColor="{AppThemeBinding Light={StaticResource PrimaryColorLight}, Dark={StaticResource PrimaryColorDark}}"
-                TextColor="{AppThemeBinding Light={StaticResource SecondaryColorLight}, Dark={StaticResource PrimaryColorLight}}"
-                FontSize="18"
+                Style="{StaticResource PrimaryButton}"
                 Margin="30,0"
-                FrameTappedCommand="{Binding LoginAsSadminCommand}"/>
+                FrameTappedCommand="{Binding LoginAsSadminCommand}" />
 
         </StackLayout>
     </base:BasePage.ContentValue>

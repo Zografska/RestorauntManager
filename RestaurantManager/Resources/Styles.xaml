@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ResourceDictionary
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:RestaurantManager.Controls;assembly=RestaurantManager"
+    xmlns:resources="clr-namespace:RestaurantManager.Resources;assembly=RestaurantManager"
+    x:Class="RestaurantManager.Resources.Styles">
+    <ResourceDictionary.MergedDictionaries>
+        <resources:Colors />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="HypertextButton" TargetType="controls:FrameButton">
+        <Setter Property="BackgroundColor" Value="{StaticResource TransparentColor}" />
+        <Setter Property="TextColor" Value="{StaticResource AccentColor}" />
+        <Setter Property="FontSize" Value="16" />
+    </Style>
+
+    <Style x:Key="PrimaryButton" TargetType="controls:FrameButton">
+        <Setter Property="BackgroundColor"
+                Value="{AppThemeBinding Light={StaticResource PrimaryColorLight}, Dark={StaticResource PrimaryColorDark}}" />
+        <Setter Property="TextColor"
+                Value="{AppThemeBinding Light={StaticResource SecondaryColorLight}, Dark={StaticResource PrimaryColorLight}}" />
+        <Setter Property="FontSize" Value="18" />
+    </Style>
+
+    <Style x:Key="AccentButton" TargetType="controls:FrameButton">
+        <Setter Property="BackgroundColor"
+                Value="{StaticResource TransparentColor}" />
+        <Setter Property="TextColor"
+                Value="{AppThemeBinding Light={StaticResource PrimaryColorLight}, Dark={StaticResource PrimaryColorDark}}" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="BorderColor" Value="{StaticResource AccentColor}" />
+    </Style>
+
+    <Style x:Key="HeaderLabel" TargetType="Label">
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="26" />
+        <Setter Property="TextColor"
+                Value="{AppThemeBinding Light={StaticResource PrimaryColorLight}, Dark={StaticResource PrimaryColorDark}}" />
+    </Style>
+
+    <Style x:Key="SubheaderLabel" TargetType="Label">
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="TextColor"
+                Value="{AppThemeBinding Light={StaticResource SubtitleColorLight}, Dark={StaticResource SubtitleColorDark}}" />
+    </Style>
+
+</ResourceDictionary>

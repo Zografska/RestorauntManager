@@ -35,6 +35,7 @@
             
             <ResourceDictionary.MergedDictionaries>
                 <resources:Colors/>
+                <resources:Styles/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
