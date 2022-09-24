@@ -7,12 +7,6 @@
                xmlns:base="clr-namespace:RestaurantManager.Pages.Base;assembly=RestaurantManager"
                xmlns:fontAwesome="clr-namespace:FontAwesome;assembly=RestaurantManager"
                xmlns:controls="clr-namespace:RestaurantManager.Controls;assembly=RestaurantManager">
-    <ContentPage.Resources>
-        <Style x:Key="InvalidEntryStyle" TargetType="Entry">
-            <Setter Property="PlaceholderColor" Value="{StaticResource WarningColor}" />
-            <Setter Property="TextColor" Value="{StaticResource WarningColor}"/>
-        </Style>
-    </ContentPage.Resources>
     <base:BasePage.ContentValue>
         <StackLayout
             VerticalOptions="Center"

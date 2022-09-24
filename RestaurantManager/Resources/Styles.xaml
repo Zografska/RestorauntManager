@@ -48,5 +48,10 @@
         <Setter Property="TextColor"
                 Value="{AppThemeBinding Light={StaticResource SubtitleColorLight}, Dark={StaticResource SubtitleColorDark}}" />
     </Style>
+    
+    <Style x:Key="InvalidEntryStyle" TargetType="Entry">
+        <Setter Property="PlaceholderColor" Value="{StaticResource WarningColor}" />
+        <Setter Property="TextColor" Value="{StaticResource WarningColor}"/>
+    </Style>
 
 </ResourceDictionary>

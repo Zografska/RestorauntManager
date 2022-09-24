@@ -103,6 +103,7 @@ namespace RestaurantManager.Pages.Authentication.Signup
             }
             catch (Exception ex)
             {
+                DisplayAlert("Photo Upload unsuccessful");
                 Console.WriteLine($"CapturePhotoAsync THREW: {ex.Message}");
             }
         }
