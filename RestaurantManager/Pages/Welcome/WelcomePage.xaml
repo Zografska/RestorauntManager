@@ -56,9 +56,9 @@
                     </Frame.GestureRecognizers>
                     <StackLayout
                         Margin="20"
-                        HorizontalOptions="CenterAndExpand" 
+                        HorizontalOptions="CenterAndExpand"
                         VerticalOptions="CenterAndExpand">
-                        
+
                         <Label
                             Text="{Binding Username, StringFormat='Welcome {0:F2}!'}"
                             TextColor="{AppThemeBinding Light={StaticResource PrimaryChilledColorLight},
@@ -69,7 +69,7 @@
                             VerticalOptions="Center"
                             HorizontalTextAlignment="Center"
                             VerticalTextAlignment="Center" />
-                        
+
                         <Button
                             Text="Restaurant Location"
                             FontSize="14"
@@ -89,71 +89,50 @@
                     </StackLayout>
                 </Frame>
 
-                <controls:BoxViewStopper
+                <BoxView
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
-                    Grid.Row="2" />
+                    Grid.Row="2" 
+                    Style="{StaticResource BoxViewStopper}"/>
 
                 <controls:VerticalIconButton
                     Grid.Row="3"
                     Grid.Column="0"
-                    BorderColor="{AppThemeBinding Light={StaticResource GraySeparatorColorLight}, 
-                    Dark={StaticResource GraySeparatorColorDark}}"
-                    BackgroundColor="{StaticResource TransparentColor}"
+                    Style="{StaticResource MenuButton}"
                     TappedCommand="{Binding NavigateToNotesCommand}"
                     Title="{x:Static utility:XamlConstants.Notes}"
-                    Icon="{x:Static fontAwesome:FontAwesomeIcons.PenToSquare}"
-                    IconColor="{StaticResource AccentColor}"
-                    IconSize="25"
-                    TitleSize="15"
-                    IconFontFamily="{StaticResource FontAwesomeRegular}" />
+                    Icon="{x:Static fontAwesome:FontAwesomeIcons.PenToSquare}" />
 
                 <controls:VerticalIconButton
                     Grid.Row="3"
                     Grid.Column="1"
-                    BorderColor="{AppThemeBinding Light={StaticResource GraySeparatorColorLight}, 
-                    Dark={StaticResource GraySeparatorColorDark}}"
-                    BackgroundColor="{StaticResource TransparentColor}"
+                    Style="{StaticResource MenuButton}"
                     TappedCommand="{Binding NavigateToReservationsCommand}"
                     Title="{x:Static utility:XamlConstants.Reservations}"
-                    Icon="{x:Static fontAwesome:FontAwesomeIcons.Calendar}"
-                    IconColor="{StaticResource AccentColor}"
-                    IconSize="25"
-                    TitleSize="15"
-                    IconFontFamily="{StaticResource FontAwesomeRegular}" />
-
+                    Icon="{x:Static fontAwesome:FontAwesomeIcons.Calendar}" />
+                
                 <controls:VerticalIconButton
                     Grid.Row="4"
                     Grid.Column="0"
-                    BorderColor="{AppThemeBinding Light={StaticResource GraySeparatorColorLight}, 
-                    Dark={StaticResource GraySeparatorColorDark}}"
-                    BackgroundColor="{StaticResource TransparentColor}"
+                    Style="{StaticResource MenuButton}"
                     Title="{x:Static utility:XamlConstants.Shifts}"
                     TappedCommand="{Binding NavigateToShiftsCommand}"
-                    Icon="{x:Static fontAwesome:FontAwesomeIcons.Clock}"
-                    IconColor="{StaticResource AccentColor}"
-                    IconSize="25"
-                    TitleSize="15"
-                    IconFontFamily="{StaticResource FontAwesomeRegular}" />
+                    Icon="{x:Static fontAwesome:FontAwesomeIcons.Clock}"/>
 
                 <controls:VerticalIconButton
                     Grid.Row="4"
                     Grid.Column="1"
-                    BorderColor="{AppThemeBinding Light={StaticResource GraySeparatorColorLight}, 
-                    Dark={StaticResource GraySeparatorColorDark}}"
-                    BackgroundColor="{StaticResource TransparentColor}"
+                    Style="{StaticResource MenuButton}"
                     Title="{x:Static utility:XamlConstants.Employees}"
                     TappedCommand="{Binding NavigateToEmployeesCommand}"
                     Icon="{x:Static fontAwesome:FontAwesomeIcons.Person}"
-                    IconColor="{StaticResource AccentColor}"
-                    IconSize="25"
-                    TitleSize="15"
                     IconFontFamily="{StaticResource FontAwesomeSolid}" />
 
-                <controls:BoxViewStopper
+                <BoxView
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
-                    Grid.Row="5" />
+                    Grid.Row="5" 
+                    Style="{StaticResource BoxViewStopper}"/>
 
                 <Button
                     Grid.Row="6"

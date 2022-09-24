@@ -1,5 +1,4 @@
 using System.Windows.Input;
-using RestaurantManager.Utility;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -60,7 +59,7 @@ namespace RestaurantManager.Controls
             set => SetValue(NavigationPageProperty, value);
         }
 
-        private static readonly BindableProperty IconSizeProperty =
+        public static readonly BindableProperty IconSizeProperty =
             BindableProperty.Create(nameof(IconSize), 
                 typeof(double), 
                 typeof(VerticalIconButton),
@@ -72,7 +71,7 @@ namespace RestaurantManager.Controls
             set => SetValue(IconSizeProperty, value);
         }
 
-        private static readonly BindableProperty TitleSizeProperty =
+        public static readonly BindableProperty TitleSizeProperty =
             BindableProperty.Create(nameof(TitleSize), 
                 typeof(double), 
                 typeof(VerticalIconButton),
@@ -84,7 +83,7 @@ namespace RestaurantManager.Controls
             set => SetValue(TitleSizeProperty, value);
         }
         
-        private static readonly BindableProperty TitleColorProperty =
+        public static readonly BindableProperty TitleColorProperty =
             BindableProperty.Create(nameof(TitleColor), 
                 typeof(Color), 
                 typeof(VerticalIconButton),
@@ -96,7 +95,7 @@ namespace RestaurantManager.Controls
             set => SetValue(TitleColorProperty, value);
         }
         
-        private static readonly BindableProperty IconColorProperty =
+        public static readonly BindableProperty IconColorProperty =
             BindableProperty.Create(nameof(IconColor), 
                 typeof(Color), 
                 typeof(VerticalIconButton),
@@ -108,7 +107,7 @@ namespace RestaurantManager.Controls
             set => SetValue(IconColorProperty, value);
         }
         
-        private static readonly BindableProperty FrameColorProperty =
+        public static readonly BindableProperty FrameColorProperty =
             BindableProperty.Create(nameof(FrameColor), 
                 typeof(Color), 
                 typeof(VerticalIconButton));
@@ -119,7 +118,7 @@ namespace RestaurantManager.Controls
             set => SetValue(FrameColorProperty, value);
         }
 
-        private static readonly BindableProperty IconFontFamilyProperty = BindableProperty.Create(nameof(IconFontFamily), 
+        public static readonly BindableProperty IconFontFamilyProperty = BindableProperty.Create(nameof(IconFontFamily), 
             typeof(string), typeof(FrameButton));
         public string IconFontFamily
         {

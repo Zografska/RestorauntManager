@@ -16,7 +16,7 @@ namespace RestaurantManager.Pages.Employees
         public ICommand NavigateToEmployeeDetailsCommand { get; }
         protected EmployeesPageViewModel(INavigationService navigationService, IPopupService popupService, DatabaseServiceRemote databaseServiceRemote, INetworkService networkService, IProfileService profileService) : base(navigationService, popupService, databaseServiceRemote, networkService)
         {
-            Title = "Employees";
+            Title = XamlConstants.Employees;
             _service = profileService;
             NavigateToEmployeeDetailsCommand = new Command<User>(NavigateToEmployeeDetails);
         }

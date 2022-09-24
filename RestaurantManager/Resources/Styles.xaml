@@ -8,6 +8,7 @@
     x:Class="RestaurantManager.Resources.Styles">
     <ResourceDictionary.MergedDictionaries>
         <resources:Colors />
+        <resources:Fonts />
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="HypertextButton" TargetType="controls:FrameButton">
@@ -33,6 +34,20 @@
         <Setter Property="BorderColor" Value="{StaticResource AccentColor}" />
     </Style>
 
+    <Style x:Key="MenuButton" TargetType="controls:VerticalIconButton">
+        <Setter Property="BackgroundColor"
+                Value="{StaticResource TransparentColor}" />
+        <Setter Property="IconColor"
+                Value="{StaticResource AccentColor}" />
+        <Setter Property="TitleSize" Value="15" />
+        <Setter Property="IconSize" Value="25" />
+        <Setter Property="IconFontFamily" Value="{StaticResource FontAwesomeRegular}" />
+        <Setter Property="TitleColor"
+                Value="{AppThemeBinding Light={StaticResource DimGrayColorLight}, Dark={StaticResource DimGrayColorDark}}" />
+        <Setter Property="BorderColor"
+                Value="{AppThemeBinding Light={StaticResource GraySeparatorColorLight}, Dark={StaticResource GraySeparatorColorDark}}" />
+    </Style>
+
     <Style x:Key="HeaderLabel" TargetType="Label">
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="HorizontalTextAlignment" Value="Center" />
@@ -48,10 +63,20 @@
         <Setter Property="TextColor"
                 Value="{AppThemeBinding Light={StaticResource SubtitleColorLight}, Dark={StaticResource SubtitleColorDark}}" />
     </Style>
-    
+    Color = Color.FromHex("#7da5f5");
+    Margin = 5;
+    VerticalOptions = LayoutOptions.Center;
+    HeightRequest = 2;
+    <Style x:Key="BoxViewStopper" TargetType="BoxView">
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="HeightRequest" Value="2" />
+        <Setter Property="Margin" Value="5" />
+        <Setter Property="Color" Value="{StaticResource PrimaryChilledColorLight}" />
+    </Style>
+
     <Style x:Key="InvalidEntryStyle" TargetType="Entry">
         <Setter Property="PlaceholderColor" Value="{StaticResource WarningColor}" />
-        <Setter Property="TextColor" Value="{StaticResource WarningColor}"/>
+        <Setter Property="TextColor" Value="{StaticResource WarningColor}" />
     </Style>
 
 </ResourceDictionary>
