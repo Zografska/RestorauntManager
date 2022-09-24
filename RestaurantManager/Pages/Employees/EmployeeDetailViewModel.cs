@@ -39,7 +39,7 @@ namespace RestaurantManager.Pages.Employees
             base.OnNavigatedTo(parameters);
             var webClient = new WebClient();
             User employee;
-            parameters.TryGetValue("employee", out employee);
+            parameters.TryGetValue(Constants.NavigationConstants.Employee, out employee);
             Employee = employee;
 
             if (NetworkService.IsNetworkConnected())
