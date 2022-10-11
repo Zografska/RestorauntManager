@@ -44,5 +44,9 @@
       <DependentUpon>VerticalIconButton.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Controls\InteractiveList.xaml.cs">
+      <DependentUpon>InteractiveList.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

@@ -3,8 +3,6 @@
 <base:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                xmlns:base="clr-namespace:RestaurantManager.Pages.Base;assembly=RestaurantManager"
-               xmlns:behaviors="http://prismlibrary.com"
-               xmlns:converters="http://xamarin.com/schemas/2020/toolkit"
                x:Class="RestaurantManager.Pages.Notes.NotesPage"
                x:Name="NotePage"
                xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -13,62 +11,35 @@
                xmlns:utility="clr-namespace:RestaurantManager.Utility;assembly=RestaurantManager"
                xmlns:controls="clr-namespace:RestaurantManager.Controls;assembly=RestaurantManager"
                mc:Ignorable="d"
-               d:DataContext="{d:DesignInstance notes:NotesViewModel}"
-               xmlns:fontAwesome="clr-namespace:FontAwesome;assembly=RestaurantManager">
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <converters:ItemTappedEventArgsConverter x:Key="ItemTappedEventArgsConverter"/>
-        </ResourceDictionary>
-    </ContentPage.Resources>
+               d:DataContext="{d:DesignInstance notes:NotesViewModel}">
     <base:BasePage.ContentValue>
-        <StackLayout>
-            <StackLayout 
-                Orientation="Horizontal" 
-                HorizontalOptions="CenterAndExpand"
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="7*" />
+            </Grid.RowDefinitions>
+            <StackLayout
+                Orientation="Horizontal"
+                HorizontalOptions="Center"
                 VerticalOptions="FillAndExpand">
                 <controls:FrameButton BackgroundColor="{StaticResource TransparentColor}"
                                       HorizontalOptions="StartAndExpand"
                                       Text="{x:Static utility:XamlConstants.MyNotes}"
                                       TextColor="{AppThemeBinding Light={StaticResource PrimaryColorLight}, Dark={StaticResource PrimaryColorDark}}"
                                       FrameTappedCommand="{Binding ChangeItemsCommand}"
-                                      FrameTappedCommandParameter="{x:Static utility:XamlConstants.MyNotes}"/>
-                
+                                      FrameTappedCommandParameter="{x:Static utility:XamlConstants.MyNotes}" />
+
                 <controls:FrameButton BackgroundColor="{StaticResource TransparentColor}"
                                       HorizontalOptions="EndAndExpand"
                                       Text="{x:Static utility:XamlConstants.SharedNotes}"
                                       TextColor="{AppThemeBinding Light={StaticResource PrimaryColorLight}, Dark={StaticResource PrimaryColorDark}}"
                                       FrameTappedCommand="{Binding ChangeItemsCommand}"
-                                      FrameTappedCommandParameter="{x:Static utility:XamlConstants.SharedNotes}"/>
+                                      FrameTappedCommandParameter="{x:Static utility:XamlConstants.SharedNotes}" />
             </StackLayout>
-            
-            <controls:CustomListView HorizontalOptions="FillAndExpand"
-                      SeparatorVisibility="None"
-                      HasUnevenRows="True"
-                      BackgroundColor="{StaticResource TransparentColor}"
-                      ItemsSource="{Binding Items}">
-                <controls:CustomListView.Behaviors>
-                    <behaviors:EventToCommandBehavior
-                        EventName="ItemTapped"
-                        Command="{Binding ItemTappedCommand}"
-                        EventArgsConverter="{StaticResource ItemTappedEventArgsConverter}"/>
-                </controls:CustomListView.Behaviors>
-                <controls:CustomListView.ItemTemplate>
-                    <DataTemplate>
-                        <notes:NotesViewCell Height="100"/>
-                    </DataTemplate>
-                </controls:CustomListView.ItemTemplate>
-            </controls:CustomListView>
-            
-            <controls:FrameButton
-                BackgroundColor="{AppThemeBinding Light={StaticResource PrimaryChilledColorLight}, Dark={StaticResource PrimaryChilledColorDark}}"
-                CornerRadius="20"
-                Margin="40,20"
-                Icon="{x:Static fontAwesome:FontAwesomeIcons.PenToSquare}"
-                IconFontFamily="{StaticResource FontAwesomeRegular}"
-                Text="{x:Static utility:XamlConstants.AddNote}"
-                IsVisible="{Binding IsCreateButtonVisible}"
-                FrameTappedCommand="{Binding AddItemCommand}"/>
-            
-        </StackLayout>
+
+            <controls:InteractiveList Grid.Row="1"
+                                      ItemCellType="{x:Type notes:NotesViewCell}"/>
+
+        </Grid>
     </base:BasePage.ContentValue>
 </base:BasePage>

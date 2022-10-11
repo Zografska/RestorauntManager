@@ -6,7 +6,7 @@
              xmlns:converters="clr-namespace:RestaurantManager.Converters;assembly=RestaurantManager"
              xmlns:fontAwesome="clr-namespace:FontAwesome;assembly=RestaurantManager"
              x:Class="RestaurantManager.Pages.Shifts.ShiftsViewCell">
-    <Grid ColumnDefinitions="*,7*">
+    <Grid ColumnDefinitions="*,7*" Margin="20">
         <Label 
             Text="{x:Static fontAwesome:FontAwesomeIcons.MoneyBill1}"
             TextColor="{StaticResource AccentColor}"

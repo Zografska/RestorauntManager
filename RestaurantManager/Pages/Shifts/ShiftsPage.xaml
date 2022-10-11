@@ -4,51 +4,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:base="clr-namespace:RestaurantManager.Pages.Base;assembly=RestaurantManager"
              xmlns:vm="clr-namespace:RestaurantManager.Pages;assembly=RestaurantManager"
-             xmlns:converters="http://xamarin.com/schemas/2020/toolkit"
-             xmlns:behaviors="http://prismlibrary.com"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:controls="clr-namespace:RestaurantManager.Controls;assembly=RestaurantManager"
-             xmlns:utility="clr-namespace:RestaurantManager.Utility;assembly=RestaurantManager"
              xmlns:shifts="clr-namespace:RestaurantManager.Pages.Shifts;assembly=RestaurantManager"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance vm:ShiftsViewModel}"
              x:Class="RestaurantManager.Pages.ShiftsPage">
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <converters:ItemTappedEventArgsConverter x:Key="ItemTappedEventArgsConverter"/>
-        </ResourceDictionary>
-    </ContentPage.Resources>
     <base:BasePage.ContentValue>
-        <StackLayout>
-            <controls:CustomListView 
-                HorizontalOptions="FillAndExpand"
-                SeparatorVisibility="None"
-                HasUnevenRows="True"
-                Margin="20"
-                BackgroundColor="{StaticResource TransparentColor}"
-                ItemsSource="{Binding Items}">
-                <controls:CustomListView.Behaviors>
-                    <behaviors:EventToCommandBehavior
-                        EventName="ItemTapped"
-                        Command="{Binding ItemTappedCommand}"
-                        EventArgsConverter="{StaticResource ItemTappedEventArgsConverter}"/>
-                </controls:CustomListView.Behaviors>
-                <controls:CustomListView.ItemTemplate>
-                    <DataTemplate>
-                        <shifts:ShiftsViewCell Height="180"/>
-                    </DataTemplate>
-                </controls:CustomListView.ItemTemplate>
-            </controls:CustomListView>
-            <controls:FrameButton
-                BackgroundColor="{AppThemeBinding Light={StaticResource PrimaryChilledColorLight},
-                             Dark={StaticResource PrimaryChilledColorDark}}"
-                TextColor="{AppThemeBinding Light={StaticResource SecondaryColorLight},
-                             Dark={StaticResource SecondaryColorDark}}"
-                Margin="40,20"
-                CornerRadius="20"
-                Text="{x:Static utility:XamlConstants.AddShift}"
-                FrameTappedCommand="{Binding AddItemCommand}"/>
-        </StackLayout>
+        <controls:InteractiveList ItemCellType="{x:Type shifts:ShiftsViewCell}" CellHeight="200"/>
     </base:BasePage.ContentValue>
 </base:BasePage>

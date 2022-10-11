@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      xmlns:controls="clr-namespace:RestaurantManager.Controls;assembly=RestaurantManager"
+      xmlns:utility="clr-namespace:RestaurantManager.Utility;assembly=RestaurantManager"
+      xmlns:converters="http://xamarin.com/schemas/2020/toolkit"
+      xmlns:fontAwesome="clr-namespace:FontAwesome;assembly=RestaurantManager"
+      RowDefinitions="5*,*"
+      x:Name="InteractiveListView"
+      x:Class="RestaurantManager.Controls.InteractiveList">
+    <Grid.Resources>
+        <ResourceDictionary>
+            <converters:ItemTappedEventArgsConverter x:Key="ItemTappedEventArgsConverter" />
+            <converters:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+        </ResourceDictionary>
+    </Grid.Resources>
+
+    <controls:CustomListView x:Name="CustomListView"
+                             HorizontalOptions="FillAndExpand"
+                             SeparatorVisibility="None"
+                             HasUnevenRows="True"
+                             BackgroundColor="{StaticResource TransparentColor}"
+                             RowHeight="{Binding CellHeight, Source={x:Reference InteractiveListView}}"
+                             ItemsSource="{Binding Items}">
+        <controls:CustomListView.Behaviors>
+            <converters:EventToCommandBehavior
+                EventName="ItemTapped"
+                Command="{Binding ItemTappedCommand}"
+                EventArgsConverter="{StaticResource ItemTappedEventArgsConverter}" />
+        </controls:CustomListView.Behaviors>
+    </controls:CustomListView>
+
+    <Label Text="No items to display"
+           Style="{StaticResource SubheaderLabel}"
+           BindingContext="{x:Reference CustomListView}"
+           IsVisible="{Binding IsVisible, Converter={StaticResource InvertedBoolConverter}}"
+           Margin="0, 10,0,20" />
+
+    <controls:FrameButton
+        Grid.Row="1"
+        Style="{StaticResource PrimaryButton}"
+        Margin="60,20"
+        Icon="{x:Static fontAwesome:FontAwesomeIcons.PenToSquare}"
+        Text="{x:Static utility:XamlConstants.AddNote}"
+        IsVisible="{Binding IsCreateButtonVisible}"
+        FrameTappedCommand="{Binding AddItemCommand}" />
+
+</Grid>

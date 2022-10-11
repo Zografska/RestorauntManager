@@ -23,6 +23,7 @@
         <Setter Property="TextColor"
                 Value="{AppThemeBinding Light={StaticResource SecondaryColorLight}, Dark={StaticResource PrimaryColorLight}}" />
         <Setter Property="FontSize" Value="18" />
+        <Setter Property="IconFontFamily" Value="{StaticResource FontAwesomeRegular}" />
     </Style>
 
     <Style x:Key="AccentButton" TargetType="controls:FrameButton">

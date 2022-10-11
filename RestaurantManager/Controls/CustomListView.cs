@@ -13,5 +13,14 @@ namespace RestaurantManager.Controls
                 SelectedItem = null;
             };
         }
+
+        protected override void OnPropertyChanged(string propertyName = null)
+        {
+            base.OnPropertyChanged(propertyName);
+            if (propertyName == nameof(ItemsSource))
+            {
+                IsVisible = ItemsSource != null && ItemsSource.GetEnumerator().MoveNext();
+            }
+        }
     }
 }

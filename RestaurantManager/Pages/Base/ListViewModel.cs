@@ -28,7 +28,7 @@ namespace RestaurantManager.Pages
             get => _items;
             set => SetProperty(ref _items, value);
         }
-
+        
         protected ListViewModel(INavigationService navigationService, IPopupService popupService,
             DatabaseServiceRemote databaseServiceRemote, INetworkService networkService) 
             : base(navigationService, popupService, networkService)
@@ -52,11 +52,13 @@ namespace RestaurantManager.Pages
                 else
                 {
                     Items.Add(item);
+                    Items = new ObservableCollection<T>(Items);
                 }
             }
             else if (resultParameters.ContainsKey(Constants.NavigationConstants.ItemDeleted))
             {
                 Items.Remove(oldItem);
+                Items = new ObservableCollection<T>(Items);
             }
 
             return item;
