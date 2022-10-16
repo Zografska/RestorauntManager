@@ -49,6 +49,7 @@
                 Title="Select employee:"
                 ItemsSource="{Binding Users}"
                 ItemDisplayBinding="{Binding FullName}"
+                SelectedItem="{Binding Item.User}"
                 FontSize="Medium"
                 TextColor="DimGray"
                 VerticalOptions="CenterAndExpand"
@@ -75,7 +76,7 @@
                 Grid.Column="2"
                 Grid.ColumnSpan="2"
                 Title="Select Shift Type"
-                SelectedItem="{Binding Shift.Type}"
+                SelectedItem="{Binding Item.Type}"
                 TextColor="DimGray"
                 FontSize="Medium"
                 VerticalOptions="CenterAndExpand"
@@ -98,7 +99,7 @@
             <Entry
                 Grid.Row="2"
                 Grid.Column="2"
-                Text="{Binding Shift.Hours}"
+                Text="{Binding Item.Hours}"
                 TextColor="DimGray"
                 FontSize="Medium"
                 VerticalOptions="CenterAndExpand"
@@ -116,7 +117,7 @@
                 Grid.Column="1"
                 Grid.ColumnSpan="3"
                 HorizontalOptions="CenterAndExpand"
-                Date="{Binding Shift.Date}"
+                Date="{Binding Item.Date}"
                 Format="d"
                 Margin="30, 0, 0, 30" />
         </Grid>

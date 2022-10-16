@@ -1,5 +1,3 @@
-using RestaurantManager.Utility;
-using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace RestaurantManager.Pages.Settings
@@ -23,13 +21,5 @@ namespace RestaurantManager.Pages.Settings
                     break;
             }
         }
-        
-        bool loaded;
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            loaded = true;
-        }
-        
     }
 }

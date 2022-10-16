@@ -93,11 +93,11 @@ namespace RestaurantManager.Pages.Authentication.Signup
                 await LoadPhotoAsync(photo);
                 Console.WriteLine($"CapturePhotoAsync COMPLETED: {photo.FullPath}");
             }
-            catch (FeatureNotSupportedException fnsEx)
+            catch (FeatureNotSupportedException)
             {
                 DisplayAlert(Constants.FeatureConstants.FeatureNotImplemented);
             }
-            catch (PermissionException pEx)
+            catch (PermissionException)
             {
                 DisplayAlert(Constants.FeatureConstants.PermissionsNotGranted);
             }

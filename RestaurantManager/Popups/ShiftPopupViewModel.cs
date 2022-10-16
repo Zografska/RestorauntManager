@@ -13,16 +13,9 @@ namespace RestaurantManager.Popups
 {
     public class ShiftPopupViewModel : EditPopupViewModel<Shift>
     {
-        public IShiftsService ShiftsService { get; set; }
-        public IProfileService ProfileService { get; set; }
-        private Shift _shift;
-
-        public Shift Shift
-        {
-            get => _shift;
-            set => SetProperty(ref _shift, value);
-        }
-
+        private IShiftsService ShiftsService { get; }
+        private IProfileService ProfileService { get; }
+        
         private ObservableCollection<User> _users;
 
         public ObservableCollection<User> Users
@@ -31,17 +24,7 @@ namespace RestaurantManager.Popups
             set => SetProperty(ref _users, value);
         }
 
-        private bool _isDeletePossible;
-        public bool IsDeletePossible
-        {
-            get => _isDeletePossible;
-            set => SetProperty(ref _isDeletePossible, value);
-        }
-
-        public ICommand SaveCommand { get; }
-        public Command DeleteCommand { get; }
         public ICommand OnUserSelectionCommand { get; }
-
 
         public ShiftPopupViewModel(INavigationService navigationService, IPopupService popupService,
             IShiftsService shiftsService, INetworkService networkService, IProfileService profileService) 
@@ -49,8 +32,6 @@ namespace RestaurantManager.Popups
         {
             ShiftsService = shiftsService;
             ProfileService = profileService;
-            SaveCommand = new Command(SaveShift);
-            DeleteCommand = new Command(DeleteShift);
             OnUserSelectionCommand = new Command<int>(OnUserSelection);
         }
 
@@ -60,40 +41,15 @@ namespace RestaurantManager.Popups
             InitPopup(parameters);
         }
 
-        private async void InitPopup(IPopupParameters parameters)
+        protected override async void InitPopup(IPopupParameters parameters)
         {
-            Shift shift;
-            parameters.TryGetValue("Item", out shift);
-
-            if (shift != null)
-            {
-                IsDeletePossible = true;
-            }
+            base.InitPopup(parameters);
             Users = await ProfileService.GetAll();
-
-            Shift = shift ?? new Shift();
-        }
-        private async void SaveShift()
-        {
-            var updatedShift = await ShiftsService.Save(Shift);
-            var parameters = new PopupParameters { { Constants.NavigationConstants.ItemUpdated, updatedShift } };
-            UpdateCommand.Execute(parameters);
-        }
-        
-        private async void DeleteShift()
-        {
-            var answer = await Application.Current.MainPage.DisplayAlert("Delete Shift", "Do you want to delete this shift?", "Yes", "No");
-            if (answer)
-            {
-                var itemDeleted = await ShiftsService.RemoveById(Shift.Id);
-                var parameters = new PopupParameters() { {  Constants.NavigationConstants.ItemDeleted, itemDeleted } };
-                UpdateCommand.Execute(parameters);
-            }
         }
 
         private void OnUserSelection(int selectedIndex)
         {
-            Shift.User = Users[selectedIndex].FullName;
+            Item.User = Users[selectedIndex].FullName;
         }
 
     }
