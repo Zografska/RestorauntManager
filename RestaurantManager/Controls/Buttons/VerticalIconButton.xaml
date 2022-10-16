@@ -2,10 +2,10 @@
 
 <Frame xmlns="http://xamarin.com/schemas/2014/forms"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-       x:Class="RestaurantManager.Controls.VerticalIconButton"
+       x:Class="RestaurantManager.Controls.Buttons.VerticalIconButton"
        x:Name="ButtonFrame"
        BorderColor="{
-                Binding FrameColor,
+                Binding FrameBorderColor,
                 Source={x:Reference ButtonFrame}}"
        CornerRadius="20"
        HasShadow="False"

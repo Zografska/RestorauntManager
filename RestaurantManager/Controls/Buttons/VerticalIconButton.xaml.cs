@@ -2,7 +2,7 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace RestaurantManager.Controls
+namespace RestaurantManager.Controls.Buttons
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class VerticalIconButton
@@ -116,6 +116,17 @@ namespace RestaurantManager.Controls
         {
             get => (Color)GetValue(FrameColorProperty);
             set => SetValue(FrameColorProperty, value);
+        }    
+        
+        public static readonly BindableProperty FrameBorderColorProperty =
+            BindableProperty.Create(nameof(FrameBorderColor), 
+                typeof(Color), 
+                typeof(VerticalIconButton));
+        
+        public Color FrameBorderColor
+        {
+            get => (Color)GetValue(FrameBorderColorProperty);
+            set => SetValue(FrameBorderColorProperty, value);
         }
 
         public static readonly BindableProperty IconFontFamilyProperty = BindableProperty.Create(nameof(IconFontFamily), 

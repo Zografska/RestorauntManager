@@ -5,6 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:RestaurantManager.Controls;assembly=RestaurantManager"
     xmlns:resources="clr-namespace:RestaurantManager.Resources;assembly=RestaurantManager"
+    xmlns:buttons="clr-namespace:RestaurantManager.Controls.Buttons;assembly=RestaurantManager"
     x:Class="RestaurantManager.Resources.Styles">
     <ResourceDictionary.MergedDictionaries>
         <resources:Colors />
@@ -35,7 +36,7 @@
         <Setter Property="BorderColor" Value="{StaticResource AccentColor}" />
     </Style>
 
-    <Style x:Key="MenuButton" TargetType="controls:VerticalIconButton">
+    <Style x:Key="MenuButton" TargetType="buttons:VerticalIconButton">
         <Setter Property="BackgroundColor"
                 Value="{StaticResource TransparentColor}" />
         <Setter Property="IconColor"
@@ -45,7 +46,7 @@
         <Setter Property="IconFontFamily" Value="{StaticResource FontAwesomeRegular}" />
         <Setter Property="TitleColor"
                 Value="{AppThemeBinding Light={StaticResource DimGrayColorLight}, Dark={StaticResource DimGrayColorDark}}" />
-        <Setter Property="BorderColor"
+        <Setter Property="FrameBorderColor"
                 Value="{AppThemeBinding Light={StaticResource GraySeparatorColorLight}, Dark={StaticResource GraySeparatorColorDark}}" />
     </Style>
 

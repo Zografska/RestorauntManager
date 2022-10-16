@@ -17,6 +17,7 @@
     mc:Ignorable="d"
     d:DataContext="{d:DesignInstance welcome:WelcomePageViewModel}"
     xmlns:fontAwesome="clr-namespace:FontAwesome;assembly=RestaurantManager"
+    xmlns:buttons="clr-namespace:RestaurantManager.Controls.Buttons;assembly=RestaurantManager"
     x:Class="RestaurantManager.WelcomePage">
     <base:BasePage.ContentValue>
         <ScrollView>
@@ -95,7 +96,7 @@
                     Grid.Row="2" 
                     Style="{StaticResource BoxViewStopper}"/>
 
-                <controls:VerticalIconButton
+                <buttons:VerticalIconButton
                     Grid.Row="3"
                     Grid.Column="0"
                     Style="{StaticResource MenuButton}"
@@ -103,7 +104,7 @@
                     Title="{x:Static utility:XamlConstants.Notes}"
                     Icon="{x:Static fontAwesome:FontAwesomeIcons.PenToSquare}" />
 
-                <controls:VerticalIconButton
+                <buttons:VerticalIconButton
                     Grid.Row="3"
                     Grid.Column="1"
                     Style="{StaticResource MenuButton}"
@@ -111,7 +112,7 @@
                     Title="{x:Static utility:XamlConstants.Reservations}"
                     Icon="{x:Static fontAwesome:FontAwesomeIcons.Calendar}" />
                 
-                <controls:VerticalIconButton
+                <buttons:VerticalIconButton
                     Grid.Row="4"
                     Grid.Column="0"
                     Style="{StaticResource MenuButton}"
@@ -119,7 +120,7 @@
                     TappedCommand="{Binding NavigateToShiftsCommand}"
                     Icon="{x:Static fontAwesome:FontAwesomeIcons.Clock}"/>
 
-                <controls:VerticalIconButton
+                <buttons:VerticalIconButton
                     Grid.Row="4"
                     Grid.Column="1"
                     Style="{StaticResource MenuButton}"
